@@ -67,3 +67,19 @@ npm add -D sass
 ```bash
 import './assets/all.scss';
 ```
+
+<br>
+
+### 安裝 Boostrap、react router、axios
+
+```bash
+npm i bootstrap react-router axios
+```
+
+<br>
+
+1. src 資料夾 > 新增 utils 資料夾
+2. all.scss 移至 utils 資料夾
+3. 更改 main.jsx 引入 all.scss 路徑
+4. 複製 node_modules > bootstrap > scss 的 \_variables.scss、\_variables-dark.scss
+5. 貼到 utils 資料夾，自訂 bootstrap 樣式
