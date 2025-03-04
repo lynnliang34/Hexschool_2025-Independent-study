@@ -50,3 +50,20 @@ export default defineConfig 裡面，新增下面這行
 ```
 
 Hexschool_2025-Independent-study 為 GitHub 上 repository 名稱
+
+<br>
+
+### 安裝 sass
+
+```bash
+npm add -D sass
+```
+
+#### 測試
+
+1. src 資料夾 > 新增 all.scss
+2. main.jsx 引入 all.scss
+
+```bash
+import './assets/all.scss';
+```
