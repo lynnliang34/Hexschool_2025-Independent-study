@@ -99,3 +99,11 @@ npm i react-hook-form react-loading
 ```bash
 npm install react@18.3.1 react-dom@18.3.1
 ```
+
+<br>
+
+### 安裝 ### Redux toolkit
+
+```bash
+npm i @reduxjs/toolkit
+```
