@@ -83,3 +83,19 @@ npm i bootstrap react-router axios
 3. 更改 main.jsx 引入 all.scss 路徑
 4. 複製 node_modules > bootstrap > scss 的 \_variables.scss、\_variables-dark.scss
 5. 貼到 utils 資料夾，自訂 bootstrap 樣式
+
+<br>
+
+### 安裝 react-hook-form、react-loading
+
+```bash
+npm i react-hook-form react-loading
+```
+
+<br>
+
+#### react 降版本以相容 react-loading
+
+```bash
+npm install react@18.3.1 react-dom@18.3.1
+```
