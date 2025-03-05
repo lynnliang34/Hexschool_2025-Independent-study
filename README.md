@@ -102,10 +102,10 @@ npm install react@18.3.1 react-dom@18.3.1
 
 <br>
 
-### 安裝 Redux toolkit
+### 安裝 Redux toolkit、react-redux
 
 ```bash
-npm i @reduxjs/toolkit
+npm i @reduxjs/toolkit react-redux
 ```
 
 <br>
