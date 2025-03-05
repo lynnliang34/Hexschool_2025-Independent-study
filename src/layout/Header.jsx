@@ -21,6 +21,10 @@ export default function Header({}) {
               </NavLink>
             </li>
           </ul>
+
+          <div className="">
+            <NavLink to="/login">登入</NavLink>
+          </div>
         </div>
       </div>
     </nav>

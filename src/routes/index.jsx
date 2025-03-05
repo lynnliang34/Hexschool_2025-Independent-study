@@ -3,7 +3,16 @@ import "../assets/scss/all.scss";
 import { createHashRouter } from "react-router";
 
 import App from "../App";
-import { Home, About, NotFound } from "../pages";
+import {
+  Home,
+  About,
+  UserLogin,
+  UserProfile,
+  AdminLogin,
+  AdminLayout,
+  AdminDashboard,
+  NotFound,
+} from "../pages";
 
 const routes = [
   {
@@ -18,6 +27,32 @@ const routes = [
       {
         path: "about",
         element: <About />,
+      },
+      {
+        // 需登入才能進入
+        path: "profile",
+        element: <UserProfile />,
+      },
+    ],
+  },
+  {
+    // 前台使用者登入頁
+    path: "/login",
+    element: <UserLogin />,
+  },
+  {
+    // 後台管理員登入頁
+    path: "/admin-login",
+    element: <AdminLogin />,
+  },
+  {
+    // 需登入才能進入
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true,
+        element: <AdminDashboard />,
       },
     ],
   },
