@@ -102,8 +102,110 @@ npm install react@18.3.1 react-dom@18.3.1
 
 <br>
 
-### 安裝 ### Redux toolkit
+### 安裝 Redux toolkit
 
 ```bash
 npm i @reduxjs/toolkit
+```
+
+<br>
+
+## 建路由
+
+### 1. main.jsx 使用 RouterProvider 路由功能
+
+```jsx
+import { RouterProvider } from "react-router/dom";
+import router from "./routes";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>
+);
+```
+
+<br>
+
+### 2. 建路由表 src > 新增 routes 資料夾 > index.jsx 使用 createHashRouter
+
+main.jsx 引入的 all.scss 移至此檔
+
+```jsx
+import { createHashRouter } from "react-router";
+import App from "../App";
+
+const routes = [
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        // path: "/",
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+];
+
+const router = createHashRouter(routes);
+
+export default router;
+```
+
+<br>
+
+### 3. 建立頁面
+
+src > 新增 layout 資料夾 > 新增 Header.jsx、Footer.jsx
+src > 新增 pages 資料夾 > 新增 NotFound.jsx
+src > pages > 新增 frontend 資料夾 > 新增 Home.jsx、About.jsx
+
+<br>
+
+### 4. 集中頁面管理
+
+src > pages > 新增 index.jsx
+
+```jsx
+// 前台頁面
+export { default as Header } from "../layout/Header";
+export { default as Home } from "./frontend/Home";
+export { default as About } from "./frontend/About";
+export { default as Footer } from "../layout/Footer";
+
+// 錯誤頁面
+export { default as NotFound } from "./NotFound";
+```
+
+### 5. routes > index.jsx 匯入頁面
+
+```jsx
+import { Home, About, NotFound } from "../pages";
+```
+
+### 6. App.jsx 匯入頁面
+
+```jsx
+import { Outlet } from "react-router";
+import { Header, Footer } from "./pages";
+
+function App({}) {
+  return (
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
+}
 ```
