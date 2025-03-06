@@ -2,10 +2,15 @@ import { NavLink } from "react-router";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../redux/userSlice";
+import { useEffect, useRef } from "react";
+import { Modal } from "bootstrap";
 
 export default function Header() {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+
+  const menuModalRef = useRef(null);
+  const menuModal = useRef(null);
 
   const handleLogout = () => {
     setTimeout(() => {
@@ -15,6 +20,14 @@ export default function Header() {
   };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    menuModal.current = new Modal(menuModalRef.current);
+  }, []);
+
+  const openMenuModal = () => {
+    menuModal.current.show();
+  };
 
   return (
     <>
@@ -176,11 +189,7 @@ export default function Header() {
                 </div>
 
                 {/* <!-- list --> */}
-                <button
-                  className="list d-lg-none"
-                  data-bs-toggle="modal"
-                  data-bs-target="#menuModal"
-                >
+                <button className="list d-lg-none" onClick={openMenuModal}>
                   <i className="bi bi-list"></i>
                 </button>
               </div>
@@ -188,7 +197,7 @@ export default function Header() {
               {/* <!-- 手機版 modal --> */}
               <div
                 className="modal fade"
-                id="menuModal"
+                ref={menuModalRef}
                 tabIndex="-1"
                 aria-labelledby="menuModalLabel"
                 aria-hidden="true"
