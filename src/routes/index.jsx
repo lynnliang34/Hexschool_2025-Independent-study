@@ -3,6 +3,7 @@ import "../assets/scss/all.scss";
 import { createHashRouter } from "react-router";
 
 import RequireUserAuth from "./RequireUserAuth";
+import RequireAdminAuth from "./RequireAdminAuth";
 import App from "../App";
 import {
   Home,
@@ -53,7 +54,11 @@ const routes = [
   {
     // 需登入才能進入
     path: "/admin",
-    element: <AdminLayout />,
+    element: (
+      <RequireAdminAuth>
+        <AdminLayout />
+      </RequireAdminAuth>
+    ),
     children: [
       {
         index: true,
