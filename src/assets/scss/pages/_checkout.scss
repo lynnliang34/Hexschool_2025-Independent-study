@@ -1,0 +1,415 @@
+// 1 購物車 手機版
+.checkout-title {
+  border-bottom: 2px solid $primary;
+  height: 55px;
+
+  @include lg {
+    height: 93px;
+  }
+}
+
+.cart-list-item {
+  height: 124px;
+  border-bottom: 1px solid $secondary;
+}
+
+.cart-list-img {
+  width: 108px;
+  height: 108px;
+  object-fit: cover;
+
+  @include md {
+    width: 70px;
+    height: 70px;
+  }
+
+  @include lg {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+// 1 購物車 電腦版
+.cart-list-table {
+  font-size: 18px;
+  width: 100%;
+  border-collapse: collapse;
+
+  & thead {
+    height: 50px;
+    background-color: $primary-2;
+  }
+  @include lg {
+    font-size: 24px;
+  }
+
+  @include xl {
+    font-size: 28px;
+  }
+
+  thead,
+  tbody {
+    display: table;
+    width: 100%;
+  }
+
+  // 表頭欄寬度
+  th:nth-child(1) {
+    width: 29.03%;
+  }
+  th:nth-child(2) {
+    width: 21.88%;
+  }
+  th:nth-child(3) {
+    width: 17.55%;
+  }
+  th:nth-child(4) {
+    width: 18.25%;
+  }
+  th:nth-child(5) {
+    width: 13.29%;
+  }
+
+  // 表中欄寬度
+  td:nth-child(1) {
+    width: 29.03%;
+  }
+  td:nth-child(2) {
+    width: 21.88%;
+  }
+  td:nth-child(3) {
+    width: 17.55%;
+  }
+  td:nth-child(4) {
+    width: 18.25%;
+  }
+  td:nth-child(5) {
+    width: 13.29%;
+  }
+}
+
+.cart-table-spacing {
+  height: 10px;
+
+  @include xl {
+    height: 20px;
+  }
+}
+
+.cart-table-item {
+  height: 120px;
+  border-bottom: 1px solid $secondary;
+
+  @include lg {
+    height: 140px;
+  }
+
+  .text-truncate {
+    width: 108px;
+    margin-left: 12px;
+
+    @include lg {
+      width: 144px;
+    }
+
+    @include xl {
+      width: 168px;
+      margin-left: 20px;
+    }
+  }
+}
+
+.cart-trash {
+  width: 63px;
+  height: 30px;
+  fill: $primary;
+  transition: 0.15s;
+
+  @include lg {
+    width: 84px;
+    height: 40px;
+  }
+
+  &:hover {
+    fill: $secondary-2;
+  }
+}
+
+// 2 選擇優惠券
+.checkout-input {
+  border: 1px solid $neutral-2;
+  padding: 8px 12px;
+  font-size: 16px;
+  height: 40px;
+
+  @include lg {
+    height: 66px;
+    padding: 12px;
+    font-size: 28px;
+  }
+
+  &::placeholder {
+    color: #c0c0c0;
+  }
+}
+
+.checkout-btn {
+  font-size: 16px;
+  height: 40px;
+
+  @include lg {
+    font-size: 28px;
+    height: 66px;
+  }
+}
+
+#discount select {
+  @include md {
+    width: 64.5%;
+  }
+}
+
+// 3 選擇付款方式
+.checkout-label {
+  font-size: 16px;
+
+  @include lg {
+    font-size: 28px;
+  }
+}
+
+.credit-card-number {
+  @include md {
+    width: 30.7%;
+    max-width: 400px;
+  }
+}
+
+.credit-card-info {
+  @include md {
+    width: 32.1%;
+    max-width: 416px;
+  }
+}
+
+.btn-w-credit-card {
+  width: 50%;
+
+  @include md {
+    width: 94px;
+  }
+
+  @include lg {
+    width: 164px;
+  }
+}
+
+.btn-w-mobile-payment {
+  width: 50%;
+
+  @include md {
+    width: 110px;
+  }
+
+  @include lg {
+    width: 192px;
+  }
+}
+
+.btn-mobile-payment {
+  height: 72px;
+  width: 50%;
+  padding: 12px;
+  border: 1px solid $neutral-2;
+
+  @include md {
+    height: 72.8px;
+    width: 182.931px;
+  }
+
+  @include lg {
+    height: 104px;
+    width: 261.33px;
+  }
+
+  &:hover,
+  &:active {
+    border: 1px solid $primary;
+  }
+}
+
+.mobile-payment-img {
+  height: 48px;
+  width: 100%;
+  object-fit: contain;
+
+  @include lg {
+    height: 80px;
+  }
+}
+
+// 4 發票選項
+.last-checkout-information {
+  width: 100%;
+
+  @include md {
+    width: 174px;
+  }
+
+  @include lg {
+    width: 304px;
+  }
+}
+
+.fs-note {
+  font-size: 14px;
+
+  @include lg {
+    font-size: 16px;
+  }
+}
+
+// 5 訂單明細
+.cart-order-header {
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 5px;
+  background-color: $primary-2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include lg {
+    height: 62px;
+    padding: 0 42px 0 30px;
+  }
+}
+
+.f-order-header {
+  font-size: 16px;
+  font-weight: 400;
+
+  @include md {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  @include lg {
+    font-size: 28px;
+  }
+}
+
+.cart-order-item {
+  height: 48px;
+  padding: 0 20px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include md {
+    font-size: 18px;
+  }
+
+  @include lg {
+    height: 42px;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+}
+
+.order-class-name {
+  max-width: 200px;
+
+  @include sm {
+    max-width: 350px;
+  }
+
+  @include md {
+    max-width: inherit;
+    width: 180px;
+  }
+
+  @include lg {
+    width: 224px;
+  }
+}
+
+.cart-order-subtotal {
+  height: 72px;
+  padding: 0 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: $primary-2;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  @include md {
+    font-size: 18px;
+  }
+
+  @include lg {
+    height: 108px;
+    font-size: 28px;
+  }
+}
+
+.cart-order-discount {
+  height: 48px;
+  padding: 0 20px;
+  font-size: 16px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  @include md {
+    font-size: 18px;
+  }
+
+  @include lg {
+    height: 82px;
+    font-size: 28px;
+  }
+}
+
+.cart-order-payment {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: $primary-2;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  @include md {
+    font-size: 18px;
+  }
+
+  @include lg {
+    height: 80px;
+    font-size: 32px;
+  }
+}
+
+// 確認付款
+.confirm-payment-btn {
+  --bs-btn-border-radius: 12px;
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+
+  @include md {
+    width: 124px;
+    height: 43px;
+    font-size: 18px;
+  }
+
+  @include lg {
+    width: 192px;
+    height: 66px;
+    font-size: 28px;
+  }
+}

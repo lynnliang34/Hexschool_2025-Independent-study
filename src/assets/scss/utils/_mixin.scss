@@ -1,0 +1,34 @@
+// ≥1400px
+@mixin xxl {
+  @media screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
+// ≥1200px
+@mixin xl {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+// ≥992px
+@mixin lg {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+// ≥768px
+@mixin md {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+// ≥576px
+@mixin sm {
+  @media screen and (min-width: 576px) {
+    @content;
+  }
+}

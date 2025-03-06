@@ -1,0 +1,57 @@
+$custom-spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  // 4
+  2: $spacer * 0.5,
+  // 8
+  3: $spacer * 0.75,
+  // 12
+  4: $spacer,
+  // 16
+  5: $spacer * 1.25,
+  // 20
+  6: $spacer * 1.5,
+  // 24
+  7: $spacer * 1.75,
+  // 28
+  8: $spacer * 2,
+  // 32
+  9: $spacer * 2.25,
+  // 36
+  10: $spacer * 2.5,
+  // 40
+  11: $spacer * 2.75,
+  // 44
+  12: $spacer * 3,
+  // 48
+  13: $spacer * 3.25,
+  // 52
+  14: $spacer * 3.5,
+  // 56
+  15: $spacer * 3.75,
+  // 60
+  17: $spacer * 4.25,
+  // 68
+  20: $spacer * 5,
+  // 80
+  21: $spacer * 5.25,
+  // 84
+  22: $spacer * 5,
+  // 88
+  24: $spacer * 6,
+  // 96
+  27: $spacer * 6.75,
+  // 108
+  28: $spacer * 7,
+  // 112
+  30: $spacer * 7.5,
+  // 120
+  35: $spacer * 8.75,
+  // 140
+  36: $spacer * 9,
+  // 144
+  46: $spacer * 11.5,
+  // 184
+);
+
+$spacers: map-merge($spacers, $custom-spacers);

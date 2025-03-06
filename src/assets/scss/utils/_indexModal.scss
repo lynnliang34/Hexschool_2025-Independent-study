@@ -1,0 +1,15 @@
+.index{
+    .studentComment{
+        .modal-content{
+            width: 356px !important;
+            margin: 200px auto !important;
+        }
+        .btn-close{
+        --bs-btn-close-bg: url(/assets/Icons/icon=btn-close.svg) !important;
+        --bs-btn-close-focus-shadow: none !important;
+        opacity: 1 ;
+        background-size:contain;
+
+        }
+    }
+}

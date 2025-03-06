@@ -1,0 +1,60 @@
+$utilities: map-merge(
+  $utilities,
+  (
+    "font-size":
+      map-merge(
+        map-get($utilities, "font-size"),
+        (
+          responsive: true,
+        )
+      ),
+  )
+);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "rounded": (
+      property: border-radius,
+      class: rounded,
+      values: (
+        null: var(--#{$prefix}border-radius),
+        0: 0,
+        1: var(--#{$prefix}border-radius-sm),
+        2: var(--#{$prefix}border-radius),
+        3: var(--#{$prefix}border-radius-lg),
+        4: var(--#{$prefix}border-radius-xl),
+        5: var(--#{$prefix}border-radius-xxl),
+        '5px':5px,
+        20: 20px,
+        circle: 50%,
+        pill: var(--#{$prefix}border-radius-pill),
+      ),
+    ),
+  )
+);
+
+
+// 自訂直角
+$utilities: map-merge($utilities,
+        ("rounded-top-right": (property: border-top-right-radius,
+                class: rounded-top-right,
+                values: (0: 0px,
+                ),
+            ),
+            "rounded-top-left": (property: border-top-left-radius,
+                class: rounded-top-left,
+                values: (0: 0px,
+                ),
+            ),
+            "rounded-bottom-left": (property: border-bottom-left-radius,
+                class: rounded-bottom-left,
+                values: (0: 0px,
+                ),
+            ),
+            "rounded-bottom-right": (property: border-bottom-right-radius,
+                class: rounded-bottom-right,
+                values: (0: 0px,
+                ),
+            ),
+        ));
