@@ -2,6 +2,7 @@ import "../assets/scss/all.scss";
 
 import { createHashRouter } from "react-router";
 
+import RequireUserAuth from "./RequireUserAuth";
 import App from "../App";
 import {
   Home,
@@ -31,7 +32,11 @@ const routes = [
       {
         // 需登入才能進入
         path: "profile",
-        element: <UserProfile />,
+        element: (
+          <RequireUserAuth>
+            <UserProfile />
+          </RequireUserAuth>
+        ),
       },
     ],
   },
