@@ -1,7 +1,15 @@
 import { Outlet } from "react-router";
 import { Link } from "react-router";
+import { useDispatch } from "react-redux";
+import { logoutAdmin } from "../redux/adminSlice";
 
 function AdminLayout() {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logoutAdmin());
+  };
+
   return (
     <>
       <nav class="navbar bg-body-tertiary">
@@ -15,6 +23,13 @@ function AdminLayout() {
               class="d-inline-block align-text-top"
             />
             愉運後台
+          </Link>{" "}
+          <Link
+            className="btn btn-outline-primary"
+            to="/admin-login"
+            onClick={handleLogout}
+          >
+            登出
           </Link>
         </div>
       </nav>
