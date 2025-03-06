@@ -1,6 +1,15 @@
 import { NavLink } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../redux/userSlice";
 
-export default function Header({}) {
+export default function Header() {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -23,7 +32,19 @@ export default function Header({}) {
           </ul>
 
           <div className="">
-            <NavLink to="/login">登入</NavLink>
+            {isAuthenticated ? (
+              <NavLink
+                className="btn btn-outline-primary"
+                to="/"
+                onClick={handleLogout}
+              >
+                登出
+              </NavLink>
+            ) : (
+              <NavLink className="btn btn-primary" to="/login">
+                登入
+              </NavLink>
+            )}
           </div>
         </div>
       </div>
