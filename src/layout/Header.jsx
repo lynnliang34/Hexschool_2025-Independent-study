@@ -59,20 +59,20 @@ export default function Header() {
         </div>
       </div>
     </nav> */}
-      <div class="header">
-        <div class="container">
-          <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
+      <div className="header">
+        <div className="container">
+          <nav className="navbar navbar-expand-lg">
+            <div className="container-fluid">
               {/* <!-- Logo --> */}
-              <a class="me-lg-5 me-xl-10" href="index.html">
+              <NavLink className="me-lg-5 me-xl-10" to="/">
                 <div>
                   <svg
-                    class="logo"
+                    className="logo"
                     viewBox="0 0 100 37"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g clip-path="url(#clip0_48_2790)">
+                    <g clipPath="url(#clip0_48_2790)">
                       <path d="M0 18.125C0 8.25966 7.89488 0.257812 17.6284 0.257812C27.3618 0.257812 35.2567 8.25966 35.2567 18.125C35.2567 27.9904 27.3618 35.9923 17.6284 35.9923C7.89488 35.9923 0 27.9904 0 18.125ZM17.6284 34.6174C26.6147 34.6174 33.9003 27.2332 33.9003 18.125C33.9003 9.01689 26.6147 1.63263 17.6284 1.63263C8.64198 1.63263 1.35644 9.01689 1.35644 18.125C1.35644 27.2332 8.64198 34.6174 17.6284 34.6174Z" />
                       <path d="M22.0049 16.154H19.5729V13.689C19.5729 13.4205 19.3557 13.195 19.0854 13.195H16.1659C15.901 13.195 15.6785 13.4152 15.6785 13.689V16.154H13.2464C12.9815 16.154 12.7589 16.3742 12.7589 16.6481V19.6072C12.7589 19.8757 12.9762 20.1013 13.2464 20.1013H15.6785V22.5663C15.6785 22.8348 15.8957 23.0603 16.1659 23.0603H19.0854C19.3504 23.0603 19.5729 22.8402 19.5729 22.5663V20.1013H22.0049C22.2699 20.1013 22.4924 19.8811 22.4924 19.6072V16.6481C22.4924 16.3796 22.2752 16.154 22.0049 16.154ZM21.5175 19.1131H19.0854C18.8205 19.1131 18.598 19.3333 18.598 19.6072V22.0722H16.6534V19.6072C16.6534 19.3387 16.4361 19.1131 16.1659 19.1131H13.7339V17.1422H16.1659C16.4308 17.1422 16.6534 16.922 16.6534 16.6481V14.1831H18.598V16.6481C18.598 16.9166 18.8152 17.1422 19.0854 17.1422H21.5175V19.1131ZM26.6253 13.689H22.0049V9.00608C22.0049 7.92127 21.1307 7.03516 20.0604 7.03516H15.1963C14.126 7.03516 13.2517 7.92127 13.2517 9.00608V13.689H8.63135C7.56103 13.689 6.68677 14.5752 6.68677 15.66V20.59C6.68677 21.6748 7.56103 22.5609 8.63135 22.5609H13.2517V27.2439C13.2517 28.3287 14.126 29.2148 15.1963 29.2148H20.0604C21.1307 29.2148 22.0049 28.3287 22.0049 27.2439V22.5609H26.6253C27.6956 22.5609 28.5699 21.6748 28.5699 20.59V15.66C28.5699 14.5752 27.6956 13.689 26.6253 13.689ZM27.6002 20.59C27.6002 21.1324 27.1605 21.5781 26.6253 21.5781H21.5175C21.2526 21.5781 21.03 21.7983 21.03 22.0722V27.2492C21.03 27.7916 20.5902 28.2374 20.0551 28.2374H15.191C14.6558 28.2374 14.216 27.7916 14.216 27.2492V22.0722C14.216 21.8037 13.9988 21.5781 13.7286 21.5781H8.62075C8.08559 21.5781 7.64581 21.1324 7.64581 20.59V15.66C7.64581 15.1176 8.08559 14.6718 8.62075 14.6718H13.7286C13.9935 14.6718 14.216 14.4516 14.216 14.1777V9.00071C14.216 8.4583 14.6558 8.01256 15.191 8.01256H20.0551C20.5902 8.01256 21.03 8.4583 21.03 9.00071V14.1777C21.03 14.4463 21.2473 14.6718 21.5175 14.6718H26.6253C27.1605 14.6718 27.6002 15.1176 27.6002 15.66V20.59ZM7.41267 9.98886C7.41267 9.72034 7.62991 9.49479 7.90014 9.49479H9.11881V8.2596C9.11881 7.99108 9.33605 7.76553 9.60628 7.76553C9.87651 7.76553 10.0938 7.98571 10.0938 8.2596V9.49479H11.3124C11.5774 9.49479 11.7999 9.71497 11.7999 9.98886C11.7999 10.2627 11.5827 10.4829 11.3124 10.4829H10.0938V11.7181C10.0938 11.9866 9.87651 12.2122 9.60628 12.2122C9.33605 12.2122 9.11881 11.992 9.11881 11.7181V10.4829H7.90014C7.63521 10.4829 7.41267 10.2627 7.41267 9.98886ZM23.4621 9.98886C23.4621 9.72034 23.6793 9.49479 23.9495 9.49479H25.1682V8.2596C25.1682 7.99108 25.3854 7.76553 25.6557 7.76553C25.9259 7.76553 26.1431 7.98571 26.1431 8.2596V9.49479H27.3618C27.6267 9.49479 27.8493 9.71497 27.8493 9.98886C27.8493 10.2627 27.632 10.4829 27.3618 10.4829H26.1431V11.7181C26.1431 11.9866 25.9259 12.2122 25.6557 12.2122C25.3854 12.2122 25.1682 11.992 25.1682 11.7181V10.4829H23.9495C23.6846 10.4829 23.4621 10.2627 23.4621 9.98886ZM11.7893 26.2557C11.7893 26.5242 11.5721 26.7498 11.3018 26.7498H10.0832V27.985C10.0832 28.2535 9.86591 28.479 9.59569 28.479C9.32546 28.479 9.10822 28.2589 9.10822 27.985V26.7498H7.88954C7.62462 26.7498 7.40208 26.5296 7.40208 26.2557C7.40208 25.9818 7.61932 25.7616 7.88954 25.7616H9.10822V24.5265C9.10822 24.2579 9.32546 24.0324 9.59569 24.0324C9.86591 24.0324 10.0832 24.2526 10.0832 24.5265V25.7616H11.3018C11.5668 25.7616 11.7893 25.9818 11.7893 26.2557ZM27.8387 26.2557C27.8387 26.5242 27.6214 26.7498 27.3512 26.7498H26.1325V27.985C26.1325 28.2535 25.9153 28.479 25.6451 28.479C25.3748 28.479 25.1576 28.2589 25.1576 27.985V26.7498H23.9389C23.674 26.7498 23.4515 26.5296 23.4515 26.2557C23.4515 25.9818 23.6687 25.7616 23.9389 25.7616H25.1576V24.5265C25.1576 24.2579 25.3748 24.0324 25.6451 24.0324C25.9153 24.0324 26.1325 24.2526 26.1325 24.5265V25.7616H27.3512C27.6161 25.7616 27.8387 25.9818 27.8387 26.2557Z" />
                       <path d="M52.4517 30.348C51.8636 31.5349 51.2543 32.8721 50.6131 34.3651H50.4807L48.5732 30.348V33.5219C48.5732 33.7582 48.5944 33.914 48.6421 33.9784C48.6897 34.0429 48.7798 34.0804 48.907 34.0912L49.2461 34.1127V34.3221C48.8805 34.306 48.6103 34.3006 48.4301 34.3006C48.2341 34.3006 47.9532 34.306 47.5876 34.3221V34.1127L47.9479 34.0804C48.0539 34.0697 48.1334 34.0429 48.1811 33.9945C48.2341 33.9462 48.2606 33.7904 48.2606 33.5219V30.3534C48.2606 30.1064 48.2341 29.9506 48.1864 29.8862C48.1334 29.8217 48.038 29.7841 47.895 29.7788L47.5929 29.7627V29.5532C47.9321 29.5693 48.1546 29.5747 48.2553 29.5747C48.3718 29.5747 48.5944 29.5693 48.907 29.5532L50.7032 33.334L52.4517 29.5532C52.7644 29.5693 52.9869 29.5747 53.1141 29.5747C53.2571 29.5747 53.4744 29.5693 53.7711 29.5532V29.7627L53.4585 29.7788C53.2783 29.7895 53.1723 29.8379 53.1406 29.9345C53.1141 30.0258 53.0982 30.1654 53.0982 30.3534V33.5219C53.0982 33.7582 53.1194 33.914 53.167 33.9784C53.2147 34.0429 53.3048 34.0804 53.432 34.0912L53.7711 34.1127V34.3221C53.4161 34.306 53.0823 34.3006 52.7749 34.3006C52.5312 34.3006 52.2345 34.306 51.8848 34.3221V34.1127C52.1444 34.1019 52.3034 34.0643 52.3617 33.9999C52.4252 33.9354 52.4517 33.7797 52.4517 33.5219V30.348Z" />
@@ -96,31 +96,31 @@ export default function Header() {
                     </defs>
                   </svg>
                 </div>
-              </a>
+              </NavLink>
               {/* <!-- 手機版 --> */}
-              <div class="d-flex">
+              <div className="d-flex">
                 {/* <!-- search --> */}
                 {/* <!-- 圖示 --> */}
                 <button
                   data-bs-auto-close="outside"
-                  class="search-icon d-lg-none"
+                  className="search-icon d-lg-none"
                 >
                   <div>
                     <svg
-                      class="search-svg"
+                      className="search-svg"
                       viewBox="0 0 30 30"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <g clip-path="url(#clip0_94_4564)">
+                      <g clipPath="url(#clip0_94_4564)">
                         <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
+                          fillRule="evenodd"
+                          clipRule="evenodd"
                           d="M14.0833 7.75C10.5855 7.75 7.75 10.5855 7.75 14.0833C7.75 17.5811 10.5855 20.4167 14.0833 20.4167C17.5811 20.4167 20.4167 17.5811 20.4167 14.0833C20.4167 10.5855 17.5811 7.75 14.0833 7.75ZM5.75 14.0833C5.75 9.48096 9.48096 5.75 14.0833 5.75C18.6857 5.75 22.4167 9.48096 22.4167 14.0833C22.4167 18.6857 18.6857 22.4167 14.0833 22.4167C9.48096 22.4167 5.75 18.6857 5.75 14.0833Z"
                         />
                         <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
+                          fillRule="evenodd"
+                          clipRule="evenodd"
                           d="M18.5553 18.5553C18.9459 18.1648 19.579 18.1648 19.9696 18.5553L23.9571 22.5428C24.3476 22.9334 24.3476 23.5665 23.9571 23.9571C23.5665 24.3476 22.9334 24.3476 22.5428 23.9571L18.5553 19.9696C18.1648 19.579 18.1648 18.9459 18.5553 18.5553Z"
                         />
                       </g>
@@ -133,17 +133,17 @@ export default function Header() {
                   </div>
                 </button>
                 {/* <!-- 搜尋框 --> */}
-                <div class="search-form d-lg-none d-none">
-                  <div class="position-relative">
+                <div className="search-form d-lg-none d-none">
+                  <div className="position-relative">
                     <form>
                       <input
-                        class="search"
+                        className="search"
                         type="search"
                         placeholder="搜尋有氧課程"
                         aria-label="Search"
                       />
                     </form>
-                    <div class="search-icon-lg position-absolute">
+                    <div className="search-icon-lg position-absolute">
                       <svg
                         width="30"
                         height="30"
@@ -151,16 +151,16 @@ export default function Header() {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g clip-path="url(#clip0_94_4564)">
+                        <g clipPath="url(#clip0_94_4564)">
                           <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             d="M14.0833 7.75C10.5855 7.75 7.75 10.5855 7.75 14.0833C7.75 17.5811 10.5855 20.4167 14.0833 20.4167C17.5811 20.4167 20.4167 17.5811 20.4167 14.0833C20.4167 10.5855 17.5811 7.75 14.0833 7.75ZM5.75 14.0833C5.75 9.48096 9.48096 5.75 14.0833 5.75C18.6857 5.75 22.4167 9.48096 22.4167 14.0833C22.4167 18.6857 18.6857 22.4167 14.0833 22.4167C9.48096 22.4167 5.75 18.6857 5.75 14.0833Z"
                             fill="#484848"
                           />
                           <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             d="M18.5553 18.5553C18.9459 18.1648 19.579 18.1648 19.9696 18.5553L23.9571 22.5428C24.3476 22.9334 24.3476 23.5665 23.9571 23.9571C23.5665 24.3476 22.9334 24.3476 22.5428 23.9571L18.5553 19.9696C18.1648 19.579 18.1648 18.9459 18.5553 18.5553Z"
                             fill="#484848"
                           />
@@ -177,26 +177,27 @@ export default function Header() {
 
                 {/* <!-- list --> */}
                 <button
-                  class="list d-lg-none"
+                  className="list d-lg-none"
                   data-bs-toggle="modal"
                   data-bs-target="#menuModal"
                 >
-                  <i class="bi bi-list"></i>
+                  <i className="bi bi-list"></i>
                 </button>
               </div>
+
               {/* <!-- 手機版 modal --> */}
               <div
-                class="modal fade"
+                className="modal fade"
                 id="menuModal"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-labelledby="menuModalLabel"
                 aria-hidden="true"
               >
-                <div class="modal-dialog h-100">
-                  <div class="modal-content h-100">
-                    <div class="modal-body">
-                      <div class="ms-12">
-                        <a class="provile-link mb-6" href="#">
+                <div className="modal-dialog h-100">
+                  <div className="modal-content h-100">
+                    <div className="modal-body">
+                      <div className="ms-12">
+                        <NavLink className="provile-link mb-6">
                           <div>
                             <svg
                               width="46"
@@ -211,13 +212,13 @@ export default function Header() {
                               />
                             </svg>
                           </div>
-                        </a>
-                        <div class="mb-6">
-                          <a class="modal-link-1" href="about.html">
+                        </NavLink>
+                        <div className="mb-6">
+                          <NavLink className="modal-link-1" to="/about">
                             關於我們
                             <span>
                               <svg
-                                class="modal-link-arrow rotate ms-3 mb-1"
+                                className="modal-link-arrow rotate ms-3 mb-1"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -225,22 +226,18 @@ export default function Header() {
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
                             </span>
-                          </a>
-                          <div class="modal-link-1ist d-none">
-                            <a class="modal-link-2" href="#">
-                              師資{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              交通資訊{" "}
-                            </a>
+                          </NavLink>
+                          <div className="modal-link-1ist d-none">
+                            <NavLink className="modal-link-2">師資 </NavLink>
+                            <NavLink className="modal-link-2">交通資訊</NavLink>
                           </div>
                         </div>
-                        <div class="mb-6">
-                          <a class="modal-link-1" href="#">
+                        <div className="mb-6">
+                          <NavLink className="modal-link-1">
                             探索課程
                             <span>
                               <svg
-                                class="modal-link-arrow rotate ms-3 mb-1"
+                                className="modal-link-arrow rotate ms-3 mb-1"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -248,28 +245,20 @@ export default function Header() {
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
                             </span>
-                          </a>
-                          <div class="modal-link-1ist d-none">
-                            <a class="modal-link-2" href="#">
-                              運動保健{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              心靈成長{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              生活技能{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              社區活動{" "}
-                            </a>
+                          </NavLink>
+                          <div className="modal-link-1ist d-none">
+                            <NavLink className="modal-link-2">運動保健</NavLink>
+                            <NavLink className="modal-link-2">心靈成長</NavLink>
+                            <NavLink className="modal-link-2">生活技能</NavLink>
+                            <NavLink className="modal-link-2">社區活動</NavLink>
                           </div>
                         </div>
-                        <div class="mb-6">
-                          <a class="modal-link-1" href="#">
+                        <div className="mb-6">
+                          <NavLink className="modal-link-1">
                             知識分享
                             <span>
                               <svg
-                                class="modal-link-arrow rotate ms-3 mb-1"
+                                className="modal-link-arrow rotate ms-3 mb-1"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -277,34 +266,22 @@ export default function Header() {
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
                             </span>
-                          </a>
-                          <div class="modal-link-1ist d-none">
-                            <a class="modal-link-2" href="#">
-                              運動{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              飲食{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              養生{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              醫療{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              癌症{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              居家{" "}
-                            </a>
+                          </NavLink>
+                          <div className="modal-link-1ist d-none">
+                            <NavLink className="modal-link-2">運動 </NavLink>
+                            <NavLink className="modal-link-2">飲食 </NavLink>
+                            <NavLink className="modal-link-2">養生 </NavLink>
+                            <NavLink className="modal-link-2">醫療 </NavLink>
+                            <NavLink className="modal-link-2">癌症 </NavLink>
+                            <NavLink className="modal-link-2">居家 </NavLink>
                           </div>
                         </div>
-                        <div class="mb-6">
-                          <a class="modal-link-1" href="#">
+                        <div className="mb-6">
+                          <NavLink className="modal-link-1">
                             活動照片
                             <span>
                               <svg
-                                class="modal-link-arrow rotate ms-3 mb-1"
+                                className="modal-link-arrow rotate ms-3 mb-1"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -312,30 +289,23 @@ export default function Header() {
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
                             </span>
-                          </a>
-                          <div class="modal-link-1ist d-none">
-                            <a class="modal-link-2" href="#">
-                              講座{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              社團{" "}
-                            </a>
-                            <a class="modal-link-2" href="#">
-                              運動會{" "}
-                            </a>
+                          </NavLink>
+                          <div className="modal-link-1ist d-none">
+                            <NavLink className="modal-link-2">講座 </NavLink>
+                            <NavLink className="modal-link-2">社團 </NavLink>
+                            <NavLink className="modal-link-2">運動會 </NavLink>
                           </div>
                         </div>
-                        <div class="d-flex">
-                          <a class="modal-link-3 register-link me-2" href="#">
+                        <div className="d-flex">
+                          <NavLink className="modal-link-3 register-link me-2">
                             註冊
-                          </a>
-                          <a class="modal-link-3 login-link" href="#">
-                            {" "}
-                            登入{" "}
-                          </a>
-                          <a class="modal-link-3 logout-link d-none" href="#">
+                          </NavLink>
+                          <NavLink className="modal-link-3 login-link">
+                            登入
+                          </NavLink>
+                          <NavLink className="modal-link-3 logout-link d-none">
                             登出
-                          </a>
+                          </NavLink>
                         </div>
                       </div>
                     </div>
@@ -344,18 +314,18 @@ export default function Header() {
               </div>
 
               {/* <!-- 電腦版 --> */}
-              <div class="d-none d-lg-block w-100">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="position-relative">
+              <div className="d-none d-lg-block w-100">
+                <div className="d-flex justify-content-between align-items-center">
+                  <div className="position-relative">
                     <form>
                       <input
-                        class="search"
+                        className="search"
                         type="search"
                         placeholder="搜尋有氧課程"
                         aria-label="Search"
                       />
                     </form>
-                    <div class="search-icon-lg position-absolute">
+                    <div className="search-icon-lg position-absolute">
                       <svg
                         width="30"
                         height="30"
@@ -363,16 +333,16 @@ export default function Header() {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g clip-path="url(#clip0_94_4564)">
+                        <g clipPath="url(#clip0_94_4564)">
                           <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             d="M14.0833 7.75C10.5855 7.75 7.75 10.5855 7.75 14.0833C7.75 17.5811 10.5855 20.4167 14.0833 20.4167C17.5811 20.4167 20.4167 17.5811 20.4167 14.0833C20.4167 10.5855 17.5811 7.75 14.0833 7.75ZM5.75 14.0833C5.75 9.48096 9.48096 5.75 14.0833 5.75C18.6857 5.75 22.4167 9.48096 22.4167 14.0833C22.4167 18.6857 18.6857 22.4167 14.0833 22.4167C9.48096 22.4167 5.75 18.6857 5.75 14.0833Z"
                             fill="#484848"
                           />
                           <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             d="M18.5553 18.5553C18.9459 18.1648 19.579 18.1648 19.9696 18.5553L23.9571 22.5428C24.3476 22.9334 24.3476 23.5665 23.9571 23.9571C23.5665 24.3476 22.9334 24.3476 22.5428 23.9571L18.5553 19.9696C18.1648 19.579 18.1648 18.9459 18.5553 18.5553Z"
                             fill="#484848"
                           />
@@ -385,103 +355,80 @@ export default function Header() {
                       </svg>
                     </div>
                   </div>
-                  <div class="d-flex align-items-center">
-                    <ul class="navbar-nav me-lg-3 me-xl-5 me-xxl-10">
-                      <li class="nav-item me-xxl-6">
-                        <a
-                          class="nav-link-1"
-                          href="about.html"
+                  <div className="d-flex align-items-center">
+                    <ul className="navbar-nav me-lg-3 me-xl-5 me-xxl-10">
+                      <li className="nav-item me-xxl-6">
+                        <NavLink
+                          className="nav-link-1"
+                          to="/about"
                           data-target="section-1"
                         >
                           關於我們
-                        </a>
-                        <div id="section-1" class="hover-section">
-                          <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-column px-2">
-                              <a class="nav-link-3" href="#">
-                                師資
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                交通資訊
-                              </a>
+                        </NavLink>
+                        <div id="section-1" className="hover-section">
+                          <div className="d-flex justify-content-between">
+                            <div className="d-flex flex-column px-2">
+                              <NavLink className="nav-link-3">師資</NavLink>
+                              <NavLink className="nav-link-3">交通資訊</NavLink>
                             </div>
-                            <div class="d-flex flex-column px-2">
-                              <a class="nav-link-3" href="#">
-                                運動保健
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                心靈成長
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                生活技能
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                社區活動
-                              </a>
+                            <div className="d-flex flex-column px-2">
+                              <NavLink className="nav-link-3">運動保健</NavLink>
+                              <NavLink className="nav-link-3">心靈成長</NavLink>
+                              <NavLink className="nav-link-3">生活技能</NavLink>
+                              <NavLink className="nav-link-3">社區活動</NavLink>
                             </div>
-                            <div class="d-flex flex-column px-2">
-                              <a class="nav-link-3" href="#">
-                                運動
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                飲食
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                養生
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                醫療
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                癌症
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                居家
-                              </a>
+                            <div className="d-flex flex-column px-2">
+                              <NavLink className="nav-link-3">運動</NavLink>
+                              <NavLink className="nav-link-3">飲食</NavLink>
+                              <NavLink className="nav-link-3">養生</NavLink>
+                              <NavLink className="nav-link-3">醫療</NavLink>
+                              <NavLink className="nav-link-3">癌症</NavLink>
+                              <NavLink className="nav-link-3">居家</NavLink>
                             </div>
-                            <div class="d-flex flex-column px-2">
-                              <a class="nav-link-3" href="#">
-                                講座
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                社團{" "}
-                              </a>
-                              <a class="nav-link-3" href="#">
-                                運動會
-                              </a>
+                            <div className="d-flex flex-column px-2">
+                              <NavLink className="nav-link-3">講座</NavLink>
+                              <NavLink className="nav-link-3">社團 </NavLink>
+                              <NavLink className="nav-link-3">運動會</NavLink>
                             </div>
                           </div>
                         </div>
                       </li>
-                      <li class="nav-item me-xxl-6">
-                        <a class="nav-link-1" href="explore-courses-new.html">
+                      <li className="nav-item me-xxl-6">
+                        <NavLink
+                          className="nav-link-1"
+                          to="explore-courses-new.html"
+                        >
                           探索課程
-                        </a>
+                        </NavLink>
                       </li>
-                      <li class="nav-item me-xxl-6">
-                        <a class="nav-link-1" href="knowledge-sharing.html">
+                      <li className="nav-item me-xxl-6">
+                        <NavLink
+                          className="nav-link-1"
+                          to="knowledge-sharing.html"
+                        >
                           知識分享
-                        </a>
+                        </NavLink>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link-1" href="#">
-                          活動照片
-                        </a>
+                      <li className="nav-item">
+                        <NavLink className="nav-link-1">活動照片</NavLink>
                       </li>
                     </ul>
-                    <ul class="navbar-nav">
-                      <li class="nav-item me-xl-2">
-                        <a class="nav-link-2 register-link d-none" href="#">
+                    <ul className="navbar-nav">
+                      <li className="nav-item me-xl-2">
+                        <NavLink className="nav-link-2 register-link d-none">
                           註冊
-                        </a>
+                        </NavLink>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link-2 login-link d-none" href="#">
+                      <li className="nav-item">
+                        <NavLink className="nav-link-2 login-link d-none">
                           登入
-                        </a>
+                        </NavLink>
                       </li>
-                      <li class="nav-item me-xl-2">
-                        <a class="nav-link-2 provile-link" href="checkout.html">
+                      <li className="nav-item me-xl-2">
+                        <NavLink
+                          className="nav-link-2 provile-link"
+                          to="checkout.html"
+                        >
                           <svg
                             width="46"
                             height="46"
@@ -494,12 +441,12 @@ export default function Header() {
                               fill="#E79776"
                             />
                           </svg>
-                        </a>
+                        </NavLink>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link-2 logout-link" href="#">
+                      <li className="nav-item">
+                        <NavLink className="nav-link-2 logout-link">
                           登出
-                        </a>
+                        </NavLink>
                       </li>
                     </ul>
                   </div>
@@ -508,17 +455,19 @@ export default function Header() {
             </div>
           </nav>
         </div>
-        <div class="position-fixed cart-link-circle">
-          <a class="nav-link-2 cart-link" href="checkout.html">
-            <i class="bi bi-cart-fill mt-3 me-1 position-relative">
+
+        {/* 購物車 */}
+        <div className="position-fixed cart-link-circle">
+          <NavLink className="nav-link-2 cart-link" to="checkout.html">
+            <i className="bi bi-cart-fill mt-3 me-1 position-relative">
               <span
-                class="position-absolute cart-number translate-middle badge rounded-pill"
-                style="font-size: 10px"
+                className="position-absolute cart-number translate-middle badge rounded-pill"
+                style={{ fontSize: "10px" }}
               >
-                3<span class="visually-hidden">purchase quantity</span>
+                3<span className="visually-hidden">purchase quantity</span>
               </span>
             </i>
-          </a>
+          </NavLink>
         </div>
       </div>
     </>
