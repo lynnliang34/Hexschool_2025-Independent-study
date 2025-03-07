@@ -122,6 +122,8 @@
   }
 
   .modal-arrow-link {
+    border: none;
+
     &:hover {
       .modal-link-arrow {
         fill: $primary;
