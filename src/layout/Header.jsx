@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../redux/userSlice";
 import { useEffect, useRef } from "react";
 import { Modal } from "bootstrap";
-import { HeaderSearchBar, HeaderSidebarMenu } from "../components";
+import {
+  HeaderSearchBar,
+  HeaderSidebarMenu,
+  HeaderNavbar,
+} from "../components";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -212,95 +216,7 @@ export default function Header() {
 
                   {/* 導覽列 */}
                   <div className="d-flex align-items-center">
-                    <ul className="navbar-nav me-lg-3 me-xl-5 me-xxl-10">
-                      <li className="nav-item me-xxl-6">
-                        <NavLink className="nav-link-1" to="/about">
-                          關於我們
-                        </NavLink>
-                        <div className="hover-section">
-                          <div className="d-flex flex-column px-2">
-                            <Link className="nav-link-2" to="#">
-                              師資
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              交通資訊
-                            </Link>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="nav-item me-xxl-6">
-                        <NavLink
-                          className="nav-link-1"
-                          to="explore-courses-new.html"
-                        >
-                          探索課程
-                        </NavLink>
-                        <div className="hover-section">
-                          <div className="d-flex flex-column px-2">
-                            <Link className="nav-link-2" to="#">
-                              運動保健
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              心靈成長
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              生活技能
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              社區活動
-                            </Link>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="nav-item me-xxl-6">
-                        <NavLink
-                          className="nav-link-1"
-                          to="knowledge-sharing.html"
-                        >
-                          知識分享
-                        </NavLink>
-                        <div className="hover-section">
-                          <div className="d-flex flex-column px-2">
-                            <Link className="nav-link-2" to="#">
-                              運動
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              飲食
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              養生
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              醫療
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              癌症
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              居家
-                            </Link>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="nav-item">
-                        <NavLink className="nav-link-1" to="#">
-                          活動照片
-                        </NavLink>
-                        <div className="hover-section">
-                          <div className="d-flex flex-column px-2">
-                            <Link className="nav-link-2" to="#">
-                              講座
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              社團
-                            </Link>
-                            <Link className="nav-link-2" to="#">
-                              運動會
-                            </Link>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
+                    <HeaderNavbar />
 
                     <ul className="navbar-nav">
                       <li className="nav-item me-xl-2">
