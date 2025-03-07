@@ -153,87 +153,125 @@ export default function Header() {
                         </Link>
 
                         {/* 頁面清單 */}
-                        <div className="mb-6">
-                          <Link className="modal-link-1" to="/about">
-                            關於我們
-                            <span>
+                        <div className="modal-link mb-6">
+                          <div className="modal-link-h d-flex align-items-center">
+                            <Link className="modal-link-1" to="/about">
+                              關於我們
+                            </Link>
+                            <Link className="modal-arrow-link px-4">
                               <svg
-                                className="modal-link-arrow rotate ms-3 mb-1"
+                                className="modal-link-arrow rotate"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
-                            </span>
-                          </Link>
+                            </Link>
+                          </div>
                           <div className="modal-link-1ist d-none">
-                            <Link className="modal-link-2">師資 </Link>
-                            <Link className="modal-link-2">交通資訊</Link>
+                            <Link className="modal-link-2" to="#">
+                              師資
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              交通資訊
+                            </Link>
                           </div>
                         </div>
-                        <div className="mb-6">
-                          <Link className="modal-link-1">
-                            探索課程
-                            <span>
+                        <div className="modal-link mb-6">
+                          <div className="modal-link-h d-flex align-items-center">
+                            <Link className="modal-link-1" to="#">
+                              探索課程
+                            </Link>
+                            <Link className="modal-arrow-link px-4">
                               <svg
-                                className="modal-link-arrow rotate ms-3 mb-1"
+                                className="modal-link-arrow rotate"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
-                            </span>
-                          </Link>
+                            </Link>
+                          </div>
                           <div className="modal-link-1ist d-none">
-                            <Link className="modal-link-2">運動保健</Link>
-                            <Link className="modal-link-2">心靈成長</Link>
-                            <Link className="modal-link-2">生活技能</Link>
-                            <Link className="modal-link-2">社區活動</Link>
+                            <Link className="modal-link-2" to="#">
+                              運動保健
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              心靈成長
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              生活技能
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              社區活動
+                            </Link>
                           </div>
                         </div>
-                        <div className="mb-6">
-                          <Link className="modal-link-1">
-                            知識分享
-                            <span>
+                        <div className="modal-link mb-6">
+                          <div className="modal-link-h d-flex align-items-center">
+                            <Link className="modal-link-1" to="#">
+                              知識分享
+                            </Link>
+                            <Link className="modal-arrow-link px-4">
                               <svg
-                                className="modal-link-arrow rotate ms-3 mb-1"
+                                className="modal-link-arrow rotate"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
-                            </span>
-                          </Link>
+                            </Link>
+                          </div>
                           <div className="modal-link-1ist d-none">
-                            <Link className="modal-link-2">運動 </Link>
-                            <Link className="modal-link-2">飲食 </Link>
-                            <Link className="modal-link-2">養生 </Link>
-                            <Link className="modal-link-2">醫療 </Link>
-                            <Link className="modal-link-2">癌症 </Link>
-                            <Link className="modal-link-2">居家 </Link>
+                            <Link className="modal-link-2" to="#">
+                              運動
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              飲食
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              養生
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              醫療
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              癌症
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              居家
+                            </Link>
                           </div>
                         </div>
-                        <div className="mb-6">
-                          <Link className="modal-link-1">
-                            活動照片
-                            <span>
+                        <div className="modal-link mb-6">
+                          <div className="modal-link-h d-flex align-items-center">
+                            <Link className="modal-link-1" to="#">
+                              活動照片
+                            </Link>
+                            <Link className="modal-arrow-link px-4">
                               <svg
-                                className="modal-link-arrow rotate ms-3 mb-1"
+                                className="modal-link-arrow rotate"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
-                            </span>
-                          </Link>
+                            </Link>
+                          </div>
                           <div className="modal-link-1ist d-none">
-                            <Link className="modal-link-2">講座 </Link>
-                            <Link className="modal-link-2">社團 </Link>
-                            <Link className="modal-link-2">運動會 </Link>
+                            <Link className="modal-link-2" to="#">
+                              講座
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              社團
+                            </Link>
+                            <Link className="modal-link-2" to="#">
+                              運動會
+                            </Link>
                           </div>
                         </div>
 
