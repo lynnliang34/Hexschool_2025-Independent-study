@@ -203,7 +203,8 @@
 
   input[type="search"]:focus {
     outline-offset: 0; /* 讓 outline 和邊框重合 */
-    outline: 4px solid $secondary; /* 自定義顏色和寬度 */
+    outline: 2px solid $secondary; /* 自定義顏色和寬度 */
+    box-shadow: 0px 0px 5px 3px $secondary;
   }
 
   .navbar {
@@ -235,7 +236,7 @@
     }
   }
 
-  .nav-link-2 {
+  .nav-link-3 {
     width: 45px;
     height: 44px;
     font-size: 18px;
@@ -262,18 +263,12 @@
 
   .hover-section {
     display: none;
-    width: 476px;
-    height: 360px;
     border-radius: 0 0 20px 20px;
     background: #ffffffcc;
-    padding: 32px 16px 8px 16px;
+    padding: 24px 16px 16px 16px;
     position: absolute;
     top: 52px;
-    left: -16px;
-
-    @include xl {
-      width: 576px;
-    }
+    left: -24px;
   }
 
   .nav-link-1:hover + .hover-section,
@@ -281,7 +276,7 @@
     display: block; /* 滑鼠懸停時顯示 */
   }
 
-  .nav-link-3 {
+  .nav-link-2 {
     width: 80px;
     height: 52px;
     font-size: 18px;
@@ -352,4 +347,19 @@
 
 .modal-body {
   overflow-y: scroll;
+}
+
+.provile-link {
+  &:hover {
+    .provile-photo {
+      fill: $secondary-2;
+    }
+  }
+}
+
+.provile-photo {
+  width: 46px;
+  height: 46px;
+  fill: $primary;
+  transition: 0.15s;
 }
