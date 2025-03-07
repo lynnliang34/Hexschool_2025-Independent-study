@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../redux/userSlice";
 import { useEffect, useRef } from "react";
 import { Modal } from "bootstrap";
-import { HeaderSearchBar } from "../components";
+import { HeaderSearchBar, HeaderSidebarMenu } from "../components";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -153,127 +153,7 @@ export default function Header() {
                         </Link>
 
                         {/* 頁面清單 */}
-                        <div className="modal-link mb-6">
-                          <div className="modal-link-h d-flex align-items-center">
-                            <Link className="modal-link-1" to="/about">
-                              關於我們
-                            </Link>
-                            <Link className="modal-arrow-link px-4">
-                              <svg
-                                className="modal-link-arrow rotate"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
-                              </svg>
-                            </Link>
-                          </div>
-                          <div className="modal-link-1ist d-none">
-                            <Link className="modal-link-2" to="#">
-                              師資
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              交通資訊
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="modal-link mb-6">
-                          <div className="modal-link-h d-flex align-items-center">
-                            <Link className="modal-link-1" to="#">
-                              探索課程
-                            </Link>
-                            <Link className="modal-arrow-link px-4">
-                              <svg
-                                className="modal-link-arrow rotate"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
-                              </svg>
-                            </Link>
-                          </div>
-                          <div className="modal-link-1ist d-none">
-                            <Link className="modal-link-2" to="#">
-                              運動保健
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              心靈成長
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              生活技能
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              社區活動
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="modal-link mb-6">
-                          <div className="modal-link-h d-flex align-items-center">
-                            <Link className="modal-link-1" to="#">
-                              知識分享
-                            </Link>
-                            <Link className="modal-arrow-link px-4">
-                              <svg
-                                className="modal-link-arrow rotate"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
-                              </svg>
-                            </Link>
-                          </div>
-                          <div className="modal-link-1ist d-none">
-                            <Link className="modal-link-2" to="#">
-                              運動
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              飲食
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              養生
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              醫療
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              癌症
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              居家
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="modal-link mb-6">
-                          <div className="modal-link-h d-flex align-items-center">
-                            <Link className="modal-link-1" to="#">
-                              活動照片
-                            </Link>
-                            <Link className="modal-arrow-link px-4">
-                              <svg
-                                className="modal-link-arrow rotate"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
-                              </svg>
-                            </Link>
-                          </div>
-                          <div className="modal-link-1ist d-none">
-                            <Link className="modal-link-2" to="#">
-                              講座
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              社團
-                            </Link>
-                            <Link className="modal-link-2" to="#">
-                              運動會
-                            </Link>
-                          </div>
-                        </div>
+                        <HeaderSidebarMenu />
 
                         <div className="d-flex">
                           <Link className="modal-link-3 register-link me-2">
