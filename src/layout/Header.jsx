@@ -77,7 +77,7 @@ export default function Header() {
         <div className="container">
           <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
-              {/* <!-- Logo --> */}
+              {/* Logo*/}
               <Link className="me-lg-5 me-xl-10" to="/">
                 <div>
                   <svg
@@ -111,18 +111,18 @@ export default function Header() {
                   </svg>
                 </div>
               </Link>
-              {/* <!-- 手機版 --> */}
+              {/* 手機版*/}
               <div className="d-flex">
-                {/* <!-- search --> */}
+                {/* search*/}
                 <HeaderSearchBar />
 
-                {/* <!-- list --> */}
+                {/* list*/}
                 <button className="list d-lg-none" onClick={openMenuModal}>
                   <i className="bi bi-list"></i>
                 </button>
               </div>
 
-              {/* <!-- 手機版 modal --> */}
+              {/* 手機版 modal*/}
               <div
                 className="modal fade"
                 ref={menuModalRef}
@@ -134,7 +134,8 @@ export default function Header() {
                   <div className="modal-content h-100">
                     <div className="modal-body">
                       <div className="ms-12">
-                        <Link className="provile-link mb-6">
+                        {/* 會員頭像 */}
+                        <Link className="provile-link mb-6 d-none">
                           <div>
                             <svg
                               width="46"
@@ -150,6 +151,8 @@ export default function Header() {
                             </svg>
                           </div>
                         </Link>
+
+                        {/* 頁面清單 */}
                         <div className="mb-6">
                           <Link className="modal-link-1" to="/about">
                             關於我們
@@ -233,6 +236,7 @@ export default function Header() {
                             <Link className="modal-link-2">運動會 </Link>
                           </div>
                         </div>
+
                         <div className="d-flex">
                           <Link className="modal-link-3 register-link me-2">
                             註冊
@@ -248,9 +252,10 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* <!-- 電腦版 --> */}
+              {/* 電腦版*/}
               <div className="d-none d-lg-block w-100">
                 <div className="d-flex justify-content-between align-items-center">
+                  {/* 搜尋框 */}
                   <div className="position-relative">
                     <form>
                       <input
@@ -290,6 +295,8 @@ export default function Header() {
                       </svg>
                     </div>
                   </div>
+
+                  {/* 導覽列 */}
                   <div className="d-flex align-items-center">
                     <ul className="navbar-nav me-lg-3 me-xl-5 me-xxl-10">
                       <li className="nav-item me-xxl-6">
@@ -348,6 +355,7 @@ export default function Header() {
                         <NavLink className="nav-link-1">活動照片</NavLink>
                       </li>
                     </ul>
+
                     <ul className="navbar-nav">
                       <li className="nav-item me-xl-2">
                         <Link className="nav-link-2 register-link d-none">
