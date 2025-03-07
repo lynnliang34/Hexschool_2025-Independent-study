@@ -34,49 +34,12 @@ export default function Header() {
     menuModal.current.show();
   };
 
+  const closeMenuModal = () => {
+    menuModal.current.hide();
+  };
+
   return (
     <>
-      {/* <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">
-          Navbar
-        </NavLink>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/">
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/about">
-                About
-              </NavLink>
-            </li>
-          </ul>
-
-          <div className="">
-            {isAuthenticated ? (
-              <NavLink
-                className="btn btn-outline-primary"
-                onClick={() => {
-                  navigate("/"); // 先導航
-                  handleLogout(); // 再登出
-                }}
-                disabled={!isAuthenticated} // 禁止連點
-              >
-                登出
-              </NavLink>
-            ) : (
-              <NavLink className="btn btn-primary" to="/login">
-                登入
-              </NavLink>
-            )}
-          </div>
-        </div>
-      </div>
-    </nav> */}
       <div className="header">
         <div className="container">
           <nav className="navbar navbar-expand-lg">
@@ -139,30 +102,62 @@ export default function Header() {
                     <div className="modal-body">
                       <div className="ms-12">
                         {/* 會員頭像 */}
-                        <Link className="provile-link mb-6 d-none">
-                          <div>
-                            <svg
-                              className="provile-photo"
-                              viewBox="0 0 46 46"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M22.9999 3.83325C12.4327 3.83325 3.83325 12.4327 3.83325 22.9999C3.83325 28.3538 6.09492 33.5033 10.0369 37.1194C10.0496 37.1321 10.0624 37.1449 10.0752 37.1513C13.6083 40.3841 18.1955 42.1666 22.9999 42.1666C27.8044 42.1666 32.3916 40.3841 35.9246 37.1513C35.9374 37.1513 35.9502 37.1321 35.963 37.1194C39.9049 33.5033 42.1666 28.3538 42.1666 22.9999C42.1666 12.4327 33.5671 3.83325 22.9999 3.83325ZM22.9999 11.781C26.6544 11.781 29.6252 14.7583 29.6252 18.4063C29.6252 22.0544 26.6544 25.0316 22.9999 25.0316C19.3455 25.0316 16.3746 22.0608 16.3746 18.4063C16.3746 14.7519 19.3455 11.781 22.9999 11.781ZM35.0941 36.1738C35.011 36.2505 34.928 36.3271 34.8449 36.391C31.5802 39.298 27.3827 40.8888 22.9999 40.8888C18.6171 40.8888 14.4196 39.298 11.1549 36.391C11.0719 36.3271 10.9888 36.2505 10.9058 36.1738C10.6119 35.9055 10.3244 35.6244 10.056 35.3369C11.2571 30.213 15.8635 26.4819 21.243 26.4819H24.7569C30.1363 26.4819 34.7427 30.213 35.9438 35.3369C35.6755 35.6244 35.388 35.9055 35.0941 36.1738Z" />
-                            </svg>
-                          </div>
-                        </Link>
+
+                        {isAuthenticated ? (
+                          <Link
+                            className="provile-link mb-6"
+                            to="#"
+                            onClick={closeMenuModal}
+                          >
+                            <div>
+                              <svg
+                                className="provile-photo"
+                                viewBox="0 0 46 46"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M22.9999 3.83325C12.4327 3.83325 3.83325 12.4327 3.83325 22.9999C3.83325 28.3538 6.09492 33.5033 10.0369 37.1194C10.0496 37.1321 10.0624 37.1449 10.0752 37.1513C13.6083 40.3841 18.1955 42.1666 22.9999 42.1666C27.8044 42.1666 32.3916 40.3841 35.9246 37.1513C35.9374 37.1513 35.9502 37.1321 35.963 37.1194C39.9049 33.5033 42.1666 28.3538 42.1666 22.9999C42.1666 12.4327 33.5671 3.83325 22.9999 3.83325ZM22.9999 11.781C26.6544 11.781 29.6252 14.7583 29.6252 18.4063C29.6252 22.0544 26.6544 25.0316 22.9999 25.0316C19.3455 25.0316 16.3746 22.0608 16.3746 18.4063C16.3746 14.7519 19.3455 11.781 22.9999 11.781ZM35.0941 36.1738C35.011 36.2505 34.928 36.3271 34.8449 36.391C31.5802 39.298 27.3827 40.8888 22.9999 40.8888C18.6171 40.8888 14.4196 39.298 11.1549 36.391C11.0719 36.3271 10.9888 36.2505 10.9058 36.1738C10.6119 35.9055 10.3244 35.6244 10.056 35.3369C11.2571 30.213 15.8635 26.4819 21.243 26.4819H24.7569C30.1363 26.4819 34.7427 30.213 35.9438 35.3369C35.6755 35.6244 35.388 35.9055 35.0941 36.1738Z" />
+                              </svg>
+                            </div>
+                          </Link>
+                        ) : (
+                          <></>
+                        )}
 
                         {/* 頁面清單 */}
                         <HeaderSidebarMenu />
 
                         <div className="d-flex">
-                          <Link className="modal-link-3 register-link me-2">
-                            註冊
-                          </Link>
-                          <Link className="modal-link-3 login-link">登入</Link>
-                          <Link className="modal-link-3 logout-link d-none">
-                            登出
-                          </Link>
+                          {isAuthenticated ? (
+                            <Link
+                              className="modal-link-3 logout-link"
+                              onClick={() => {
+                                closeMenuModal();
+                                navigate("/"); // 先導航
+                                handleLogout(); // 再登出
+                              }}
+                              disabled={!isAuthenticated} // 禁止連點
+                            >
+                              登出
+                            </Link>
+                          ) : (
+                            <>
+                              <Link
+                                className="modal-link-3 register-link me-2"
+                                to="#"
+                                onClick={closeMenuModal}
+                              >
+                                註冊
+                              </Link>
+                              <Link
+                                className="modal-link-3 login-link"
+                                to="/login"
+                                onClick={closeMenuModal}
+                              >
+                                登入
+                              </Link>
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -219,34 +214,50 @@ export default function Header() {
                     <HeaderNavbar />
 
                     <ul className="navbar-nav">
-                      <li className="nav-item me-xl-2">
-                        <Link className="nav-link-3 register-link d-none">
-                          註冊
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link-3 login-link d-none">
-                          登入
-                        </Link>
-                      </li>
-                      <li className="nav-item me-xl-2">
-                        <Link
-                          className="nav-link-3 provile-link"
-                          to="checkout.html"
-                        >
-                          <svg
-                            className="provile-photo"
-                            viewBox="0 0 46 46"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M22.9999 3.83325C12.4327 3.83325 3.83325 12.4327 3.83325 22.9999C3.83325 28.3538 6.09492 33.5033 10.0369 37.1194C10.0496 37.1321 10.0624 37.1449 10.0752 37.1513C13.6083 40.3841 18.1955 42.1666 22.9999 42.1666C27.8044 42.1666 32.3916 40.3841 35.9246 37.1513C35.9374 37.1513 35.9502 37.1321 35.963 37.1194C39.9049 33.5033 42.1666 28.3538 42.1666 22.9999C42.1666 12.4327 33.5671 3.83325 22.9999 3.83325ZM22.9999 11.781C26.6544 11.781 29.6252 14.7583 29.6252 18.4063C29.6252 22.0544 26.6544 25.0316 22.9999 25.0316C19.3455 25.0316 16.3746 22.0608 16.3746 18.4063C16.3746 14.7519 19.3455 11.781 22.9999 11.781ZM35.0941 36.1738C35.011 36.2505 34.928 36.3271 34.8449 36.391C31.5802 39.298 27.3827 40.8888 22.9999 40.8888C18.6171 40.8888 14.4196 39.298 11.1549 36.391C11.0719 36.3271 10.9888 36.2505 10.9058 36.1738C10.6119 35.9055 10.3244 35.6244 10.056 35.3369C11.2571 30.213 15.8635 26.4819 21.243 26.4819H24.7569C30.1363 26.4819 34.7427 30.213 35.9438 35.3369C35.6755 35.6244 35.388 35.9055 35.0941 36.1738Z" />
-                          </svg>
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link-3 logout-link">登出</Link>
-                      </li>
+                      {isAuthenticated ? (
+                        <>
+                          <li className="nav-item me-xl-2">
+                            <Link
+                              className="nav-link-3 provile-link"
+                              to="checkout.html"
+                            >
+                              <svg
+                                className="provile-photo"
+                                viewBox="0 0 46 46"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M22.9999 3.83325C12.4327 3.83325 3.83325 12.4327 3.83325 22.9999C3.83325 28.3538 6.09492 33.5033 10.0369 37.1194C10.0496 37.1321 10.0624 37.1449 10.0752 37.1513C13.6083 40.3841 18.1955 42.1666 22.9999 42.1666C27.8044 42.1666 32.3916 40.3841 35.9246 37.1513C35.9374 37.1513 35.9502 37.1321 35.963 37.1194C39.9049 33.5033 42.1666 28.3538 42.1666 22.9999C42.1666 12.4327 33.5671 3.83325 22.9999 3.83325ZM22.9999 11.781C26.6544 11.781 29.6252 14.7583 29.6252 18.4063C29.6252 22.0544 26.6544 25.0316 22.9999 25.0316C19.3455 25.0316 16.3746 22.0608 16.3746 18.4063C16.3746 14.7519 19.3455 11.781 22.9999 11.781ZM35.0941 36.1738C35.011 36.2505 34.928 36.3271 34.8449 36.391C31.5802 39.298 27.3827 40.8888 22.9999 40.8888C18.6171 40.8888 14.4196 39.298 11.1549 36.391C11.0719 36.3271 10.9888 36.2505 10.9058 36.1738C10.6119 35.9055 10.3244 35.6244 10.056 35.3369C11.2571 30.213 15.8635 26.4819 21.243 26.4819H24.7569C30.1363 26.4819 34.7427 30.213 35.9438 35.3369C35.6755 35.6244 35.388 35.9055 35.0941 36.1738Z" />
+                              </svg>
+                            </Link>
+                          </li>
+                          <li className="nav-item">
+                            <Link
+                              className="nav-link-3 logout-link"
+                              onClick={() => {
+                                navigate("/"); // 先導航
+                                handleLogout(); // 再登出
+                              }}
+                              disabled={!isAuthenticated} // 禁止連點
+                            >
+                              登出
+                            </Link>
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li className="nav-item me-xl-2">
+                            <Link className="nav-link-3 register-link" to="#">
+                              註冊
+                            </Link>
+                          </li>
+                          <li className="nav-item">
+                            <Link className="nav-link-3 login-link" to="/login">
+                              登入
+                            </Link>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </div>
                 </div>
@@ -256,18 +267,22 @@ export default function Header() {
         </div>
 
         {/* 購物車 */}
-        <div className="position-fixed cart-link-circle">
-          <Link className="nav-link-3 cart-link" to="checkout.html">
-            <i className="bi bi-cart-fill mt-3 me-1 position-relative">
-              <span
-                className="position-absolute cart-number translate-middle badge rounded-pill"
-                style={{ fontSize: "10px" }}
-              >
-                3<span className="visually-hidden">purchase quantity</span>
-              </span>
-            </i>
-          </Link>
-        </div>
+        {isAuthenticated ? (
+          <div className="position-fixed cart-link-circle">
+            <Link className="nav-link-3 cart-link" to="checkout.html">
+              <i className="bi bi-cart-fill mt-3 me-1 position-relative">
+                <span
+                  className="position-absolute cart-number translate-middle badge rounded-pill"
+                  style={{ fontSize: "10px" }}
+                >
+                  3<span className="visually-hidden">purchase quantity</span>
+                </span>
+              </i>
+            </Link>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );
