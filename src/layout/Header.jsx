@@ -1,5 +1,4 @@
-import { NavLink } from "react-router";
-import { useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../redux/userSlice";
 import { useEffect, useRef } from "react";
@@ -79,7 +78,7 @@ export default function Header() {
           <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
               {/* <!-- Logo --> */}
-              <NavLink className="me-lg-5 me-xl-10" to="/">
+              <Link className="me-lg-5 me-xl-10" to="/">
                 <div>
                   <svg
                     className="logo"
@@ -111,7 +110,7 @@ export default function Header() {
                     </defs>
                   </svg>
                 </div>
-              </NavLink>
+              </Link>
               {/* <!-- 手機版 --> */}
               <div className="d-flex">
                 {/* <!-- search --> */}
@@ -135,7 +134,7 @@ export default function Header() {
                   <div className="modal-content h-100">
                     <div className="modal-body">
                       <div className="ms-12">
-                        <NavLink className="provile-link mb-6">
+                        <Link className="provile-link mb-6">
                           <div>
                             <svg
                               width="46"
@@ -150,9 +149,9 @@ export default function Header() {
                               />
                             </svg>
                           </div>
-                        </NavLink>
+                        </Link>
                         <div className="mb-6">
-                          <NavLink className="modal-link-1" to="/about">
+                          <Link className="modal-link-1" to="/about">
                             關於我們
                             <span>
                               <svg
@@ -164,14 +163,14 @@ export default function Header() {
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
                             </span>
-                          </NavLink>
+                          </Link>
                           <div className="modal-link-1ist d-none">
-                            <NavLink className="modal-link-2">師資 </NavLink>
-                            <NavLink className="modal-link-2">交通資訊</NavLink>
+                            <Link className="modal-link-2">師資 </Link>
+                            <Link className="modal-link-2">交通資訊</Link>
                           </div>
                         </div>
                         <div className="mb-6">
-                          <NavLink className="modal-link-1">
+                          <Link className="modal-link-1">
                             探索課程
                             <span>
                               <svg
@@ -183,16 +182,16 @@ export default function Header() {
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
                             </span>
-                          </NavLink>
+                          </Link>
                           <div className="modal-link-1ist d-none">
-                            <NavLink className="modal-link-2">運動保健</NavLink>
-                            <NavLink className="modal-link-2">心靈成長</NavLink>
-                            <NavLink className="modal-link-2">生活技能</NavLink>
-                            <NavLink className="modal-link-2">社區活動</NavLink>
+                            <Link className="modal-link-2">運動保健</Link>
+                            <Link className="modal-link-2">心靈成長</Link>
+                            <Link className="modal-link-2">生活技能</Link>
+                            <Link className="modal-link-2">社區活動</Link>
                           </div>
                         </div>
                         <div className="mb-6">
-                          <NavLink className="modal-link-1">
+                          <Link className="modal-link-1">
                             知識分享
                             <span>
                               <svg
@@ -204,18 +203,18 @@ export default function Header() {
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
                             </span>
-                          </NavLink>
+                          </Link>
                           <div className="modal-link-1ist d-none">
-                            <NavLink className="modal-link-2">運動 </NavLink>
-                            <NavLink className="modal-link-2">飲食 </NavLink>
-                            <NavLink className="modal-link-2">養生 </NavLink>
-                            <NavLink className="modal-link-2">醫療 </NavLink>
-                            <NavLink className="modal-link-2">癌症 </NavLink>
-                            <NavLink className="modal-link-2">居家 </NavLink>
+                            <Link className="modal-link-2">運動 </Link>
+                            <Link className="modal-link-2">飲食 </Link>
+                            <Link className="modal-link-2">養生 </Link>
+                            <Link className="modal-link-2">醫療 </Link>
+                            <Link className="modal-link-2">癌症 </Link>
+                            <Link className="modal-link-2">居家 </Link>
                           </div>
                         </div>
                         <div className="mb-6">
-                          <NavLink className="modal-link-1">
+                          <Link className="modal-link-1">
                             活動照片
                             <span>
                               <svg
@@ -227,23 +226,21 @@ export default function Header() {
                                 <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" />
                               </svg>
                             </span>
-                          </NavLink>
+                          </Link>
                           <div className="modal-link-1ist d-none">
-                            <NavLink className="modal-link-2">講座 </NavLink>
-                            <NavLink className="modal-link-2">社團 </NavLink>
-                            <NavLink className="modal-link-2">運動會 </NavLink>
+                            <Link className="modal-link-2">講座 </Link>
+                            <Link className="modal-link-2">社團 </Link>
+                            <Link className="modal-link-2">運動會 </Link>
                           </div>
                         </div>
                         <div className="d-flex">
-                          <NavLink className="modal-link-3 register-link me-2">
+                          <Link className="modal-link-3 register-link me-2">
                             註冊
-                          </NavLink>
-                          <NavLink className="modal-link-3 login-link">
-                            登入
-                          </NavLink>
-                          <NavLink className="modal-link-3 logout-link d-none">
+                          </Link>
+                          <Link className="modal-link-3 login-link">登入</Link>
+                          <Link className="modal-link-3 logout-link d-none">
                             登出
-                          </NavLink>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -306,27 +303,27 @@ export default function Header() {
                         <div id="section-1" className="hover-section">
                           <div className="d-flex justify-content-between">
                             <div className="d-flex flex-column px-2">
-                              <NavLink className="nav-link-3">師資</NavLink>
-                              <NavLink className="nav-link-3">交通資訊</NavLink>
+                              <Link className="nav-link-3">師資</Link>
+                              <Link className="nav-link-3">交通資訊</Link>
                             </div>
                             <div className="d-flex flex-column px-2">
-                              <NavLink className="nav-link-3">運動保健</NavLink>
-                              <NavLink className="nav-link-3">心靈成長</NavLink>
-                              <NavLink className="nav-link-3">生活技能</NavLink>
-                              <NavLink className="nav-link-3">社區活動</NavLink>
+                              <Link className="nav-link-3">運動保健</Link>
+                              <Link className="nav-link-3">心靈成長</Link>
+                              <Link className="nav-link-3">生活技能</Link>
+                              <Link className="nav-link-3">社區活動</Link>
                             </div>
                             <div className="d-flex flex-column px-2">
-                              <NavLink className="nav-link-3">運動</NavLink>
-                              <NavLink className="nav-link-3">飲食</NavLink>
-                              <NavLink className="nav-link-3">養生</NavLink>
-                              <NavLink className="nav-link-3">醫療</NavLink>
-                              <NavLink className="nav-link-3">癌症</NavLink>
-                              <NavLink className="nav-link-3">居家</NavLink>
+                              <Link className="nav-link-3">運動</Link>
+                              <Link className="nav-link-3">飲食</Link>
+                              <Link className="nav-link-3">養生</Link>
+                              <Link className="nav-link-3">醫療</Link>
+                              <Link className="nav-link-3">癌症</Link>
+                              <Link className="nav-link-3">居家</Link>
                             </div>
                             <div className="d-flex flex-column px-2">
-                              <NavLink className="nav-link-3">講座</NavLink>
-                              <NavLink className="nav-link-3">社團 </NavLink>
-                              <NavLink className="nav-link-3">運動會</NavLink>
+                              <Link className="nav-link-3">講座</Link>
+                              <Link className="nav-link-3">社團 </Link>
+                              <Link className="nav-link-3">運動會</Link>
                             </div>
                           </div>
                         </div>
@@ -353,17 +350,17 @@ export default function Header() {
                     </ul>
                     <ul className="navbar-nav">
                       <li className="nav-item me-xl-2">
-                        <NavLink className="nav-link-2 register-link d-none">
+                        <Link className="nav-link-2 register-link d-none">
                           註冊
-                        </NavLink>
+                        </Link>
                       </li>
                       <li className="nav-item">
-                        <NavLink className="nav-link-2 login-link d-none">
+                        <Link className="nav-link-2 login-link d-none">
                           登入
-                        </NavLink>
+                        </Link>
                       </li>
                       <li className="nav-item me-xl-2">
-                        <NavLink
+                        <Link
                           className="nav-link-2 provile-link"
                           to="checkout.html"
                         >
@@ -379,12 +376,10 @@ export default function Header() {
                               fill="#E79776"
                             />
                           </svg>
-                        </NavLink>
+                        </Link>
                       </li>
                       <li className="nav-item">
-                        <NavLink className="nav-link-2 logout-link">
-                          登出
-                        </NavLink>
+                        <Link className="nav-link-2 logout-link">登出</Link>
                       </li>
                     </ul>
                   </div>
@@ -396,7 +391,7 @@ export default function Header() {
 
         {/* 購物車 */}
         <div className="position-fixed cart-link-circle">
-          <NavLink className="nav-link-2 cart-link" to="checkout.html">
+          <Link className="nav-link-2 cart-link" to="checkout.html">
             <i className="bi bi-cart-fill mt-3 me-1 position-relative">
               <span
                 className="position-absolute cart-number translate-middle badge rounded-pill"
@@ -405,7 +400,7 @@ export default function Header() {
                 3<span className="visually-hidden">purchase quantity</span>
               </span>
             </i>
-          </NavLink>
+          </Link>
         </div>
       </div>
     </>
