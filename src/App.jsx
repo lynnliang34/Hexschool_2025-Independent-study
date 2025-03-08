@@ -1,14 +1,11 @@
 import { Outlet } from "react-router";
 import { Header, Footer } from "./pages";
 
-
 function App({}) {
   return (
     <>
       <Header />
-      <div className="py-5">
-        <Outlet />
-      </div>
+      <Outlet />
       <Footer />
     </>
   );
