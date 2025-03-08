@@ -15,11 +15,11 @@ import {
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export default function Header() {
-  const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const dispatch = useDispatch(); // 取得 Redux 的 dispatch 函式
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated); // 從 Redux store 取得使用者是否已登入的狀態
 
-  const menuModalRef = useRef(null);
-  const menuModal = useRef(null);
+  const menuModalRef = useRef(null); // Modal 要引用的參考 DOM 元素
+  const menuModal = useRef(null); // 儲存 Modal 物件的引用
 
   const navigate = useNavigate(); // React Router 的導航函式
 
@@ -45,15 +45,18 @@ export default function Header() {
     }, 100);
   };
 
-  // menuModal
+  // menuModal 設定
   useEffect(() => {
+    // 初始化 Bootstrap Modal，將 menuModalRef 綁定到 modal 實例
     menuModal.current = new Modal(menuModalRef.current);
   }, []);
 
+  // 打開選單 Modal
   const openMenuModal = () => {
     menuModal.current.show();
   };
 
+  // 關閉選單 Modal
   const closeMenuModal = () => {
     menuModal.current.hide();
   };
