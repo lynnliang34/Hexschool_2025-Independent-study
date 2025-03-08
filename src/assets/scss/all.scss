@@ -8,9 +8,14 @@
 @import "bootstrap/scss/functions";
 
 @import "./utils/variables";
+<<<<<<< HEAD
 
 @import "./utils/custom-spacers";
 @import "./utils/custom-colors";
+=======
+@import "./utils/custom-colors";
+@import "./utils/custom-spacers";
+>>>>>>> dev
 
 @import "bootstrap/scss/bootstrap";
 
@@ -19,10 +24,15 @@
 @import "bootstrap/scss/utilities/api";
 
 @import "./utils/mixin";
+<<<<<<< HEAD
 
 @import "./base/base";
 @import "./base/font-weight";
 
+=======
+@import "./base/base";
+@import "./base/font-weight";
+>>>>>>> dev
 @import "./utils/line-height";
 @import "./utils/up-to-n-lines";
 @import "./utils/writing-mode";
@@ -34,10 +44,17 @@
 @import "./layout/header.scss";
 @import "./layout/footer.scss";
 
+<<<<<<< HEAD
 @import "./pages/index";
+=======
+@import "./pages/index.scss";
+>>>>>>> dev
 @import "./pages/explore-courses.scss";
 @import "./pages/course-details.scss";
 @import "./pages/knowledge-sharing.scss";
 @import "./pages/about";
 @import "./pages/checkout";
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
