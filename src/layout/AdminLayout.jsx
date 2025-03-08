@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Outlet } from "react-router";
 import { Link } from "react-router";
 import { useDispatch } from "react-redux";
@@ -7,7 +8,14 @@ function AdminLayout() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logoutAdmin());
+    axios
+      .post(`${BASE_URL}/logout`)
+      .then(() => {
+        dispatch(logoutAdmin());
+      })
+      .catch(() => {
+        alert("登出失敗");
+      });
   };
 
   return (
