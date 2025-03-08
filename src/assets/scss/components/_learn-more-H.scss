@@ -1,0 +1,66 @@
+.learn-more-H {
+  width: 92px;
+  height: 24px;
+  padding: 4px 8px;
+  font-size: $h7-font-size; //14px
+  color: $neutral-1;
+  background-color: #fff;
+  border: 1px solid $neutral-1;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-wrap: nowrap;
+
+  &:hover {
+    color: #fff;
+    background-color: $primary;
+    border: none;
+  }
+
+  .material-symbols-outlined {
+    width: 12px;
+    height: 12px;
+    margin-left: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// ≥992px 會變 100 × 32
+.learn-more-H-lg {
+  width: 92px;
+  height: 24px;
+  padding: 4px 8px;
+  font-size: $h7-font-size; //14px
+  color: $neutral-1;
+  background-color: #fff;
+  border: 1px solid $neutral-1;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-wrap: nowrap;
+
+  @include lg {
+    width: 100px;
+    height: 32px;
+    padding: 8px 12px;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: $primary;
+    border: none;
+  }
+
+  .material-symbols-outlined {
+    width: 12px;
+    height: 12px;
+    margin-left: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

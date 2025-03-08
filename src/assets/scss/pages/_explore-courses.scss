@@ -1,0 +1,195 @@
+// .px-custom {
+//     padding-left: 52px;
+//     padding-right: 52px;
+//   }
+  
+//   .explore-labals { 
+//     border-radius: 5px;
+   
+// }
+
+// .explore-labal {
+//     background-color:$primary-2 ;
+//     width: 168px;
+//   height: 36px;
+//   padding-bottom: 4px;
+//   font-weight: 500;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   transition: 0.3s;
+
+  
+
+//   &:hover {
+//     background-color: $primary;
+//     color: $white;
+//   }
+// }
+
+
+// /* section3 */
+
+// /* 整體卡片容器設定 */
+// .explore-card-container {
+//     display: flex;
+//     justify-content: space-between; /* 在卡片之間留出空隙 */
+//     padding: 20px; /* 整體容器內部填充 */
+//     flex-wrap: wrap; /* 當寬度不足時自動換行 */
+//     max-width: 1240px; /* 固定容器最大寬度，使每行顯示三張卡片 */
+//     margin: 0 auto; /* 容器居中 */
+// }
+
+// /* 單個卡片設定 */
+// .explore-card {
+//     width: calc(33.33% - 20px); /* 每行顯示三張卡片 */
+//     height: 523px; /* 卡片高度 */
+//     margin-bottom: 24px; /* 卡片底部間距 */
+//     border-radius: 15px; /* 添加圓角 */
+//     background-color: #F6F4E9; /* 背景色 */
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 陰影 */
+//     display: flex;
+//     flex-direction: column; /* 使內容垂直排列 */
+//     padding: 16px; /* 添加內邊距 */
+//     overflow: hidden; /* 確保圓角不會影響內容 */
+// }
+
+// /* 圖片設定 */
+// .explore-card-img-top {
+//     width: 100%; /* 圖片寬度 */
+//     height: 60%; /* 圖片高度設為卡片高度的60% */
+//     object-fit: cover; /* 圖片保持比例 */
+//     border-top-left-radius: 15px; /* 圓角 */
+//     border-top-right-radius: 15px; /* 圓角 */
+// }
+
+// /* 標題設定 */
+// .explore-bordered-title {
+//     font-size: 1.5rem; /* 標題字體大小 */
+//     color: #E79776; /* 標題顏色 */
+//     margin: 16px 0; /* 上下間距 */
+//     text-align: left; /* 標題靠左 */
+//     border: 2px solid #E79776; /* 邊框寬度、樣式與顏色 */
+//     padding: 8px; /* 添加內邊距 */
+//     border-radius: 5px; /* 邊框圓角 */
+//     width: fit-content; /* 自動調整寬度 */
+// }
+
+// /* 段落文本設定 */
+// .card-text {
+//     text-align: left; /* 段落文本靠左 */
+// }
+
+// /* 按鈕容器設定 */
+// .explore-btn-container {
+//     width: 100%; /* 按鈕容器佔據整個寬度 */
+//     display: flex; /* 使用 flexbox */
+//     justify-content: flex-end; /* 將按鈕推到右側 */
+//     margin-top: auto; /* 將按鈕推到最底部 */
+// }
+
+// /* 按鈕設定 */
+// .explore-btn {
+//     background-color: #E79776; /* 按鈕的背景顏色 */
+//     color: #FFFFFF; /* 按鈕的文字顏色 */
+//     padding: 10px 20px; /* 按鈕的內邊距 */
+//     border: none; /* 去除邊框 */
+//     border-radius: 5px; /* 圓角 */
+//     font-size: 16px; /* 字體大小 */
+//     cursor: pointer; /* 當滑鼠懸停時顯示為可點擊 */
+//     transition: background-color 0.3s, transform 0.3s; /* 添加過渡效果 */
+// }
+
+// /* 按鈕懸停效果 */
+// .explore-btn:hover {
+//     background-color: #D9795B; /* 懸停時變更背景顏色 */
+//     transform: scale(1.05); /* 懸停時輕微放大 */
+// }
+
+// /* 響應式設計 */
+// @media (max-width: 1024px) {
+//     .explore-card {
+//         width: calc(50% - 20px); /* 中等屏幕每排顯示兩張卡片 */
+//     }
+// }
+
+// @media (max-width: 768px) {
+//     .explore-card {
+//         width: 100%; /* 小屏幕每排顯示一張卡片 */
+//     }
+// }
+
+// .explore-image-button img {
+//     width: 100%; /* 圖片寬度設定為父容器的 100% */
+//     height: auto; /* 保持圖片比例 */
+//     object-fit: cover; /* 確保圖片填滿容器並保持比例 */
+//     display: block; /* 避免圖片下方出現空白 */
+//     opacity: 1; /* 確保圖片可見 */
+// }
+
+
+.explore-courses {
+    .nav-link{
+        color:#484848;
+        background-color: #F6F4E9;
+    }
+    .nav-pills{
+        .nav-link{
+            &.active , 
+            .show > &{
+                background-color: #E79776 !important;
+            }
+            &:hover{
+                background-color: #E79776;
+                color: #FFFFFF;
+            }
+
+            @include lg{
+                border-radius: 10px 10px 0px 10px;
+            }
+        }
+    }
+
+    .tab-content .btn{
+        padding: 0px 8px;
+        line-height: 16px;
+        border-radius: 10px;
+
+        @include lg{
+            padding: 8px 16px;
+        }
+    }
+
+    .card{
+        .btn:hover{
+            color: #FFFFFF;
+            background-color: #E79776 !important;
+            border-color:  #E79776 !important;
+        }
+    }
+} 
+
+.other-areas {
+    .button-list {
+        list-style: none;
+    
+        .btn-custom {
+            width: 100%;
+            height: 40px;
+            background-position:center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: filter ease 0.3s ;
+
+            &:hover {
+                filter: brightness(0.85);
+                background-size: 105%;
+            }
+
+            @include lg{
+                height: 100px;
+            }
+        }
+    }
+}
+

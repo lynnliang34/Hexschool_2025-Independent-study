@@ -1,0 +1,13 @@
+.fw-500-lg-700 {
+  font-weight: 500;
+
+  @include lg {
+    font-weight: 700;
+  }
+}
+
+.fw-lg-900 {
+  @include lg {
+    font-weight: 900;
+  }
+}

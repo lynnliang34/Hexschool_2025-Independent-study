@@ -1,0 +1,110 @@
+.footer {
+  height: 343px;
+  background-image: url(/assets/images/Footer/mob-Footer.png);
+  background-size: 100% 343px;
+  background-position: center;
+
+  @include lg {
+    height: 400px;
+    background-image: url(/assets/images/Footer/web-Footer.png);
+    background-size: 100% 400px;
+  }
+
+  .logo {
+    width: 180px;
+    height: 64px;
+    fill: $secondary-2;
+    transition: 0.15s;
+
+    @include lg {
+      width: 212px;
+      height: 78px;
+    }
+
+    &:hover {
+      fill: $primary;
+    }
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    fill: $secondary-2;
+    transition: 0.15s;
+
+    @include lg {
+      width: 60px;
+      height: 60px;
+    }
+
+    &:hover {
+      fill: $primary;
+    }
+  }
+
+  // 聯絡我們
+  .contact-icon {
+    width: 24px;
+    height: 24px;
+    fill: $secondary-2;
+    transition: 0.15s;
+
+    @include lg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .address-link {
+    color: $secondary-2;
+    transition: 0.15s;
+
+    &:hover {
+      color: $primary;
+
+      .contact-icon {
+        fill: $primary;
+      }
+    }
+  }
+
+  // 回到最上方箭頭
+  .top-arrow {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    transition: 0.15s;
+    transform: rotate(180deg);
+
+    @include lg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .to-top {
+    width: 40px;
+    height: 40px;
+    background-color: $primary;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -53px;
+    right: 0;
+    z-index: 2;
+    transition: 0.15s;
+
+    @include lg {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      top: -28px;
+    }
+
+    &:hover {
+      background-color: $secondary-2;
+    }
+  }
+}

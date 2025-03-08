@@ -1,9 +1,9 @@
-import "../assets/scss/all.scss";
-
+import '../assets/scss/all.scss'
 import { createHashRouter } from "react-router";
 
 import RequireUserAuth from "./RequireUserAuth";
 import RequireAdminAuth from "./RequireAdminAuth";
+
 import App from "../App";
 import {
   Home,
