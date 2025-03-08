@@ -1,6 +1,7 @@
 import { Outlet } from "react-router";
 import { Header, Footer } from "./pages";
 
+
 function App({}) {
   return (
     <>
