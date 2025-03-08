@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../redux/userSlice";
+import { loginAdmin } from "../../redux/adminSlice";
 import { Logo, Toast } from "../../components";
 import { pushMessage } from "../../redux/toastSlice";
 
@@ -10,8 +10,8 @@ import { pushMessage } from "../../redux/toastSlice";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export default function UserLogin() {
-  // 從 Redux store 取得使用者是否已登入的狀態
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  // 從 Redux store 取得管理者是否已登入的狀態
+  const isAuthenticated = useSelector((state) => state.admin.isAuthenticated);
 
   // 存放登入時的帳號與密碼
   const [account, setAccount] = useState({
@@ -43,8 +43,8 @@ export default function UserLogin() {
       document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
       axios.defaults.headers.common["Authorization"] = token;
 
-      dispatch(loginUser({ name: account.username }));
-      navigate("/profile");
+      dispatch(loginAdmin({ name: account.username }));
+      navigate("/admin");
     } catch (error) {
       dispatch(
         pushMessage({
@@ -57,12 +57,12 @@ export default function UserLogin() {
 
   return (
     <>
-      <div className="d-flex flex-column justify-content-center align-items-center vh-100 bg-primary-2">
+      <div className="d-flex flex-column justify-content-center align-items-center vh-100 bg-secondary-1">
         <div className="d-flex align-items-center">
           <Link to="/">
             <Logo className={"login-logo me-1"} />
           </Link>
-          <h1 className="mt-5 mb-7 me-1">會員登入</h1>
+          <h1 className="mt-5 mb-7 me-1">後台登入</h1>
         </div>
 
         <form onSubmit={handleLogin} className="d-flex flex-column gap-3 ">
@@ -91,9 +91,11 @@ export default function UserLogin() {
             <label htmlFor="password">Password</label>
           </div>
           {isAuthenticated ? (
-            <button className="btn btn-outline-primary disabled">已登入</button>
+            <button className="btn btn-outline-secondary-2 disabled">
+              已登入
+            </button>
           ) : (
-            <button className="btn btn-primary text-white ">登入</button>
+            <button className="btn btn-secondary-2 text-white ">登入</button>
           )}
         </form>
         <p className="mt-5 mb-3 text-muted">&copy; 2024~∞ - 六角學院</p>
