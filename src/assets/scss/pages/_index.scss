@@ -1,0 +1,486 @@
+// 橘色分隔裝飾線開始
+.decoLine{
+    height: 8px;
+    &::before{
+        content: "";
+        position: absolute;
+        background-image: url(/images/line/標題裝飾.png);
+        width: 100%;
+        height: 8px;
+    }
+}
+
+@include lg{
+    .decoLine{
+        height: 12px;
+        &::before{
+            height: 12px;
+        }   
+    }
+
+}
+// 橘色分隔裝飾線結束
+
+// 課程卡片圖片hover效果開始
+
+.courseLink{
+    img {
+    object-fit: cover;
+    transition: 0.5s;
+    z-index: 1;
+    }
+
+    &:hover{
+        img{
+        transform: scale(1.2);
+        }
+    }
+}
+// 課程卡片圖片hover效果結束
+
+
+// 首頁banner開始
+.index{
+    .indexBanner{
+        padding-top: 44px;
+        padding-bottom: 398px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+@include lg{
+    .index{
+        .indexBanner{
+            padding-top: 385px;
+            padding-bottom: 229.75px;
+            .logoIcon{
+                width: 100px;
+                height: 36.25px;
+            }
+        }
+    }
+}
+// 首頁banner結束
+
+// 首頁推薦課程開始
+.index{
+    .news{
+        .cardText{
+            right:11.3px;
+            z-index: 5;
+
+            .cardTitle{
+                letter-spacing: 4px;
+            }
+
+            .cardContent{
+                letter-spacing: 10px;
+            }
+        }
+    }
+}
+// 首頁推薦課程結束
+
+// 首頁精選課程開始
+.index{
+    .featureCourses{
+        .cardTitle{
+            top:28px;
+            right:11.3px;
+            letter-spacing: 2px;
+        }
+        .cardText{
+            left: 20px;
+            max-width: 280px;
+            padding:6px 11px;
+        }
+    }
+}
+
+@include lg{
+    .index{
+        .featureCourses{
+            .cardTitle{
+                letter-spacing: 4px;
+            }
+            .cardText{
+                left: 24px;
+                max-width: 111px;
+                height: 260px;
+                padding:16px 8px;
+                -webkit-writing-mode: vertical-rl;
+                writing-mode: vertical-rl;
+                letter-spacing: 8px;
+            }
+        }
+    }
+}
+// 首頁精選課程結束
+
+// 首頁知識分享開始
+.index{
+    .knowledgeSharing{
+        .cardTitle{
+            letter-spacing: 4px;
+            right:12px;
+        }
+
+        .cardText{
+            max-width: 220px;
+            height: 252px;
+            text-orientation: upright;
+            letter-spacing: 2px;
+        }
+
+        .cardImg{
+            object-fit: cover;
+            height: 360px;
+        }
+
+        .cardImgPosition{
+            object-position: center;
+        }
+
+        .moreIcon{
+            transform: rotate(270deg);
+            margin-right: -6px;
+            margin-left: 2px;
+        }
+
+        .learn-more-mobile:hover{
+            font-weight: 700;
+            .moreIcon{
+                transform: scale(1.1) rotate(270deg);
+            }
+        }
+
+        .learn-more-H{
+            width: 24px;
+            height: 92px;
+        }
+    }
+}
+
+@include md{
+    .index{
+        .knowledgeSharing{
+            .cardTitle{
+                right:12px !important;
+            }
+
+            .cardImgPosition{
+                object-position: right;
+            }
+
+            .moreIcon{
+                transform: rotate(0deg);
+                margin-right: 0px;
+                margin-left: 0px;
+            }
+
+            .learn-more-H:hover{
+                path{
+                    fill:#fff;
+                }
+            }
+        }
+    }
+}
+
+@include lg{
+    .index{
+        .knowledgeSharing{
+            .cardTitle{
+                right:24px !important;
+            }
+
+            .cardImg{
+                height: 380px;
+            }
+
+            
+        }
+    }
+}
+// 首頁知識分享結束
+
+// 首頁學員分享開始
+.index{
+    .studentComment{
+        .commentBackground{
+            background-image: url(/images/Footer/group-408.png); 
+            background-position: 70% 50%; 
+            background-size: 150% 100%;  
+            background-repeat: no-repeat; 
+            max-width: 1470px;
+            height: 580px;
+        }
+        
+        .dialogText{
+            z-index: 5;
+            transition: linear 0.3s; 
+        }
+
+        .dialogBox{
+            z-index: 1;
+            transition: ease 0.3s; 
+        }
+
+        .blueBox:hover{
+            .dialogText{
+                color: #fff !important;
+            }
+
+            .dialogBox{
+                path{
+                    fill:#487181;
+                }
+            }
+        }
+
+        .orangeBox:hover{
+            .dialogText{
+                color: #fff !important;
+            }
+
+            .dialogBox{
+                path{
+                    fill:#E79776;
+                }
+            }
+        }
+
+        .speechBubble1{
+            width: 451px;
+            left: 108.5px;
+
+            .dialogText{
+                left: 29.8px;
+                top: 60px;
+            }
+        }
+
+        .speechBubble2{
+            width: 638px;
+            left: 0px;
+            top:436px;
+
+            .dialogText{
+                left: 37.1px;
+                top: 75px;
+            }
+        }
+
+        .speechBubble3{
+            width: 62px;
+            left: 670px;
+            top:331px;
+
+            .dialogText{
+                left:8px;
+                top: 28px;
+                letter-spacing: 6px;
+            }
+
+        }
+
+        .speechBubble4{
+            width: 399px;
+            right: 110.7px;
+            top:265px;
+
+            .dialogText{
+                left:31px;
+                top: 64px;
+            }
+        }
+
+        .speechBubble5{
+            width: 482px;
+            right: 110.7px;
+            top:735px;
+
+            .dialogText{
+                left:25px;
+                top: 35px;
+                line-height: 1.2;
+            }
+        }
+
+        .speechBubble6{
+            width: 76px;
+            right: 0px;
+            top:212px;
+
+            .dialogText{
+                left:9px;
+                top: 30px;
+                letter-spacing: 8px;
+            }
+        }
+
+        .speechBubble7{
+            width: 76px;
+            left: 0px;
+            top:84px;
+
+            .dialogText{
+                left:8px;
+                top: 30px;
+                letter-spacing: 8px;
+            }
+        }
+
+        .speechBubble8{
+            width: 521px;
+            left: 117.5px;
+            top:222px;
+
+            .dialogText{
+                left:25px;
+                top: 42px;
+                line-height: 1.2;
+            }
+        }
+
+        .speechBubble9{
+            width: 661px;
+            left: 0px;
+            bottom: 33px;
+
+            .dialogText{
+                left:21px;
+                top: 60px;
+            }
+        }
+
+        .speechBubble10{
+            width: 481px;
+            right: 110.7px;
+            top: 0px;
+
+            .dialogText{
+                left:47px;
+                top: 32px;
+            }
+        }
+
+        .speechBubble11{
+            width: 432px;
+            right: 110.7px;
+            top: 458px;
+
+            .dialogText{
+                left:62px;
+                top: 39px;
+            }
+        }
+
+        .speechBubbleSm{
+            width: 220px;
+
+            .dialogText{
+                left:15px;
+                top: 10px;
+            }
+        }
+        
+    }
+}
+
+@include md{
+    .index{
+        .studentComment{
+            .commentBackground{
+                background-position: center; 
+                background-size: cover;
+                height: 690px;
+
+                .container{
+                    height: 460px;
+                }
+            }
+        }
+    }
+}
+
+@include lg{
+    .index{
+        .studentComment{
+            .commentBackground{
+                height: 1200px;
+            }
+        }
+    }
+}
+
+
+@include xxl{
+    .index{
+        .studentComment{
+            .commentBackground{
+                background-position: 50% 90%; 
+                background-size: contain;
+
+                .container{
+                    height: 936px;
+                }
+            }
+        }
+    }
+}
+// 首頁學員分享結束
+
+// 首頁課程照片開始
+.index{
+    .photoSwiper{
+        .swiper{
+            width: 100%;
+            height: 115px;
+        }
+
+        // 變更滑動的樣式
+        .swiper-wrapper{
+            transition-timing-function: linear;
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+@include sm{
+    .index{
+        .photoSwiper{
+            .swiper{
+                height: 175px;
+            }
+        }
+    }
+}
+
+@include md{
+    .index{
+        .photoSwiper{
+            .swiper{
+                height: 215px;
+            }
+        }
+    }
+}
+
+@include lg{
+    .index{
+        .photoSwiper{
+            .swiper{
+                height: 315px;
+            }
+        }
+    }
+}
+// 首頁課程照片結束

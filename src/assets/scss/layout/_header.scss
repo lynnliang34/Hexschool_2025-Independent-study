@@ -1,0 +1,293 @@
+.header {
+  background-color: rgba(255, 255, 255, 0.6);
+  height: 56px;
+
+  @include lg {
+    height: 105px;
+    margin-bottom: 0px;
+  }
+
+  .logo {
+    width: 100px;
+    height: 35.77px;
+    fill: $secondary-2;
+    transition: 0.15s;
+
+    @include lg {
+      width: 185px;
+      height: 65px;
+    }
+
+    &:hover {
+      fill: $primary;
+    }
+  }
+
+  // 手機版
+  .search-icon {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.15s;
+
+    &:hover {
+      .search-svg {
+        fill: $primary;
+      }
+    }
+  }
+
+  .search-svg {
+    width: 30px;
+    height: 30px;
+    fill: $secondary-2;
+  }
+
+  .search-form {
+    position: absolute;
+    top: 9px;
+    right: 13px;
+  }
+
+  .search-icon:focus + .search-form,
+  .search-form:hover,
+  .search-form:focus {
+    display: block;
+  }
+
+  .list {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    color: $secondary-2;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.15s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .navbar-toggler {
+    color: $secondary;
+    font-size: 24px;
+    border: none;
+  }
+
+  .modal {
+    --bs-modal-width: 250px;
+    --bs-modal-padding: 16px 12px;
+    --bs-modal-bg: #ffffffcc;
+    --bs-modal-border-width: 0;
+    --bs-modal-border-radius: 0;
+  }
+
+  .modal-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 250px;
+  }
+
+  .modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+    transform: translate(-50px, 0);
+  }
+
+  .modal-link-1 {
+    font-size: 24px;
+    width: 100%;
+    height: 44px;
+    border-bottom: 2px solid transparent;
+    transition: 0.15s;
+
+    &:hover {
+      color: $primary;
+
+      .modal-link-arrow {
+        fill: $primary;
+      }
+    }
+  }
+
+  .modal-link-arrow {
+    width: 24px;
+    height: 24px;
+    fill: $neutral-1;
+    transition: 0.15s;
+  }
+
+  .rotate {
+    transform: rotate(-0.25turn);
+  }
+
+  .modal-link-2 {
+    font-size: 24px;
+    width: 100%;
+    height: 52px;
+    padding: 8px;
+    color: $secondary-2;
+    border-bottom: 2px solid $secondary-2;
+    transition: 0.15s;
+
+    &:hover {
+      color: $secondary;
+      border-bottom: 2px solid $secondary;
+    }
+  }
+
+  .modal-link-3 {
+    font-size: 24px;
+    width: 64px;
+    height: 44px;
+    padding: 4px 8px;
+    transition: 0.15s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  // 電腦版
+  .search {
+    width: 174px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid $neutral-1;
+    padding-left: 46px;
+
+    @include xl {
+      width: 238px;
+      padding-left: 62px;
+    }
+  }
+
+  .search-icon-lg {
+    top: 4px;
+    left: 8px;
+
+    @include xl {
+      left: 16px;
+    }
+  }
+
+  input::placeholder {
+    color: #c0c0c0;
+  }
+
+  // 隱藏內建清除按鈕（僅適用於 WebKit 瀏覽器如 Chrome、Safari）
+  input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  input[type="search"]:focus {
+    outline-offset: 0; /* 讓 outline 和邊框重合 */
+    outline: 4px solid $secondary; /* 自定義顏色和寬度 */
+  }
+
+  .navbar {
+    height: 56px;
+
+    @include lg {
+      height: 105px;
+    }
+  }
+
+  .nav-link-1 {
+    width: 100px;
+    height: 52px;
+    font-size: 18px;
+    transition: 0.15s;
+    border-bottom: 2px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include xl {
+      width: 112px;
+      font-size: 24px;
+    }
+
+    &:hover {
+      color: $secondary;
+      border-bottom: 2px solid $secondary;
+    }
+  }
+
+  .nav-link-2 {
+    width: 45px;
+    height: 44px;
+    font-size: 18px;
+    color: $secondary-2;
+    transition: 0.15s;
+    border-bottom: 2px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include xl {
+      width: 64px;
+      font-size: 24px;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .hover-section {
+    display: none;
+    width: 476px;
+    height: 360px;
+    border-radius: 0 0 20px 20px;
+    background: #ffffffcc;
+    padding: 32px 16px 8px 16px;
+    position: absolute;
+    top: 52px;
+    left: -16px;
+
+    @include xl {
+      width: 576px;
+    }
+  }
+
+  .nav-link-1:hover + .hover-section,
+  .hover-section:hover {
+    display: block; /* 滑鼠懸停時顯示 */
+  }
+
+  .nav-link-3 {
+    width: 80px;
+    height: 52px;
+    font-size: 18px;
+    color: $secondary-2;
+    transition: 0.15s;
+    border-bottom: 1px solid $secondary-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include xl {
+      width: 112px;
+      font-size: 24px;
+    }
+
+    &:hover {
+      color: $secondary;
+      border-bottom: 1px solid $secondary;
+    }
+  }
+}

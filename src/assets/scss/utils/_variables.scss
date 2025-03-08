@@ -378,7 +378,8 @@ $enable-grid-classes: true !default;
 $enable-container-classes: true !default;
 $enable-cssgrid: false !default;
 $enable-button-pointers: true !default;
-$enable-rfs: true !default;
+// $enable-rfs: true !default;
+$enable-rfs: false !default;
 $enable-validation-icons: true !default;
 $enable-negative-margins: false !default;
 $enable-deprecation-messages: true !default;
@@ -455,7 +456,8 @@ $body-emphasis-color: $black !default;
 // Style anchor elements.
 
 $link-color: $primary !default;
-$link-decoration: underline !default;
+// $link-decoration: underline !default;
+$link-decoration: none !default;
 $link-shade-percentage: 20% !default;
 $link-hover-color: shift-color($link-color, $link-shade-percentage) !default;
 $link-hover-decoration: null !default;
@@ -476,7 +478,8 @@ $icon-link-icon-transform: translate3d(0.25em, 0, 0) !default;
 //
 // Style p element.
 
-$paragraph-margin-bottom: 1rem !default;
+// $paragraph-margin-bottom: 1rem !default;
+$paragraph-margin-bottom: 0 !default;
 
 // Grid breakpoints
 //
@@ -544,7 +547,8 @@ $border-color-translucent: rgba($black, 0.175) !default;
 // scss-docs-end border-variables
 
 // scss-docs-start border-radius-variables
-$border-radius: 0.375rem !default;
+// $border-radius: 0.375rem !default;
+$border-radius: 0.625rem !default; // 10px
 $border-radius-sm: 0.25rem !default;
 $border-radius-lg: 0.5rem !default;
 $border-radius-xl: 1rem !default;
@@ -603,8 +607,8 @@ $aspect-ratios: (
 
 // scss-docs-start font-variables
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
-  "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
+$font-family-sans-serif: "Noto Sans TC", system-ui, -apple-system, "Segoe UI",
+  Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
   "Liberation Mono", "Courier New", monospace !default;
@@ -633,32 +637,52 @@ $line-height-base: 1.5 !default;
 $line-height-sm: 1.25 !default;
 $line-height-lg: 2 !default;
 
-$h1-font-size: $font-size-base * 2.5 !default;
-$h2-font-size: $font-size-base * 2 !default;
-$h3-font-size: $font-size-base * 1.75 !default;
-$h4-font-size: $font-size-base * 1.5 !default;
-$h5-font-size: $font-size-base * 1.25 !default;
-$h6-font-size: $font-size-base !default;
+// $h1-font-size: $font-size-base * 2.5 !default;
+// $h2-font-size: $font-size-base * 2 !default;
+// $h3-font-size: $font-size-base * 1.75 !default;
+// $h4-font-size: $font-size-base * 1.5 !default;
+// $h5-font-size: $font-size-base * 1.25 !default;
+// $h6-font-size: $font-size-base !default;
+$h1-font-size: $font-size-base * 2.5 !default; // 40
+$h2-font-size: $font-size-base * 2 !default; // 32
+$h3-font-size: $font-size-base * 1.75 !default; // 28
+$h4-font-size: $font-size-base * 1.5 !default; // 24
+$h5-font-size: $font-size-base * 1.25 !default; // 20
+$h6-font-size: $font-size-base * 1 !default; // 16
+$h7-font-size: $font-size-base * 0.875 !default; // 14
 // scss-docs-end font-variables
 
 // scss-docs-start font-sizes
 $font-sizes: (
+  0: 56px,
+  // 56
   1: $h1-font-size,
+  // 40
   2: $h2-font-size,
+  // 32
   3: $h3-font-size,
+  // 28
   4: $h4-font-size,
+  // 24
   5: $h5-font-size,
+  // 20
   6: $h6-font-size,
+  // 16
+  7: $h7-font-size,
+  // 14
 ) !default;
 // scss-docs-end font-sizes
 
 // scss-docs-start headings-variables
-$headings-margin-bottom: $spacer * 0.5 !default;
+// $headings-margin-bottom: $spacer * 0.5 !default;
+$headings-margin-bottom: 0 !default;
 $headings-font-family: null !default;
 $headings-font-style: null !default;
-$headings-font-weight: 500 !default;
+// $headings-font-weight: 500 !default;
+$headings-font-weight: 700 !default;
 $headings-line-height: 1.2 !default;
-$headings-color: inherit !default;
+// $headings-color: inherit !default;
+$headings-color: #484848 !default;
 // scss-docs-end headings-variables
 
 // scss-docs-start display-headings
@@ -696,8 +720,10 @@ $blockquote-font-size: $font-size-base * 1.25 !default;
 $blockquote-footer-color: $gray-600 !default;
 $blockquote-footer-font-size: $small-font-size !default;
 
-$hr-margin-y: $spacer !default;
-$hr-color: inherit !default;
+// $hr-margin-y: $spacer !default;
+// $hr-color: inherit !default;
+$hr-margin-y: 0 !default;
+$hr-color: #84ccc9 !default;
 
 // fusv-disable
 $hr-bg-color: null !default; // Deprecated in v5.2.0
@@ -706,7 +732,8 @@ $hr-height: null !default; // Deprecated in v5.2.0
 
 $hr-border-color: null !default; // Allows for inherited colors
 $hr-border-width: var(--#{$prefix}border-width) !default;
-$hr-opacity: 0.25 !default;
+// $hr-opacity: 0.25 !default;
+$hr-opacity: 1 !default;
 
 // scss-docs-start vr-variables
 $vr-border-width: var(--#{$prefix}border-width) !default;
@@ -1584,7 +1611,8 @@ $modal-content-box-shadow-xs: var(--#{$prefix}box-shadow-sm) !default;
 $modal-content-box-shadow-sm-up: var(--#{$prefix}box-shadow) !default;
 
 $modal-backdrop-bg: $black !default;
-$modal-backdrop-opacity: 0.5 !default;
+// $modal-backdrop-opacity: 0.5 !default;
+$modal-backdrop-opacity: 0.2 !default;
 
 $modal-header-border-color: var(--#{$prefix}border-color) !default;
 $modal-header-border-width: $modal-content-border-width !default;

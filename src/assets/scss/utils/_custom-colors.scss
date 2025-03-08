@@ -1,0 +1,26 @@
+$primary: #e79776;
+$primary-1: #f6f2e0;
+$primary-2: #f6f4e9;
+
+$secondary: #84ccc9;
+$secondary-1: #d2eaf5;
+$secondary-2: #487181;
+
+$neutral-1: #484848;
+$neutral-2: #121212;
+
+$custom-colors: (
+  "primary": $primary ,
+  "primary-1": $primary-1,
+  "primary-2": $primary-2,
+
+  "secondary": $secondary,
+  "secondary-1": $secondary-1,
+  "secondary-2": $secondary-2,
+
+  "neutral-1": $neutral-1,
+  "neutral-2": $neutral-2,
+);
+
+
+$theme-colors: map-merge($theme-colors, $custom-colors);

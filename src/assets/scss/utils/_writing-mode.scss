@@ -1,0 +1,11 @@
+// 垂直文字, 由右到左
+.vertical-rl {
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+}
+
+// 橫式文字, 由上到下
+.horizontal-tb {
+  -webkit-writing-mode: horizontal-tb;
+  writing-mode: horizontal-tb;
+}
