@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/userSlice";
 import { Logo, Toast } from "../../components";
 import { pushMessage } from "../../redux/toastSlice";
@@ -10,6 +10,9 @@ import { pushMessage } from "../../redux/toastSlice";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export default function UserLogin() {
+  // 從 Redux store 取得使用者是否已登入的狀態
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+
   // 存放登入時的帳號與密碼
   const [account, setAccount] = useState({
     username: "",
@@ -87,7 +90,11 @@ export default function UserLogin() {
             />
             <label htmlFor="password">Password</label>
           </div>
-          <button className="btn btn-primary text-white">登入</button>
+          {isAuthenticated ? (
+            <button className="btn btn-outline-primary disabled">已登入</button>
+          ) : (
+            <button className="btn btn-primary text-white ">登入</button>
+          )}
         </form>
         <p className="mt-5 mb-3 text-muted">&copy; 2024~∞ - 六角學院</p>
       </div>
