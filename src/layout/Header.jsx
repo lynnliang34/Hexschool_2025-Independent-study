@@ -1,4 +1,5 @@
-import { Link, NavLink, useNavigate } from "react-router";
+import axios from "axios";
+import { Link, useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../redux/userSlice";
 import { useEffect, useRef } from "react";
@@ -10,6 +11,9 @@ import {
   LogoSlogan,
 } from "../components";
 
+// 環境變數
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 export default function Header() {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
@@ -17,14 +21,29 @@ export default function Header() {
   const menuModalRef = useRef(null);
   const menuModal = useRef(null);
 
-  const handleLogout = () => {
-    setTimeout(() => {
-      // 在這裡執行登出邏輯，例如清除 token
-      dispatch(logoutUser());
-    }, 100); // 延遲執行 logout，確保導航先發生
-  };
+  const navigate = useNavigate(); // React Router 的導航函式
 
-  const navigate = useNavigate();
+  // 登出功能
+  const handleLogout = () => {
+    // 1. 關閉 Modal (適用手機版選單)
+    closeMenuModal();
+
+    // 2. 導航到首頁
+    navigate("/");
+
+    // 3. 延遲執行登出 API，確保 UI 變更優先
+    setTimeout(() => {
+      axios
+        .post(`${BASE_URL}/logout`) // 發送登出請求
+        .then(() => {
+          dispatch(logoutUser()); // 觸發 Redux action，清除登入狀態
+          alert("登出成功"); // 提示使用者登出成功
+        })
+        .catch(() => {
+          alert("登出失敗"); // 提示使用者登出失敗
+        });
+    }, 100);
+  };
 
   // menuModal
   useEffect(() => {
@@ -103,9 +122,7 @@ export default function Header() {
                             <Link
                               className="modal-link-3 logout-link"
                               onClick={() => {
-                                closeMenuModal();
-                                navigate("/"); // 先導航
-                                handleLogout(); // 再登出
+                                handleLogout();
                               }}
                               disabled={!isAuthenticated} // 禁止連點
                             >
