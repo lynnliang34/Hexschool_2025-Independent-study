@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import ReactLoading from 'react-loading';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -64,13 +65,16 @@ export default function ExploreCourses() {
                                 <p className="card-text fs-4 mb-3 up-to-2-lines">
                                     {courseData.description}
                                 </p>
-                                <button type="button"
-                                    className="btn btn-outline-dark bg-white fs-7 d-flex ms-auto align-items-center py-lg-2">
-                                    了解更多
-                                    <span className="material-symbols-outlined ms-2">
-                                        chevron_right
-                                    </span>
-                                </button>
+                                <div className="d-flex">
+                                    {/* 注意：連結開頭無前置/表示相對於當前路徑的相對路徑，網址會變成explore-courses/course-detail/id */}
+                                    <Link to={`/course-detail/${courseData.id}`}
+                                        className="btn btn-outline-dark bg-white fs-7 d-flex ms-auto align-items-center py-lg-2">
+                                        了解更多
+                                        <span className="material-symbols-outlined ms-2">
+                                            chevron_right
+                                        </span>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

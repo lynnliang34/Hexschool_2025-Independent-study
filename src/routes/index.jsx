@@ -9,6 +9,7 @@ import {
   Home,
   About,
   ExploreCourses,
+  CourseDetail,
   UserLogin,
   UserProfile,
   AdminLogin,
@@ -39,6 +40,10 @@ const routes = [
       {
         path: "explore-courses",
         element: <ExploreCourses />,
+      },
+      {
+        path: "course-detail/:id",
+        element: <CourseDetail />,
       },
       {
         // 需登入才能進入
