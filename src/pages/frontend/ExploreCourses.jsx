@@ -44,9 +44,8 @@ export default function ExploreCourses() {
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-lg-6 gy-3 gy-lg-10">
                 {
                 isLoading ?
-                (<div className="col">
-                    <ReactLoading type={'spokes'} color={'#84CCC9'} height={'20%'} width={'20%'} />
-                </div>): 
+                (<ReactLoading className="mx-auto my-30" type={'spokes'} color={'#84CCC9'} height={'100px'} width={'100px'} />
+                ): 
                 course.length > 0 ? 
                 (course.map((courseData)=>{
                     return(
