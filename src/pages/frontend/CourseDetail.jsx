@@ -15,7 +15,7 @@ export default function CourseDetail() {
             const response = await axios.get(`${BASE_URL}/api/${API_PATH}/product/${id}`)
             try{
                 setCourse(response.data);
-                console.log(course)
+                console.log(course);
             }
             catch(err){
                 alert('資料取得失敗');
@@ -30,7 +30,7 @@ export default function CourseDetail() {
             {/* <!-- 分隔線 --> */}
             <picture>
                 <source
-                srcset="/images/dividers/divider-sm.png"
+                srcSet="/images/dividers/divider-sm.png"
                 media="(max-width: 576px)"
                 className="mt-4 mb-2"
                 />
@@ -134,7 +134,7 @@ export default function CourseDetail() {
             {/* <!-- 分隔線 --> */}
             <picture>
                 <source
-                srcset="/images/dividers/divider-sm.png"
+                srcSet="/images/dividers/divider-sm.png"
                 media="(max-width: 576px)"
                 />
                 <img
@@ -208,7 +208,7 @@ export default function CourseDetail() {
             {/* <!-- 分隔線 --> */}
             <picture>
                 <source
-                    srcset="/images/dividers/divider-sm.png"
+                    srcSet="/images/dividers/divider-sm.png"
                     media="(max-width: 576px)"
                 />
                 <img
@@ -285,7 +285,7 @@ export default function CourseDetail() {
         {/* <!-- 分隔線 --> */}
         <picture>
             <source
-            srcset="/images/dividers/divider-sm.png"
+            srcSet="/images/dividers/divider-sm.png"
             media="(max-width: 576px)"
             />
             <img
