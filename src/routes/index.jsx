@@ -8,6 +8,7 @@ import App from "../App";
 import {
   Home,
   About,
+  ExploreCourses,
   UserLogin,
   UserProfile,
   AdminLogin,
@@ -34,6 +35,10 @@ const routes = [
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "explore-courses",
+        element: <ExploreCourses />,
       },
       {
         // 需登入才能進入

@@ -2,6 +2,7 @@
 export { default as Header } from "../layout/Header";
 export { default as Home } from "./frontend/Home";
 export { default as About } from "./frontend/About";
+export { default as ExploreCourses } from "./frontend/ExploreCourses";
 export { default as Footer } from "../layout/Footer";
 export { default as UserProfile } from "./frontend/UserProfile";
 
