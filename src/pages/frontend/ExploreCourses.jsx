@@ -28,7 +28,6 @@ export default function ExploreCourses() {
                     });
 
                     setCourse(response.data.products);
-                    console.log(response);
                 }
                 catch(err){
                     alert('取得課程失敗');
@@ -40,7 +39,6 @@ export default function ExploreCourses() {
             getCourse();
         },[category]);
         //分類變更時重新取得課程
-        console.log(course);
 
         return(
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-lg-6 gy-3 gy-lg-10">
