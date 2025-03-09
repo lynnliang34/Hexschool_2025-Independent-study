@@ -1,4 +1,4 @@
-import '../assets/scss/all.scss'
+import "../assets/scss/all.scss";
 import { createHashRouter } from "react-router";
 
 import RequireUserAuth from "./RequireUserAuth";
@@ -13,6 +13,11 @@ import {
   AdminLogin,
   AdminLayout,
   AdminDashboard,
+  AdminCourses,
+  AdminOrders,
+  AdminKnowledge,
+  AdminPhotos,
+  AdminMembers,
   NotFound,
 } from "../pages";
 
@@ -63,6 +68,26 @@ const routes = [
       {
         index: true,
         element: <AdminDashboard />,
+      },
+      {
+        path: "/admin/courses",
+        element: <AdminCourses />,
+      },
+      {
+        path: "/admin/orders",
+        element: <AdminOrders />,
+      },
+      {
+        path: "/admin/knowledge",
+        element: <AdminKnowledge />,
+      },
+      {
+        path: "/admin/photos",
+        element: <AdminPhotos />,
+      },
+      {
+        path: "/admin/members",
+        element: <AdminMembers />,
       },
     ],
   },
