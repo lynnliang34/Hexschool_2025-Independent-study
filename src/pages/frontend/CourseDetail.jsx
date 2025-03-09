@@ -1,4 +1,29 @@
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+import axios from "axios"; 
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_PATH = import.meta.env.VITE_API_PATH;
+
 export default function CourseDetail() {
+    // 課程id
+    const { id } = useParams();
+    // 儲存課程資料
+    const [course, setCourse] = useState({});
+    useEffect(()=>{
+        const getCourse = async()=>{
+            const response = await axios.get(`${BASE_URL}/api/${API_PATH}/product/${id}`)
+            try{
+                setCourse(response.data);
+                console.log(course)
+            }
+            catch(err){
+                alert('資料取得失敗');
+            }
+        };
+        getCourse();
+    },[])
+
     return (<>
         {/* <!-- section1 --> */}
         <div className="container">
