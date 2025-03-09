@@ -10,11 +10,12 @@ export default function CourseDetail() {
     const { id } = useParams();
     // 儲存課程資料
     const [course, setCourse] = useState({});
+    // 取得指定id課程資料
     useEffect(()=>{
         const getCourse = async()=>{
             const response = await axios.get(`${BASE_URL}/api/${API_PATH}/product/${id}`)
             try{
-                setCourse(response.data);
+                setCourse(response.data.product);
                 console.log(course);
             }
             catch(err){
@@ -41,27 +42,21 @@ export default function CourseDetail() {
                 />
             </picture>
 
-            <h1 className="fs-3 fs-lg-1 mt-lg-12">輕鬆有氧運動</h1>
+            <h1 className="fs-3 fs-lg-1 mt-lg-12">{course.title}</h1>
                 <p className="fs-7 fs-lg-5 mt-2 mt-lg-4">
-                    專為中老年人設計,涵蓋柔軟舒展和簡單動作,旨在幫助提升身體靈活性和柔韌性。這個課程通過輕絲的運動,增強關節活動範圍,促進血液循環,
-                    並改善整體健康。每天早晨進行晨間操,不僅能喚醒身體,還能提升精神狀態,使老年人更有活力地迎接一天的挑戰,改善生活品質,維持健康生活方式。
+                    {course.description}
                 </p>
 
             {/* <!-- 手機版課程介紹 --> */}
             <div className="d-lg-none border border-secondary rounded my-6 p-2">
-                <h2 className="fs-4 text-secondary mb-2">運動保健</h2>
+                <h2 className="fs-4 text-secondary mb-2">{course.category}</h2>
                 <img
-                src="/images/expressive-senior-man-posing-outdoor.png"
+                src={course.imageUrl}
                 alt=""
                 className="object-fit-cover rounded-20 course-img mb-2"
                 />
                 <p className="fs-7 mb-2">
-                1.課程時長:每次課程約一小時,設計以輕松、有效的伸展和柔軟運動為主,適合早晨進行以啟動一天的活力。<br />
-                2.上課時間:每週一、三、五早上9:00至10:00 <br />
-                3.適用年齡:50歲以上的中老年人 <br />
-                4.身體狀況要求:課程設計考慮到參加者的身體狀況,無需特別的身體條件,僅需具備基本的運動能力,如能站立和進行輕度運動
-                <br />
-                5.場地與設備:課程於館内瑜珈教室進行,提供舒適的活動空間。參加者建議穿著舒適的運動服裝,請自備水壺,本館提供瑜伽墊供使用。
+                {course.content}
                 </p>
                 <button className="btn btn-secondary course-btn text-white">
                 預約課程
@@ -83,11 +78,11 @@ export default function CourseDetail() {
             <div className="d-none d-lg-block my-10 pb-15">
                 <div className="row">
                     <div className="col-7">
-                        <h2 className="fs-1 text-secondary vertical-rl course-label">
-                        運動保健
+                        <h2 className="fs-1 text-secondary vertical-rl course-label text-nowrap">
+                        {course.category}
                         </h2>
                         <img
-                        src="/images/expressive-senior-man-posing-outdoor.png"
+                        src={course.imageUrl}
                         alt=""
                         className="object-fit-cover rounded-20 course-lg-img"
                         />
@@ -95,17 +90,7 @@ export default function CourseDetail() {
                     <div className="col-5">
                         <div className="course-info py-5 px-6">
                         <p className="fs-5 mb-1">
-                            <span className="fw-bold">1.課程時長:</span
-                            >每次課程約一小時,設計以輕松、有效的伸展和柔軟運動為主,適合早晨進行以啟動一天的活力。<br />
-                            <span className="fw-bold">2.上課時間:</span
-                            >每週一、三、五早上9:00至10:00 <br />
-                            <span className="fw-bold">3.適用年齡:</span>50歲以上的中老年人
-                            <br />
-                            <span className="fw-bold">4.身體狀況要求:</span
-                            >課程設計考慮到參加者的身體狀況,無需特別的身體條件,僅需具備基本的運動能力,如能站立和進行輕度運動。
-                            <br />
-                            <span className="fw-bold">5.場地與設備:</span
-                            >課程於館内瑜珈教室進行,提供舒適的活動空間。參加者建議穿著舒適的運動服裝,請自備水壺,本館提供瑜伽墊供使用。
+                        {course.content}
                         </p>
                         <div className="d-flex justify-content-end">
                             <button className="btn btn-secondary course-btn text-white fs-4">
