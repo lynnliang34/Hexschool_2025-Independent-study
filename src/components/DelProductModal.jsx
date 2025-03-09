@@ -90,14 +90,14 @@ function DelProductModal({ tempProduct, isOpen, setIsOpen, getProducts }) {
             <button
               onClick={handleCloseDelProductModal}
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-outline-secondary-2"
             >
               取消
             </button>
             <button
               onClick={handleDeleteProduct}
               type="button"
-              className="btn btn-danger"
+              className="btn btn-outline-danger"
             >
               刪除
             </button>

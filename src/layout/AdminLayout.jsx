@@ -50,7 +50,7 @@ function AdminLayout() {
           <div
             class="offcanvas offcanvas-start"
             data-bs-scroll="true"
-            tabindex="-1"
+            tabIndex="-1"
             id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel"
           >

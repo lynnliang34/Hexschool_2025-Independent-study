@@ -399,14 +399,14 @@ function ProductModal({
             <button
               onClick={handleCloseProductModal}
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-outline-secondary-2"
             >
               取消
             </button>
             <button
               onClick={handleUpdateProduct}
               type="button"
-              className="btn btn-primary"
+              className="btn btn-outline-danger"
             >
               確認
             </button>

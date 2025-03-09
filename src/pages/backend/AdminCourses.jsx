@@ -123,23 +123,23 @@ export default function AdminCourses() {
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="container">
         <div className="row">
           <div className="col">
-            <div className="d-flex justify-content-between">
-              <h2 className="fw-bold">產品列表</h2>
+            <div className="d-flex justify-content-between mb-5">
+              <h1 className="fw-bold text-secondary">課程列表</h1>
               <button
                 onClick={() => handleOpenProductModal("create")}
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-secondary-2 text-white"
               >
-                建立新的產品
+                建立新的課程
               </button>
             </div>
             <table className="table table-hover align-middle">
               <thead>
                 <tr>
-                  <th scope="col">產品名稱</th>
+                  <th scope="col">課程名稱</th>
                   <th scope="col">原價</th>
                   <th scope="col">售價</th>
                   <th scope="col">是否啟用</th>
@@ -166,16 +166,16 @@ export default function AdminCourses() {
                             handleOpenProductModal("edit", product)
                           }
                           type="button"
-                          className="btn btn-outline-primary btn-sm me-2"
+                          className="edit-product-btn"
                         >
-                          編輯
+                          <i className="bi bi-pencil-square fs-4"></i>
                         </button>
                         <button
                           onClick={() => handleOpenDelProductModal(product)}
                           type="button"
-                          className="btn btn-outline-danger btn-sm"
+                          className="edit-product-btn"
                         >
-                          刪除
+                          <i className="bi bi-trash3-fill fs-4"></i>
                         </button>
                       </div>
                     </td>
@@ -199,7 +199,12 @@ export default function AdminCourses() {
             zIndex: 999,
           }}
         >
-          <ReactLoading type="spin" color="black" width="4rem" height="4rem" />
+          <ReactLoading
+            type="spokes"
+            color="black"
+            width="4rem"
+            height="4rem"
+          />
         </div>
       )}
 

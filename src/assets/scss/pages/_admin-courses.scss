@@ -1,0 +1,11 @@
+.edit-product-btn {
+  color: $secondary-2;
+  border: none;
+  background-color: transparent;
+  padding: 0 8px;
+  transition: 0.15s;
+
+  &:hover {
+    color: $secondary;
+  }
+}
