@@ -13,17 +13,17 @@ export default function CourseDetail() {
     // 取得指定id課程資料
     useEffect(()=>{
         const getCourse = async()=>{
-            const response = await axios.get(`${BASE_URL}/api/${API_PATH}/product/${id}`)
             try{
+                const response = await axios.get(`${BASE_URL}/api/${API_PATH}/product/${id}`)
                 setCourse(response.data.product);
-                console.log(course);
             }
             catch(err){
                 alert('資料取得失敗');
             }
         };
         getCourse();
-    },[])
+    },[id]);
+    // 課程id變化時重新取得資料
 
     return (<>
         {/* <!-- section1 --> */}
@@ -55,9 +55,14 @@ export default function CourseDetail() {
                 alt=""
                 className="object-fit-cover rounded-20 course-img mb-2"
                 />
-                <p className="fs-7 mb-2">
-                {course.content}
-                </p>
+                {/* 判斷課程內容是否存在，存在才渲染畫面 */}
+                {course?.content &&(<p className="fs-7 mb-2">
+                1.課程時長:{course.content.課程時長}<br />
+                2.上課時間:{course.content.上課時間}<br />
+                3.適用年齡:{course.content.適用年齡}<br />
+                4.身體狀況要求:{course.content.身體狀況要求}<br />
+                5.場地與設備:{course.content.場地與設備}
+                </p>)}
                 <button className="btn btn-secondary course-btn text-white">
                 預約課程
                     <svg
@@ -87,10 +92,14 @@ export default function CourseDetail() {
                         className="object-fit-cover rounded-20 course-lg-img"
                         />
                     </div>
-                    <div className="col-5">
+                    {course?.content && (<div className="col-5">
                         <div className="course-info py-5 px-6">
                         <p className="fs-5 mb-1">
-                        {course.content}
+                            <span className="fw-bold">1.課程時長:</span>{course.content.課程時長}<br />
+                            <span className="fw-bold">2.上課時間:</span>{course.content.上課時間} <br />
+                            <span className="fw-bold">3.適用年齡:</span>{course.content.適用年齡}<br />
+                            <span className="fw-bold">4.身體狀況要求:</span>{course.content.身體狀況要求}<br />
+                            <span className="fw-bold">5.場地與設備:</span>{course.content.場地與設備}
                         </p>
                         <div className="d-flex justify-content-end">
                             <button className="btn btn-secondary course-btn text-white fs-4">
@@ -109,7 +118,7 @@ export default function CourseDetail() {
                             </button>
                         </div>
                         </div>
-                    </div>
+                    </div>)}
                 </div>
             </div>
         </div>
