@@ -37,7 +37,12 @@ export default function AdminCourses() {
       const res = await axios.get(
         `${BASE_URL}/api/${API_PATH}/admin/products?page=${page}`
       );
-      setProductList(res.data.products);
+      setProductList(
+        res.data.products.map((product) => ({
+          ...product,
+          imagesUrl: product.imagesUrl || [], // 如果沒有 imagesUrl，設為空陣列
+        }))
+      );
       setPageInfo(res.data.pagination);
     } catch (error) {
       console.error(error);

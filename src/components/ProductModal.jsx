@@ -186,8 +186,7 @@ function ProductModal({
               <div className="col-md-4">
                 <div className="mb-5">
                   <label htmlFor="fileInput" className="form-label">
-                    {" "}
-                    圖片上傳{" "}
+                    圖片上傳
                   </label>
                   <input
                     type="file"
@@ -259,7 +258,7 @@ function ProductModal({
                         </button>
                       )}
 
-                    {modalData.imagesUrl.length > 1 && (
+                    {modalData.imagesUrl.length > 0 && (
                       <button
                         onClick={handleRemoveImage}
                         className="btn btn-outline-danger btn-sm w-100"
