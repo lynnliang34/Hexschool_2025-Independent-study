@@ -50,10 +50,20 @@ function ProductModal({
   const handleModalInputChange = (e) => {
     const { value, name, checked, type } = e.target;
 
-    setModalData({
-      ...modalData,
-      [name]: type === "checkbox" ? checked : value,
-    });
+    if (type === "checkbox") {
+      setModalData({
+        ...modalData,
+        [name]: checked, // 更新 checkbox 在根層的值
+      });
+    } else {
+      setModalData({
+        ...modalData,
+        content: {
+          ...modalData.content,
+          [name]: value, // 更新 content 中的對應欄位
+        },
+      });
+    }
   };
 
   // 新增產品
@@ -377,18 +387,78 @@ function ProductModal({
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="content" className="form-label">
-                    說明內容
+                  <label htmlFor="class_duration" className="form-label">
+                    課程時長
                   </label>
-                  <textarea
-                    value={modalData.content}
-                    onChange={handleModalInputChange}
-                    name="content"
-                    id="content"
+                  <input
+                    type="text"
+                    id="class_duration"
+                    name="class_duration"
                     className="form-control"
-                    rows={4}
-                    placeholder="請輸入說明內容"
-                  ></textarea>
+                    value={modalData.content.class_duration}
+                    onChange={handleModalInputChange}
+                    placeholder="請輸入課程時長"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="class_time" className="form-label">
+                    上課時間
+                  </label>
+                  <input
+                    type="text"
+                    id="class_time"
+                    name="class_time"
+                    className="form-control"
+                    value={modalData.content.class_time}
+                    onChange={handleModalInputChange}
+                    placeholder="請輸入上課時間"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="suitable_age" className="form-label">
+                    適用年齡
+                  </label>
+                  <input
+                    type="text"
+                    id="suitable_age"
+                    name="suitable_age"
+                    className="form-control"
+                    value={modalData.content.suitable_age}
+                    onChange={handleModalInputChange}
+                    placeholder="請輸入適用年齡"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="physical_requirements" className="form-label">
+                    身體狀況要求
+                  </label>
+                  <input
+                    type="text"
+                    id="physical_requirements"
+                    name="physical_requirements"
+                    className="form-control"
+                    value={modalData.content.physical_requirements}
+                    onChange={handleModalInputChange}
+                    placeholder="請輸入身體狀況要求"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="venue_and_equipment" className="form-label">
+                    場地與設備
+                  </label>
+                  <input
+                    type="text"
+                    id="venue_and_equipment"
+                    name="venue_and_equipment"
+                    className="form-control"
+                    value={modalData.content.venue_and_equipment}
+                    onChange={handleModalInputChange}
+                    placeholder="請輸入場地與設備"
+                  />
                 </div>
 
                 <div className="form-check">

@@ -2,8 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Pagination, ProductModal, DelProductModal } from "../../components";
 import ReactLoading from "react-loading";
-import { Link } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
 
 // 環境變數
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -18,9 +16,24 @@ const defaultModalState = {
   origin_price: "",
   price: "",
   description: "",
-  content: "",
+  content: {
+    duration: "",
+    class_time: "",
+    suitable_age: "",
+    physical_requirements: "",
+    venue_and_equipment: "",
+  },
   is_enabled: 0,
   imagesUrl: [""],
+};
+
+// content 屬性轉英文對應名稱
+const contentKeyMapping = {
+  課程時長: "class_duration",
+  上課時間: "class_time",
+  適用年齡: "suitable_age",
+  身體狀況要求: "physical_requirements",
+  場地與設備: "venue_and_equipment",
 };
 
 export default function AdminCourses() {
@@ -41,6 +54,14 @@ export default function AdminCourses() {
         res.data.products.map((product) => ({
           ...product,
           imagesUrl: product.imagesUrl || [], // 如果沒有 imagesUrl，設為空陣列
+
+          // 轉換 content 中文的 key
+          content: Object.fromEntries(
+            Object.entries(product.content).map(([key, value]) => [
+              contentKeyMapping[key] || key, // 使用參照的英文 key，若無對應的則用原始 key
+              value !== undefined ? value : "", // 如果 value 為 undefined，設為空字串
+            ])
+          ),
         }))
       );
       setPageInfo(res.data.pagination);
