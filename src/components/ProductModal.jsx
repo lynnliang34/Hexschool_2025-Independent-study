@@ -273,7 +273,7 @@ function ProductModal({
               <div className="col-md-8">
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">
-                    標題
+                    標題<span className="text-primary ms-1">*</span>
                   </label>
                   <input
                     value={modalData.title}
@@ -286,34 +286,48 @@ function ProductModal({
                   />
                 </div>
 
-                <div className="mb-3">
-                  <label htmlFor="category" className="form-label">
-                    分類
-                  </label>
-                  <input
-                    value={modalData.category}
-                    onChange={handleModalInputChange}
-                    name="category"
-                    id="category"
-                    type="text"
-                    className="form-control"
-                    placeholder="請輸入分類"
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label htmlFor="unit" className="form-label">
-                    單位
-                  </label>
-                  <input
-                    value={modalData.unit}
-                    onChange={handleModalInputChange}
-                    name="unit"
-                    id="unit"
-                    type="text"
-                    className="form-control"
-                    placeholder="請輸入單位"
-                  />
+                <div className="row g-3 mb-3">
+                  <div className="col-6">
+                    <label htmlFor="category" className="form-label">
+                      分類<span className="text-primary ms-1">*</span>
+                    </label>
+                    <select
+                      value={modalData.category}
+                      onChange={handleModalInputChange}
+                      name="category"
+                      id="category"
+                      type="text"
+                      className="form-select"
+                    >
+                      <option disabled defaultValue="">
+                        請選擇分類
+                      </option>
+                      <option value="運動保健">運動保健</option>
+                      <option value="心理成長">心理成長</option>
+                      <option value="社區活動">社區活動</option>
+                      <option value="生活技能">生活技能</option>
+                    </select>
+                  </div>
+                  <div className="col-6">
+                    <div className="mb-3">
+                      <label htmlFor="unit" className="form-label">
+                        單位<span className="text-primary ms-1">*</span>
+                      </label>
+                      <select
+                        value={modalData.unit}
+                        onChange={handleModalInputChange}
+                        name="unit"
+                        id="unit"
+                        type="text"
+                        className="form-select"
+                      >
+                        <option disabled defaultValue="">
+                          請選擇單位
+                        </option>
+                        <option value="堂">堂</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="row g-3 mb-3">
