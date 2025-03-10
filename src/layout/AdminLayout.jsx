@@ -38,7 +38,7 @@ function AdminLayout() {
           </Link>
 
           <button
-            class="btn btn-secondary-2 me-auto"
+            className="btn btn-secondary-2 me-auto"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasWithBothOptions"
@@ -48,19 +48,22 @@ function AdminLayout() {
           </button>
 
           <div
-            class="offcanvas offcanvas-start"
+            className="offcanvas offcanvas-start"
             data-bs-scroll="true"
             tabIndex="-1"
             id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel"
           >
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+            <div className="offcanvas-header">
+              <h5
+                className="offcanvas-title"
+                id="offcanvasWithBothOptionsLabel"
+              >
                 愉運後台管理系統
               </h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="offcanvas"
                 aria-label="Close"
               ></button>
