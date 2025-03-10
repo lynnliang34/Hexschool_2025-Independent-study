@@ -171,7 +171,7 @@ function ProductModal({
         <div className="modal-content border-0 shadow">
           <div className="modal-header border-bottom">
             <h5 className="modal-title fs-4">
-              {modalMode === "create" ? "新增產品" : "編輯產品"}
+              {modalMode === "create" ? "新增課程" : "編輯課程"}
             </h5>
             <button
               onClick={handleCloseProductModal}
@@ -363,7 +363,7 @@ function ProductModal({
 
                 <div className="mb-3">
                   <label htmlFor="description" className="form-label">
-                    產品描述
+                    課程描述
                   </label>
                   <textarea
                     value={modalData.description}
@@ -372,7 +372,7 @@ function ProductModal({
                     id="description"
                     className="form-control"
                     rows={4}
-                    placeholder="請輸入產品描述"
+                    placeholder="請輸入課程描述"
                   ></textarea>
                 </div>
 
