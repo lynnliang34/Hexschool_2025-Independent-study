@@ -281,7 +281,7 @@ function ProductModal({
               </div>
 
               <div className="col-md-8">
-                <div className="mb-3">
+                <div className="mb-5">
                   <label htmlFor="title" className="form-label">
                     標題<span className="text-primary ms-1">*</span>
                   </label>
@@ -296,7 +296,7 @@ function ProductModal({
                   />
                 </div>
 
-                <div className="row g-3 mb-3">
+                <div className="row g-3 mb-5">
                   <div className="col-6">
                     <label htmlFor="category" className="form-label">
                       分類<span className="text-primary ms-1">*</span>
@@ -319,28 +319,26 @@ function ProductModal({
                     </select>
                   </div>
                   <div className="col-6">
-                    <div className="mb-3">
-                      <label htmlFor="unit" className="form-label">
-                        單位<span className="text-primary ms-1">*</span>
-                      </label>
-                      <select
-                        value={modalData.unit}
-                        onChange={handleModalInputChange}
-                        name="unit"
-                        id="unit"
-                        type="text"
-                        className="form-select"
-                      >
-                        <option disabled defaultValue="">
-                          請選擇單位
-                        </option>
-                        <option value="堂">堂</option>
-                      </select>
-                    </div>
+                    <label htmlFor="unit" className="form-label">
+                      單位<span className="text-primary ms-1">*</span>
+                    </label>
+                    <select
+                      value={modalData.unit}
+                      onChange={handleModalInputChange}
+                      name="unit"
+                      id="unit"
+                      type="text"
+                      className="form-select"
+                    >
+                      <option disabled defaultValue="">
+                        請選擇單位
+                      </option>
+                      <option value="堂">堂</option>
+                    </select>
                   </div>
                 </div>
 
-                <div className="row g-3 mb-3">
+                <div className="row g-3 mb-6">
                   <div className="col-6">
                     <label htmlFor="origin_price" className="form-label">
                       原價
@@ -371,7 +369,7 @@ function ProductModal({
                   </div>
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-6">
                   <label htmlFor="description" className="form-label">
                     課程描述
                   </label>
@@ -386,7 +384,7 @@ function ProductModal({
                   ></textarea>
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-6">
                   <label htmlFor="class_duration" className="form-label">
                     課程時長
                   </label>
@@ -401,7 +399,7 @@ function ProductModal({
                   />
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-6">
                   <label htmlFor="class_time" className="form-label">
                     上課時間
                   </label>
@@ -416,7 +414,7 @@ function ProductModal({
                   />
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-6">
                   <label htmlFor="suitable_age" className="form-label">
                     適用年齡
                   </label>
@@ -431,7 +429,7 @@ function ProductModal({
                   />
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-6">
                   <label htmlFor="physical_requirements" className="form-label">
                     身體狀況要求
                   </label>
@@ -446,7 +444,7 @@ function ProductModal({
                   />
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-6">
                   <label htmlFor="venue_and_equipment" className="form-label">
                     場地與設備
                   </label>
@@ -460,25 +458,24 @@ function ProductModal({
                     placeholder="請輸入場地與設備"
                   />
                 </div>
-
-                <div className="form-check">
-                  <input
-                    checked={modalData.is_enabled}
-                    onChange={handleModalInputChange}
-                    name="is_enabled"
-                    type="checkbox"
-                    className="form-check-input"
-                    id="isEnabled"
-                  />
-                  <label className="form-check-label" htmlFor="isEnabled">
-                    是否啟用
-                  </label>
-                </div>
               </div>
             </div>
           </div>
 
           <div className="modal-footer border-top bg-light">
+            <div className="form-check me-5">
+              <input
+                checked={modalData.is_enabled}
+                onChange={handleModalInputChange}
+                name="is_enabled"
+                type="checkbox"
+                className="form-check-input"
+                id="isEnabled"
+              />
+              <label className="form-check-label" htmlFor="isEnabled">
+                是否啟用
+              </label>
+            </div>
             <button
               onClick={handleCloseProductModal}
               type="button"
