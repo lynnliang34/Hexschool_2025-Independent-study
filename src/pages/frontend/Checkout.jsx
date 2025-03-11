@@ -440,12 +440,12 @@ export default function Checkout() {
               <div className="w-100 me-2 me-lg-6 mb-3 mb-md-0">
                 <label
                   htmlFor="typeOfInvoice"
-                  className="form-label mb-1 mb-lg-2"
+                  className="form-label checkout-label mb-1 mb-lg-2"
                 >
                   發票類型<span className="text-primary ms-1">*</span>
                 </label>
                 <select
-                  className="form-select"
+                  className="form-select checkout-input"
                   id="typeOfInvoice"
                   aria-label="Default select example"
                 >
