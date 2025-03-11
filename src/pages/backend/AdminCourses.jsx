@@ -17,7 +17,7 @@ const defaultModalState = {
   price: "",
   description: "",
   content: {
-    duration: "",
+    class_duration: "",
     class_time: "",
     suitable_age: "",
     physical_requirements: "",
@@ -240,6 +240,7 @@ export default function AdminCourses() {
         isOpen={isProductModalOpen}
         setIsOpen={setIsProductModalOpen}
         getProducts={getProducts}
+        page={pageInfo.current_page}
       />
 
       <DelProductModal
@@ -247,6 +248,7 @@ export default function AdminCourses() {
         isOpen={isDelProductModalOpen}
         setIsOpen={setIsDelProductModalOpen}
         getProducts={getProducts}
+        page={pageInfo.current_page}
       />
     </>
   );

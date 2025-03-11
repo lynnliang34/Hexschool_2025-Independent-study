@@ -12,6 +12,7 @@ function ProductModal({
   isOpen,
   setIsOpen,
   getProducts,
+  page,
 }) {
   // 避免更改到 tempProduct
   const [modalData, setModalData] = useState(tempProduct);
@@ -107,7 +108,7 @@ function ProductModal({
 
     try {
       await apiCall();
-      getProducts();
+      getProducts(page);
       handleCloseProductModal();
     } catch (error) {
       alert("更新產品失敗");

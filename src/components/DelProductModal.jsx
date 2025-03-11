@@ -6,7 +6,13 @@ import { Modal } from "bootstrap";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
 
-function DelProductModal({ tempProduct, isOpen, setIsOpen, getProducts }) {
+function DelProductModal({
+  tempProduct,
+  isOpen,
+  setIsOpen,
+  getProducts,
+  page,
+}) {
   // 控制刪除產品的 Modal
   const delProductModalRef = useRef(null);
 
@@ -55,7 +61,7 @@ function DelProductModal({ tempProduct, isOpen, setIsOpen, getProducts }) {
   const handleDeleteProduct = async () => {
     try {
       await deleteProduct();
-      getProducts();
+      getProducts(page);
       handleCloseDelProductModal();
     } catch (error) {
       alert("刪除產品失敗");
