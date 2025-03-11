@@ -12,6 +12,7 @@ import {
   CourseDetail,
   ScheduleCourses,
   Checkout,
+  UserRegister,
   UserLogin,
   UserProfile,
   AdminLogin,
@@ -70,6 +71,11 @@ const routes = [
         ),
       },
     ],
+  },
+  {
+    // 前台使用者註冊頁
+    path: "/register",
+    element: <UserRegister />,
   },
   {
     // 前台使用者登入頁

@@ -140,7 +140,7 @@ export default function Header() {
                             <>
                               <Link
                                 className="modal-link-3 register-link me-2"
-                                to="#"
+                                to="/register"
                                 onClick={closeMenuModal}
                               >
                                 註冊
@@ -243,7 +243,10 @@ export default function Header() {
                       ) : (
                         <>
                           <li className="nav-item me-xl-2">
-                            <Link className="nav-link-3 register-link" to="#">
+                            <Link
+                              className="nav-link-3 register-link"
+                              to="/register"
+                            >
                               註冊
                             </Link>
                           </li>

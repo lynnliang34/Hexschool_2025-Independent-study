@@ -10,6 +10,7 @@ export { default as UserProfile } from "./frontend/UserProfile";
 export { default as Checkout } from "./frontend/Checkout";
 
 // 登入頁面
+export { default as UserRegister } from "./login/UserRegister";
 export { default as UserLogin } from "./login/UserLogin";
 export { default as AdminLogin } from "./login/AdminLogin";
 
