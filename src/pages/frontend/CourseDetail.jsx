@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios"; 
 
@@ -102,7 +102,7 @@ export default function CourseDetail() {
                             <span className="fw-bold">5.場地與設備:</span>{course.content.venue_and_equipment}
                         </p>
                         <div className="d-flex justify-content-end">
-                            <button className="btn btn-secondary course-btn text-white fs-4">
+                            <Link to={`/schedule-courses/`} className="btn btn-secondary course-btn text-white fs-4">
                             預約課程
                             <svg
                                 className="course-arrow"
@@ -115,7 +115,7 @@ export default function CourseDetail() {
                                 fill="white"
                                 />
                             </svg>
-                            </button>
+                            </Link>
                         </div>
                         </div>
                     </div>)}

@@ -10,6 +10,7 @@ import {
   About,
   ExploreCourses,
   CourseDetail,
+  ScheduleCourses,
   UserLogin,
   UserProfile,
   AdminLogin,
@@ -44,6 +45,14 @@ const routes = [
       {
         path: "course-detail/:id",
         element: <CourseDetail />,
+      },
+      {
+        // 需登入才能進入
+        path: "schedule-courses",
+        element: (
+          <RequireUserAuth>
+            <ScheduleCourses />
+          </RequireUserAuth>),
       },
       {
         // 需登入才能進入
