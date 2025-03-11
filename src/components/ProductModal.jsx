@@ -311,7 +311,7 @@ function ProductModal({
                       type="text"
                       className="form-select"
                     >
-                      <option disabled defaultValue="">
+                      <option disabled value="">
                         請選擇分類
                       </option>
                       <option value="運動保健">運動保健</option>
@@ -332,7 +332,7 @@ function ProductModal({
                       type="text"
                       className="form-select"
                     >
-                      <option disabled defaultValue="">
+                      <option disabled value="">
                         請選擇單位
                       </option>
                       <option value="堂">堂</option>
