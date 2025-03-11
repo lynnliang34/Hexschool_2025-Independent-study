@@ -1,3 +1,7 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
 const aboutItems = [
   {
     title: "Everyone Different",
@@ -60,11 +64,15 @@ const AboutItem = ({
           colorClass === "primary" ? "me-auto" : "ms-auto"
         }`}
         style={{ backgroundImage: `url(${img})` }}
+        data-aos="flip-up"
       >
         <div
           className={`about-lg-slogan about-slogan-${
             colorClass === "primary" ? "right" : "left"
           } border border-${colorClass} rounded`}
+          data-aos={
+            colorClass === "primary" ? "fade-down-left" : "fade-down-right"
+          }
         >
           <h2 className={`fs-xl-1 text-${colorClass} mb-1`}>{title}</h2>
           <h2 className={`fs-xl-1 text-${colorClass}`}>{subtitle}</h2>
@@ -73,19 +81,27 @@ const AboutItem = ({
     </div>
   ) : (
     <div className="col mb-6 d-flex flex-column justify-content-center align-items-center">
-      <div className={`about-slogan border border-${colorClass} rounded`}>
+      <div
+        className={`about-slogan border border-${colorClass} rounded`}
+        data-aos="zoom-in-up"
+      >
         <h5 className={`text-${colorClass} mb-1`}>{title}</h5>
         <h5 className={`text-${colorClass}`}>{subtitle}</h5>
       </div>
       <div
         className={`about-bg bg-${bgColorClass} rounded px-5 pt-13 pb-3`}
         style={{ backgroundImage: `url(${img})` }}
+        data-aos="fade-up"
       ></div>
     </div>
   );
 };
 
 export default function About() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <>
       {/*section1*/}
