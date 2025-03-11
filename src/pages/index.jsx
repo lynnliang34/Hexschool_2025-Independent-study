@@ -7,6 +7,7 @@ export { default as CourseDetail } from "./frontend/CourseDetail";
 export { default as ScheduleCourses } from "./frontend/ScheduleCourses";
 export { default as Footer } from "../layout/Footer";
 export { default as UserProfile } from "./frontend/UserProfile";
+export { default as Checkout } from "./frontend/Checkout";
 
 // 登入頁面
 export { default as UserLogin } from "./login/UserLogin";

@@ -11,6 +11,7 @@ import {
   ExploreCourses,
   CourseDetail,
   ScheduleCourses,
+  Checkout,
   UserLogin,
   UserProfile,
   AdminLogin,
@@ -47,12 +48,17 @@ const routes = [
         element: <CourseDetail />,
       },
       {
+        path: "checkout",
+        element: <Checkout />,
+      },
+      {
         // 需登入才能進入
         path: "schedule-courses",
         element: (
           <RequireUserAuth>
             <ScheduleCourses />
-          </RequireUserAuth>),
+          </RequireUserAuth>
+        ),
       },
       {
         // 需登入才能進入

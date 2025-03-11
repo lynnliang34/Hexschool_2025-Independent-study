@@ -215,7 +215,7 @@ export default function Header() {
                           <li className="nav-item me-xl-2">
                             <Link
                               className="nav-link-3 provile-link"
-                              to="checkout.html"
+                              to="/checkout"
                             >
                               <svg
                                 className="provile-photo"
@@ -269,7 +269,7 @@ export default function Header() {
         {/* 購物車 */}
         {isAuthenticated ? (
           <div className="position-fixed cart-link-circle">
-            <Link className="nav-link-3 cart-link" to="checkout.html">
+            <Link className="nav-link-3 cart-link" to="/checkout">
               <i className="bi bi-cart-fill mt-3 me-1 position-relative">
                 <span
                   className="position-absolute cart-number translate-middle badge rounded-pill"
