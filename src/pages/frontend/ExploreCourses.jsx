@@ -52,7 +52,7 @@ export default function ExploreCourses() {
                     <div className="col" key={courseData.id}>
                         <div className="card px-2 pt-2 bg-primary-2 border-0">
                             <img src={courseData.imageUrl} 
-                            className="rounded"
+                            className="rounded card-img"
                                 alt="straighten" />
                             <div className="card-body px-0 pb-2">
                                 <h2
