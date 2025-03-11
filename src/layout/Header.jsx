@@ -104,7 +104,7 @@ export default function Header() {
                         {isAuthenticated ? (
                           <Link
                             className="provile-link mb-6"
-                            to="#"
+                            to="/profile"
                             onClick={closeMenuModal}
                           >
                             <div>
@@ -215,7 +215,7 @@ export default function Header() {
                           <li className="nav-item me-xl-2">
                             <Link
                               className="nav-link-3 provile-link"
-                              to="/checkout"
+                              to="/profile"
                             >
                               <svg
                                 className="provile-photo"
