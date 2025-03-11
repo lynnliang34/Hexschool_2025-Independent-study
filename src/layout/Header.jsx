@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate, useLocation } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../redux/userSlice";
+import { setPreviousPage, logoutUser } from "../redux/userSlice";
 import { useEffect, useRef } from "react";
 import { Modal } from "bootstrap";
 import {
@@ -22,6 +22,11 @@ export default function Header() {
   const menuModal = useRef(null); // 儲存 Modal 物件的引用
 
   const navigate = useNavigate(); // React Router 的導航函式
+  const location = useLocation();
+
+  const handleToLogin = () => {
+    dispatch(setPreviousPage(location.pathname)); // 記錄當前頁面
+  };
 
   // 登出功能
   const handleLogout = () => {
@@ -243,7 +248,11 @@ export default function Header() {
                             </Link>
                           </li>
                           <li className="nav-item">
-                            <Link className="nav-link-3 login-link" to="/login">
+                            <Link
+                              className="nav-link-3 login-link"
+                              to="/login"
+                              onClick={handleToLogin}
+                            >
                               登入
                             </Link>
                           </li>

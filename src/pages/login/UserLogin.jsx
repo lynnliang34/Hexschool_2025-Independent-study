@@ -34,6 +34,7 @@ export default function UserLogin() {
   // 發送登入請求，成功後將 token 存入 cookie，並設置全域的 Authorization 標頭，然後獲取產品列表。
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const previousPage = useSelector((state) => state.user.previousPage);
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -44,7 +45,7 @@ export default function UserLogin() {
       axios.defaults.headers.common["Authorization"] = token;
 
       dispatch(loginUser({ name: account.username }));
-      navigate("/profile");
+      navigate(previousPage, { replace: true }); // 返回點擊登入的頁面
     } catch (error) {
       dispatch(
         pushMessage({
