@@ -51,24 +51,25 @@ function ProductModal({
   const handleModalInputChange = (e) => {
     const { value, name, checked, type } = e.target;
 
-    if (type === "checkbox") {
-      setModalData({
-        ...modalData,
-        [name]: checked, // 更新 checkbox 在根層的值
-      });
-    } else {
+    if (name in modalData.content) {
       setModalData({
         ...modalData,
         content: {
           ...modalData.content,
-          [name]: value, // 更新 content 中的對應欄位
+          [name]: value,
         },
+      });
+    } else {
+      setModalData({
+        ...modalData,
+        [name]: type === "checkbox" ? checked : value,
       });
     }
   };
 
   // 新增產品
   const createProduct = async () => {
+    console.log(modalData);
     try {
       await axios.post(`${BASE_URL}/api/${API_PATH}/admin/product`, {
         data: {
@@ -79,7 +80,7 @@ function ProductModal({
         },
       });
     } catch (error) {
-      alert("新增產品失敗");
+      console.log(error.response.data.message);
     }
   };
 
