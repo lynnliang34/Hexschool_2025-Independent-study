@@ -50,7 +50,7 @@ export default function ExploreCourses() {
                 (course.map((courseData)=>{
                     return(
                     <div className="col" key={courseData.id}>
-                        <div className="card px-2 pt-2 bg-primary-2 border-0">
+                        <div className="card px-2 pt-2 bg-primary-2 border-0 h-100">
                             <img src={courseData.imageUrl} 
                             className="rounded card-img"
                                 alt="straighten" />
@@ -59,19 +59,19 @@ export default function ExploreCourses() {
                                     className="card-title text-primary border border-primary rounded-5px d-inline-block p-2 mb-3">
                                     {courseData.title}
                                 </h2>
-                                <p className="card-text fs-4 mb-3 up-to-2-lines">
+                                <p className="card-text fs-4 up-to-2-lines">
                                     {courseData.description}
                                 </p>
-                                <div className="d-flex">
-                                    {/* 注意：連結開頭無前置/表示相對於當前路徑的相對路徑，網址會變成explore-courses/course-detail/id */}
-                                    <Link to={`/course-detail/${courseData.id}`}
-                                        className="btn btn-outline-dark bg-white fs-7 d-flex ms-auto align-items-center py-lg-2">
-                                        了解更多
-                                        <span className="material-symbols-outlined ms-2">
-                                            chevron_right
-                                        </span>
-                                    </Link>
-                                </div>
+                            </div>
+                            <div className="card-footer bg-primary-2 border-0 d-flex px-0">
+                                {/* 注意：連結開頭無前置/表示相對於當前路徑的相對路徑，網址會變成explore-courses/course-detail/id */}
+                                <Link to={`/course-detail/${courseData.id}`}
+                                    className="btn btn-outline-dark bg-white fs-7 d-flex ms-auto align-items-center py-lg-2">
+                                    了解更多
+                                    <span className="material-symbols-outlined ms-2">
+                                        chevron_right
+                                    </span>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -144,62 +144,62 @@ export default function ExploreCourses() {
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/music.png)'}}>音樂</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/music.png)'}}>音樂</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/language.png)'}}>語言</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/language.png)'}}>語言</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/photography.png)'}}>攝影</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/photography.png)'}}>攝影</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/art.png)'}}>藝術</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/art.png)'}}>藝術</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/design.png)'}}>設計</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/design.png)'}}>設計</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/humanities.png)'}}>人文</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/humanities.png)'}}>人文</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/marketing.png)'}}>行銷</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/marketing.png)'}}>行銷</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/program.png)'}}>程式</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/program.png)'}}>程式</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/investment.png)'}}>投資理財</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/investment.png)'}}>投資理財</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/job-skills.png)'}}>職場技能</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/job-skills.png)'}}>職場技能</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/handmade.png)'}}>手做</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/handmade.png)'}}>手做</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(/images/explore-other-areas/life-style.png)'}}>生活品味</button>
+                            style={{backgroundImage: 'url(../images/explore-other-areas/life-style.png)'}}>生活品味</button>
                     </li>
                 </ul>
             </div>
