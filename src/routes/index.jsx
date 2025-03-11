@@ -50,7 +50,11 @@ const routes = [
       },
       {
         path: "checkout",
-        element: <Checkout />,
+        element: (
+          <RequireUserAuth>
+            <Checkout />,
+          </RequireUserAuth>
+        ),
       },
       {
         // 需登入才能進入
