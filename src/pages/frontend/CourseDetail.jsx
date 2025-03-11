@@ -57,11 +57,11 @@ export default function CourseDetail() {
                 />
                 {/* 判斷課程內容是否存在，存在才渲染畫面 */}
                 {course?.content &&(<p className="fs-7 mb-2">
-                1.課程時長:{course.content.課程時長}<br />
-                2.上課時間:{course.content.上課時間}<br />
-                3.適用年齡:{course.content.適用年齡}<br />
-                4.身體狀況要求:{course.content.身體狀況要求}<br />
-                5.場地與設備:{course.content.場地與設備}
+                1.課程時長:{course.content.class_duration}<br />
+                2.上課時間:{course.content.class_time}<br />
+                3.適用年齡:{course.content.suitable_age}<br />
+                4.身體狀況要求:{course.content.physical_requirements}<br />
+                5.場地與設備:{course.content.venue_and_equipment}
                 </p>)}
                 <button className="btn btn-secondary course-btn text-white">
                 預約課程
@@ -95,11 +95,11 @@ export default function CourseDetail() {
                     {course?.content && (<div className="col-5">
                         <div className="course-info py-5 px-6">
                         <p className="fs-5 mb-1">
-                            <span className="fw-bold">1.課程時長:</span>{course.content.課程時長}<br />
-                            <span className="fw-bold">2.上課時間:</span>{course.content.上課時間} <br />
-                            <span className="fw-bold">3.適用年齡:</span>{course.content.適用年齡}<br />
-                            <span className="fw-bold">4.身體狀況要求:</span>{course.content.身體狀況要求}<br />
-                            <span className="fw-bold">5.場地與設備:</span>{course.content.場地與設備}
+                            <span className="fw-bold">1.課程時長:</span>{course.content.class_duration}<br />
+                            <span className="fw-bold">2.上課時間:</span>{course.content.class_time} <br />
+                            <span className="fw-bold">3.適用年齡:</span>{course.content.suitable_age}<br />
+                            <span className="fw-bold">4.身體狀況要求:</span>{course.content.physical_requirements}<br />
+                            <span className="fw-bold">5.場地與設備:</span>{course.content.venue_and_equipment}
                         </p>
                         <div className="d-flex justify-content-end">
                             <button className="btn btn-secondary course-btn text-white fs-4">
