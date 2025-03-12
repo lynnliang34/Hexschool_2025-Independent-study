@@ -53,6 +53,10 @@ export default function Checkout() {
     }));
   };
 
+  // 4 發票選項
+  const [invoiceType, setInvoiceType] = useState("");
+  const [electronicInvoice, setElectronicInvoice] = useState("");
+
   return (
     <>
       <div className="container mt-4 mb-20 mt-lg-20 mb-lg-36">
@@ -542,6 +546,8 @@ export default function Checkout() {
                   className="form-select checkout-input"
                   id="typeOfInvoice"
                   aria-label="Default select example"
+                  value={invoiceType}
+                  onChange={(e) => setInvoiceType(e.target.value)}
                 >
                   <option disabled value="">
                     請選擇
@@ -556,20 +562,45 @@ export default function Checkout() {
               </div>
 
               {/*電子發票 */}
-              <div className="electronic-invoice invoice-section w-100 d-flex align-items-end mb-md-7 mb-lg-8">
-                <select
-                  className="form-select checkout-input"
-                  id="electronicInvoiceSelect"
-                  aria-label="Default select example"
-                  disabled
-                >
-                  <option disabled value="">
-                    請選擇
-                  </option>
-                  <option value="natural-person-barcode">自然人憑證條碼</option>
-                  <option value="cell-phone-barcode">手機條碼</option>
-                </select>
-              </div>
+              {invoiceType === "" && (
+                <div className="electronic-invoice invoice-section w-100 d-flex align-items-end mb-md-7 mb-lg-8">
+                  <select
+                    className="form-select checkout-input"
+                    id="electronicInvoiceSelect"
+                    aria-label="Default select example"
+                    value={electronicInvoice}
+                    onChange={(e) => setElectronicInvoice(e.target.value)}
+                    disabled
+                  >
+                    <option disabled value="">
+                      請選擇
+                    </option>
+                    <option value="citizen-digital-certificate">
+                      自然人憑證條碼
+                    </option>
+                    <option value="mobile-barcode">手機條碼</option>
+                  </select>
+                </div>
+              )}
+              {invoiceType === "electronic" && (
+                <div className="electronic-invoice invoice-section w-100 d-flex align-items-end mb-md-7 mb-lg-8">
+                  <select
+                    className="form-select checkout-input"
+                    id="electronicInvoiceSelect"
+                    aria-label="Default select example"
+                    value={electronicInvoice}
+                    onChange={(e) => setElectronicInvoice(e.target.value)}
+                  >
+                    <option disabled value="">
+                      請選擇
+                    </option>
+                    <option value="citizen-digital-certificate">
+                      自然人憑證條碼
+                    </option>
+                    <option value="mobile-barcode">手機條碼</option>
+                  </select>
+                </div>
+              )}
 
               {/*統編條碼 */}
               <div className="government-uniform-invoice invoice-section w-100 me-2 me-lg-6 mb-3 mb-md-0 d-none">
@@ -630,21 +661,59 @@ export default function Checkout() {
             {/*第三行輸入欄 */}
             <div className="d-md-flex justify-content-between">
               {/*載具類別 */}
-              <div className="electronic-invoice invoice-section w-100">
-                <label
-                  htmlFor="carrierTypeInput"
-                  className="form-label checkout-label mb-1 mb-lg-2"
-                >
-                  載具類別<span className="text-primary ms-1">*</span>
-                </label>
-                <input
-                  className="form-control checkout-input"
-                  id="carrierTypeInput"
-                  type="text"
-                  placeholder="請輸入載具"
-                  disabled
-                />
-              </div>
+              {electronicInvoice === "" && (
+                <div className="electronic-invoice invoice-section w-100">
+                  <label
+                    htmlFor="carrierTypeInput"
+                    className="form-label checkout-label mb-1 mb-lg-2"
+                  >
+                    載具類別<span className="text-primary ms-1">*</span>
+                  </label>
+                  <input
+                    className="form-control checkout-input"
+                    id="carrierTypeInput"
+                    type="text"
+                    placeholder="請輸入載具"
+                    disabled
+                  />
+                </div>
+              )}
+
+              {invoiceType === "electronic" &&
+                electronicInvoice === "citizen-digital-certificate" && (
+                  <div className="electronic-invoice invoice-section w-100">
+                    <label
+                      htmlFor="citizenDigitalCertificate"
+                      className="form-label checkout-label mb-1 mb-lg-2"
+                    >
+                      自然人憑證條碼<span className="text-primary ms-1">*</span>
+                    </label>
+                    <input
+                      className="form-control checkout-input"
+                      id="citizenDigitalCertificate"
+                      type="text"
+                      placeholder="請輸入憑證碼，由2碼大寫字母加上14碼數字組成"
+                    />
+                  </div>
+                )}
+
+              {invoiceType === "electronic" &&
+                electronicInvoice === "mobile-barcode" && (
+                  <div className="electronic-invoice invoice-section w-100">
+                    <label
+                      htmlFor="mobileBarcode"
+                      className="form-label checkout-label mb-1 mb-lg-2"
+                    >
+                      手機條碼<span className="text-primary ms-1">*</span>
+                    </label>
+                    <input
+                      className="form-control checkout-input"
+                      id="mobileBarcode"
+                      type="text"
+                      placeholder="請輸入手機條碼，/ 開頭共8碼"
+                    />
+                  </div>
+                )}
 
               {/*公司地址 */}
               <div className="government-uniform-invoice invoice-section w-100 d-none">
