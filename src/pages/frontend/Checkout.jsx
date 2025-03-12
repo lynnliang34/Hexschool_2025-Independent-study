@@ -56,6 +56,7 @@ export default function Checkout() {
   // 4 發票選項
   const [invoiceType, setInvoiceType] = useState("");
   const [electronicInvoice, setElectronicInvoice] = useState("");
+  const [donationInvoice, setDonationInvoice] = useState("");
 
   return (
     <>
@@ -603,81 +604,90 @@ export default function Checkout() {
               )}
 
               {/*統編條碼 */}
-              <div className="government-uniform-invoice invoice-section w-100 me-2 me-lg-6 mb-3 mb-md-0 d-none">
-                <label
-                  htmlFor="taxIdNumberInput"
-                  className="form-label checkout-label mb-1 mb-lg-2"
-                >
-                  統一編號<span className="text-primary ms-1">*</span>
-                </label>
-                <input
-                  className="form-control checkout-input"
-                  id="taxIdNumberInput"
-                  type="tel"
-                  inputMode="numeric"
-                  name="tax-ID-number"
-                  maxLength="8"
-                  placeholder="送出後無法更改，請務必確認"
-                />
-              </div>
-              <div className="government-uniform-invoice invoice-section w-100 d-none">
-                <label
-                  htmlFor="receiptTitleInput"
-                  className="form-label checkout-label mb-1 mb-lg-2"
-                >
-                  發票抬頭<span className="text-primary ms-1">*</span>
-                </label>
-                <input
-                  className="form-control checkout-input"
-                  id="receiptTitleInput"
-                  type="text"
-                  name="receipt-title"
-                  placeholder="送出後無法更改，請務必確認"
-                />
-              </div>
+              {invoiceType === "GUI-number" && (
+                <>
+                  <div className="government-uniform-invoice invoice-section w-100 me-2 me-lg-6 mb-3 mb-md-0">
+                    <label
+                      htmlFor="taxIdNumberInput"
+                      className="form-label checkout-label mb-1 mb-lg-2"
+                    >
+                      統一編號<span className="text-primary ms-1">*</span>
+                    </label>
+                    <input
+                      className="form-control checkout-input"
+                      id="taxIdNumberInput"
+                      type="tel"
+                      inputMode="numeric"
+                      name="tax-ID-number"
+                      maxLength="8"
+                      placeholder="送出後無法更改，請務必確認"
+                    />
+                  </div>
+                  <div className="government-uniform-invoice invoice-section w-100">
+                    <label
+                      htmlFor="receiptTitleInput"
+                      className="form-label checkout-label mb-1 mb-lg-2"
+                    >
+                      發票抬頭<span className="text-primary ms-1">*</span>
+                    </label>
+                    <input
+                      className="form-control checkout-input"
+                      id="receiptTitleInput"
+                      type="text"
+                      name="receipt-title"
+                      placeholder="送出後無法更改，請務必確認"
+                    />
+                  </div>
+                </>
+              )}
 
               {/*捐贈發票 */}
-              <div className="donation-invoice invoice-section w-100 d-flex align-items-end d-none">
-                <select
-                  className="form-select checkout-input"
-                  id="donationInvoiceSelect"
-                  aria-label="Default select example"
-                >
-                  <option disabled value="">
-                    請選擇
-                  </option>
-                  <option value="2468">
-                    社團法人中華民國老人福利關懷協會（2468）
-                  </option>
-                  <option value="13579">陽光社會福利基金會（13579）</option>
-                  <option value="25885">
-                    財團法人伊甸社會福利基金會（25885）
-                  </option>
-                  <option value="input-donation-code">輸入捐贈碼</option>
-                </select>
-              </div>
+              {invoiceType === "donation" && (
+                <div className="donation-invoice invoice-section w-100 d-flex align-items-end mb-md-7 mb-lg-8">
+                  <select
+                    className="form-select checkout-input"
+                    id="donationInvoiceSelect"
+                    aria-label="Default select example"
+                    value={donationInvoice}
+                    onChange={(e) => setDonationInvoice(e.target.value)}
+                  >
+                    <option disabled value="">
+                      請選擇
+                    </option>
+                    <option value="2468">
+                      社團法人中華民國老人福利關懷協會（2468）
+                    </option>
+                    <option value="13579">陽光社會福利基金會（13579）</option>
+                    <option value="25885">
+                      財團法人伊甸社會福利基金會（25885）
+                    </option>
+                    <option value="input-donation-code">輸入捐贈碼</option>
+                  </select>
+                </div>
+              )}
             </div>
 
             {/*第三行輸入欄 */}
             <div className="d-md-flex justify-content-between">
               {/*載具類別 */}
-              {electronicInvoice === "" && (
-                <div className="electronic-invoice invoice-section w-100">
-                  <label
-                    htmlFor="carrierTypeInput"
-                    className="form-label checkout-label mb-1 mb-lg-2"
-                  >
-                    載具類別<span className="text-primary ms-1">*</span>
-                  </label>
-                  <input
-                    className="form-control checkout-input"
-                    id="carrierTypeInput"
-                    type="text"
-                    placeholder="請輸入載具"
-                    disabled
-                  />
-                </div>
-              )}
+              {(invoiceType === "" || invoiceType === "electronic") &&
+                electronicInvoice === "" && (
+                  <div className="electronic-invoice invoice-section w-100">
+                    <label
+                      htmlFor="carrierTypeInput"
+                      className="form-label checkout-label mb-1 mb-lg-2"
+                    >
+                      載具類別<span className="text-primary ms-1">*</span>
+                    </label>
+                    <input
+                      className="form-control checkout-input"
+                      id="carrierTypeInput"
+                      type="text"
+                      placeholder="請輸入載具"
+                      disabled
+                    />
+                  </div>
+                )}
 
               {invoiceType === "electronic" &&
                 electronicInvoice === "citizen-digital-certificate" && (
@@ -716,47 +726,52 @@ export default function Checkout() {
                 )}
 
               {/*公司地址 */}
-              <div className="government-uniform-invoice invoice-section w-100 d-none">
-                <div className="d-md-flex justify-content-between mb-3 mb-md-6">
-                  {/*地址  */}
-                  <div className="w-100 me-2 me-lg-6 mb-3 mb-md-0">
-                    <label
-                      htmlFor="companyAddressInput"
-                      className="form-label checkout-label mb-1 mb-lg-2"
-                    >
-                      公司地址<span className="text-primary ms-1">*</span>
-                    </label>
-                    <input
-                      className="form-control checkout-input"
-                      id="companyAddressInput"
-                      type="text"
-                      name="company-address"
-                      placeholder="請輸入公司地址"
-                    />
-                  </div>
+              {invoiceType === "GUI-number" && (
+                <div className="government-uniform-invoice invoice-section w-100">
+                  <div className="d-md-flex justify-content-between mb-3 mb-md-6">
+                    {/*地址  */}
+                    <div className="w-100 me-2 me-lg-6 mb-3 mb-md-0">
+                      <label
+                        htmlFor="companyAddressInput"
+                        className="form-label checkout-label mb-1 mb-lg-2"
+                      >
+                        公司地址<span className="text-primary ms-1">*</span>
+                      </label>
+                      <input
+                        className="form-control checkout-input"
+                        id="companyAddressInput"
+                        type="text"
+                        name="company-address"
+                        placeholder="請輸入公司地址"
+                      />
+                    </div>
 
-                  {/*郵遞區號 */}
-                  <div className="w-100 d-flex align-items-end">
-                    <input
-                      className="form-control checkout-input"
-                      id="companyPostalCodeInput"
-                      type="text"
-                      name="company-postal-code"
-                      placeholder="請輸入郵遞區號"
-                    />
+                    {/*郵遞區號 */}
+                    <div className="w-100 d-flex align-items-end">
+                      <input
+                        className="form-control checkout-input"
+                        id="companyPostalCodeInput"
+                        type="text"
+                        name="company-postal-code"
+                        placeholder="請輸入郵遞區號"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               {/*輸入捐贈碼 */}
-              <div className="invoice-section donation-invoice-section w-100 d-none">
-                <input
-                  className="form-control checkout-input"
-                  id="donationInvoiceInput"
-                  type="text"
-                  placeholder="輸入捐贈碼"
-                />
-              </div>
+              {invoiceType === "donation" &&
+                donationInvoice === "input-donation-code" && (
+                  <div className="invoice-section donation-invoice-section w-100">
+                    <input
+                      className="form-control checkout-input"
+                      id="donationInvoiceInput"
+                      type="text"
+                      placeholder="輸入捐贈碼"
+                    />
+                  </div>
+                )}
             </div>
           </form>
         </div>
