@@ -39,28 +39,28 @@ const PhotoSwiper=()=>{
         
             {/* <!-- Slides --> */}
             <SwiperSlide>
-                <img className="rounded" src="/images/17925.png" alt="older-stretching"/>
+                <img className="rounded" src="../images/17925.png" alt="older-stretching"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img className="rounded" src="/images/1520.png" alt="older-chatting"/>
+                <img className="rounded" src="../images/1520.png" alt="older-chatting"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img className="rounded" src="/images/2148694276.png" alt="older-walking"/>
+                <img className="rounded" src="../images/2148694276.png" alt="older-walking"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img className="rounded" src="/images/istockphoto-1898253813-612x612.png" alt="older-yoga"/>
+                <img className="rounded" src="../images/istockphoto-1898253813-612x612.png" alt="older-yoga"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img className="rounded" src="/images/17925.png" alt="older-stretching"/>
+                <img className="rounded" src="../images/17925.png" alt="older-stretching"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img className="rounded" src="/images/1520.png" alt="older-chatting"/>
+                <img className="rounded" src="../images/1520.png" alt="older-chatting"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img className="rounded" src="/images/2148694276.png" alt="older-walking"/>
+                <img className="rounded" src="../images/2148694276.png" alt="older-walking"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img className="rounded" src="/images/istockphoto-1898253813-612x612.png" alt="older-yoga"/>
+                <img className="rounded" src="../images/istockphoto-1898253813-612x612.png" alt="older-yoga"/>
             </SwiperSlide>
       </Swiper>
     </section>

@@ -10,6 +10,9 @@ import {
   About,
   ExploreCourses,
   CourseDetail,
+  ScheduleCourses,
+  Checkout,
+  UserRegister,
   UserLogin,
   UserProfile,
   AdminLogin,
@@ -46,6 +49,23 @@ const routes = [
         element: <CourseDetail />,
       },
       {
+        path: "checkout",
+        element: (
+          <RequireUserAuth>
+            <Checkout />,
+          </RequireUserAuth>
+        ),
+      },
+      {
+        // 需登入才能進入
+        path: "schedule-courses",
+        element: (
+          <RequireUserAuth>
+            <ScheduleCourses />
+          </RequireUserAuth>
+        ),
+      },
+      {
         // 需登入才能進入
         path: "profile",
         element: (
@@ -55,6 +75,11 @@ const routes = [
         ),
       },
     ],
+  },
+  {
+    // 前台使用者註冊頁
+    path: "/register",
+    element: <UserRegister />,
   },
   {
     // 前台使用者登入頁

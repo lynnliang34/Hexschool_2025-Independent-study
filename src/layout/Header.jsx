@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate, useLocation } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../redux/userSlice";
+import { setPreviousPage, logoutUser } from "../redux/userSlice";
 import { useEffect, useRef } from "react";
 import { Modal } from "bootstrap";
 import {
@@ -22,6 +22,11 @@ export default function Header() {
   const menuModal = useRef(null); // 儲存 Modal 物件的引用
 
   const navigate = useNavigate(); // React Router 的導航函式
+  const location = useLocation();
+
+  const handleToLogin = () => {
+    dispatch(setPreviousPage(location.pathname)); // 記錄當前頁面
+  };
 
   // 登出功能
   const handleLogout = () => {
@@ -99,7 +104,7 @@ export default function Header() {
                         {isAuthenticated ? (
                           <Link
                             className="provile-link mb-6"
-                            to="#"
+                            to="/profile"
                             onClick={closeMenuModal}
                           >
                             <div>
@@ -135,7 +140,7 @@ export default function Header() {
                             <>
                               <Link
                                 className="modal-link-3 register-link me-2"
-                                to="#"
+                                to="/register"
                                 onClick={closeMenuModal}
                               >
                                 註冊
@@ -210,7 +215,7 @@ export default function Header() {
                           <li className="nav-item me-xl-2">
                             <Link
                               className="nav-link-3 provile-link"
-                              to="checkout.html"
+                              to="/profile"
                             >
                               <svg
                                 className="provile-photo"
@@ -238,12 +243,19 @@ export default function Header() {
                       ) : (
                         <>
                           <li className="nav-item me-xl-2">
-                            <Link className="nav-link-3 register-link" to="#">
+                            <Link
+                              className="nav-link-3 register-link"
+                              to="/register"
+                            >
                               註冊
                             </Link>
                           </li>
                           <li className="nav-item">
-                            <Link className="nav-link-3 login-link" to="/login">
+                            <Link
+                              className="nav-link-3 login-link"
+                              to="/login"
+                              onClick={handleToLogin}
+                            >
                               登入
                             </Link>
                           </li>
@@ -260,7 +272,7 @@ export default function Header() {
         {/* 購物車 */}
         {isAuthenticated ? (
           <div className="position-fixed cart-link-circle">
-            <Link className="nav-link-3 cart-link" to="checkout.html">
+            <Link className="nav-link-3 cart-link" to="/checkout">
               <i className="bi bi-cart-fill mt-3 me-1 position-relative">
                 <span
                   className="position-absolute cart-number translate-middle badge rounded-pill"

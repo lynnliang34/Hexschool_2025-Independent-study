@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios"; 
 
@@ -13,17 +13,17 @@ export default function CourseDetail() {
     // 取得指定id課程資料
     useEffect(()=>{
         const getCourse = async()=>{
-            const response = await axios.get(`${BASE_URL}/api/${API_PATH}/product/${id}`)
             try{
+                const response = await axios.get(`${BASE_URL}/api/${API_PATH}/product/${id}`)
                 setCourse(response.data.product);
-                console.log(course);
             }
             catch(err){
                 alert('資料取得失敗');
             }
         };
         getCourse();
-    },[])
+    },[id]);
+    // 課程id變化時重新取得資料
 
     return (<>
         {/* <!-- section1 --> */}
@@ -31,12 +31,12 @@ export default function CourseDetail() {
             {/* <!-- 分隔線 --> */}
             <picture>
                 <source
-                srcSet="/images/dividers/divider-sm.png"
+                srcSet="./images/dividers/divider-sm.png"
                 media="(max-width: 576px)"
                 className="mt-4 mb-2"
                 />
                 <img
-                src="/images/dividers/divider-lg.png"
+                src="./images/dividers/divider-lg.png"
                 alt=""
                 className="d-lg-none"
                 />
@@ -55,9 +55,14 @@ export default function CourseDetail() {
                 alt=""
                 className="object-fit-cover rounded-20 course-img mb-2"
                 />
-                <p className="fs-7 mb-2">
-                {course.content}
-                </p>
+                {/* 判斷課程內容是否存在，存在才渲染畫面 */}
+                {course?.content &&(<p className="fs-7 mb-2">
+                1.課程時長:{course.content.class_duration}<br />
+                2.上課時間:{course.content.class_time}<br />
+                3.適用年齡:{course.content.suitable_age}<br />
+                4.身體狀況要求:{course.content.physical_requirements}<br />
+                5.場地與設備:{course.content.venue_and_equipment}
+                </p>)}
                 <button className="btn btn-secondary course-btn text-white">
                 預約課程
                     <svg
@@ -87,13 +92,17 @@ export default function CourseDetail() {
                         className="object-fit-cover rounded-20 course-lg-img"
                         />
                     </div>
-                    <div className="col-5">
+                    {course?.content && (<div className="col-5">
                         <div className="course-info py-5 px-6">
                         <p className="fs-5 mb-1">
-                        {course.content}
+                            <span className="fw-bold">1.課程時長:</span>{course.content.class_duration}<br />
+                            <span className="fw-bold">2.上課時間:</span>{course.content.class_time} <br />
+                            <span className="fw-bold">3.適用年齡:</span>{course.content.suitable_age}<br />
+                            <span className="fw-bold">4.身體狀況要求:</span>{course.content.physical_requirements}<br />
+                            <span className="fw-bold">5.場地與設備:</span>{course.content.venue_and_equipment}
                         </p>
                         <div className="d-flex justify-content-end">
-                            <button className="btn btn-secondary course-btn text-white fs-4">
+                            <Link to={`/schedule-courses/`} className="btn btn-secondary course-btn text-white fs-4">
                             預約課程
                             <svg
                                 className="course-arrow"
@@ -106,10 +115,10 @@ export default function CourseDetail() {
                                 fill="white"
                                 />
                             </svg>
-                            </button>
+                            </Link>
                         </div>
                         </div>
-                    </div>
+                    </div>)}
                 </div>
             </div>
         </div>
@@ -119,11 +128,11 @@ export default function CourseDetail() {
             {/* <!-- 分隔線 --> */}
             <picture>
                 <source
-                srcSet="/images/dividers/divider-sm.png"
+                srcSet="./images/dividers/divider-sm.png"
                 media="(max-width: 576px)"
                 />
                 <img
-                src="/images/dividers/divider-lg.png"
+                src="./images/dividers/divider-lg.png"
                 alt=""
                 className="mt-6 mt-lg-10 mb-2 mb-lg-4"
                 />
@@ -153,7 +162,7 @@ export default function CourseDetail() {
                         低衝擊性設計
                         </h3>
                         <img
-                            src="/images/workout-home-old-woman-with-hands-waist.png"
+                            src="./images/workout-home-old-woman-with-hands-waist.png"
                             alt=""
                             className="object-fit-cover features-img"
                         />
@@ -171,7 +180,7 @@ export default function CourseDetail() {
                             靈活的強度調整
                         </h3>
                         <img
-                            src="/images/side-view-man-running-gym.png"
+                            src="./images/side-view-man-running-gym.png"
                             alt=""
                             className="object-fit-cover features-img"
                         />
@@ -193,11 +202,11 @@ export default function CourseDetail() {
             {/* <!-- 分隔線 --> */}
             <picture>
                 <source
-                    srcSet="/images/dividers/divider-sm.png"
+                    srcSet="./images/dividers/divider-sm.png"
                     media="(max-width: 576px)"
                 />
                 <img
-                    src="/images/dividers/divider-lg.png"
+                    src="./images/dividers/divider-lg.png"
                     alt=""
                     className="mt-6 mt-lg-10 mb-2 mb-lg-4"
                 />
@@ -213,7 +222,7 @@ export default function CourseDetail() {
                         <div className="top-left-decoration"></div>
                         <div className="service-img-overlay">
                             <img
-                                src="/images/Exclude.png"
+                                src="./images/Exclude.png"
                                 alt=""
                                 className="object-fit-cover service-img"
                             />
@@ -232,7 +241,7 @@ export default function CourseDetail() {
                         <div className="top-left-decoration"></div>
                         <div className="service-img-overlay">
                             <img
-                                src="/images/Exclude-1-1.png"
+                                src="./images/Exclude-1-1.png"
                                 alt=""
                                 className="object-fit-cover service-img"
                             />
@@ -251,7 +260,7 @@ export default function CourseDetail() {
                         <div className="top-left-decoration"></div>
                         <div className="service-img-overlay">
                             <img
-                                src="/images/Exclude-2.png"
+                                src="./images/Exclude-2.png"
                                 alt=""
                                 className="object-fit-cover service-img"
                             />
@@ -270,11 +279,11 @@ export default function CourseDetail() {
         {/* <!-- 分隔線 --> */}
         <picture>
             <source
-            srcSet="/images/dividers/divider-sm.png"
+            srcSet="./images/dividers/divider-sm.png"
             media="(max-width: 576px)"
             />
             <img
-            src="/images/dividers/divider-lg.png"
+            src="./images/dividers/divider-lg.png"
             alt=""
             className="mt-6 mt-lg-10 mb-2 mb-lg-4"
             />
@@ -291,7 +300,7 @@ export default function CourseDetail() {
                         className="d-flex flex-column justify-content-center align-items-center"
                     >
                         <img
-                        src="/images/Teachers/Hui-Zhen Lin.png"
+                        src="./images/Teachers/Hui-Zhen Lin.png"
                         className="teacher-img mb-1 mb-lg-2"
                         alt="..."
                         />
@@ -320,7 +329,7 @@ export default function CourseDetail() {
                         className="d-flex flex-column justify-content-center align-items-center"
                     >
                         <img
-                        src="/images/Teachers/Wei-Ming Zhang.png"
+                        src="./images/Teachers/Wei-Ming Zhang.png"
                         className="teacher-img mb-1 mb-lg-2"
                         alt="..."
                         />
@@ -349,7 +358,7 @@ export default function CourseDetail() {
                         className="d-flex flex-column justify-content-center align-items-center"
                     >
                         <img
-                        src="/images/Teachers/Mei-Lan Li.png"
+                        src="./images/Teachers/Mei-Lan Li.png"
                         className="teacher-img mb-1 mb-lg-2"
                         alt="..."
                         />
@@ -378,7 +387,7 @@ export default function CourseDetail() {
                         className="d-flex flex-column justify-content-center align-items-center"
                     >
                         <img
-                        src="/images/Teachers/Zhi-Qiang Wang.png"
+                        src="./images/Teachers/Zhi-Qiang Wang.png"
                         className="teacher-img mb-1 mb-lg-2"
                         alt="..."
                         />
