@@ -57,6 +57,20 @@ export default function Checkout() {
   const [invoiceType, setInvoiceType] = useState("");
   const [electronicInvoice, setElectronicInvoice] = useState("");
   const [donationInvoice, setDonationInvoice] = useState("");
+  const [customerInfo, setCustomerInfo] = useState({
+    customer_name: "",
+    customer_email: "",
+  });
+
+  // 處理顧客姓名、電子郵件輸入
+  const handleCustomerInfoChange = (e) => {
+    const { name, value } = e.target;
+
+    setCustomerInfo({
+      ...customerInfo,
+      [name]: value,
+    });
+  };
 
   return (
     <>
@@ -510,7 +524,9 @@ export default function Checkout() {
                   className="form-control checkout-input"
                   id="checkoutNameInput"
                   type="text"
-                  name="checkout-name"
+                  name="customer_name"
+                  value={customerInfo.customer_name}
+                  onChange={handleCustomerInfoChange}
                   placeholder="請輸入真實姓名"
                 />
               </div>
@@ -527,7 +543,9 @@ export default function Checkout() {
                   className="form-control checkout-input"
                   id="checkoutEmailInput"
                   type="text"
-                  name="checkout-email"
+                  name="customer_email"
+                  value={customerInfo.customer_email}
+                  onChange={handleCustomerInfoChange}
                   placeholder="請輸入電子信箱"
                 />
               </div>
