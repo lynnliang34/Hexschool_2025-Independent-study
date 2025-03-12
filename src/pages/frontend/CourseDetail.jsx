@@ -86,7 +86,9 @@ export default function CourseDetail() {
                 4.身體狀況要求:{course.content.physical_requirements}<br />
                 5.場地與設備:{course.content.venue_and_equipment}
                 </p>)}
-                <button className="btn btn-secondary course-btn text-white">
+                <button 
+                onClick={handleBookCourse}
+                className="btn btn-secondary course-btn text-white">
                 預約課程
                     <svg
                         className="course-arrow"
