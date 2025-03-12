@@ -1,4 +1,19 @@
+import { useState } from "react";
+
 export default function Checkout() {
+  // 3 付款方式
+  const [paymentMethod, setPaymentMethod] = useState(null);
+  const [mobilePayment, setMobilePayment] = useState(null);
+
+  // 選擇付款方式，顯示對應區塊
+  const handleChangePaymentMethod = (method) => {
+    setPaymentMethod(paymentMethod === method ? null : method);
+  };
+
+  const handleChangeMobilePayment = (method) => {
+    setMobilePayment(mobilePayment === method ? null : method);
+  };
+
   return (
     <>
       <div className="container mt-4 mb-20 mt-lg-20 mb-lg-36">
@@ -289,91 +304,125 @@ export default function Checkout() {
 
           <form id="payment">
             <div className="d-flex mb-3 mb-lg-6">
-              <button className="btn btn-outline-primary checkout-btn btn-w-credit-card me-2 me-lg-6">
+              <button
+                type="button"
+                className={`btn btn-outline-primary checkout-btn btn-w-credit-card me-2 me-lg-6 ${
+                  paymentMethod === "credit-card" ? "active" : ""
+                }`}
+                onClick={() => {
+                  handleChangePaymentMethod("credit-card");
+                  setMobilePayment(null);
+                }}
+              >
                 信用卡
               </button>
-              <button className="btn btn-outline-primary checkout-btn btn-w-mobile-payment">
+              <button
+                type="button"
+                className={`btn btn-outline-primary checkout-btn btn-w-mobile-payment ${
+                  paymentMethod === "mobile-payment" ? "active" : ""
+                }`}
+                onClick={() => {
+                  handleChangePaymentMethod("mobile-payment");
+                  paymentMethod === null && setMobilePayment(null);
+                }}
+              >
                 行動支付
               </button>
             </div>
 
             {/*信用卡 */}
-            <div className="credit-card d-flex flex-column flex-md-row d-none">
-              <div className="credit-card-number me-md-2 me-lg-6">
-                <label
-                  htmlFor="creditCardNumberInput"
-                  className="form-label checkout-label mb-1 mb-lg-2"
-                >
-                  信用卡卡號<span className="text-primary ms-1">*</span>
-                </label>
-                <input
-                  className="form-control checkout-input mb-3 mb-md-0"
-                  id="creditCardNumberInput"
-                  type="tel"
-                  name="card-number"
-                  inputMode="numeric"
-                  pattern="[0-9\s]{13,19}"
-                  maxLength="19"
-                  placeholder="**** **** **** ****"
-                />
-              </div>
-              <div className="credit-card-info d-flex justify-content-between">
-                <div className="w-50 me-2 me-lg-6">
+            {paymentMethod === "credit-card" && (
+              <div className="credit-card d-flex flex-column flex-md-row">
+                <div className="credit-card-number me-md-2 me-lg-6">
                   <label
-                    htmlFor="cardExpiryDateInput"
+                    htmlFor="creditCardNumberInput"
                     className="form-label checkout-label mb-1 mb-lg-2"
                   >
-                    有效期限
+                    信用卡卡號<span className="text-primary ms-1">*</span>
                   </label>
                   <input
-                    className="form-control checkout-input"
-                    id="cardExpiryDateInput"
-                    type="text"
-                    name="expiry-date"
-                    inputMode="numeric"
-                    pattern="(0[1-9]|1[0-2])\/\d{2}"
-                    maxLength="5"
-                    placeholder="MM / YY"
-                  />
-                </div>
-                <div className="w-50 me-2 me-lg-6">
-                  <label
-                    htmlFor="CVCInput"
-                    className="form-label checkout-label mb-1 mb-lg-2"
-                  >
-                    辨識碼
-                  </label>
-                  <input
-                    className="form-control checkout-input"
-                    id="CVCInput"
+                    className="form-control checkout-input mb-3 mb-md-0"
+                    id="creditCardNumberInput"
                     type="tel"
-                    name="CVC"
+                    name="card-number"
                     inputMode="numeric"
-                    pattern="\d{3,4}"
-                    maxLength="4"
-                    placeholder="CVC/CVV"
+                    pattern="[0-9\s]{13,19}"
+                    maxLength="19"
+                    placeholder="**** **** **** ****"
                   />
                 </div>
+                <div className="credit-card-info d-flex justify-content-between">
+                  <div className="w-50 me-2 me-lg-6">
+                    <label
+                      htmlFor="cardExpiryDateInput"
+                      className="form-label checkout-label mb-1 mb-lg-2"
+                    >
+                      有效期限
+                    </label>
+                    <input
+                      className="form-control checkout-input"
+                      id="cardExpiryDateInput"
+                      type="text"
+                      name="expiry-date"
+                      inputMode="numeric"
+                      pattern="(0[1-9]|1[0-2])\/\d{2}"
+                      maxLength="5"
+                      placeholder="MM / YY"
+                    />
+                  </div>
+                  <div className="w-50 me-2 me-lg-6">
+                    <label
+                      htmlFor="CVCInput"
+                      className="form-label checkout-label mb-1 mb-lg-2"
+                    >
+                      辨識碼
+                    </label>
+                    <input
+                      className="form-control checkout-input"
+                      id="CVCInput"
+                      type="tel"
+                      name="CVC"
+                      inputMode="numeric"
+                      pattern="\d{3,4}"
+                      maxLength="4"
+                      placeholder="CVC/CVV"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
 
             {/*行動支付 */}
-            <div className="mobile-payment d-flex mb-3 mb-lg-6 d-none">
-              <button className="btn btn-mobile-payment me-2 me-lg-6">
-                <img
-                  className="mobile-payment-img"
-                  src="/assets/images/payment/Line Pay.png"
-                  alt=""
-                />
-              </button>
-              <button className="btn btn-mobile-payment">
-                <img
-                  className="mobile-payment-img"
-                  src="/assets/images/payment/JKO Pay.png"
-                  alt=""
-                />
-              </button>
-            </div>
+            {paymentMethod === "mobile-payment" && (
+              <div className="mobile-payment d-flex mb-3 mb-lg-6 ">
+                <button
+                  type="button"
+                  className={`btn btn-mobile-payment me-2 me-lg-6 ${
+                    mobilePayment === "Line-pay" ? "active" : ""
+                  }`}
+                  onClick={() => handleChangeMobilePayment("Line-pay")}
+                >
+                  <img
+                    className="mobile-payment-img"
+                    src="./images/payment/Line Pay.png"
+                    alt=""
+                  />
+                </button>
+                <button
+                  type="button"
+                  className={`btn btn-mobile-payment me-2 me-lg-6 ${
+                    mobilePayment === "JKO-pay" ? "active" : ""
+                  }`}
+                  onClick={() => handleChangeMobilePayment("JKO-pay")}
+                >
+                  <img
+                    className="mobile-payment-img"
+                    src="./images/payment/JKO Pay.png"
+                    alt=""
+                  />
+                </button>
+              </div>
+            )}
           </form>
         </div>
 
