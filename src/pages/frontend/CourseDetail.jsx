@@ -1,6 +1,8 @@
-import { Link, useParams } from "react-router";
+import { Link, useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios"; 
+import { useSelector, useDispatch } from "react-redux";
+import { setPreviousPage } from "../../redux/userSlice";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -22,8 +24,29 @@ export default function CourseDetail() {
             }
         };
         getCourse();
-    },[id]);
-    // 課程id變化時重新取得資料
+    },[id]); // 課程id變化時重新取得資料
+
+
+    // 從Redux store取得使用者的登入狀態（true 或 false）
+    const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+    // 從 React Router 的 useNavigate hook 取得，用於頁面導航
+    const navigate = useNavigate();
+    // 從 useDispatch hook 取得，用於發送 actions 到 Redux store
+    const dispatch = useDispatch();
+    // 處理預約課程按鈕點擊（登入後返回此頁）
+    const handleBookCourse = () =>{
+        // 判斷是否已登入
+        if(isAuthenticated){
+            // 如果已登入，導向預約課程頁面
+            navigate("/schedule-courses")
+        }
+        else{
+            // 如果用戶未登入，先儲存目標頁面到 Redux
+            dispatch(setPreviousPage("/schedule-courses"));
+            // 然後導航到登入頁面
+            navigate("/login");
+        }
+    }
 
     return (<>
         {/* <!-- section1 --> */}
@@ -102,7 +125,9 @@ export default function CourseDetail() {
                             <span className="fw-bold">5.場地與設備:</span>{course.content.venue_and_equipment}
                         </p>
                         <div className="d-flex justify-content-end">
-                            <Link to={`/schedule-courses/`} className="btn btn-secondary course-btn text-white fs-4">
+                            <Link 
+                            onClick={handleBookCourse}
+                            className="btn btn-secondary course-btn text-white fs-4">
                             預約課程
                             <svg
                                 className="course-arrow"
