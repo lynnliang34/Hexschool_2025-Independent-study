@@ -1,4 +1,5 @@
 import "../assets/scss/all.scss";
+import "aos/dist/aos.css";
 import { createHashRouter } from "react-router";
 
 import RequireUserAuth from "./RequireUserAuth";
