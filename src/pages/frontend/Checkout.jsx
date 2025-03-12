@@ -4,14 +4,53 @@ export default function Checkout() {
   // 3 付款方式
   const [paymentMethod, setPaymentMethod] = useState(null);
   const [mobilePayment, setMobilePayment] = useState(null);
+  const [creditCardInfo, setCreditCardInfo] = useState({
+    card_number: "",
+    expiry_date: "",
+    CVC: "",
+  });
 
   // 選擇付款方式，顯示對應區塊
   const handleChangePaymentMethod = (method) => {
     setPaymentMethod(paymentMethod === method ? null : method);
   };
 
+  // 選擇電子支付，顯示對應 active 狀態
   const handleChangeMobilePayment = (method) => {
     setMobilePayment(mobilePayment === method ? null : method);
+  };
+
+  // 處理信用卡輸入
+  const handleCreditCardInfoChange = (e) => {
+    const { name } = e.target;
+    let value = e.target.value; // 這裡使用 let，而不是直接解構賦值
+
+    // 格式化信用卡號（自動加空格，每 4 位數）
+    if (name === "card_number") {
+      value = value.replace(/\D/g, ""); // 只允許數字
+      value = value.replace(/(\d{4})/g, "$1 ").trim(); // 每 4 位數添加空格
+      value = value.substring(0, 19); // 最長 19 字元（16 位數 + 3 個空格）
+    }
+
+    // 格式化有效期限 MM/YY
+    if (name === "expiry_date") {
+      value = value.replace(/\D/g, ""); // 只允許數字
+      if (value.length >= 2) {
+        value = value.slice(0, 2) + "/" + value.slice(2); // 插入 /
+      }
+      value = value.substring(0, 5); // 最長 5 字元
+    }
+
+    // 限制 CVC 長度（3~4 位數）
+    if (name === "CVC") {
+      value = value.replace(/\D/g, "").substring(0, 4); // 只允許數字，最多 4 位
+    }
+
+    // 更新狀態
+    setCreditCardInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   return (
@@ -344,9 +383,11 @@ export default function Checkout() {
                     className="form-control checkout-input mb-3 mb-md-0"
                     id="creditCardNumberInput"
                     type="tel"
-                    name="card-number"
+                    name="card_number"
+                    value={creditCardInfo.card_number}
+                    onChange={handleCreditCardInfoChange}
                     inputMode="numeric"
-                    pattern="[0-9\s]{13,19}"
+                    pattern="\d{4} \d{4} \d{4} \d{4}"
                     maxLength="19"
                     placeholder="**** **** **** ****"
                   />
@@ -363,11 +404,13 @@ export default function Checkout() {
                       className="form-control checkout-input"
                       id="cardExpiryDateInput"
                       type="text"
-                      name="expiry-date"
+                      name="expiry_date"
+                      value={creditCardInfo.expiry_date}
+                      onChange={handleCreditCardInfoChange}
                       inputMode="numeric"
                       pattern="(0[1-9]|1[0-2])\/\d{2}"
                       maxLength="5"
-                      placeholder="MM / YY"
+                      placeholder="MM/YY"
                     />
                   </div>
                   <div className="w-50 me-2 me-lg-6">
@@ -382,6 +425,8 @@ export default function Checkout() {
                       id="CVCInput"
                       type="tel"
                       name="CVC"
+                      value={creditCardInfo.CVC}
+                      onChange={handleCreditCardInfoChange}
                       inputMode="numeric"
                       pattern="\d{3,4}"
                       maxLength="4"
