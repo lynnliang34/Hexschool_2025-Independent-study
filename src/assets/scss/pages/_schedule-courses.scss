@@ -6,10 +6,16 @@
                 background-color:$secondary-2;
                 border-color: $secondary-2 !important;
             }
-
+            
+            
             &:disabled{
                 background-color:$neutral-1;
                 border-color:transparent;
+            }
+            
+            &.active{
+                background-color:$secondary-2 !important;
+                border-color: $secondary-2 !important;
             }
         }
     }

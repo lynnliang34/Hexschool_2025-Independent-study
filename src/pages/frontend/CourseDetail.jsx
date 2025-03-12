@@ -37,12 +37,16 @@ export default function CourseDetail() {
     const handleBookCourse = () =>{
         // 判斷是否已登入
         if(isAuthenticated){
-            // 如果已登入，導向預約課程頁面
-            navigate("/schedule-courses")
+            // 如果已登入，導向預約課程頁面(並將id傳到下一頁)
+            navigate("/schedule-courses",{
+                state:{courseId: id}
+            })
         }
         else{
             // 如果用戶未登入，先儲存目標頁面到 Redux
-            dispatch(setPreviousPage("/schedule-courses"));
+            dispatch(setPreviousPage("/schedule-courses",{
+                state:{courseId: id}
+            }));
             // 然後導航到登入頁面
             navigate("/login");
         }
