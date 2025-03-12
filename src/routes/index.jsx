@@ -12,6 +12,7 @@ import {
   ExploreCourses,
   CourseDetail,
   ScheduleCourses,
+  Photos,
   Checkout,
   UserRegister,
   UserLogin,
@@ -48,6 +49,10 @@ const routes = [
       {
         path: "course-detail/:id",
         element: <CourseDetail />,
+      },
+      {
+        path: "photos",
+        element: <Photos />,
       },
       {
         path: "checkout",
