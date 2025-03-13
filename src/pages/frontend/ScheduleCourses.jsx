@@ -3,6 +3,8 @@ import { useState,useEffect  } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { setselectedProductId } from "../../redux/userSlice";
 import { addCartDetail } from "../../redux/cartSlice";
+import { Toast } from "../../components";
+import { pushMessage } from "../../redux/toastSlice";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -72,40 +74,6 @@ export default function ScheduleCourses() {
         console.log(selectedTimeSlot);
     }
 
-    // 操作表單提交
-    const handleSubmit = async(e)=>{
-        e.preventDefault();
-
-        try{
-            // 將資料存到redux
-            dispatch(addCartDetail({
-                product_id: id,
-                course_id: selectedTimeSlot.course_id,
-                title: selectedCourse.title,
-                price: selectedCourse.price,
-                teacher: selectedTeacher,
-                date: selectedTimeSlot.date,
-                time: selectedTimeSlot.time
-            }))
-
-            // 打包購物車POST API參數
-            const requestData ={
-                data: {
-                    product_id: id,
-                    qty: 1,
-                }
-            }
-
-            // POST API
-            const res = await axios.post(`${BASE_URL}/api/${API_PATH}/cart`,requestData);
-            
-            alert(res.data.success);
-        }
-        catch(err){
-            alert('預約失敗',err);
-        }
-    }
-
     // 當選定課程變化時，處理教練資料
     useEffect(() => {
         if (selectedCourse?.timeSlots) {
@@ -139,6 +107,82 @@ export default function ScheduleCourses() {
         setSelectedTeacher(null); // 重設選定的教練     
         }
     }, [selectedCourse]);
+
+    // 從 Redux 獲取購物車資料
+    const cartDetails = useSelector(state => state.cart.cartDatails);
+
+    // 使用 useEffect 監視購物車資料變化
+    useEffect(() => {
+        console.log('購物車資料已更新:', cartDetails);
+    }, [cartDetails]);
+
+    // 操作表單提交
+    const handleSubmit = async(e)=>{
+        e.preventDefault();
+
+        try{
+            //判斷現在選的跟redux清單內的course_id有沒有重複
+            const isDupicate = cartDetails.some(
+                (item) => item.course_id === selectedTimeSlot.course_id
+            );
+
+            // 重複直接返回，不做後續動作
+            if(isDupicate){
+                dispatch(pushMessage({
+                    text:`購物車已有此課程`,
+                    status: "failed"
+                }));
+                return; 
+            }
+
+            // 將資料存到redux
+            const reduxCourseDetail= dispatch(addCartDetail({
+                product_id: id,
+                course_id: selectedTimeSlot.course_id,
+                title: selectedCourse.title,
+                price: selectedCourse.price,
+                teacher: selectedTeacher,
+                date: selectedTimeSlot.date,
+                time: selectedTimeSlot.time
+            }))
+            console.log(reduxCourseDetail);
+            
+
+            // 打包購物車POST API參數
+            const requestData ={
+                data: {
+                    product_id: id,
+                    qty: 1
+                }
+            }
+
+            // POST API
+            const res = await axios.post(`${BASE_URL}/api/${API_PATH}/cart`,requestData);
+
+            if(res.data.success){
+                dispatch(pushMessage({
+                    text:`課程已添加到購物車`,
+                    status: "success"
+                }))
+
+                setSelectedCourse([]);
+            }else{
+                dispatch(pushMessage({
+                    text: `添加失敗: ${res.data.message || '未知錯誤'}`,
+                    status: "failed"
+                }))
+            }
+            
+        }
+        catch(err){
+            dispatch(pushMessage({
+                text: `添加失敗: ${res.data.message || '未知錯誤'}`,
+                status: "failed"
+            }))
+        }
+
+
+    }
 
     // 課程選擇元件
     function CourseSelection(){
@@ -278,9 +322,11 @@ export default function ScheduleCourses() {
             <button
                 onClick={handleSubmit} 
                 type="submit" 
-                className="btn btn-secondary text-white fs-4">送出</button>
+                className="btn btn-secondary text-white fs-4">加入購物車</button>
         </div>
         </form>
     </main>
+
+    <Toast />
     </>)
 }
