@@ -120,10 +120,15 @@
 }
 
 .cart-trash {
-  width: 63px;
-  height: 30px;
+  width: 46.2px;
+  height: 22px;
   fill: $primary;
   transition: 0.15s;
+
+  @include md {
+    width: 63px;
+    height: 30px;
+  }
 
   @include lg {
     width: 84px;
