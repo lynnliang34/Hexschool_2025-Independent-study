@@ -84,7 +84,7 @@ export default function ScheduleCourses() {
             // POST API
             const res = await axios.post(`${BASE_URL}/api/${API_PATH}/cart`,requestData);
             
-            alert('res.data.success');
+            alert(res.data.success);
         }
         catch(err){
             alert('預約失敗',err);
@@ -103,17 +103,25 @@ export default function ScheduleCourses() {
         // 建立每位教練的課程時間表
         const schedules = {}; //存每位教練的時間表
         uniqueTeachers.forEach(teacher => {
-            schedules[teacher] = selectedCourse.timeSlots.filter(slot => 
-            slot.teacher === teacher
-            ).map(slot => ({
+            schedules[teacher] = selectedCourse.timeSlots
+            .filter(slot => slot.teacher === teacher)
+            .map(slot => ({
             date: slot.date,
             time: slot.time,
             course_id: slot.course_id
-            }));
+            }))
+            .sort((a, b) => {
+                // 先比較日期
+                const dateComparison = new Date(a.date) - new Date(b.date);
+                if (dateComparison !== 0) return dateComparison;
+                
+                // 如果日期相同，再比較時間
+                return a.time.localeCompare(b.time);
+            });
         });
         
         setTeacherSchedules(schedules);
-        setSelectedTeacher(null); // 重設選定的教練        
+        setSelectedTeacher(null); // 重設選定的教練     
         }
     }, [selectedCourse]);
 
@@ -216,176 +224,26 @@ export default function ScheduleCourses() {
                 <hr className="mb-5" />
 
                 {/* <!-- 日期、時段選項 --> */}
-                <div>
-                    <div className="datePicker my-10">
-                        <div className="available-slots">
-                            {teacherDates.map((slot, index) => (
-                            <div key={index} className="slot-item p-2 border rounded mb-2">
-                                <input 
-                                type="radio" 
-                                name="timeSlot" 
-                                id={`slot-${index}`}
-                                onChange={()=> handleTimeSlotSeclect(slot)}
-                                checked={selectedTimeSlot === slot}
-                                />
-                                <label htmlFor={`slot-${index}`} className="ms-2">
-                                {slot.date} {slot.time}
-                                </label>
-                            </div>
-                            ))}
+                <div className="datePicker my-10 row row-cols-3 row-cols-md-4 g-3 btnStyle">
+                    
+                    {teacherDates.map((slot, index) => (
+                    <div key={index} className="col">
+                        <div className={`border-0 btn btn-primary text-white d-flex ${selectedTimeSlot === slot ? 'active' : ''}`}>
+                            <input 
+                            type="checkbox" 
+                            className="btn-check"
+                            name="timeSlot" 
+                            id={`slot-${index}`}
+                            onChange={()=> handleTimeSlotSeclect(slot)}
+                            checked={selectedTimeSlot === slot}
+                            />
+                            <label htmlFor={`slot-${index}`} className="ms-2 fs-5 w-100">
+                            {slot.date} {slot.time}
+                            </label>
                         </div>
                     </div>
-
-                    {/* <div className="bg-primary-2 px-lg-20 py-8 mb-8">
-                        <div
-                            className="monthSwitch d-flex justify-content-between align-items-center mx-3 mx-md-8 mb-8">
-                            <button type="button" className="btn btn-primary rounded-pill fs-5 text-primary-2">
-                                <i className="bi bi-chevron-left"></i></button>
-                            <h4 className="fw-bold">2025/3</h4>
-                            <button type="button" className="btn btn-primary rounded-pill fs-5 text-primary-2">
-                                <i className="bi bi-chevron-right"></i></button>
-                        </div>
-
-                        <div className="timeSelect">
-                            <div className="row mx-auto text-center gy-3 fs-6 fs-lg-4 fw-bold mb-5">
-                                <div className="col">
-                                    <h4>日</h4>
-                                    <p>3/9</p>
-                                    <div className="d-flex flex-column text-center mt-5 mb-5">
-                                        <button type="button" className="btn fs-6 fs-lg-4" disabled>7:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">8:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">9:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">10:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">11:00</button>
-                                    </div>
-
-                                    <div className="d-flex flex-column text-center">
-
-                                        <button type="button" className="btn fs-6 fs-lg-4">13:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">14:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">15:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">16:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">17:00</button>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <h4>一</h4>
-                                    <p>3/10</p>
-
-                                    <div className="d-flex flex-column text-center mt-5 mb-5">
-                                        <button type="button" className="btn fs-6 fs-lg-4" disabled>7:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">8:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">9:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">10:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">11:00</button>
-                                    </div>
-
-                                    <div className="d-flex flex-column text-center">
-                                        <button type="button" className="btn fs-6 fs-lg-4">13:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">14:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">15:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">16:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">17:00</button>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <h4>二</h4>
-                                    <p>3/11</p>
-                                    <div className="d-flex flex-column text-center mt-5 mb-5">
-                                        <button type="button" className="btn fs-6 fs-lg-4" disabled>7:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">8:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">9:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">10:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">11:00</button>
-                                    </div>
-
-                                    <div className="d-flex flex-column text-center">
-                                        <button type="button" className="btn fs-6 fs-lg-4">13:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">14:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">15:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">16:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">17:00</button>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <h4>三</h4>
-                                    <p>3/12</p>
-                                    <div className="d-flex flex-column text-center mt-5 mb-5">
-                                        <button type="button" className="btn fs-6 fs-lg-4" disabled>7:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">8:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">9:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">10:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">11:00</button>
-                                    </div>
-
-                                    <div className="d-flex flex-column text-center">
-                                        <button type="button" className="btn fs-6 fs-lg-4">13:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">14:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">15:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">16:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">17:00</button>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <h4>四</h4>
-                                    <p>3/13</p>
-                                    <div className="d-flex flex-column text-center mt-5 mb-5">
-                                        <button type="button" className="btn fs-6 fs-lg-4" disabled>7:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">8:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">9:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">10:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">11:00</button>
-                                    </div>
-
-                                    <div className="d-flex flex-column text-center">
-                                        <button type="button" className="btn fs-6 fs-lg-4">13:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">14:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">15:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">16:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">17:00</button>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <h4>五</h4>
-                                    <p>3/14</p>
-                                    <div className="d-flex flex-column text-center mt-5 mb-5">
-                                        <button type="button" className="btn fs-6 fs-lg-4" disabled>7:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">8:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">9:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">10:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">11:00</button>
-                                    </div>
-
-                                    <div className="d-flex flex-column text-center">
-                                        <button type="button" className="btn fs-6 fs-lg-4">13:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">14:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">15:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">16:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">17:00</button>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <h4>六</h4>
-                                    <p>3/15</p>
-                                    <div className="d-flex flex-column text-center mt-5 mb-5">
-                                        <button type="button" className="btn fs-6 fs-lg-4" disabled>7:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">8:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">9:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">10:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">11:00</button>
-                                    </div>
-
-                                    <div className="d-flex flex-column text-center">
-                                        <button type="button" className="btn fs-6 fs-lg-4">13:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">14:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">15:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">16:00</button>
-                                        <button type="button" className="btn fs-6 fs-lg-4">17:00</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
+                    ))}
+                    
                 </div>
             </div>
         </div>
