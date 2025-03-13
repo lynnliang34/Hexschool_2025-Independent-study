@@ -2,7 +2,7 @@ import { Link, useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios"; 
 import { useSelector, useDispatch } from "react-redux";
-import { setPreviousPage } from "../../redux/userSlice";
+import { setPreviousPage, setSelectedCourseId } from "../../redux/userSlice";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -35,18 +35,17 @@ export default function CourseDetail() {
     const dispatch = useDispatch();
     // 處理預約課程按鈕點擊（登入後返回此頁）
     const handleBookCourse = () =>{
+        // 點擊預約時重新取得該頁課程ID
+        dispatch(setSelectedCourseId(id));
+        console.log("變更的 ID:", id); // 檢查 ID 是否存在
         // 判斷是否已登入
         if(isAuthenticated){
             // 如果已登入，導向預約課程頁面(並將id傳到下一頁)
-            navigate("/schedule-courses",{
-                state:{courseId: id}
-            })
+            navigate("/schedule-courses")
         }
         else{
             // 如果用戶未登入，先儲存目標頁面到 Redux
-            dispatch(setPreviousPage("/schedule-courses",{
-                state:{courseId: id}
-            }));
+            dispatch(setPreviousPage("/schedule-courses"));
             // 然後導航到登入頁面
             navigate("/login");
         }

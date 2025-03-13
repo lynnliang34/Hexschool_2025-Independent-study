@@ -1,21 +1,17 @@
 import axios from "axios";
-import { useState,useEffect, use } from "react"
-import { useLocation, useParams } from "react-router";
+import { useState,useEffect  } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedCourseId } from "../../redux/userSlice";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function ScheduleCourses() {
-    // 接收預約頁id
-    const location = useLocation();
-    const id = location.state?.courseId;
-    console.log(id);
+    const id = useSelector((state)=> state.user.selectedCourseId);
     // 所有課程資料
     const [ allCourses, setAllCourses ] = useState([]);
     // 選定課程資料
     const [ selectedCourse, setSelectedCourse ] = useState([]);
-    // 選定課程ID(預設為前一頁選擇之id)
-    const [ selectedId, setSelectedId] = useState(id);
     // 選定老師
     const [ selectedTeacher, setSelectedTeacher] = useState(null);
     // 老師課表
@@ -23,6 +19,7 @@ export default function ScheduleCourses() {
     // 選定的時段
     const [ selectedTimeSlot, setSelectedTimeSlot ] = useState({});
 
+    const dispatch = useDispatch();
 
 // 抓全部課程資料
     useEffect(()=>{
@@ -42,9 +39,9 @@ export default function ScheduleCourses() {
     useEffect(()=>{
         const getIdCourse = async()=>{
             try{
-                if(!selectedId)return;
+                if(!id)return;
 
-                const response = await axios.get(`${BASE_URL}/api/${API_PATH}/product/${selectedId}`)
+                const response = await axios.get(`${BASE_URL}/api/${API_PATH}/product/${id}`)
                 setSelectedCourse(response.data.product);
             }
             catch(err){
@@ -52,14 +49,12 @@ export default function ScheduleCourses() {
             }
         };
         getIdCourse();
-    },[selectedId]); // 課程id變化時重新取得資料
+    },[id]); // 課程id變化時重新取得資料
 
 
-    // 操作按課程切換課程id（儲存點擊按鈕id
+    // 操作按課程切換課程id（儲存點擊按鈕id)
     const handleCourseSelect = (id) =>{
-        setSelectedId(id);
-        // console.log(`selectedId:${selectedId}`)
-        // console.log({selectedCourse})
+        dispatch(setSelectedCourseId(id));
     }
 
     // 操作按教練按鈕儲存名稱
@@ -80,7 +75,7 @@ export default function ScheduleCourses() {
             // 打包購物車POST API參數
             const requestData ={
                 data: {
-                    product_id: selectedId,
+                    product_id: id,
                     qty: 1,
                     selectedTimeSlot: [selectedTimeSlot]
                 }
@@ -140,7 +135,7 @@ export default function ScheduleCourses() {
                             <button 
                             onClick={()=>handleCourseSelect(item.id)}
                             type="button" 
-                            className={`btn btn-primary fs-5 w-100 ${selectedId === item.id ? 'active':''}`}>{item.title}</button>
+                            className={`btn btn-primary fs-5 w-100 ${id === item.id ? 'active':''}`}>{item.title}</button>
                             </div>)
                         })}
                     </div>
@@ -179,7 +174,7 @@ export default function ScheduleCourses() {
                 <div className="row row-cols-3 row-cols-md-4 g-3 btnStyle">
                     {uniqueTeachers.map((teacher)=>{
                         return( 
-                            <div className="col">
+                            <div className="col" key={teacher}>
                             <button 
                             onClick={()=>handleTeacherSelect(teacher)}
                             type="button" 
