@@ -2,15 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import useReducer from "./userSlice";
 import adminReducer from "./adminSlice";
 import toastReducer from "./toastSlice";
-// import scheduleReducer from "./scheduleSlice";
-
+import cartReducer from "./cartSlice";
 
 const store = configureStore({
   reducer: {
     user: useReducer,
     admin: adminReducer,
     toast: toastReducer,
-    // schedule: scheduleReducer,
+    cart: cartReducer,
   },
 });
 

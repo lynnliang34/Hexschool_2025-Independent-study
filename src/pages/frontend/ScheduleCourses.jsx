@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useState,useEffect  } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedCourseId } from "../../redux/userSlice";
+import { setselectedProductId } from "../../redux/userSlice";
+import { addCartDetail } from "../../redux/cartSlice";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function ScheduleCourses() {
-    const id = useSelector((state)=> state.user.selectedCourseId);
+    const id = useSelector((state)=> state.user.selectedProductId);
     // 所有課程資料
     const [ allCourses, setAllCourses ] = useState([]);
     // 選定課程資料
@@ -20,6 +21,7 @@ export default function ScheduleCourses() {
     const [ selectedTimeSlot, setSelectedTimeSlot ] = useState({});
 
     const dispatch = useDispatch();
+    
 
 // 抓全部課程資料
     useEffect(()=>{
@@ -54,17 +56,20 @@ export default function ScheduleCourses() {
 
     // 操作按課程切換課程id（儲存點擊按鈕id)
     const handleCourseSelect = (id) =>{
-        dispatch(setSelectedCourseId(id));
+        dispatch(setselectedProductId(id));
     }
 
     // 操作按教練按鈕儲存名稱
     const handleTeacherSelect = (teacherName) =>{
         setSelectedTeacher(teacherName);
+        console.log(selectedCourse);
+        console.log(teacherSchedules);
     }
 
     // 操作按課程時段存timeslot資料
     const handleTimeSlotSeclect = (slot)=>{
         setSelectedTimeSlot(slot);
+        console.log(selectedTimeSlot);
     }
 
     // 操作表單提交
@@ -72,12 +77,22 @@ export default function ScheduleCourses() {
         e.preventDefault();
 
         try{
+            // 將資料存到redux
+            dispatch(addCartDetail({
+                product_id: id,
+                course_id: selectedTimeSlot.course_id,
+                title: selectedCourse.title,
+                price: selectedCourse.price,
+                teacher: selectedTeacher,
+                date: selectedTimeSlot.date,
+                time: selectedTimeSlot.time
+            }))
+
             // 打包購物車POST API參數
             const requestData ={
                 data: {
                     product_id: id,
                     qty: 1,
-                    selectedTimeSlot: [selectedTimeSlot]
                 }
             }
 
@@ -115,7 +130,7 @@ export default function ScheduleCourses() {
                 const dateComparison = new Date(a.date) - new Date(b.date);
                 if (dateComparison !== 0) return dateComparison;
                 
-                // 如果日期相同，再比較時間
+                // 如果日期相同，再比較時間（localeCompare() 是字串的內建方法，用於比較兩個字串的順序）
                 return a.time.localeCompare(b.time);
             });
         });
