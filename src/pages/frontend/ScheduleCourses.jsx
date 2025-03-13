@@ -166,6 +166,7 @@ export default function ScheduleCourses() {
                 }))
 
                 setSelectedCourse([]);
+                setSelectedTeacher(null);
             }else{
                 dispatch(pushMessage({
                     text: `添加失敗: ${res.data.message || '未知錯誤'}`,
