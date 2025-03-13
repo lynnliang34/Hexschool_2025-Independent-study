@@ -24,6 +24,9 @@ export default function Header() {
   const navigate = useNavigate(); // React Router 的導航函式
   const location = useLocation();
 
+  // 取得cartSlice購物車清單
+  const cartDatails = useSelector((state)=> state.cart.cartDatails);
+
   const handleToLogin = () => {
     dispatch(setPreviousPage(location.pathname)); // 記錄當前頁面
   };
@@ -278,7 +281,7 @@ export default function Header() {
                   className="position-absolute cart-number translate-middle badge rounded-pill"
                   style={{ fontSize: "10px" }}
                 >
-                  3<span className="visually-hidden">purchase quantity</span>
+                  {cartDatails.length}<span className="visually-hidden">purchase quantity</span>
                 </span>
               </i>
             </Link>
