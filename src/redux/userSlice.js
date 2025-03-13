@@ -4,6 +4,7 @@ const initialState = {
   previousPage: "/", // 預設為首頁
   isAuthenticated: false,
   user: null, // 存使用者資訊
+  selectedProductId: null //存詳細頁選到的課程產品ID
 };
 
 const userSlice = createSlice({
@@ -12,6 +13,9 @@ const userSlice = createSlice({
   reducers: {
     setPreviousPage: (state, action) => {
       state.previousPage = action.payload;
+    },
+    setselectedProductId:(state, action) => {
+      state.selectedProductId = action.payload;
     },
     loginUser(state, action) {
       state.isAuthenticated = true;
@@ -24,5 +28,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setPreviousPage, loginUser, logoutUser } = userSlice.actions;
+export const { setPreviousPage, loginUser, logoutUser, setselectedProductId } = userSlice.actions;
 export default userSlice.reducer;

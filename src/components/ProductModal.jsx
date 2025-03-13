@@ -172,6 +172,70 @@ function ProductModal({
     }
   };
 
+  // 場次時間選項
+  const availableTimes = [
+    "07:00",
+    "08:00",
+    "09:00",
+    "10:00",
+    "11:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
+    "17:00",
+  ];
+
+  // 場次老師名單
+  const teacherList = ["林慧珍", "張偉明", "李美蘭", "王志強"];
+
+  // 處理場次輸入變更
+  const handleTimeSlotChange = (e, index, field) => {
+    const { value } = e.target; // 取得輸入框的新值
+    const newTimeSlots = [...modalData.timeSlots]; // 複製現有的 timeSlots 陣列
+    newTimeSlots[index][field] = value; // 更新對應索引的場次的指定欄位
+
+    setModalData({
+      ...modalData,
+      timeSlots: newTimeSlots, // 更新整個 timeSlots 陣列
+    });
+  };
+
+  // 新增場次
+  const handleAddTimeSlot = () => {
+    const timestamp = Date.now(); // 取得時間戳記
+    const newCourseId = `course-${timestamp}`; // 生成 course_id
+
+    const newTimeSlots = [
+      ...modalData.timeSlots,
+      {
+        course_id: newCourseId,
+        teacher: "",
+        date: "",
+        time: "",
+        signed_up_users: [],
+      },
+    ];
+
+    setModalData({
+      ...modalData,
+      timeSlots: newTimeSlots,
+    });
+  };
+
+  // 刪除最後一個場次
+  const handleRemoveTimeSlot = () => {
+    if (modalData.timeSlots.length > 0) {
+      const newTimeSlots = [...modalData.timeSlots];
+      newTimeSlots.pop();
+
+      setModalData({
+        ...modalData,
+        timeSlots: newTimeSlots,
+      });
+    }
+  };
+
   return (
     <div
       ref={productModalRef}
@@ -446,7 +510,7 @@ function ProductModal({
                   />
                 </div>
 
-                <div className="mb-6">
+                <div className="mb-8">
                   <label htmlFor="venue_and_equipment" className="form-label">
                     場地與設備
                   </label>
@@ -459,6 +523,77 @@ function ProductModal({
                     onChange={handleModalInputChange}
                     placeholder="請輸入場地與設備"
                   />
+                </div>
+
+                <div className="mb-6">
+                  {modalData.timeSlots?.map((slot, index) => (
+                    <div key={index} className="mb-3 border p-2 rounded">
+                      <label className="form-label">場次 {index + 1}</label>
+
+                      <select
+                        value={slot.teacher}
+                        onChange={(e) =>
+                          handleTimeSlotChange(e, index, "teacher")
+                        }
+                        className="form-select mb-2"
+                      >
+                        <option value="">請選擇教師</option>
+                        {teacherList.map((teacher) => (
+                          <option key={teacher} value={teacher}>
+                            {teacher}
+                          </option>
+                        ))}
+                      </select>
+
+                      <div className="row g-3">
+                        <div className="col-6">
+                          <input
+                            type="date"
+                            placeholder="日期"
+                            value={slot.date}
+                            onChange={(e) =>
+                              handleTimeSlotChange(e, index, "date")
+                            }
+                            className="form-control mb-2"
+                          />
+                        </div>
+                        <div className="col-6">
+                          <select
+                            value={slot.time}
+                            onChange={(e) =>
+                              handleTimeSlotChange(e, index, "time")
+                            }
+                            className="form-select mb-2"
+                          >
+                            <option value="">請選擇時間</option>
+                            {availableTimes.map((time) => (
+                              <option key={time} value={time}>
+                                {time}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  <div className="btn-group w-100">
+                    <button
+                      onClick={handleAddTimeSlot}
+                      className="btn btn-outline-primary btn-sm w-50"
+                    >
+                      新增場次
+                    </button>
+
+                    {modalData.timeSlots.length > 0 && (
+                      <button
+                        onClick={handleRemoveTimeSlot}
+                        className="btn btn-outline-danger btn-sm w-50"
+                      >
+                        刪除場次
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
