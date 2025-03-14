@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Pagination, CouponModal } from "../../components";
+import { Pagination, CouponModal, DelCouponModal } from "../../components";
 import ReactLoading from "react-loading";
 
 // 環境變數
@@ -214,14 +214,14 @@ export default function AdminCoupons() {
         getCoupons={getCoupons}
         page={pageInfo.current_page}
       />
-      {/* 
+
       <DelCouponModal
         tempCoupon={tempCoupon}
         isOpen={isDelCouponModalOpen}
         setIsOpen={setIsDelCouponModalOpen}
         getCoupons={getCoupons}
         page={pageInfo.current_page}
-      /> */}
+      />
     </>
   );
 }

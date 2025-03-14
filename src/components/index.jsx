@@ -15,3 +15,4 @@ export { default as Pagination } from "./Pagination";
 export { default as ProductModal } from "./ProductModal";
 export { default as DelProductModal } from "./DelProductModal";
 export { default as CouponModal } from "./CouponModal";
+export { default as DelCouponModal } from "./DelCouponModal";
