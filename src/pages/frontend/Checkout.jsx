@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pushMessage } from "../../redux/toastSlice";
+import { removeCartDetail } from "../../redux/cartSlice";
 import axios from "axios";
 import ReactLoading from "react-loading";
 import { Toast } from "../../components";
@@ -29,7 +30,7 @@ export default function Checkout() {
       setIsScreenLoading(true);
       const res = await axios.get(`${BASE_URL}/api/${API_PATH}/cart`);
       setCart(res.data.data);
-      console.log("後台資料", cart);
+      console.log("後台資料", res.data.data);
     } catch (error) {
       dispatch(
         pushMessage({
@@ -47,6 +48,17 @@ export default function Checkout() {
 
     console.log("前台資料", frontendCartList);
   }, []);
+
+  // 刪除購物車預約項目
+  const handleRemoveCartItem = (id) => {
+    dispatch(removeCartDetail(id));
+    dispatch(
+      pushMessage({
+        text: "刪除購物車預約項目成功",
+        status: "success",
+      })
+    );
+  };
 
   // 3 付款方式
   const [paymentMethod, setPaymentMethod] = useState(null);
@@ -155,7 +167,11 @@ export default function Checkout() {
                     </div>
                   </div>
 
-                  <button type="button" className="border-0 bg-transparent">
+                  <button
+                    type="button"
+                    className="border-0 bg-transparent"
+                    onClick={() => handleRemoveCartItem(item.course_id)}
+                  >
                     <IconTrash className={"cart-trash"} />
                   </button>
                 </div>
@@ -199,6 +215,7 @@ export default function Checkout() {
                         <button
                           type="button"
                           className="border-0 bg-transparent"
+                          onClick={() => handleRemoveCartItem(item.course_id)}
                         >
                           <IconTrash className={"cart-trash"} />
                         </button>
