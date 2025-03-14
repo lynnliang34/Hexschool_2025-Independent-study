@@ -8,6 +8,7 @@ import { Logo } from "../components";
 const adminrMenuItems = [
   { title: "首頁", link: "/admin" },
   { title: "課程", link: "/admin/courses" },
+  { title: "優惠券", link: "/admin/coupons" },
   { title: "訂單", link: "/admin/orders" },
   { title: "知識分享", link: "/admin/knowledge" },
   { title: "活動照片", link: "/admin/photos" },

@@ -21,6 +21,7 @@ import {
   AdminLayout,
   AdminDashboard,
   AdminCourses,
+  AdminCoupons,
   AdminOrders,
   AdminKnowledge,
   AdminPhotos,
@@ -113,6 +114,10 @@ const routes = [
       {
         path: "/admin/courses",
         element: <AdminCourses />,
+      },
+      {
+        path: "/admin/coupons",
+        element: <AdminCoupons />,
       },
       {
         path: "/admin/orders",
