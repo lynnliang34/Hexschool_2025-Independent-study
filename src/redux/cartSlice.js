@@ -40,7 +40,7 @@ export const cartSlice = createSlice({
         },
 
         // 清空購物車資料
-        clearCartDetail:(state,action)=>{
+        clearCartDetail:(state)=>{
             state.cartDatails = [];
         }
     }
