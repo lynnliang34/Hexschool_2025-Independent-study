@@ -5,6 +5,7 @@ import axios from "axios";
 import ReactLoading from "react-loading";
 import { Toast } from "../../components";
 import { IconTrash } from "../../assets/Icons";
+import React from "react";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -176,9 +177,9 @@ export default function Checkout() {
               </thead>
               <tbody>
                 {frontendCartList.map((item) => (
-                  <>
+                  <React.Fragment key={item.course_id}>
                     <tr className="cart-table-spacing"></tr>
-                    <tr className="cart-table-item" key={item.course_id}>
+                    <tr className="cart-table-item">
                       <td>
                         <div className="d-flex justify-content-center align-items-center">
                           <img
@@ -203,7 +204,7 @@ export default function Checkout() {
                         </button>
                       </td>
                     </tr>
-                  </>
+                  </React.Fragment>
                 ))}
               </tbody>
             </table>
