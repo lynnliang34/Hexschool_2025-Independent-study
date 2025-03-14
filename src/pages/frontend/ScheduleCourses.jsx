@@ -21,6 +21,8 @@ export default function ScheduleCourses() {
     const [ teacherSchedules, setTeacherSchedules] = useState({});
     // 選定的時段
     const [ selectedTimeSlot, setSelectedTimeSlot ] = useState({});
+    // btn active
+    const [ btnActive, setBtnActive ] = useState(id);
 
     const dispatch = useDispatch();
     
@@ -31,6 +33,19 @@ export default function ScheduleCourses() {
             try{
                 const response = await axios.get(`${BASE_URL}/api/${API_PATH}/products/all`);
                 setAllCourses(response.data.products);
+
+                                
+                // 檢查是否有課程時段
+                const hasTimeSlots = response.data.products.some(product => 
+                    product.timeSlots && product.timeSlots.length > 0
+                );
+                
+                if (!hasTimeSlots) {
+                    dispatch(pushMessage({
+                        text: '目前沒有課程',
+                        status: 'failed'
+                    }));
+                }
             }
             catch(err){
                 alert('資料取得失敗');
@@ -59,19 +74,38 @@ export default function ScheduleCourses() {
     // 操作按課程切換課程id（儲存點擊按鈕id)
     const handleCourseSelect = (id) =>{
         dispatch(setselectedProductId(id));
+        setBtnActive(id);
     }
 
     // 操作按教練按鈕儲存名稱
-    const handleTeacherSelect = (teacherName) =>{
+    const handleTeacherSelect = (teacherName, e) => {
+        if (e) e.preventDefault();
+        
+        // 保存當前捲動位置
+        const scrollPosition = window.scrollY;
+        
+        // 設置狀態
         setSelectedTeacher(teacherName);
-        console.log(selectedCourse);
-        console.log(teacherSchedules);
+        
+        // 在下一個事件循環中恢復捲動位置
+        setTimeout(() => {
+            window.scrollTo(0, scrollPosition);
+        }, 0);
     }
 
     // 操作按課程時段存timeslot資料
-    const handleTimeSlotSeclect = (slot)=>{
+    const handleTimeSlotSeclect = (slot,e)=>{
+        if (e) e.preventDefault();
+        
+        // 保存當前捲動位置
+        const scrollPosition = window.scrollY;
+
         setSelectedTimeSlot(slot);
-        console.log(selectedTimeSlot);
+        // console.log(selectedTimeSlot);
+        // 在下一個事件循環中恢復捲動位置
+        setTimeout(() => {
+            window.scrollTo(0, scrollPosition);
+        }, 0);
     }
 
     // 當選定課程變化時，處理教練資料
@@ -114,6 +148,8 @@ export default function ScheduleCourses() {
     // 使用 useEffect 監視購物車資料變化
     useEffect(() => {
         console.log('購物車資料已更新:', cartDetails);
+        console.log(selectedCourse);
+        
     }, [cartDetails]);
 
     // 操作表單提交
@@ -121,7 +157,7 @@ export default function ScheduleCourses() {
         e.preventDefault();
 
         try{
-            //判斷現在選的跟redux清單內的course_id有沒有重複
+            //判斷現在選的跟redux清單內的course_id有沒有重複(重複為true)
             const isDupicate = cartDetails.some(
                 (item) => item.course_id === selectedTimeSlot.course_id
             );
@@ -132,6 +168,7 @@ export default function ScheduleCourses() {
                     text:`購物車已有此課程`,
                     status: "failed"
                 }));
+                
                 return; 
             }
 
@@ -143,7 +180,8 @@ export default function ScheduleCourses() {
                 price: selectedCourse.price,
                 teacher: selectedTeacher,
                 date: selectedTimeSlot.date,
-                time: selectedTimeSlot.time
+                time: selectedTimeSlot.time,
+                img: selectedCourse.imageUrl
             }))
             console.log(reduxCourseDetail);
             
@@ -165,7 +203,10 @@ export default function ScheduleCourses() {
                     status: "success"
                 }))
 
-                setSelectedCourse([]);
+                // 成功後重置所有選擇狀態
+                setBtnActive(null);          // 重置課程選擇的 active 狀態
+                setSelectedTeacher(null);    // 重置教練選擇
+                setSelectedTimeSlot({});     // 重置時段選擇
             }else{
                 dispatch(pushMessage({
                     text: `添加失敗: ${res.data.message || '未知錯誤'}`,
@@ -184,6 +225,8 @@ export default function ScheduleCourses() {
 
     }
 
+    
+
     // 課程選擇元件
     function CourseSelection(){
         return(
@@ -197,12 +240,13 @@ export default function ScheduleCourses() {
                     {/* <!-- 課程選項 --> */}
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 g-lg-3 btnStyle">
                         {allCourses.map((item)=>{
+                            const isSlotInCourse = !item.timeSlots;
                             return(
                             <div className="col" key={item.id}>
                             <button 
                             onClick={()=>handleCourseSelect(item.id)}
                             type="button" 
-                            className={`btn btn-primary fs-5 w-100 ${id === item.id ? 'active':''}`}>{item.title}</button>
+                            className={`btn btn-primary fs-5 w-100 ${btnActive === item.id ? 'active':''} ${isSlotInCourse ? 'disabled':''}`}>{item.title}</button>
                             </div>)
                         })}
                     </div>
@@ -213,7 +257,13 @@ export default function ScheduleCourses() {
 
     // 選擇教練元件
     function TeacherSelection(){
-        if (!selectedCourse?.timeSlots) {
+        if (!selectedCourse?.timeSlots || 
+            !selectedCourse.timeSlots.some(slot => 
+                slot.course_id.trim() !== "" && 
+                slot.date.trim() !== "" && 
+                slot.teacher.trim() !== "" && 
+                slot.time.trim() !== ""
+            )|| !btnActive) {
             return (
                 <div className="d-flex mt-15">
                 <h4 className="fs-1">2</h4>
@@ -238,14 +288,15 @@ export default function ScheduleCourses() {
                 <hr className="mb-5" />
 
                 {/* <!-- 教練選項 --> */}
-                <div className="row row-cols-3 row-cols-md-4 g-3 btnStyle">
+                <div className="row row-cols-md-2 row-cols-lg-4 g-3 btnStyle">
                     {uniqueTeachers.map((teacher)=>{
                         return( 
                             <div className="col" key={teacher}>
                             <button 
-                            onClick={()=>handleTeacherSelect(teacher)}
+                            onClick={(e)=>handleTeacherSelect(teacher,e)}
                             type="button" 
-                            className={`btn btn-primary fs-5 w-100 ${selectedTeacher === teacher ? 'active':''}`}>{teacher}</button>
+                            className={`btn btn-primary fs-5 w-100 ${selectedTeacher === teacher ? 'active':''}`}
+                            >{teacher}</button>
                             </div>
                             )
                         })
@@ -258,7 +309,7 @@ export default function ScheduleCourses() {
 
     // 選擇日期元件
     function DateTimeSelection(){
-        if (!selectedTeacher) {
+        if (!selectedTeacher || !selectedCourse.timeSlots || selectedCourse.timeSlots.length === 0) {
             return (
                 <div className="d-flex mt-15 mb-20">
                 <h4 className="fs-1">3</h4>
@@ -283,25 +334,31 @@ export default function ScheduleCourses() {
                 <hr className="mb-5" />
 
                 {/* <!-- 日期、時段選項 --> */}
-                <div className="datePicker my-10 row row-cols-3 row-cols-md-4 g-3 btnStyle">
+                <div className="datePicker row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 btnStyle">
                     
-                    {teacherDates.map((slot, index) => (
+                    {teacherDates.map((slot, index) => {
+                        // 檢查這個時段是否已經在購物車中
+                        const isSlotInCart = cartDetails?.some(item => item.course_id === slot.course_id);
+
+                        return(
                     <div key={index} className="col">
-                        <div className={`border-0 btn btn-primary text-white d-flex ${selectedTimeSlot === slot ? 'active' : ''}`}>
+                        <div className={`border-0 btn btn-primary text-white d-flex ${selectedTimeSlot === slot ? 'active' : ''} ${isSlotInCart ? 'disabled':''}`}
+                        >
                             <input 
                             type="checkbox" 
                             className="btn-check"
                             name="timeSlot" 
                             id={`slot-${index}`}
-                            onChange={()=> handleTimeSlotSeclect(slot)}
+                            onChange={(e)=> handleTimeSlotSeclect(slot,e)}
                             checked={selectedTimeSlot === slot}
                             />
                             <label htmlFor={`slot-${index}`} className="ms-2 fs-5 w-100">
                             {slot.date} {slot.time}
                             </label>
                         </div>
+                        {isSlotInCart ? <h5 className="text-secondary"> 已經在購物車囉~</h5> : ''}
                     </div>
-                    ))}
+                    )})}
                     
                 </div>
             </div>
@@ -321,7 +378,7 @@ export default function ScheduleCourses() {
         <div className="formSubmit d-flex justify-content-center mb-15">
             <button
                 onClick={handleSubmit} 
-                type="submit" 
+                type="button" 
                 className="btn btn-secondary text-white fs-4">加入購物車</button>
         </div>
         </form>

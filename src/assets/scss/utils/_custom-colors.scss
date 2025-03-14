@@ -10,6 +10,9 @@ $neutral: #c0c0c0;
 $neutral-1: #484848;
 $neutral-2: #121212;
 
+$danger: 	#A42D00;
+$success: #88AA00;
+
 $custom-colors: (
   "primary": $primary,
   "primary-1": $primary-1,
@@ -22,6 +25,9 @@ $custom-colors: (
   "neutral": $neutral,
   "neutral-1": $neutral-1,
   "neutral-2": $neutral-2,
+
+  "danger": $danger,
+  "success" : $success
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
