@@ -60,6 +60,75 @@ export default function Checkout() {
     );
   };
 
+  // 2 選擇優惠券
+  const [inputCoupon, setInputCoupon] = useState("");
+  const [selectedCoupon, setSelectedCoupon] = useState("");
+
+  // 選擇欄
+  const handleCouponSelectChange = (e) => {
+    const { value } = e.target;
+    setSelectedCoupon(value);
+
+    // 若選擇優惠則清空輸入框
+    if (value !== "") {
+      setInputCoupon("");
+    }
+  };
+
+  // 輸入欄
+  const handleCouponInputChange = (e) => {
+    const { value } = e.target;
+
+    setInputCoupon(value);
+
+    // 若輸入框有值，則將 select 重設為 "無"
+    if (value) {
+      setSelectedCoupon("");
+    }
+  };
+
+  // 優惠券 API
+  const postCoupon = async (couponCode) => {
+    try {
+      const res = await axios.post(`${BASE_URL}/api/${API_PATH}/coupon`, {
+        data: {
+          code: couponCode,
+        },
+      });
+
+      dispatch(
+        pushMessage({
+          text: `${res.data.message}`,
+          status: "success",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        pushMessage({
+          text: `${error.response.data.message}`,
+          status: "failed",
+        })
+      );
+    }
+  };
+
+  // 兌換優惠券
+  const handlePostCoupon = () => {
+    const couponCode = inputCoupon ? inputCoupon : selectedCoupon;
+
+    if (!couponCode) {
+      dispatch(
+        pushMessage({
+          text: "請選擇或輸入優惠券",
+          status: "failed",
+        })
+      );
+      return;
+    }
+
+    postCoupon(couponCode);
+  };
+
   // 3 付款方式
   const [paymentMethod, setPaymentMethod] = useState(null);
   const [mobilePayment, setMobilePayment] = useState(null);
@@ -240,21 +309,27 @@ export default function Checkout() {
               <select
                 className="form-select checkout-input mb-3 mb-md-0 me-md-2 me-lg-6"
                 aria-label="Default select example"
+                value={selectedCoupon}
+                onChange={handleCouponSelectChange}
               >
                 <option value="">無</option>
-                <option value="-25">新會員折扣 25 元</option>
-                <option value="-150">生日禮金 150 元</option>
-                <option value="-100">促銷活動折扣 100 元</option>
+                <option value="MoveJoy9">促銷活動 9 折</option>
               </select>
 
               <div className="d-flex justify-content-between">
                 <input
                   type="text"
                   className="form-control checkout-input w-50 me-2 me-lg-6"
-                  id="discountInput"
+                  id="couponInput"
+                  value={inputCoupon}
+                  onChange={handleCouponInputChange}
                   placeholder="請輸入優惠券"
                 />
-                <button className="btn btn-primary checkout-btn text-white w-50">
+                <button
+                  type="button"
+                  className="btn btn-primary checkout-btn text-white w-50"
+                  onClick={handlePostCoupon}
+                >
                   兌換優惠券
                 </button>
               </div>
