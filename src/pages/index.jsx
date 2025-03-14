@@ -19,6 +19,7 @@ export { default as AdminLogin } from "./login/AdminLogin";
 export { default as AdminLayout } from "../layout/AdminLayout";
 export { default as AdminDashboard } from "./backend/AdminDashboard";
 export { default as AdminCourses } from "./backend/AdminCourses";
+export { default as AdminCoupons } from "./backend/AdminCoupons";
 export { default as AdminOrders } from "./backend/AdminOrders";
 export { default as AdminKnowledge } from "./backend/AdminKnowledge";
 export { default as AdminPhotos } from "./backend/AdminPhotos";
