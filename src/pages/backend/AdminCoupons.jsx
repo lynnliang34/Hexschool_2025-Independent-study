@@ -31,10 +31,11 @@ export default function AdminCoupons() {
       const res = await axios.get(
         `${BASE_URL}/api/${API_PATH}/admin/coupons?page=${page}`
       );
+
       setCouponList(
         res.data.coupons.map((coupon) => ({
           ...coupon,
-          discount: 0, // 如果沒有 discount，設為 0
+          discount: coupon.discount || 0, // 如果沒有 discount，設為 0
         }))
       );
       console.log(res.data.coupons);
@@ -43,6 +44,16 @@ export default function AdminCoupons() {
       console.error(error);
     }
   };
+
+  // 轉換折扣顯示
+  const discountMap = {
+    100: "無",
+    90: "9折",
+    80: "8折",
+    70: "7折",
+  };
+
+  const convertDiscount = (value) => discountMap[value] || "未知折扣";
 
   // 檢查登入狀態
   // 驗證使用者是否已登入，如果登入成功，則載入產品列表。
@@ -150,7 +161,7 @@ export default function AdminCoupons() {
                 {couponList.map((coupon) => (
                   <tr key={coupon.title}>
                     <th scope="row">{coupon.title}</th>
-                    <td>{coupon.percent}</td>
+                    <td>{convertDiscount(coupon.percent)}</td>
                     <td>{coupon.discount}</td>
                     <td>
                       {coupon.is_enabled ? (
