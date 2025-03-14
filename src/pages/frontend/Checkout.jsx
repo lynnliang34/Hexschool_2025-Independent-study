@@ -185,10 +185,10 @@ export default function Checkout() {
   const [invoiceType, setInvoiceType] = useState("");
   const [electronicInvoice, setElectronicInvoice] = useState("");
   const [donationInvoice, setDonationInvoice] = useState("");
-  const [customerInfo, setCustomerInfo] = useState({
-    customer_name: "",
-    customer_email: "",
-  });
+  const [customerInfo, setCustomerInfo] = useState({});
+  const [barcode, setBarcode] = useState({});
+  const [GUI_Number, setGUI_Number] = useState({});
+  const [donationCode, setDonationCode] = useState("");
 
   // 處理顧客姓名、電子郵件輸入
   const handleCustomerInfoChange = (e) => {
@@ -196,6 +196,26 @@ export default function Checkout() {
 
     setCustomerInfo({
       ...customerInfo,
+      [name]: value,
+    });
+  };
+
+  // 處理電子發票條碼輸入
+  const handleBarcodeInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setBarcode({
+      ...barcode,
+      [name]: value,
+    });
+  };
+
+  // 處理公司統編輸入
+  const handleGUINumberInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setGUI_Number({
+      ...GUI_Number,
       [name]: value,
     });
   };
@@ -491,7 +511,10 @@ export default function Checkout() {
 
           <form id="invoice">
             {/*帶入上次結帳資料 */}
-            <button className="btn btn-outline-primary checkout-btn last-checkout-information mb-3 mb-lg-6">
+            <button
+              type="button"
+              className="btn btn-outline-primary checkout-btn last-checkout-information mb-3 mb-lg-6"
+            >
               帶入上次結帳資料
             </button>
 
@@ -621,7 +644,9 @@ export default function Checkout() {
                       id="taxIdNumberInput"
                       type="tel"
                       inputMode="numeric"
-                      name="tax-ID-number"
+                      name="tax_ID_number"
+                      value={GUI_Number.tax_ID_number}
+                      onChange={handleGUINumberInputChange}
                       maxLength="8"
                       placeholder="送出後無法更改，請務必確認"
                     />
@@ -637,7 +662,9 @@ export default function Checkout() {
                       className="form-control checkout-input"
                       id="receiptTitleInput"
                       type="text"
-                      name="receipt-title"
+                      name="receipt_title"
+                      value={GUI_Number.receipt_title}
+                      onChange={handleGUINumberInputChange}
                       placeholder="送出後無法更改，請務必確認"
                     />
                   </div>
@@ -704,6 +731,9 @@ export default function Checkout() {
                     <input
                       className="form-control checkout-input"
                       id="citizenDigitalCertificate"
+                      name="citizen_digital_certificate"
+                      value={barcode.citizen_digital_certificate}
+                      onChange={handleBarcodeInputChange}
                       type="text"
                       placeholder="請輸入憑證碼，由2碼大寫字母加上14碼數字組成"
                     />
@@ -722,6 +752,9 @@ export default function Checkout() {
                     <input
                       className="form-control checkout-input"
                       id="mobileBarcode"
+                      name="mobile_barcode"
+                      value={barcode.mobile}
+                      onChange={handleBarcodeInputChange}
                       type="text"
                       placeholder="請輸入手機條碼，/ 開頭共8碼"
                     />
@@ -744,7 +777,9 @@ export default function Checkout() {
                         className="form-control checkout-input"
                         id="companyAddressInput"
                         type="text"
-                        name="company-address"
+                        name="company_address"
+                        value={GUI_Number.company_address}
+                        onChange={handleGUINumberInputChange}
                         placeholder="請輸入公司地址"
                       />
                     </div>
@@ -755,10 +790,13 @@ export default function Checkout() {
                         className="form-control checkout-input"
                         id="companyPostalCodeInput"
                         type="text"
-                        name="company-postal-code"
+                        name="company_postal_code"
+                        value={GUI_Number.company_postal_code}
+                        onChange={handleGUINumberInputChange}
                         placeholder="請輸入郵遞區號"
                       />
                     </div>
+                    {console.log(GUI_Number)}
                   </div>
                 </div>
               )}
@@ -770,11 +808,15 @@ export default function Checkout() {
                     <input
                       className="form-control checkout-input"
                       id="donationInvoiceInput"
+                      name="donation_invoice_input"
+                      value={donationCode}
+                      onChange={(e) => setDonationCode(e.target.value)}
                       type="text"
                       placeholder="輸入捐贈碼"
                     />
                   </div>
                 )}
+              {console.log(donationInvoice)}
             </div>
           </form>
         </div>
