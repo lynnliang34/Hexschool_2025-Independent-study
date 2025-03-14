@@ -220,6 +220,11 @@ export default function Checkout() {
     });
   };
 
+  // 5 訂單明細
+
+  // 數字加千分位逗號
+  const addThousandths = (x) => new Intl.NumberFormat("en-US").format(x);
+
   return (
     <>
       <div className="container mt-4 mb-20 mt-lg-20 mb-lg-36">
@@ -837,42 +842,23 @@ export default function Checkout() {
 
           {/*選購清單 */}
           <div className="cart-order">
-            <div className="cart-order-item f-order-item">
-              <div className="d-flex flex-column flex-md-row">
-                <p className="order-class-name text-truncate me-md-10">
-                  輕鬆有氧運動
-                </p>
-                <div className="d-flex">
-                  <p className="me-2 me-md-10">2024/12/18</p>
-                  <p>15：00</p>
+            {frontendCartList.map((item) => (
+              <div className="cart-order-item f-order-item">
+                <div
+                  className="d-flex flex-column flex-md-row"
+                  key={item.course_id}
+                >
+                  <p className="order-class-name text-truncate me-md-10">
+                    {item.title}
+                  </p>
+                  <div className="d-flex">
+                    <p className="me-2 me-md-10">{item.date}</p>
+                    <p>{item.time}</p>
+                  </div>
                 </div>
+                <p>NT${item.price}</p>
               </div>
-              <p>NT$500</p>
-            </div>
-            <div className="cart-order-item f-order-item">
-              <div className="d-flex flex-column flex-md-row">
-                <p className="order-class-name text-truncate me-md-10">
-                  柔軟度與伸展課程
-                </p>
-                <div className="d-flex">
-                  <p className="me-2 me-md-10">2024/12/20</p>
-                  <p>20：00</p>
-                </div>
-              </div>
-              <p>NT$500</p>
-            </div>
-            <div className="cart-order-item f-order-item">
-              <div className="d-flex flex-column flex-md-row">
-                <p className="order-class-name text-truncate me-md-10">
-                  強力重訓課程
-                </p>
-                <div className="d-flex">
-                  <p className="me-2 me-md-10">2024/12/22</p>
-                  <p>09：00</p>
-                </div>
-              </div>
-              <p>NT$500</p>
-            </div>
+            ))}
           </div>
 
           {/*小計 */}
@@ -880,10 +866,16 @@ export default function Checkout() {
             <div className="d-flex flex-column align-items-end">
               <p className="mb-2">
                 <span className="me-5">小計</span>共
-                <span className="text-primary mx-1 mx-lg-2">3</span>堂課程
+                <span className="text-primary mx-1 mx-lg-2">
+                  {frontendCartList.length}
+                </span>
+                堂課程
               </p>
               <p>
-                NT$<span className="text-primary ms-1 ms-lg-2">1,500</span>
+                NT$
+                <span className="text-primary ms-1 ms-lg-2">
+                  {addThousandths(cart.total)}
+                </span>
               </p>
             </div>
           </div>
@@ -892,7 +884,9 @@ export default function Checkout() {
           <div className="cart-order-discount">
             <p>
               <span className="me-5">優惠折扣</span>NT$
-              <span className="text-primary mx-1 mx-lg-2">-25</span>
+              <span className="text-primary mx-1 mx-lg-2">
+                {addThousandths(cart.final_total - cart.total)}
+              </span>
             </p>
           </div>
 
@@ -900,7 +894,9 @@ export default function Checkout() {
           <div className="cart-order-payment">
             <p>
               <span className="me-5">本訂單須付款金額</span>NT$
-              <span className="text-primary mx-1 mx-lg-2">1,475</span>
+              <span className="text-primary mx-1 mx-lg-2">
+                {addThousandths(cart.final_total)}
+              </span>
             </p>
           </div>
         </div>
