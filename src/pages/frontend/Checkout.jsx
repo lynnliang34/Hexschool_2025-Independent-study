@@ -102,6 +102,8 @@ export default function Checkout() {
           status: "success",
         })
       );
+
+      getCart();
     } catch (error) {
       dispatch(
         pushMessage({
@@ -294,7 +296,7 @@ export default function Checkout() {
                         <div className="d-flex justify-content-center align-items-center">
                           <img
                             className="cart-list-img rounded"
-                            src="/assets/images/Rectangle 2111.png"
+                            src={item.img}
                             alt=""
                           />
                           <p className="text-start text-truncate">
