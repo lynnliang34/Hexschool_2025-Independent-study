@@ -146,7 +146,7 @@ export default function ScheduleCourses() {
     }, [selectedCourse]);
 
     // 從 Redux 獲取購物車資料
-    const cartDetails = useSelector(state => state.cart.cartDatails);
+    const cartDetails = useSelector(state => state.cart.cartDetails);
 
     // 使用 useEffect 監視購物車資料變化
     useEffect(() => {
@@ -254,7 +254,7 @@ export default function ScheduleCourses() {
                     {/* <!-- 課程選項 --> */}
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 g-lg-3 btnStyle">
                         {allCourses.map((item)=>{
-                            const isSlotInCourse = !item.timeSlots;
+                            const isSlotInCourse = !item.timeSlots || !item.timeSlots.some(slot => slot.course_id.trim() !== "" && slot.date.trim() !== "" && slot.teacher.trim() !== "" && slot.time.trim() !== "");
                             return(
                             <div className="col" key={item.id}>
                             <button 
