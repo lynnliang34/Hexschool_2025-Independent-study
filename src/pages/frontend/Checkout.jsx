@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pushMessage } from "../../redux/toastSlice";
-import { removeCartDetail } from "../../redux/cartSlice";
+import { removeCartDetail, clearCartDetail } from "../../redux/cartSlice";
 import axios from "axios";
 import ReactLoading from "react-loading";
 import { Toast } from "../../components";
@@ -204,6 +204,9 @@ export default function Checkout() {
   // 選擇付款方式，顯示對應區塊
   const handleChangePaymentMethod = (method) => {
     setPaymentMethod(paymentMethod === method ? null : method);
+    if (method !== "credit-card") {
+      setMobilePayment(null);
+    }
   };
 
   // 選擇電子支付，顯示對應 active 狀態
@@ -252,6 +255,8 @@ export default function Checkout() {
     handleSubmit,
     formState: { errors },
     watch,
+    setValue,
+    reset,
   } = useForm({
     defaultValues: {
       invoiceType: "", // 預設值為空
@@ -266,16 +271,144 @@ export default function Checkout() {
 
   // 送出表單
   const onSubmit = (data) => {
-    console.log("提交成功:", data);
-    console.log(errors);
+    if (!paymentMethod) {
+      dispatch(
+        pushMessage({
+          text: "請選擇付款方式",
+          status: "failed",
+        })
+      );
+
+      return;
+    }
+
+    // 初始資料
+    const postData = {
+      user: {
+        name: data.name,
+        email: data.email,
+        tel: data.tel,
+        address: data.address,
+      },
+      payment: {
+        paymentMethod: paymentMethod, // 使用傳入的 paymentMethod
+        mobilePayment: paymentMethod === "mobile-payment" ? mobilePayment : "", // 如果是手機支付，則設定 mobilePayment
+        creditCardInfo:
+          paymentMethod === "credit-card"
+            ? {
+                CVC: creditCardInfo.CVC,
+                card_number: creditCardInfo.card_number,
+                expiry_date: creditCardInfo.expiry_date,
+              }
+            : {
+                // 如果是信用卡支付，則必須填寫信用卡資訊
+                CVC: "",
+                card_number: "",
+                expiry_date: "",
+              },
+      },
+      invoice: {
+        invoiceType: data.invoiceType,
+        electronicInvoice: data.electronicInvoice,
+        mobile_barcode: data.mobile_barcode,
+        citizen_digital_Certificate: data.citizen_digital_Certificate,
+        tax_ID_number: data.tax_ID_number,
+        receipt_title: data.receipt_title,
+        company_address: data.company_address,
+        company_postal_code: data.company_postal_code,
+        donationInvoice: data.donationInvoice,
+      },
+    };
+
+    // 根據 invoiceType 清理欄位
+    const clearFields = {
+      electronic: [
+        "tax_ID_number",
+        "receipt_title",
+        "company_address",
+        "company_postal_code",
+        "donationInvoice",
+        "mobile_barcode",
+        "citizen_digital_Certificate",
+      ],
+      GUI_number: [
+        "electronicInvoice",
+        "mobile_barcode",
+        "citizen_digital_Certificate",
+        "donationInvoice",
+      ],
+      donation: [
+        "electronicInvoice",
+        "mobile_barcode",
+        "citizen_digital_Certificate",
+        "tax_ID_number",
+        "receipt_title",
+        "company_address",
+        "company_postal_code",
+      ],
+    };
+
+    // 清除不需要的欄位
+    clearFields[data.invoiceType]?.forEach((field) => {
+      postData.invoice[field] = "";
+    });
+
+    // 根據電子發票的選項進行更細部的處理
+    if (data.invoiceType === "electronic") {
+      if (data.electronicInvoice === "citizen-digital-certificate") {
+        postData.invoice.citizen_digital_Certificate =
+          data.citizen_digital_Certificate;
+        postData.invoice.mobile_barcode = "";
+      } else if (data.electronicInvoice === "mobile_barcode") {
+        postData.invoice.mobile_barcode = data.mobile_barcode;
+        postData.invoice.citizen_digital_Certificate = "";
+      }
+    }
+
+    checkout(postData);
   };
 
-  // 手動提交所有表單
+  // 提交表單
   const handleAllSubmit = () => {
-    const discountData = handleSubmit(onSubmit)();
-    // const paymentData = handleSubmit(onSubmit)();
-    // const invoiceData = handleSubmit(onSubmit)();
-    // 可以做一些額外的處理，比如將所有的數據傳給後端
+    handleSubmit(onSubmit)();
+  };
+
+  // 結帳
+  const checkout = async (data) => {
+    try {
+      setIsScreenLoading(true);
+      const res = await axios.post(`${BASE_URL}/api/${API_PATH}/order`, {
+        data: data,
+      });
+
+      getCart();
+      dispatch(clearCartDetail()); //重置前台購物車
+
+      dispatch(
+        pushMessage({
+          text: `成功送出訂單`,
+          status: "success",
+        })
+      );
+
+      reset();
+      setPaymentMethod(null);
+      setMobilePayment(null);
+      setCreditCardInfo({
+        card_number: "",
+        expiry_date: "",
+        CVC: "",
+      });
+    } catch (error) {
+      dispatch(
+        pushMessage({
+          text: `結帳失敗：${error.response.data.message}`,
+          status: "failed",
+        })
+      );
+    } finally {
+      setIsScreenLoading(false);
+    }
   };
 
   // 5 訂單明細
@@ -442,10 +575,7 @@ export default function Checkout() {
                 className={`btn btn-outline-primary checkout-btn btn-w-credit-card me-2 me-lg-6 ${
                   paymentMethod === "credit-card" ? "active" : ""
                 }`}
-                onClick={() => {
-                  handleChangePaymentMethod("credit-card");
-                  setMobilePayment(null);
-                }}
+                onClick={() => handleChangePaymentMethod("credit-card")}
               >
                 信用卡
               </button>
@@ -454,84 +584,112 @@ export default function Checkout() {
                 className={`btn btn-outline-primary checkout-btn btn-w-mobile-payment ${
                   paymentMethod === "mobile-payment" ? "active" : ""
                 }`}
-                onClick={() => {
-                  handleChangePaymentMethod("mobile-payment");
-                  paymentMethod === null && setMobilePayment(null);
-                }}
+                onClick={() => handleChangePaymentMethod("mobile-payment")}
               >
                 行動支付
               </button>
             </div>
 
-            {/*信用卡 */}
             {paymentMethod === "credit-card" && (
               <div className="credit-card d-flex flex-column flex-md-row">
                 <div className="credit-card-number me-md-2 me-lg-6">
-                  <label
-                    htmlFor="creditCardNumberInput"
-                    className="form-label checkout-label mb-1 mb-lg-2"
-                  >
+                  <label className="form-label checkout-label mb-1 mb-lg-2">
                     信用卡卡號<span className="text-primary ms-1">*</span>
                   </label>
                   <input
-                    className="form-control checkout-input mb-3 mb-md-0"
-                    id="creditCardNumberInput"
+                    className={`form-control checkout-input mb-3 mb-md-0 ${
+                      errors.card_number && "is-invalid"
+                    }`}
                     type="tel"
-                    name="card_number"
-                    value={creditCardInfo.card_number}
-                    onChange={handleCreditCardInfoChange}
+                    {...register("card_number", {
+                      required: "必填",
+                      pattern: {
+                        value: /^\d{4} \d{4} \d{4} \d{4}$/,
+                        message: "格式錯誤",
+                      },
+                    })}
                     inputMode="numeric"
-                    pattern="\d{4} \d{4} \d{4} \d{4}"
-                    maxLength="19"
                     placeholder="**** **** **** ****"
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/\D/g, "");
+                      value = value
+                        .replace(/(\d{4})/g, "$1 ")
+                        .trim()
+                        .substring(0, 19);
+                      setValue("card_number", value);
+                    }}
                   />
+                  {errors.card_number && (
+                    <p className="text-danger">{errors.card_number.message}</p>
+                  )}
                 </div>
                 <div className="credit-card-info d-flex justify-content-between">
                   <div className="w-50 me-2 me-lg-6">
-                    <label
-                      htmlFor="cardExpiryDateInput"
-                      className="form-label checkout-label mb-1 mb-lg-2"
-                    >
+                    <label className="form-label checkout-label mb-1 mb-lg-2">
                       有效期限
                     </label>
                     <input
-                      className="form-control checkout-input"
-                      id="cardExpiryDateInput"
+                      className={`form-control checkout-input  ${
+                        errors.expiry_date && "is-invalid"
+                      }`}
                       type="text"
-                      name="expiry_date"
-                      value={creditCardInfo.expiry_date}
-                      onChange={handleCreditCardInfoChange}
+                      {...register("expiry_date", {
+                        required: "必填",
+                        pattern: {
+                          value: /^(0[1-9]|1[0-2])\/\d{2}$/,
+                          message: "格式錯誤",
+                        },
+                      })}
                       inputMode="numeric"
-                      pattern="(0[1-9]|1[0-2])\/\d{2}"
                       maxLength="5"
                       placeholder="MM/YY"
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/\D/g, "");
+                        if (value.length >= 2)
+                          value = value.slice(0, 2) + "/" + value.slice(2);
+                        setValue("expiry_date", value.substring(0, 5));
+                      }}
                     />
+                    {errors.expiry_date && (
+                      <p className="text-danger">
+                        {errors.expiry_date.message}
+                      </p>
+                    )}
                   </div>
                   <div className="w-50 me-2 me-lg-6">
-                    <label
-                      htmlFor="CVCInput"
-                      className="form-label checkout-label mb-1 mb-lg-2"
-                    >
+                    <label className="form-label checkout-label mb-1 mb-lg-2">
                       辨識碼
                     </label>
                     <input
-                      className="form-control checkout-input"
-                      id="CVCInput"
+                      className={`form-control checkout-input  ${
+                        errors.CVC && "is-invalid"
+                      }`}
                       type="tel"
-                      name="CVC"
-                      value={creditCardInfo.CVC}
-                      onChange={handleCreditCardInfoChange}
+                      {...register("CVC", {
+                        required: "必填",
+                        pattern: {
+                          value: /^\d{3,4}$/,
+                          message: "格式錯誤",
+                        },
+                      })}
                       inputMode="numeric"
-                      pattern="\d{3,4}"
                       maxLength="4"
                       placeholder="CVC/CVV"
+                      onChange={(e) => {
+                        let value = e.target.value
+                          .replace(/\D/g, "")
+                          .substring(0, 4);
+                        setValue("CVC", value);
+                      }}
                     />
+                    {errors.CVC && (
+                      <p className="text-danger">{errors.CVC.message}</p>
+                    )}
                   </div>
                 </div>
               </div>
             )}
 
-            {/*行動支付 */}
             {paymentMethod === "mobile-payment" && (
               <div className="mobile-payment d-flex mb-3 mb-lg-6 ">
                 <button
@@ -544,7 +702,7 @@ export default function Checkout() {
                   <img
                     className="mobile-payment-img"
                     src="./images/payment/Line Pay.png"
-                    alt=""
+                    alt="Line Pay"
                   />
                 </button>
                 <button
@@ -557,7 +715,7 @@ export default function Checkout() {
                   <img
                     className="mobile-payment-img"
                     src="./images/payment/JKO Pay.png"
-                    alt=""
+                    alt="JKO Pay"
                   />
                 </button>
               </div>
@@ -611,7 +769,7 @@ export default function Checkout() {
                 />
 
                 {errors.name && (
-                  <p className="text-danger my-2">{errors.name.message}</p>
+                  <p className="text-danger">{errors.name.message}</p>
                 )}
               </div>
 
@@ -639,12 +797,68 @@ export default function Checkout() {
                   placeholder="請輸入電子信箱"
                 />
                 {errors.email && (
-                  <p className="text-danger my-2">{errors.email.message}</p>
+                  <p className="text-danger">{errors.email.message}</p>
                 )}
               </div>
             </div>
 
             {/*第二行輸入欄 */}
+            <div className="d-md-flex justify-content-between mb-3 mb-md-6">
+              {/* 電話 */}
+              <div className="w-100 me-2 me-lg-6 mb-3 mb-md-0">
+                <label
+                  htmlFor="checkoutPhoneInput"
+                  className="form-label checkout-label mb-1 mb-lg-2"
+                >
+                  電話<span className="text-primary ms-1">*</span>
+                </label>
+                <input
+                  {...register("tel", {
+                    required: "電話必填",
+                    pattern: {
+                      value: /^(?:02\d{8}|04\d{8}|0[3-8]\d{7}|09\d{8})$/,
+                      message: "格式錯誤",
+                    },
+                  })}
+                  className={`form-control checkout-input ${
+                    errors.tel && "is-invalid"
+                  }`}
+                  id="checkoutPhoneInput"
+                  type="tel"
+                  placeholder="請輸入電話"
+                />
+
+                {errors.tel && (
+                  <p className="text-danger">{errors.tel.message}</p>
+                )}
+              </div>
+
+              {/* 地址 */}
+              <div className="w-100">
+                <label
+                  htmlFor="checkoutAddressInput"
+                  className="form-label checkout-label mb-1 mb-lg-2"
+                >
+                  地址<span className="text-primary ms-1">*</span>
+                </label>
+                <input
+                  {...register("address", {
+                    required: "地址必填",
+                  })}
+                  className={`form-control checkout-input ${
+                    errors.address && "is-invalid"
+                  }`}
+                  id="checkoutAddressInput"
+                  type="text"
+                  placeholder="請輸入地址"
+                />
+                {errors.address && (
+                  <p className="text-danger">{errors.address.message}</p>
+                )}
+              </div>
+            </div>
+
+            {/*第三行輸入欄 */}
             <div className="d-md-flex justify-content-between mb-3 mb-md-6">
               {/*發票類型 */}
               <div className="w-100 me-2 me-lg-6 mb-3 mb-md-0">
@@ -666,13 +880,19 @@ export default function Checkout() {
                     請選擇
                   </option>
                   <option value="electronic">電子發票</option>
-                  <option value="GUI-number">統編發票</option>
+                  <option value="GUI_number">統編發票</option>
                   <option value="donation">捐贈發票</option>
                 </select>
                 {errors.invoiceType && (
-                  <p className="text-danger">{errors.invoiceType.message}</p>
+                  <p className="text-danger mb-1">
+                    {errors.invoiceType.message}
+                  </p>
                 )}
-                <p className="invoice-note fs-7 fs-md-6 text-neutral-1 mt-1 mt-lg-2">
+                <p
+                  className={`invoice-note fs-7 fs-md-6 text-neutral-1 mt-1 mt-lg-2 ${
+                    errors.invoiceType && "d-none"
+                  }`}
+                >
                   如需開立統編，請選擇統編發票
                 </p>
               </div>
@@ -680,7 +900,11 @@ export default function Checkout() {
               {/*電子發票 */}
               {invoiceType === "" && (
                 <div className="electronic-invoice invoice-section w-100 d-flex align-items-end mb-md-7 mb-lg-8">
-                  <select className="form-select checkout-input" disabled>
+                  <select
+                    className="form-select checkout-input"
+                    defaultValue=""
+                    disabled
+                  >
                     <option disabled value="">
                       請選擇
                     </option>
@@ -725,7 +949,7 @@ export default function Checkout() {
               )}
 
               {/*統編條碼 */}
-              {invoiceType === "GUI-number" && (
+              {invoiceType === "GUI_number" && (
                 <>
                   <div className="government-uniform-invoice invoice-section w-100 me-2 me-lg-6 mb-3 mb-md-0">
                     <label
@@ -821,7 +1045,7 @@ export default function Checkout() {
               )}
             </div>
 
-            {/*第三行輸入欄 */}
+            {/*第四行輸入欄 */}
             <div className="d-md-flex justify-content-between">
               {/*載具類別 */}
               {(invoiceType === "" || invoiceType === "electronic") &&
@@ -909,7 +1133,7 @@ export default function Checkout() {
                 )}
 
               {/*公司地址 */}
-              {invoiceType === "GUI-number" && (
+              {invoiceType === "GUI_number" && (
                 <div className="government-uniform-invoice invoice-section w-100">
                   <div className="d-md-flex justify-content-between mb-3 mb-md-6">
                     {/*地址  */}
@@ -1073,7 +1297,9 @@ export default function Checkout() {
         {/*確認付款 */}
         <div className="text-center">
           <button
-            className="btn btn-primary text-white confirm-payment-btn"
+            className={`btn btn-primary text-white confirm-payment-btn ${
+              cart.carts?.length > 0 || "disabled"
+            }`}
             type="button"
             onClick={handleAllSubmit}
           >
