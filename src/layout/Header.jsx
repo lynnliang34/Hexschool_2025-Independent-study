@@ -309,7 +309,7 @@ export default function Header() {
         )}
 
         <CartOffcanvas 
-          cartOffcanvasRef={cartOffcanvasRef} closeCartOffcanvas={closeCartOffcanvas} cartDetails={cartDetails}/>
+          cartOffcanvasRef={cartOffcanvasRef} closeCartOffcanvas={closeCartOffcanvas}/>
       </div>
     </>
   );
