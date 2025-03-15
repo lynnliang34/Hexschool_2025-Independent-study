@@ -10,6 +10,10 @@ import {
 } from "../assets/Icons";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="footer">
       <div className="container position-relative d-flex flex-column flex-lg-row justify-content-center align-items-center pt-11 pt-lg-30">
@@ -65,9 +69,9 @@ export default function Footer() {
         </div>
 
         {/*回到最上方箭頭*/}
-        <a className="to-top" href="#">
+        <button type="button" className="to-top border-0" onClick={scrollToTop}>
           <IconTopArrow className={"top-arrow"} />
-        </a>
+        </button>
       </div>
     </footer>
   );

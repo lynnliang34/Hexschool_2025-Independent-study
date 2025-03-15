@@ -7,6 +7,7 @@ import ReactLoading from "react-loading";
 import { Toast } from "../../components";
 import { IconTrash } from "../../assets/Icons";
 import React from "react";
+import { useForm } from "react-hook-form";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -49,9 +50,69 @@ export default function Checkout() {
     console.log("前台資料", frontendCartList);
   }, []);
 
+  // 更改後台購物車商品數量
+  const putCart = async (cart_id, product_id, qty) => {
+    try {
+      const res = await axios.put(
+        `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`,
+        {
+          data: {
+            product_id: product_id,
+            qty: qty,
+          },
+        }
+      );
+
+      getCart();
+    } catch (error) {
+      dispatch(
+        pushMessage({
+          text: `更改失敗：${error.response.data.message}`,
+          status: "failed",
+        })
+      );
+    }
+  };
+
+  // 刪除後台購物車商品數量
+  const deleteCartItem = async (cart_id) => {
+    try {
+      const res = await axios.delete(
+        `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`
+      );
+
+      getCart();
+    } catch (error) {
+      dispatch(
+        pushMessage({
+          text: `刪除失敗：${error.response.data.message}`,
+          status: "failed",
+        })
+      );
+    }
+  };
+
   // 刪除購物車預約項目
-  const handleRemoveCartItem = (id) => {
-    dispatch(removeCartDetail(id));
+  const handleRemoveCartItem = (product_id, course_id) => {
+    // 找前台購物車課程，其後台對應的位置
+    const targetProduct = cart.carts?.find(
+      (cart) => cart.product_id === product_id
+    );
+
+    const targetCartId = targetProduct.id; // 點擊的課程，其後台對應的 cart id
+    const targetProductQty = targetProduct.qty; // 點擊的課程，其後台對應的 qty
+
+    // 如果後台數量 > 1，用 put 修改數量
+    if (targetProductQty > 1) {
+      putCart(targetCartId, product_id, targetProductQty - 1);
+
+      // 如果後台數量 = 1，用 delete 刪除
+    } else {
+      deleteCartItem(targetCartId);
+    }
+
+    // 刪除前台購物車的課程
+    dispatch(removeCartDetail(course_id));
     dispatch(
       pushMessage({
         text: "刪除購物車預約項目成功",
@@ -102,6 +163,8 @@ export default function Checkout() {
           status: "success",
         })
       );
+
+      getCart();
     } catch (error) {
       dispatch(
         pushMessage({
@@ -182,43 +245,43 @@ export default function Checkout() {
   };
 
   // 4 發票選項
-  const [invoiceType, setInvoiceType] = useState("");
-  const [electronicInvoice, setElectronicInvoice] = useState("");
-  const [donationInvoice, setDonationInvoice] = useState("");
-  const [customerInfo, setCustomerInfo] = useState({});
-  const [barcode, setBarcode] = useState({});
-  const [GUI_Number, setGUI_Number] = useState({});
-  const [donationCode, setDonationCode] = useState("");
 
-  // 處理顧客姓名、電子郵件輸入
-  const handleCustomerInfoChange = (e) => {
-    const { name, value } = e.target;
+  // 驗證表單
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm({
+    defaultValues: {
+      invoiceType: "", // 預設值為空
+      electronicInvoice: "",
+      donationInvoice: "",
+    },
+  });
 
-    setCustomerInfo({
-      ...customerInfo,
-      [name]: value,
-    });
+  const invoiceType = watch("invoiceType"); // 監聽發票類型
+  const electronicInvoice = watch("electronicInvoice"); // 監聽電子發票類別
+  const donationInvoice = watch("donationInvoice"); // 監聽捐贈發票類別
+
+  // 送出表單
+  const onSubmit = (data) => {
+    console.log("提交成功:", data);
+    console.log(errors);
   };
 
-  // 處理電子發票條碼輸入
-  const handleBarcodeInputChange = (e) => {
-    const { name, value } = e.target;
-
-    setBarcode({
-      ...barcode,
-      [name]: value,
-    });
+  // 手動提交所有表單
+  const handleAllSubmit = () => {
+    const discountData = handleSubmit(onSubmit)();
+    // const paymentData = handleSubmit(onSubmit)();
+    // const invoiceData = handleSubmit(onSubmit)();
+    // 可以做一些額外的處理，比如將所有的數據傳給後端
   };
 
-  // 處理公司統編輸入
-  const handleGUINumberInputChange = (e) => {
-    const { name, value } = e.target;
+  // 5 訂單明細
 
-    setGUI_Number({
-      ...GUI_Number,
-      [name]: value,
-    });
-  };
+  // 數字加千分位逗號
+  const addThousandths = (x) => new Intl.NumberFormat("en-US").format(x);
 
   return (
     <>
@@ -244,7 +307,7 @@ export default function Checkout() {
                   <div className="d-flex">
                     <img
                       className="cart-list-img rounded me-4"
-                      src="/assets/images/healthy-couple-performing-exercising-yoga-mat-home 2.png"
+                      src={item.img}
                       alt=""
                     />
 
@@ -259,7 +322,9 @@ export default function Checkout() {
                   <button
                     type="button"
                     className="border-0 bg-transparent"
-                    onClick={() => handleRemoveCartItem(item.course_id)}
+                    onClick={() =>
+                      handleRemoveCartItem(item.product_id, item.course_id)
+                    }
                   >
                     <IconTrash className={"cart-trash"} />
                   </button>
@@ -289,7 +354,7 @@ export default function Checkout() {
                         <div className="d-flex justify-content-center align-items-center">
                           <img
                             className="cart-list-img rounded"
-                            src="/assets/images/Rectangle 2111.png"
+                            src={item.img}
                             alt=""
                           />
                           <p className="text-start text-truncate">
@@ -304,7 +369,12 @@ export default function Checkout() {
                         <button
                           type="button"
                           className="border-0 bg-transparent"
-                          onClick={() => handleRemoveCartItem(item.course_id)}
+                          onClick={() =>
+                            handleRemoveCartItem(
+                              item.product_id,
+                              item.course_id
+                            )
+                          }
                         >
                           <IconTrash className={"cart-trash"} />
                         </button>
@@ -365,7 +435,7 @@ export default function Checkout() {
             </h2>
           </div>
 
-          <form id="payment">
+          <form id="payment" onSubmit={handleSubmit(onSubmit)}>
             <div className="d-flex mb-3 mb-lg-6">
               <button
                 type="button"
@@ -509,7 +579,7 @@ export default function Checkout() {
             </p>
           </div>
 
-          <form id="invoice">
+          <form id="invoice" onSubmit={handleSubmit(onSubmit)}>
             {/*帶入上次結帳資料 */}
             <button
               type="button"
@@ -529,14 +599,20 @@ export default function Checkout() {
                   姓名<span className="text-primary ms-1">*</span>
                 </label>
                 <input
-                  className="form-control checkout-input"
+                  {...register("name", {
+                    required: "姓名必填",
+                  })}
+                  className={`form-control checkout-input ${
+                    errors.name && "is-invalid"
+                  }`}
                   id="checkoutNameInput"
                   type="text"
-                  name="customer_name"
-                  value={customerInfo.customer_name}
-                  onChange={handleCustomerInfoChange}
                   placeholder="請輸入真實姓名"
                 />
+
+                {errors.name && (
+                  <p className="text-danger my-2">{errors.name.message}</p>
+                )}
               </div>
 
               {/*電子信箱 */}
@@ -548,14 +624,23 @@ export default function Checkout() {
                   聯絡用電子信箱<span className="text-primary ms-1">*</span>
                 </label>
                 <input
-                  className="form-control checkout-input"
+                  {...register("email", {
+                    required: "Email 必填",
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Email 格式錯誤",
+                    },
+                  })}
+                  className={`form-control checkout-input ${
+                    errors.email && "is-invalid"
+                  }`}
                   id="checkoutEmailInput"
                   type="text"
-                  name="customer_email"
-                  value={customerInfo.customer_email}
-                  onChange={handleCustomerInfoChange}
                   placeholder="請輸入電子信箱"
                 />
+                {errors.email && (
+                  <p className="text-danger my-2">{errors.email.message}</p>
+                )}
               </div>
             </div>
 
@@ -570,11 +655,12 @@ export default function Checkout() {
                   發票類型<span className="text-primary ms-1">*</span>
                 </label>
                 <select
-                  className="form-select checkout-input"
+                  {...register("invoiceType", { required: "請選擇發票類型" })}
+                  className={`form-select checkout-input ${
+                    errors.invoiceType && "is-invalid"
+                  }`}
                   id="typeOfInvoice"
                   aria-label="Default select example"
-                  value={invoiceType}
-                  onChange={(e) => setInvoiceType(e.target.value)}
                 >
                   <option disabled value="">
                     請選擇
@@ -583,6 +669,9 @@ export default function Checkout() {
                   <option value="GUI-number">統編發票</option>
                   <option value="donation">捐贈發票</option>
                 </select>
+                {errors.invoiceType && (
+                  <p className="text-danger">{errors.invoiceType.message}</p>
+                )}
                 <p className="invoice-note fs-7 fs-md-6 text-neutral-1 mt-1 mt-lg-2">
                   如需開立統編，請選擇統編發票
                 </p>
@@ -591,14 +680,7 @@ export default function Checkout() {
               {/*電子發票 */}
               {invoiceType === "" && (
                 <div className="electronic-invoice invoice-section w-100 d-flex align-items-end mb-md-7 mb-lg-8">
-                  <select
-                    className="form-select checkout-input"
-                    id="electronicInvoiceSelect"
-                    aria-label="Default select example"
-                    value={electronicInvoice}
-                    onChange={(e) => setElectronicInvoice(e.target.value)}
-                    disabled
-                  >
+                  <select className="form-select checkout-input" disabled>
                     <option disabled value="">
                       請選擇
                     </option>
@@ -610,13 +692,21 @@ export default function Checkout() {
                 </div>
               )}
               {invoiceType === "electronic" && (
-                <div className="electronic-invoice invoice-section w-100 d-flex align-items-end mb-md-7 mb-lg-8">
+                <div className="electronic-invoice invoice-section w-100 mb-md-7 mb-lg-8">
+                  <label
+                    htmlFor="typeOfElectronic"
+                    className="form-label checkout-label mb-1 mb-lg-2"
+                  >
+                    載具類型<span className="text-primary ms-1">*</span>
+                  </label>
                   <select
-                    className="form-select checkout-input"
-                    id="electronicInvoiceSelect"
-                    aria-label="Default select example"
-                    value={electronicInvoice}
-                    onChange={(e) => setElectronicInvoice(e.target.value)}
+                    {...register("electronicInvoice", {
+                      required: "請選擇載具類別",
+                    })}
+                    className={`form-select checkout-input ${
+                      errors.electronicInvoice && "is-invalid"
+                    }`}
+                    id="typeOfElectronic"
                   >
                     <option disabled value="">
                       請選擇
@@ -626,6 +716,11 @@ export default function Checkout() {
                     </option>
                     <option value="mobile-barcode">手機條碼</option>
                   </select>
+                  {errors.electronicInvoice && (
+                    <p className="text-danger">
+                      {errors.electronicInvoice.message}
+                    </p>
+                  )}
                 </div>
               )}
 
@@ -640,16 +735,25 @@ export default function Checkout() {
                       統一編號<span className="text-primary ms-1">*</span>
                     </label>
                     <input
-                      className="form-control checkout-input"
+                      {...register("tax_ID_number", {
+                        required: "請輸入統一編號",
+                        pattern: {
+                          value: /^\d{8}$/,
+                          message: "統編須為 8 碼數字",
+                        },
+                      })}
+                      className={`form-control checkout-input ${
+                        errors.tax_ID_number && "is-invalid"
+                      }`}
+                      type="text"
                       id="taxIdNumberInput"
-                      type="tel"
-                      inputMode="numeric"
-                      name="tax_ID_number"
-                      value={GUI_Number.tax_ID_number}
-                      onChange={handleGUINumberInputChange}
-                      maxLength="8"
                       placeholder="送出後無法更改，請務必確認"
                     />
+                    {errors.tax_ID_number && (
+                      <p className="text-danger">
+                        {errors.tax_ID_number.message}
+                      </p>
+                    )}
                   </div>
                   <div className="government-uniform-invoice invoice-section w-100">
                     <label
@@ -659,27 +763,42 @@ export default function Checkout() {
                       發票抬頭<span className="text-primary ms-1">*</span>
                     </label>
                     <input
-                      className="form-control checkout-input"
-                      id="receiptTitleInput"
+                      {...register("receipt_title", {
+                        required: "請輸入發票抬頭",
+                      })}
+                      className={`form-control checkout-input ${
+                        errors.receipt_title && "is-invalid"
+                      }`}
                       type="text"
-                      name="receipt_title"
-                      value={GUI_Number.receipt_title}
-                      onChange={handleGUINumberInputChange}
+                      id="receiptTitleInput"
                       placeholder="送出後無法更改，請務必確認"
                     />
+                    {errors.receipt_title && (
+                      <p className="text-danger">
+                        {errors.receipt_title.message}
+                      </p>
+                    )}
                   </div>
                 </>
               )}
 
               {/*捐贈發票 */}
               {invoiceType === "donation" && (
-                <div className="donation-invoice invoice-section w-100 d-flex align-items-end mb-md-7 mb-lg-8">
+                <div className="donation-invoice invoice-section w-100  mb-md-7 mb-lg-8">
+                  <label
+                    htmlFor="donationInvoice"
+                    className="form-label checkout-label mb-1 mb-lg-2"
+                  >
+                    載具類型<span className="text-primary ms-1">*</span>
+                  </label>
                   <select
-                    className="form-select checkout-input"
-                    id="donationInvoiceSelect"
-                    aria-label="Default select example"
-                    value={donationInvoice}
-                    onChange={(e) => setDonationInvoice(e.target.value)}
+                    {...register("donationInvoice", {
+                      required: "請選擇捐贈單位",
+                    })}
+                    className={`form-select checkout-input ${
+                      errors.donationInvoice && "is-invalid"
+                    }`}
+                    id="donationInvoice"
                   >
                     <option disabled value="">
                       請選擇
@@ -693,6 +812,11 @@ export default function Checkout() {
                     </option>
                     <option value="input-donation-code">輸入捐贈碼</option>
                   </select>
+                  {errors.donationInvoice && (
+                    <p className="text-danger">
+                      {errors.donationInvoice.message}
+                    </p>
+                  )}
                 </div>
               )}
             </div>
@@ -729,14 +853,26 @@ export default function Checkout() {
                       自然人憑證條碼<span className="text-primary ms-1">*</span>
                     </label>
                     <input
-                      className="form-control checkout-input"
                       id="citizenDigitalCertificate"
-                      name="citizen_digital_certificate"
-                      value={barcode.citizen_digital_certificate}
-                      onChange={handleBarcodeInputChange}
+                      {...register("citizen_digital_Certificate", {
+                        required: "請輸入憑證碼",
+                        pattern: {
+                          value: /^[A-Z]{2}\d{14}$/,
+                          message:
+                            "憑證碼格式錯誤，應為 2 碼大寫字母 + 14 碼數字",
+                        },
+                      })}
+                      className={`form-control checkout-input ${
+                        errors.citizen_digital_Certificate && "is-invalid"
+                      }`}
                       type="text"
                       placeholder="請輸入憑證碼，由2碼大寫字母加上14碼數字組成"
                     />
+                    {errors.citizen_digital_Certificate && (
+                      <p className="text-danger">
+                        {errors.citizen_digital_Certificate.message}
+                      </p>
+                    )}
                   </div>
                 )}
 
@@ -750,14 +886,25 @@ export default function Checkout() {
                       手機條碼<span className="text-primary ms-1">*</span>
                     </label>
                     <input
-                      className="form-control checkout-input"
+                      {...register("mobile_barcode", {
+                        required: "請輸入手機條碼",
+                        pattern: {
+                          value: /^\/[A-Za-z0-9]{7}$/,
+                          message: "手機條碼格式錯誤，應為 / 開頭共 8 碼英數字",
+                        },
+                      })}
+                      className={`form-control checkout-input ${
+                        errors.mobile_barcode && "is-invalid"
+                      }`}
+                      type="tel"
                       id="mobileBarcode"
-                      name="mobile_barcode"
-                      value={barcode.mobile}
-                      onChange={handleBarcodeInputChange}
-                      type="text"
                       placeholder="請輸入手機條碼，/ 開頭共8碼"
                     />
+                    {errors.mobile_barcode && (
+                      <p className="text-danger">
+                        {errors.mobile_barcode.message}
+                      </p>
+                    )}
                   </div>
                 )}
 
@@ -774,29 +921,52 @@ export default function Checkout() {
                         公司地址<span className="text-primary ms-1">*</span>
                       </label>
                       <input
-                        className="form-control checkout-input"
-                        id="companyAddressInput"
+                        {...register("company_address", {
+                          required: "請輸入公司地址",
+                        })}
+                        className={`form-control checkout-input ${
+                          errors.company_address && "is-invalid"
+                        }`}
                         type="text"
-                        name="company_address"
-                        value={GUI_Number.company_address}
-                        onChange={handleGUINumberInputChange}
+                        id="companyAddressInput"
                         placeholder="請輸入公司地址"
                       />
+                      {errors.company_address && (
+                        <p className="text-danger">
+                          {errors.company_address.message}
+                        </p>
+                      )}
                     </div>
 
                     {/*郵遞區號 */}
-                    <div className="w-100 d-flex align-items-end">
+                    <div className="w-100 mb-3 mb-md-0">
+                      <label
+                        htmlFor="companyPostalCodeInput"
+                        className="form-label checkout-label mb-1 mb-lg-2"
+                      >
+                        郵遞區號<span className="text-primary ms-1">*</span>
+                      </label>
                       <input
-                        className="form-control checkout-input"
+                        {...register("company_postal_code", {
+                          required: "請輸入郵遞區號",
+                          pattern: {
+                            value: /^\d{3}(\d{2}|\d{3})?$/, // 允許 3 位數 或 3 + 2 位數 或 3 + 3 位數
+                            message: "郵遞區號必須是 3 或 3+2 或 3+3 位數字",
+                          },
+                        })}
+                        className={`form-control checkout-input ${
+                          errors.company_postal_code && "is-invalid"
+                        }`}
                         id="companyPostalCodeInput"
                         type="text"
-                        name="company_postal_code"
-                        value={GUI_Number.company_postal_code}
-                        onChange={handleGUINumberInputChange}
                         placeholder="請輸入郵遞區號"
                       />
+                      {errors.company_postal_code && (
+                        <p className="text-danger">
+                          {errors.company_postal_code.message}
+                        </p>
+                      )}
                     </div>
-                    {console.log(GUI_Number)}
                   </div>
                 </div>
               )}
@@ -806,17 +976,21 @@ export default function Checkout() {
                 donationInvoice === "input-donation-code" && (
                   <div className="invoice-section donation-invoice-section w-100">
                     <input
-                      className="form-control checkout-input"
-                      id="donationInvoiceInput"
-                      name="donation_invoice_input"
-                      value={donationCode}
-                      onChange={(e) => setDonationCode(e.target.value)}
-                      type="text"
+                      {...register("donationCode", {
+                        required: "請輸入捐贈碼",
+                      })}
+                      className={`form-control checkout-input ${
+                        errors.donationCode && "is-invalid"
+                      }`}
                       placeholder="輸入捐贈碼"
                     />
+                    {errors.donationCode && (
+                      <p className="text-danger">
+                        {errors.donationCode.message}
+                      </p>
+                    )}
                   </div>
                 )}
-              {console.log(donationInvoice)}
             </div>
           </form>
         </div>
@@ -837,42 +1011,23 @@ export default function Checkout() {
 
           {/*選購清單 */}
           <div className="cart-order">
-            <div className="cart-order-item f-order-item">
-              <div className="d-flex flex-column flex-md-row">
-                <p className="order-class-name text-truncate me-md-10">
-                  輕鬆有氧運動
-                </p>
-                <div className="d-flex">
-                  <p className="me-2 me-md-10">2024/12/18</p>
-                  <p>15：00</p>
+            {frontendCartList.map((item) => (
+              <div
+                className="cart-order-item f-order-item"
+                key={item.course_id}
+              >
+                <div className="d-flex flex-column flex-md-row">
+                  <p className="order-class-name text-truncate me-md-10">
+                    {item.title}
+                  </p>
+                  <div className="d-flex">
+                    <p className="me-2 me-md-10">{item.date}</p>
+                    <p>{item.time}</p>
+                  </div>
                 </div>
+                <p>NT${item.price}</p>
               </div>
-              <p>NT$500</p>
-            </div>
-            <div className="cart-order-item f-order-item">
-              <div className="d-flex flex-column flex-md-row">
-                <p className="order-class-name text-truncate me-md-10">
-                  柔軟度與伸展課程
-                </p>
-                <div className="d-flex">
-                  <p className="me-2 me-md-10">2024/12/20</p>
-                  <p>20：00</p>
-                </div>
-              </div>
-              <p>NT$500</p>
-            </div>
-            <div className="cart-order-item f-order-item">
-              <div className="d-flex flex-column flex-md-row">
-                <p className="order-class-name text-truncate me-md-10">
-                  強力重訓課程
-                </p>
-                <div className="d-flex">
-                  <p className="me-2 me-md-10">2024/12/22</p>
-                  <p>09：00</p>
-                </div>
-              </div>
-              <p>NT$500</p>
-            </div>
+            ))}
           </div>
 
           {/*小計 */}
@@ -880,10 +1035,16 @@ export default function Checkout() {
             <div className="d-flex flex-column align-items-end">
               <p className="mb-2">
                 <span className="me-5">小計</span>共
-                <span className="text-primary mx-1 mx-lg-2">3</span>堂課程
+                <span className="text-primary mx-1 mx-lg-2">
+                  {frontendCartList.length}
+                </span>
+                堂課程
               </p>
               <p>
-                NT$<span className="text-primary ms-1 ms-lg-2">1,500</span>
+                NT$
+                <span className="text-primary ms-1 ms-lg-2">
+                  {addThousandths(cart?.total)}
+                </span>
               </p>
             </div>
           </div>
@@ -892,7 +1053,9 @@ export default function Checkout() {
           <div className="cart-order-discount">
             <p>
               <span className="me-5">優惠折扣</span>NT$
-              <span className="text-primary mx-1 mx-lg-2">-25</span>
+              <span className="text-primary mx-1 mx-lg-2">
+                {addThousandths(cart?.final_total - cart?.total)}
+              </span>
             </p>
           </div>
 
@@ -900,7 +1063,9 @@ export default function Checkout() {
           <div className="cart-order-payment">
             <p>
               <span className="me-5">本訂單須付款金額</span>NT$
-              <span className="text-primary mx-1 mx-lg-2">1,475</span>
+              <span className="text-primary mx-1 mx-lg-2">
+                {addThousandths(cart?.final_total)}
+              </span>
             </p>
           </div>
         </div>
@@ -909,7 +1074,8 @@ export default function Checkout() {
         <div className="text-center">
           <button
             className="btn btn-primary text-white confirm-payment-btn"
-            type="submit"
+            type="button"
+            onClick={handleAllSubmit}
           >
             確認付款
           </button>
