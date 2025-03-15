@@ -247,7 +247,7 @@
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    border-radius: 50%; 
+    border-radius: 50%;
 
     @include xl {
       width: 64px;
@@ -299,6 +299,10 @@
       border-bottom: 1px solid $secondary;
     }
   }
+
+  .modal-body {
+    overflow-y: scroll;
+  }
 }
 
 .cart-link-circle {
@@ -345,10 +349,6 @@
     top: 0;
     left: 80%;
   }
-}
-
-.modal-body {
-  overflow-y: scroll;
 }
 
 .provile-link {
