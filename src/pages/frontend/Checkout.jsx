@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pushMessage } from "../../redux/toastSlice";
-import { removeCartDetail } from "../../redux/cartSlice";
+import { removeCartDetail, clearCartDetail } from "../../redux/cartSlice";
 import axios from "axios";
 import ReactLoading from "react-loading";
 import { Toast } from "../../components";
@@ -271,6 +271,17 @@ export default function Checkout() {
 
   // 送出表單
   const onSubmit = (data) => {
+    if (!paymentMethod) {
+      dispatch(
+        pushMessage({
+          text: "請選擇付款方式",
+          status: "failed",
+        })
+      );
+
+      return;
+    }
+
     // 初始資料
     const postData = {
       user: {
@@ -369,7 +380,10 @@ export default function Checkout() {
       const res = await axios.post(`${BASE_URL}/api/${API_PATH}/order`, {
         data: data,
       });
-      console.log(res);
+
+      getCart();
+      dispatch(clearCartDetail()); //重置前台購物車
+
       dispatch(
         pushMessage({
           text: `成功送出訂單`,
@@ -378,6 +392,13 @@ export default function Checkout() {
       );
 
       reset();
+      setPaymentMethod(null);
+      setMobilePayment(null);
+      setCreditCardInfo({
+        card_number: "",
+        expiry_date: "",
+        CVC: "",
+      });
     } catch (error) {
       dispatch(
         pushMessage({
