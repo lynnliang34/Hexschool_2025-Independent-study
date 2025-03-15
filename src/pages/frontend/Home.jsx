@@ -1,6 +1,19 @@
+import { useEffect, useRef } from "react";
+import HomeModal from "../../components/homeModal.jsx";
 import PhotoSwiper from "../../components/IndexSwiper.jsx";
 
 export default function Index(){
+    const openCommentModal = (modalId) => {
+        const modal = new bootstrap.Modal(document.getElementById(modalId));
+        modal.show();
+    }
+
+    const closeCommentModal = (modalId) => {
+        const modalElement = document.getElementById(modalId);
+        const modal = bootstrap.Modal.getInstance(modalElement); // 獲取已存在的實例
+        if (modal) modal.hide();
+    }
+
     return(<>
     
 
@@ -346,8 +359,10 @@ export default function Index(){
         {/* <!-- 學員分享對話框 --> */}
         <div className="commentBackground mx-auto pt-6">
             <div className="container position-relative d-none d-lg-block">
-                <div type="button" className="speechBubble1 blueBox position-absolute ms-46 ms-xl-0 "  data-bs-toggle="modal"
-                data-bs-target="#commentModal1">
+                <div type="button"
+                onClick={()=>openCommentModal('commentModal1')}
+                className="speechBubble1 blueBox position-absolute ms-46 ms-xl-0 "
+                data-bs-toggle="modal" data-bs-target="#commentModal1">
                     <p className="dialogText position-absolute fs-0 text-secondary-2">
                     社群氛圍非常好
                     </p>
@@ -358,7 +373,9 @@ export default function Index(){
                     fill="white" stroke="#487181" strokeWidth="2" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubble2 blueBox position-absolute ms-46 ms-xl-0" data-bs-toggle="modal"
+                <div
+                onClick={()=>openCommentModal('commentModal2')} 
+                type="button" className="speechBubble2 blueBox position-absolute ms-46 ms-xl-0" data-bs-toggle="modal"
                     data-bs-target="#commentModal2">
                     <p className="dialogText position-absolute fs-3 text-secondary-2">
                     以往在外面很難做到<br/>對長輩來說安全的肌力訓練，<br/>來到Move with Joy，<br/>跟一群同輩的人互動，才知道高齡樂活的樣貌
@@ -375,7 +392,9 @@ export default function Index(){
                         fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubble3 blueBox position-absolute d-none d-xxl-block" data-bs-toggle="modal"
+                <div
+                    onClick={()=>openCommentModal('commentModal3')}
+                    type="button" className="speechBubble3 blueBox position-absolute d-none d-xxl-block" data-bs-toggle="modal"
                     data-bs-target="#commentModal3">
                     <p className="dialogText vertical-rl mx-0 position-absolute fs-2  text-secondary-2 fw-bold">心情變得開朗了很多
                     </p>
@@ -390,7 +409,9 @@ export default function Index(){
                         fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-2)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubble4 blueBox position-absolute d-none d-xl-block" data-bs-toggle="modal"
+                <div 
+                    onClick={()=>openCommentModal('commentModal4')}
+                    type="button" className="speechBubble4 blueBox position-absolute d-none d-xl-block" data-bs-toggle="modal"
                     data-bs-target="#commentModal4">
                     <p className="dialogText position-absolute fs-0  text-secondary-2 fw-bold">教練非常專業
                     </p>
@@ -401,7 +422,9 @@ export default function Index(){
                         fill="white" stroke="#487181" strokeWidth="2" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubble5 blueBox position-absolute" data-bs-toggle="modal"
+                <div
+                    onClick={()=>openCommentModal('commentModal5')} 
+                    type="button" className="speechBubble5 blueBox position-absolute" data-bs-toggle="modal"
                     data-bs-target="#commentModal5">
                     <p className="dialogText position-absolute fs-1  text-secondary-2 fw-bold">認識了很多新朋友，<br/>生活變得更加充實有趣。
                     </p>
@@ -416,7 +439,9 @@ export default function Index(){
                         fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-3)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubble6 blueBox position-absolute" data-bs-toggle="modal"
+                <div 
+                    onClick={()=>openCommentModal('commentModal6')}
+                    type="button" className="speechBubble6 blueBox position-absolute" data-bs-toggle="modal"
                     data-bs-target="#commentModal6">
                     <p className="dialogText vertical-rl mx-0 position-absolute fs-1  text-secondary-2 fw-bold">網站的課程安排非常靈活
                     </p>
@@ -431,7 +456,9 @@ export default function Index(){
                         fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-4)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubble7 orangeBox position-absolute" data-bs-toggle="modal"
+                <div 
+                    onClick={()=>openCommentModal('commentModal7')}
+                    type="button" className="speechBubble7 orangeBox position-absolute" data-bs-toggle="modal"
                     data-bs-target="#commentModal7">
                     <p className="dialogText vertical-rl mx-0 position-absolute fs-1  text-primary fw-bold">感謝這個平台
                     </p>
@@ -446,7 +473,9 @@ export default function Index(){
                         fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-5)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubble8 orangeBox position-absolute" data-bs-toggle="modal"
+                <div 
+                    onClick={()=>openCommentModal('commentModal8')}
+                    type="button" className="speechBubble8 orangeBox position-absolute" data-bs-toggle="modal"
                     data-bs-target="#commentModal8">
                     <p className="dialogText position-absolute fs-1  text-primary fw-bold">教練們都非常專業和熱情，<br/>讓我在這裡感覺很受歡迎。
                     </p>
@@ -461,7 +490,9 @@ export default function Index(){
                         fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-6)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubble9 orangeBox position-absolute d-none d-xxl-block"
+                <div 
+                    onClick={()=>openCommentModal('commentModal9')}
+                    type="button" className="speechBubble9 orangeBox position-absolute d-none d-xxl-block"
                     data-bs-toggle="modal" data-bs-target="#commentModal9">
                     <p className="dialogText position-absolute fs-0 text-primary fw-bold">重新找回了年輕時的活力
                     </p>
@@ -476,7 +507,9 @@ export default function Index(){
                         fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-7)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubble10 orangeBox position-absolute d-none d-xl-block"
+                <div 
+                onClick={()=>openCommentModal('commentModal10')}
+                type="button" className="speechBubble10 orangeBox position-absolute d-none d-xl-block"
                     data-bs-toggle="modal" data-bs-target="#commentModal10">
                     <p className="dialogText position-absolute fs-2 text-primary">教練們非常有耐心，<br/>給了我很多有用的建議，<br/>讓我的運動效果顯著提升。
                     </p>
@@ -491,7 +524,9 @@ export default function Index(){
                         fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-8)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubble11 orangeBox position-absolute d-none d-xl-block"
+                <div 
+                    onClick={()=>openCommentModal('commentModal11')}
+                    type="button" className="speechBubble11 orangeBox position-absolute d-none d-xl-block"
                     data-bs-toggle="modal" data-bs-target="#commentModal11">
                     <p className="dialogText position-absolute fs-2 text-primary">每次參加完活動，<br/>我都覺得自己充滿了<br/>活力和正能量！很開心！
                     </p>
@@ -509,7 +544,9 @@ export default function Index(){
             </div>
 
             <div className="container d-block d-lg-none mt-6">
-                <div type="button" className="speechBubbleSm orangeBox position-relative mb-2" data-bs-toggle="modal"
+                <div 
+                    onClick={()=>openCommentModal('commentModal7')}
+                    type="button" className="speechBubbleSm orangeBox position-relative mb-2" data-bs-toggle="modal"
                     data-bs-target="#commentModal7">
                     <p className="dialogText position-absolute fs-5  text-primary">感謝這個平台，…
                     </p>
@@ -524,7 +561,9 @@ export default function Index(){
                         fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-10)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto" data-bs-toggle="modal"
+                <div 
+                onClick={()=>openCommentModal('commentModal5')}
+                type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto" data-bs-toggle="modal"
                     data-bs-target="#commentModal5">
                     <p className="dialogText position-absolute fs-5  text-secondary-2">認識了很多新朋友…
                     </p>
@@ -540,7 +579,9 @@ export default function Index(){
                     </svg>
 
                 </div>
-                <div type="button" className="speechBubbleSm orangeBox position-relative mb-2" data-bs-toggle="modal"
+                <div 
+                onClick={()=>openCommentModal('commentModal8')}
+                type="button" className="speechBubbleSm orangeBox position-relative mb-2" data-bs-toggle="modal"
                     data-bs-target="#commentModal8">
                     <p className="dialogText position-absolute fs-5  text-primary">教練們都非常專業…
                     </p>
@@ -555,7 +596,9 @@ export default function Index(){
                         fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-10)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto" data-bs-toggle="modal"
+                <div 
+                    onClick={()=>openCommentModal('commentModal13')}
+                    type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto" data-bs-toggle="modal"
                     data-bs-target="#commentModal3">
                     <p className="dialogText position-absolute fs-5  text-secondary-2">心情變得開朗了…
                     </p>
@@ -571,7 +614,9 @@ export default function Index(){
                     </svg>
 
                 </div>
-                <div type="button" className="speechBubbleSm orangeBox position-relative mb-2" data-bs-toggle="modal"
+                <div 
+                    onClick={()=>openCommentModal('commentModal9')}
+                    type="button" className="speechBubbleSm orangeBox position-relative mb-2" data-bs-toggle="modal"
                     data-bs-target="#commentModal9">
                     <p className="dialogText position-absolute fs-5  text-primary">重新找回了年輕時…
                     </p>
@@ -586,7 +631,9 @@ export default function Index(){
                         fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-10)" />
                     </svg>
                 </div>
-                <div type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto" data-bs-toggle="modal"
+                <div 
+                    onClick={()=>openCommentModal('commentModal1')}
+                    type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto" data-bs-toggle="modal"
                     data-bs-target="#commentModal1">
                     <p className="dialogText position-absolute fs-5  text-secondary-2">社群氛圍非常好…
                     </p>
@@ -609,6 +656,6 @@ export default function Index(){
       {/* <!-- 課程照片Swiper --> */}
     <PhotoSwiper />
 </main>
-
+<HomeModal />
     </>)
 }
