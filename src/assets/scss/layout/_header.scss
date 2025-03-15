@@ -237,15 +237,17 @@
   }
 
   .nav-link-3 {
-    width: 45px;
-    height: 44px;
+    width: 60px;
+    height: 60px;
     font-size: 18px;
     color: $secondary-2;
     transition: 0.15s;
-    border-bottom: 2px solid transparent;
+    border: 2px solid transparent;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
+    border-radius: 50%; 
 
     @include xl {
       width: 64px;

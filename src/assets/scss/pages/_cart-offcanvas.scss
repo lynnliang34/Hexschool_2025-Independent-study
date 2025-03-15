@@ -1,0 +1,15 @@
+.cart-offcanvas{
+    .link-btn{
+        &:hover{
+            background-color: $secondary-2 !important;
+        }
+    }
+
+    .cart-list{
+        overflow-y: auto;
+    }
+
+    @include md{
+        width: 300px !important;
+    }
+}

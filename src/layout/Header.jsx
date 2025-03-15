@@ -3,12 +3,13 @@ import { Link, useNavigate, useLocation } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { setPreviousPage, logoutUser } from "../redux/userSlice";
 import { useEffect, useRef } from "react";
-import { Modal } from "bootstrap";
+import { Modal,Offcanvas } from "bootstrap";
 import {
   HeaderSearchBar,
   HeaderSidebarMenu,
   HeaderNavbar,
   LogoSlogan,
+  CartOffcanvas
 } from "../components";
 
 // 環境變數
@@ -25,7 +26,10 @@ export default function Header() {
   const location = useLocation();
 
   // 取得cartSlice購物車清單
-  const cartDatails = useSelector((state)=> state.cart.cartDatails);
+  const cartDetails = useSelector((state)=> state.cart.cartDetails);
+
+  const cartOffcanvasRef = useRef(null); // Offcanvas 要引用的參考 DOM 元素
+  const cartOffcanvas = useRef(null); // 儲存 Offcanvas 物件的引用
 
   const handleToLogin = () => {
     dispatch(setPreviousPage(location.pathname)); // 記錄當前頁面
@@ -53,10 +57,12 @@ export default function Header() {
     }, 100);
   };
 
-  // menuModal 設定
+  // menuModal, cartOffcanvas 設定
   useEffect(() => {
     // 初始化 Bootstrap Modal，將 menuModalRef 綁定到 modal 實例
     menuModal.current = new Modal(menuModalRef.current);
+    // 初始化 Bootstrap Offcanvas，將 cartOffcanvasRef 綁定到 offcanvas 實例
+    cartOffcanvas.current = new Offcanvas(cartOffcanvasRef.current);
   }, []);
 
   // 打開選單 Modal
@@ -68,6 +74,16 @@ export default function Header() {
   const closeMenuModal = () => {
     menuModal.current.hide();
   };
+
+  // 打開購物車 Offcanvas
+  const openCartOffcanvas = () => {
+    cartOffcanvas.current.show();
+  }
+
+  // 關閉購物車 Offcanvas
+  const closeCartOffcanvas = () => {
+    cartOffcanvas.current.hide();
+  }
 
   return (
     <>
@@ -275,20 +291,25 @@ export default function Header() {
         {/* 購物車 */}
         {isAuthenticated ? (
           <div className="position-fixed cart-link-circle">
-            <Link className="nav-link-3 cart-link" to="/checkout">
+            {/* <Link className="nav-link-3 cart-link" to="/checkout"> */}
+            <button onClick={openCartOffcanvas} type="button" className="nav-link-3 cart-link">
               <i className="bi bi-cart-fill mt-3 me-1 position-relative">
                 <span
                   className="position-absolute cart-number translate-middle badge rounded-pill"
                   style={{ fontSize: "10px" }}
                 >
-                  {cartDatails.length}<span className="visually-hidden">purchase quantity</span>
+                  {cartDetails.length}<span className="visually-hidden">purchase quantity</span>
                 </span>
               </i>
-            </Link>
+            </button>
+            {/* </Link> */}
           </div>
         ) : (
           <></>
         )}
+
+        <CartOffcanvas 
+          cartOffcanvasRef={cartOffcanvasRef} closeCartOffcanvas={closeCartOffcanvas} cartDetails={cartDetails}/>
       </div>
     </>
   );
