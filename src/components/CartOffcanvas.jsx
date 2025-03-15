@@ -4,23 +4,147 @@ import { removeCartDetail } from "../redux/cartSlice";
 import { pushMessage } from "../redux/toastSlice";
 import { useState, useEffect } from "react";
 import { IconTrash } from "../../src/assets/Icons";
+import axios from "axios";
 
-
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
+    const [ backCartCourse, setBackCartCourse ] = useState([]);
+    const [ isCartEmpty, setIsCartEmpty ] = useState(true); // 新增購物車是否為空的狀態
     const dispatch = useDispatch();
     const cartDetails = useSelector((state) => state.cart.cartDetails);
-    
-    const handleRemoveCartItem = (id) => {
-        dispatch(removeCartDetail(id));
 
+    // 取得後台購物車清單
+    const getBackCart = async () => {
+        try {
+            console.log("正在獲取後台購物車列表...");
+            const res = await axios.get(`${BASE_URL}/api/${API_PATH}/cart`);
+            const cartsData = res.data.data.carts;
+            setBackCartCourse(cartsData);
+            
+            // 檢查購物車是否為空
+            setIsCartEmpty(cartsData.length === 0);
+            
+            console.log("後台購物車資料", cartsData);
+            console.log("購物車是否為空:", cartsData.length === 0);
+            return cartsData; // 返回獲取的數據
+        } catch (error) {
+            setIsCartEmpty(true); // 發生錯誤時假設購物車為空
+            dispatch(
+                pushMessage({
+                    text: `取得購物車列表失敗：${error.message}`,
+                    status: "failed",
+                })
+            );
+            return []; // 失敗時返回空數組
+        }
+    }
+    useEffect(() => {
+        getBackCart();
+        console.log("前台購物車資料", cartDetails);
+    }, []);
+
+     // 更改後台購物車商品數量
+    const putCartQty = async (cart_id, product_id, qty) => {
+        try {
+            console.log(`嘗試更新購物車項目: cart_id=${cart_id}, product_id=${product_id}, qty=${qty}`);
+            const res = await axios.put(
+                `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`,
+                {
+                    data: {
+                        product_id: product_id,
+                        qty: qty,
+                    },
+                }
+            );
+            console.log("更改後台購物車商品數量成功:", res.data);
+            await getBackCart(); // 更新後台購物車數據
+        } catch (error) {
+            dispatch(
+                pushMessage({
+                    text: `更改失敗：${error.response.data.message}`,
+                    status: "failed",
+                })
+            );
+        }
+    };
+
+   // 刪除後台購物車商品
+    const deleteCartItem = async (cart_id) => {
+    try {
+        console.log(`嘗試刪除購物車項目: cart_id=${cart_id}`);
+        const res = await axios.delete(
+            `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`
+        );
+
+        console.log("刪除後台購物車商品成功:", res.data);
+            await getBackCart(); // 更新後台購物車數據
+        
+    } catch (error) {
         dispatch(
             pushMessage({
-            text: "刪除購物車課程成功",
-            status: "success",
+                text: `刪除失敗：${error.response.data.message}`,
+                status: "failed",
             })
         );
     }
+};
+
+// 刪除購物車課程
+const handleRemoveCartItem = async (course_id, product_id) => {
+    // 首先獲取最新的後台購物車數據
+    const latestCarts = await getBackCart();
+    console.log("刪除課程時的後台數據:", latestCarts);
+    
+    // 找前台購物車課程，其後台對應的位置
+    const targetProduct = latestCarts.find(cart => cart.product_id === product_id);
+    console.log("要刪除的目標產品:", targetProduct);
+
+    if (targetProduct) {
+        const targetCartId = targetProduct.id; // 點擊的課程，其後台對應的 cart id
+        const targetProductQty = targetProduct.qty; // 點擊的課程，其後台對應的 qty
+        
+        console.log(`找到匹配的購物車項目: id=${targetCartId}, qty=${targetProductQty}`);
+
+        // 如果後台數量 > 1，用 put 修改數量
+        if (targetProductQty > 1) {
+            console.log(`數量 > 1，更新數量為 ${targetProductQty - 1}`);
+            await putCartQty(targetCartId, product_id, targetProductQty - 1);
+        // 如果後台數量 = 1，用 delete 刪除
+        } else {
+            console.log("數量 = 1，刪除購物車項目");
+            await deleteCartItem(targetCartId);
+        }
+    } else {
+        console.log(`找不到匹配的購物車項目，product_id=${product_id}`);
+    }
+
+    // 刪除前台購物車的課程
+    dispatch(removeCartDetail(course_id));
+    dispatch(
+        pushMessage({
+            text: "刪除購物車課程成功",
+            status: "success",
+        })
+    );
+}
+
+// 處理結帳按鈕點擊
+const handleCheckout = (e) => {
+    if (isCartEmpty) {
+        e.preventDefault(); // 阻止預設行為
+        
+        dispatch(
+            pushMessage({
+                text: "購物車內沒有商品，無法結帳",
+                status: "failed",
+            })
+        );
+    } else {
+        closeCartOffcanvas();
+    }
+}
 
     return (<>
         <div className="cart-offcanvas offcanvas offcanvas-start" data-bs-scroll="true" 
@@ -47,7 +171,7 @@ export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
                         <p className="ms-5 fw-bold">NT$ {detail.price}</p>
                         </div>
                         <button type="button" className="btn-remove" 
-                                onClick={()=>handleRemoveCartItem(detail.course_id)} >
+                                onClick={() => handleRemoveCartItem(detail.course_id, detail.product_id)} >
                             <IconTrash className="cart-trash" /></button>
                     </li>
                     )})
@@ -58,7 +182,7 @@ export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
             <Link type="button" 
                     className="btn btn-primary fs-5 fs-md-4 text-white link-btn" 
                     to="/checkout"
-                    onClick={closeCartOffcanvas}>
+                    onClick={handleCheckout}>
                 前往結帳
             </Link>
             </div>
