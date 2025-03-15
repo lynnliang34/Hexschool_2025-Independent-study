@@ -49,9 +49,69 @@ export default function Checkout() {
     console.log("前台資料", frontendCartList);
   }, []);
 
+  // 更改後台購物車商品數量
+  const putCart = async (cart_id, product_id, qty) => {
+    try {
+      const res = await axios.put(
+        `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`,
+        {
+          data: {
+            product_id: product_id,
+            qty: qty,
+          },
+        }
+      );
+
+      getCart();
+    } catch (error) {
+      dispatch(
+        pushMessage({
+          text: `更改失敗：${error.response.data.message}`,
+          status: "failed",
+        })
+      );
+    }
+  };
+
+  // 刪除後台購物車商品數量
+  const deleteCartItem = async (cart_id) => {
+    try {
+      const res = await axios.delete(
+        `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`
+      );
+
+      getCart();
+    } catch (error) {
+      dispatch(
+        pushMessage({
+          text: `刪除失敗：${error.response.data.message}`,
+          status: "failed",
+        })
+      );
+    }
+  };
+
   // 刪除購物車預約項目
-  const handleRemoveCartItem = (id) => {
-    dispatch(removeCartDetail(id));
+  const handleRemoveCartItem = (product_id, course_id) => {
+    // 找前台購物車課程，其後台對應的位置
+    const targetProduct = cart.carts?.find(
+      (cart) => cart.product_id === product_id
+    );
+
+    const targetCartId = targetProduct.id; // 點擊的課程，其後台對應的 cart id
+    const targetProductQty = targetProduct.qty; // 點擊的課程，其後台對應的 qty
+
+    // 如果後台數量 > 1，用 put 修改數量
+    if (targetProductQty > 1) {
+      putCart(targetCartId, product_id, targetProductQty - 1);
+
+      // 如果後台數量 = 1，用 delete 刪除
+    } else {
+      deleteCartItem(targetCartId);
+    }
+
+    // 刪除前台購物車的課程
+    dispatch(removeCartDetail(course_id));
     dispatch(
       pushMessage({
         text: "刪除購物車預約項目成功",
@@ -251,7 +311,7 @@ export default function Checkout() {
                   <div className="d-flex">
                     <img
                       className="cart-list-img rounded me-4"
-                      src="/assets/images/healthy-couple-performing-exercising-yoga-mat-home 2.png"
+                      src={item.img}
                       alt=""
                     />
 
@@ -266,7 +326,9 @@ export default function Checkout() {
                   <button
                     type="button"
                     className="border-0 bg-transparent"
-                    onClick={() => handleRemoveCartItem(item.course_id)}
+                    onClick={() =>
+                      handleRemoveCartItem(item.product_id, item.course_id)
+                    }
                   >
                     <IconTrash className={"cart-trash"} />
                   </button>
@@ -311,7 +373,12 @@ export default function Checkout() {
                         <button
                           type="button"
                           className="border-0 bg-transparent"
-                          onClick={() => handleRemoveCartItem(item.course_id)}
+                          onClick={() =>
+                            handleRemoveCartItem(
+                              item.product_id,
+                              item.course_id
+                            )
+                          }
                         >
                           <IconTrash className={"cart-trash"} />
                         </button>
@@ -876,7 +943,7 @@ export default function Checkout() {
               <p>
                 NT$
                 <span className="text-primary ms-1 ms-lg-2">
-                  {addThousandths(cart.total)}
+                  {addThousandths(cart?.total)}
                 </span>
               </p>
             </div>
@@ -887,7 +954,7 @@ export default function Checkout() {
             <p>
               <span className="me-5">優惠折扣</span>NT$
               <span className="text-primary mx-1 mx-lg-2">
-                {addThousandths(cart.final_total - cart.total)}
+                {addThousandths(cart?.final_total - cart?.total)}
               </span>
             </p>
           </div>
@@ -897,7 +964,7 @@ export default function Checkout() {
             <p>
               <span className="me-5">本訂單須付款金額</span>NT$
               <span className="text-primary mx-1 mx-lg-2">
-                {addThousandths(cart.final_total)}
+                {addThousandths(cart?.final_total)}
               </span>
             </p>
           </div>
