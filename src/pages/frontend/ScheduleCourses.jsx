@@ -20,7 +20,7 @@ export default function ScheduleCourses() {
     // 老師課表
     const [ teacherSchedules, setTeacherSchedules] = useState({});
     // 選定的時段
-    const [ selectedTimeSlot, setSelectedTimeSlot ] = useState({});
+    const [ selectedTimeSlot, setSelectedTimeSlot ] = useState();
     // btn active
     const [ btnActive, setBtnActive ] = useState(id);
 
@@ -86,6 +86,9 @@ export default function ScheduleCourses() {
         
         // 設置狀態
         setSelectedTeacher(teacherName);
+
+        // 重設前面已選時段
+        setSelectedTimeSlot();
         
         // 在下一個事件循環中恢復捲動位置
         setTimeout(() => {
@@ -149,8 +152,10 @@ export default function ScheduleCourses() {
     useEffect(() => {
         console.log('購物車資料已更新:', cartDetails);
         console.log(selectedCourse);
+        console.log(selectedTeacher);
+        console.log(selectedTimeSlot);
         
-    }, [cartDetails]);
+    }, [cartDetails,selectedTimeSlot]);
 
     // 操作表單提交
     const handleSubmit = async(e)=>{
@@ -215,7 +220,7 @@ export default function ScheduleCourses() {
                 // 成功後重置所有選擇狀態
                 setBtnActive(null);          // 重置課程選擇的 active 狀態
                 setSelectedTeacher(null);    // 重置教練選擇
-                setSelectedTimeSlot({});     // 重置時段選擇
+                setSelectedTimeSlot();     // 重置時段選擇
             }else{
                 dispatch(pushMessage({
                     text: `添加失敗: ${res.data.message || '未知錯誤'}`,
