@@ -2,70 +2,54 @@ export default function KnowledgeSharing() {
   return (
     <>
       {/* section1 */}
-      <div class="container py-3 pt-lg-0 pb-lg-8 px-lg-15 mt-4 mb-6 my-lg-20">
-        <div class="text-center">
-          <h1 class="fs-3 fs-lg-0">知識分享</h1>
-          <hr class="my-3 my-lg-8" />
-          <h2 class="fs-5 fs-lg-1">獲取新知,拓展人生視野。</h2>
+      <div className="container py-3 pt-lg-0 pb-lg-8 px-lg-15 mt-4 mb-6 my-lg-20">
+        <div className="text-center">
+          <h1 className="fs-3 fs-lg-0">知識分享</h1>
+          <hr className="my-3 my-lg-8" />
+          <h2 className="fs-5 fs-lg-1">獲取新知,拓展人生視野。</h2>
         </div>
       </div>
 
       {/* section2 */}
-      <div class="container">
-        <h3 class="fs-3 fs-lg-1 mb-6 mb-lg-10">精選文章</h3>
+      <div className="container">
+        <h3 className="fs-3 fs-lg-1 mb-6 mb-lg-10">精選文章</h3>
         {/* 手機版標籤 */}
-        <div class="knowledge-labals bg-primary-2 p-1 d-lg-none">
-          <ul class="list-unstyled mb-0 d-flex justify-content-around">
+        <div className="knowledge-labals bg-primary-2 p-1 d-lg-none">
+          <ul className="list-unstyled mb-0 d-flex justify-content-around">
             <li>
-              <a href="#" class="knowledge-labal">
-                全部
-              </a>
+              <a className="knowledge-labal">全部</a>
             </li>
             <li>
-              <a href="#" class="knowledge-labal">
-                運動
-              </a>
+              <a className="knowledge-labal">運動</a>
             </li>
             <li>
-              <a href="#" class="knowledge-labal">
-                運動
-              </a>
+              <a className="knowledge-labal">運動</a>
             </li>
             <li>
-              <a href="#" class="knowledge-labal">
-                飲食
-              </a>
+              <a className="knowledge-labal">飲食</a>
             </li>
             <li>
-              <a href="#" class="knowledge-labal">
-                養身
-              </a>
+              <a className="knowledge-labal">養身</a>
             </li>
             <li>
-              <a href="#" class="knowledge-labal">
-                醫療
-              </a>
+              <a className="knowledge-labal">醫療</a>
             </li>
             <li>
-              <a href="#" class="knowledge-labal">
-                癌症
-              </a>
+              <a className="knowledge-labal">癌症</a>
             </li>
             <li>
-              <a href="#" class="knowledge-labal">
-                居家
-              </a>
+              <a className="knowledge-labal">居家</a>
             </li>
           </ul>
         </div>
 
         {/* 電腦版標籤 */}
-        <div class="knowledge-labals-lg d-none d-lg-block">
-          <ul class="list-unstyled mb-0 d-flex">
-            <li class="bg-primary-2">
-              <a href="#" class="knowledge-labal-lg">
+        <div className="knowledge-labals-lg d-none d-lg-block">
+          <ul className="list-unstyled mb-0 d-flex">
+            <li className="bg-primary-2">
+              <a className="knowledge-labal-lg">
                 <svg
-                  class="icon mb-2"
+                  className="icon mb-2"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -75,15 +59,15 @@ export default function KnowledgeSharing() {
                 <h4>全部</h4>
               </a>
             </li>
-            <li class="bg-primary-2">
-              <a href="#" class="knowledge-labal-lg">
+            <li className="bg-primary-2">
+              <a className="knowledge-labal-lg">
                 <svg
-                  class="icon mb-2"
+                  className="icon mb-2"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_439_6860)">
+                  <g clipPath="url(#clip0_439_6860)">
                     <path d="M21.6565 15.8562L20.0016 17.5102L21.2457 18.7531C21.3555 18.8629 21.4176 19.0117 21.4176 19.1672C21.4176 19.3227 21.3559 19.4715 21.2461 19.5813L19.5806 21.2457C19.3609 21.4652 18.9712 21.4652 18.7516 21.2457L17.5079 20.0023L15.8529 21.6566C15.3952 22.1145 14.6526 22.1145 14.1945 21.6566C13.7364 21.1992 13.7364 20.457 14.1945 19.9992L19.9984 14.1988C20.4565 13.7414 21.1988 13.7414 21.6569 14.1988C22.1145 14.6562 22.1145 15.3984 21.6569 15.8562H21.6565Z" />
                     <path d="M9.80553 4.00038L4.00163 9.80116C3.54354 10.2586 2.80129 10.2586 2.3432 9.80116C1.88511 9.34335 1.88511 8.60155 2.3432 8.14374L3.9985 6.48944L2.75712 5.24921C2.64729 5.13944 2.58514 4.99061 2.58514 4.83475C2.58514 4.67889 2.6469 4.53046 2.75712 4.4203L4.42259 2.75624C4.53711 2.64178 4.6872 2.58436 4.8369 2.58436C4.9866 2.58436 5.13708 2.64139 5.25121 2.75585L6.4922 3.99608L8.14711 2.34218C8.6048 1.88436 9.34744 1.88436 9.80553 2.34218C10.2636 2.79999 10.2636 3.54179 9.80553 3.9996V4.00038Z" />
                     <path d="M12.536 15.0277L8.97644 11.4582L11.4639 8.97224L15.0235 12.5418L12.536 15.0277Z" />
@@ -104,10 +88,10 @@ export default function KnowledgeSharing() {
                 <h4>運動</h4>
               </a>
             </li>
-            <li class="bg-primary-2">
-              <a href="#" class="knowledge-labal-lg">
+            <li className="bg-primary-2">
+              <a className="knowledge-labal-lg">
                 <svg
-                  class="icon mb-2"
+                  className="icon mb-2"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -120,10 +104,10 @@ export default function KnowledgeSharing() {
                 <h4>飲食</h4>
               </a>
             </li>
-            <li class="bg-primary-2">
-              <a href="#" class="knowledge-labal-lg">
+            <li className="bg-primary-2">
+              <a className="knowledge-labal-lg">
                 <svg
-                  class="icon mb-2"
+                  className="icon mb-2"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -134,10 +118,10 @@ export default function KnowledgeSharing() {
                 <h4>養身</h4>
               </a>
             </li>
-            <li class="bg-primary-2">
-              <a href="#" class="knowledge-labal-lg">
+            <li className="bg-primary-2">
+              <a className="knowledge-labal-lg">
                 <svg
-                  class="icon mb-2"
+                  className="icon mb-2"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -152,15 +136,15 @@ export default function KnowledgeSharing() {
                 <h4>醫療</h4>
               </a>
             </li>
-            <li class="bg-primary-2">
-              <a href="#" class="knowledge-labal-lg">
+            <li className="bg-primary-2">
+              <a className="knowledge-labal-lg">
                 <svg
-                  class="icon mb-2"
+                  className="icon mb-2"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_439_6851)">
+                  <g clipPath="url(#clip0_439_6851)">
                     <path d="M2.17192 13.5859C2.40083 13.8148 2.77153 13.8148 3.00044 13.5859L4.00044 12.5855H5.62661C5.777 13.309 6.18794 13.957 6.79341 14.3855C6.74888 14.5641 6.72661 14.7461 6.72661 14.9293C6.72661 15.3625 6.85278 15.7641 7.05864 16.1125L5.8981 17.273H4.48364C4.15981 17.273 3.89771 17.5351 3.89771 17.859C3.89771 18.1828 4.15981 18.4449 4.48364 18.4449H5.55474V19.516C5.55474 19.8398 5.81685 20.1019 6.14067 20.1019C6.4645 20.1019 6.72661 19.8398 6.72661 19.516V18.1016L7.88716 16.941C8.2356 17.1469 8.63716 17.273 9.07036 17.273C9.25356 17.273 9.4356 17.2508 9.61411 17.2062C10.043 17.8121 10.6907 18.223 11.4141 18.373V19.9992L10.4141 20.9996C10.1852 21.2285 10.1852 21.5992 10.4141 21.8281C10.643 22.057 11.0137 22.057 11.2426 21.8281L12 21.0707L12.7575 21.8281C12.9864 22.057 13.3571 22.057 13.586 21.8281C13.8149 21.5992 13.8149 21.2285 13.586 20.9996L12.5856 19.9992V18.373C13.309 18.2226 13.9571 17.8117 14.3856 17.2062C14.5641 17.2508 14.7461 17.273 14.9293 17.273C15.3625 17.273 15.7641 17.1469 16.1125 16.941L17.2731 18.1016V19.516C17.2731 19.8398 17.5352 20.1019 17.859 20.1019C18.1829 20.1019 18.445 19.8398 18.445 19.516V18.4449H19.5161C19.8399 18.4449 20.102 18.1828 20.102 17.859C20.102 17.5351 19.8399 17.273 19.5161 17.273H18.1016L16.9411 16.1125C17.1469 15.7641 17.2731 15.3625 17.2731 14.9293C17.2731 14.7461 17.2508 14.5641 17.2063 14.3855C17.8122 13.9566 18.2231 13.309 18.3731 12.5855H19.9993L20.9997 13.5859C21.2286 13.8148 21.5993 13.8148 21.8282 13.5859C22.0571 13.357 22.0571 12.9863 21.8282 12.7574L21.0708 12L21.8282 11.2422C22.0571 11.0133 22.0571 10.6426 21.8282 10.4137C21.5993 10.1848 21.2286 10.1848 20.9997 10.4137L19.9993 11.4141H18.3731C18.2227 10.6906 17.8118 10.043 17.2063 9.61405C17.2508 9.43553 17.2731 9.2535 17.2731 9.0703C17.2731 8.6371 17.1469 8.23553 16.9411 7.8871L18.1016 6.72655H19.5161C19.8399 6.72655 20.102 6.46444 20.102 6.14061C20.102 5.81678 19.8399 5.55468 19.5161 5.55468H18.445V4.48358C18.445 4.15975 18.1829 3.89764 17.859 3.89764C17.5352 3.89764 17.2731 4.15975 17.2731 4.48358V5.89803L16.1125 7.05858C15.7641 6.85272 15.3625 6.72655 14.9293 6.72655C14.7461 6.72655 14.5641 6.74882 14.3856 6.79335C13.9567 6.18749 13.309 5.77655 12.5856 5.62655V4.00038L13.586 3.00038C13.8149 2.77147 13.8149 2.40077 13.586 2.17186C13.3571 1.94296 12.9864 1.94296 12.7575 2.17186L12 2.92928L11.2422 2.17186C11.0133 1.94296 10.6426 1.94296 10.4137 2.17186C10.1848 2.40077 10.1848 2.77147 10.4137 3.00038L11.4141 4.00038V5.62655C10.6907 5.77694 10.043 6.18788 9.61411 6.79335C9.4356 6.74882 9.25356 6.72655 9.07036 6.72655C8.63716 6.72655 8.2356 6.85272 7.88716 7.05858L6.72661 5.89803V4.48358C6.72661 4.15975 6.4645 3.89764 6.14067 3.89764C5.81685 3.89764 5.55474 4.15975 5.55474 4.48358V5.55468H4.48364C4.15981 5.55468 3.89771 5.81678 3.89771 6.14061C3.89771 6.46444 4.15981 6.72655 4.48364 6.72655H5.8981L7.05864 7.8871C6.85278 8.23553 6.72661 8.6371 6.72661 9.0703C6.72661 9.2535 6.74888 9.43553 6.79341 9.61405C6.18755 10.043 5.77661 10.6906 5.62661 11.4141H4.00044L3.00044 10.4141C2.77153 10.1851 2.40083 10.1851 2.17192 10.4141C1.94302 10.643 1.94302 11.0137 2.17192 11.2426L2.92935 12L2.17192 12.7574C1.94302 12.9863 1.94302 13.357 2.17192 13.5859ZM15.5161 11.4141C15.8395 11.4141 16.102 11.6765 16.102 12C16.102 12.3234 15.8395 12.5859 15.5161 12.5859C15.1926 12.5859 14.9301 12.3234 14.9301 12C14.9301 11.6765 15.1926 11.4141 15.5161 11.4141ZM12.0004 16.1016C11.677 16.1016 11.4145 15.8391 11.4145 15.5156C11.4145 15.1922 11.677 14.9297 12.0004 14.9297C12.3239 14.9297 12.5864 15.1922 12.5864 15.5156C12.5864 15.8391 12.3239 16.1016 12.0004 16.1016ZM12.0004 7.89843C12.3239 7.89843 12.5864 8.16092 12.5864 8.48436C12.5864 8.8078 12.3239 9.0703 12.0004 9.0703C11.677 9.0703 11.4145 8.8078 11.4145 8.48436C11.4145 8.16092 11.677 7.89843 12.0004 7.89843ZM12.0004 10.2422C12.9696 10.2422 13.7583 11.0308 13.7583 12C13.7583 12.9691 12.9696 13.7578 12.0004 13.7578C11.0313 13.7578 10.2426 12.9691 10.2426 12C10.2426 11.0308 11.0313 10.2422 12.0004 10.2422ZM9.07075 12C9.07075 12.3234 8.80825 12.5859 8.48481 12.5859C8.16138 12.5859 7.89888 12.3234 7.89888 12C7.89888 11.6765 8.16138 11.4141 8.48481 11.4141C8.80825 11.4141 9.07075 11.6765 9.07075 12Z" />
                     <path d="M12 12.5859C12.3236 12.5859 12.5859 12.3236 12.5859 12C12.5859 11.6764 12.3236 11.4141 12 11.4141C11.6764 11.4141 11.4141 11.6764 11.4141 12C11.4141 12.3236 11.6764 12.5859 12 12.5859Z" />
                   </g>
@@ -178,10 +162,10 @@ export default function KnowledgeSharing() {
                 <h4>癌症</h4>
               </a>
             </li>
-            <li class="bg-primary-2">
-              <a href="#" class="knowledge-labal-lg">
+            <li className="bg-primary-2">
+              <a className="knowledge-labal-lg">
                 <svg
-                  class="icon mb-2"
+                  className="icon mb-2"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -197,62 +181,66 @@ export default function KnowledgeSharing() {
       </div>
 
       {/* section3 */}
-      <div class="bg-lg-primary-2 pt-2 pb-6 py-lg-5">
-        <div class="container knowledge-articles">
-          <div class="d-flex flex-column flex-lg-row">
+      <div className="bg-lg-primary-2 pt-2 pb-6 py-lg-5">
+        <div className="container knowledge-articles">
+          <div className="d-flex flex-column flex-lg-row">
             {/* 主文章 */}
-            <article class="primary-article position-relative mb-6 mb-lg-0">
-              <h4 class="title-label">
+            <article className="primary-article position-relative mb-6 mb-lg-0">
+              <h4 className="title-label">
                 銀髮族健康指南:
                 <br />
                 適合的運動讓晚年更輕鬆
               </h4>
               <img
-                src="/assets/images/athletic-senior-woman-stretching-arm-park.png"
+                src="./images/athletic-senior-woman-stretching-arm-park.png"
                 alt=""
-                class="rounded mb-2 mb-lg-5"
+                className="rounded mb-2 mb-lg-5"
               />
-              <p class="fs-lg-4 mb-5 up-to-4-lines up-to-3-lines-xxl">
+              <p className="fs-lg-4 mb-5 up-to-4-lines up-to-3-lines-xxl">
                 隨著年齡增長,銀髮族的健康維護變得越來越重要。
-                <br class="d-none d-xxl-block" />
+                <br className="d-none d-xxl-block" />
                 運動不僅能增強肌肉力量,還能提升心肺功能,改善生活品質。隨著身體機能的逐漸減弱,適當的運動能幫助維持身體靈活性和生活的獨立...
               </p>
-              <div class="d-flex justify-content-end">
-                <a href="#" class="learn-more-H">
+              <div className="d-flex justify-content-end">
+                <a className="learn-more-H">
                   了解更多
-                  <span class="material-symbols-outlined">chevron_right</span>
+                  <span className="material-symbols-outlined">
+                    chevron_right
+                  </span>
                 </a>
               </div>
             </article>
             {/* 文章列表 */}
-            <div class="ms-lg-10 ms-xl-15 ms-xxl-17">
-              <article class="article d-flex flex-column mb-article">
-                <div class="d-flex">
-                  <div class="me-4">
-                    <div class="d-flex flex-column justify-content-between h-100">
+            <div className="ms-lg-10 ms-xl-15 ms-xxl-17">
+              <article className="article d-flex flex-column mb-article">
+                <div className="d-flex">
+                  <div className="me-4">
+                    <div className="d-flex flex-column justify-content-between h-100">
                       <div>
-                        <h5 class="title mb-2 mb-lg-4">
+                        <h5 className="title mb-2 mb-lg-4">
                           健康新趨勢! 2024年飲食生活新知識
                         </h5>
-                        <p class="fs-7 fs-lg-5 lh-sm-down-1-2 up-to-3-lines up-to-2-lines-lg mb-2 mb-lg-4">
+                        <p className="fs-7 fs-lg-5 lh-sm-down-1-2 up-to-3-lines up-to-2-lines-lg mb-2 mb-lg-4">
                           首先,發酵食品因其調節腸道環境、增免疫力的效果而備受期待。日本傳統飲食中的味噌、納豆和醃漬品等再...
                         </p>
                       </div>
 
                       {/* 電腦版 */}
-                      <div class="d-none d-lg-block">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="d-flex">
+                      <div className="d-none d-lg-block">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div className="d-flex">
                             <img
-                              src="/assets/images/people.png"
+                              src="./images/people.png"
                               alt=""
-                              class="photo me-2"
+                              className="photo me-2"
                             />
-                            <p class="fs-7 fs-lg-6 fs-xl-5">李美蘭 2024/7/29</p>
+                            <p className="fs-7 fs-lg-6 fs-xl-5">
+                              李美蘭 2024/7/29
+                            </p>
                           </div>
-                          <a href="#" class="learn-more-H">
+                          <a className="learn-more-H">
                             了解更多
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                               chevron_right
                             </span>
                           </a>
@@ -261,53 +249,57 @@ export default function KnowledgeSharing() {
                     </div>
                   </div>
                   <img
-                    src="/assets/images/high-angle-plate-with-keto-diet-food-nuts.png"
+                    src="./images/high-angle-plate-with-keto-diet-food-nuts.png"
                     alt=""
-                    class="img mb-2 mb-lg-0"
+                    className="img mb-2 mb-lg-0"
                   />
                 </div>
 
                 {/* 手機版 */}
-                <div class="d-flex justify-content-between align-items-center d-lg-none">
-                  <div class="d-flex">
+                <div className="d-flex justify-content-between align-items-center d-lg-none">
+                  <div className="d-flex">
                     <img
-                      src="/assets/images/people.png"
+                      src="./images/people.png"
                       alt=""
-                      class="photo me-2"
+                      className="photo me-2"
                     />
-                    <p class="fs-7 fs-lg-6 fs-xl-5">李美蘭 2024/7/29</p>
+                    <p className="fs-7 fs-lg-6 fs-xl-5">李美蘭 2024/7/29</p>
                   </div>
-                  <a href="#" class="learn-more-H">
+                  <a className="learn-more-H">
                     了解更多
-                    <span class="material-symbols-outlined">chevron_right</span>
+                    <span className="material-symbols-outlined">
+                      chevron_right
+                    </span>
                   </a>
                 </div>
               </article>
-              <article class="article d-flex flex-column mb-article">
-                <div class="d-flex">
-                  <div class="me-4">
-                    <div class="d-flex flex-column justify-content-between h-100">
+              <article className="article d-flex flex-column mb-article">
+                <div className="d-flex">
+                  <div className="me-4">
+                    <div className="d-flex flex-column justify-content-between h-100">
                       <div>
-                        <h5 class="title mb-2 mb-lg-4">輕鬆掌握手機技能</h5>
-                        <p class="fs-7 fs-lg-5 lh-sm-down-1-2 up-to-3-lines up-to-2-lines-lg mb-2 mb-lg-4">
+                        <h5 className="title mb-2 mb-lg-4">輕鬆掌握手機技能</h5>
+                        <p className="fs-7 fs-lg-5 lh-sm-down-1-2 up-to-3-lines up-to-2-lines-lg mb-2 mb-lg-4">
                           掌握手機基本技能可以顯著提升生活便利。學會開關機、解鎖手機,以及撥打電話和發送短短信是基礎。下載和使用應...
                         </p>
                       </div>
 
                       {/* 電腦版 */}
-                      <div class="d-none d-lg-block">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="d-flex">
+                      <div className="d-none d-lg-block">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div className="d-flex">
                             <img
-                              src="/assets/images/people.png"
+                              src="./images/people.png"
                               alt=""
-                              class="photo me-2"
+                              className="photo me-2"
                             />
-                            <p class="fs-7 fs-lg-6 fs-xl-5">王志強 2024/7/23</p>
+                            <p className="fs-7 fs-lg-6 fs-xl-5">
+                              王志強 2024/7/23
+                            </p>
                           </div>
-                          <a href="#" class="learn-more-H">
+                          <a className="learn-more-H">
                             了解更多
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                               chevron_right
                             </span>
                           </a>
@@ -316,53 +308,59 @@ export default function KnowledgeSharing() {
                     </div>
                   </div>
                   <img
-                    src="/assets/images/close-up-woman-using-mobile.png"
+                    src="./images/close-up-woman-using-mobile.png"
                     alt=""
-                    class="img mb-2 mb-lg-0"
+                    className="img mb-2 mb-lg-0"
                   />
                 </div>
 
                 {/* 手機版 */}
-                <div class="d-flex justify-content-between align-items-center d-lg-none">
-                  <div class="d-flex">
+                <div className="d-flex justify-content-between align-items-center d-lg-none">
+                  <div className="d-flex">
                     <img
-                      src="/assets/images/people.png"
+                      src="./images/people.png"
                       alt=""
-                      class="photo me-2"
+                      className="photo me-2"
                     />
-                    <p class="fs-7 fs-lg-6 fs-xl-5">王志強 2024/7/23</p>
+                    <p className="fs-7 fs-lg-6 fs-xl-5">王志強 2024/7/23</p>
                   </div>
-                  <a href="#" class="learn-more-H">
+                  <a className="learn-more-H">
                     了解更多
-                    <span class="material-symbols-outlined">chevron_right</span>
+                    <span className="material-symbols-outlined">
+                      chevron_right
+                    </span>
                   </a>
                 </div>
               </article>
-              <article class="article d-flex flex-column">
-                <div class="d-flex">
-                  <div class="me-4">
-                    <div class="d-flex flex-column justify-content-between h-100">
+              <article className="article d-flex flex-column">
+                <div className="d-flex">
+                  <div className="me-4">
+                    <div className="d-flex flex-column justify-content-between h-100">
                       <div>
-                        <h5 class="title mb-2 mb-lg-4">戰勝癌症,守護健康!</h5>
-                        <p class="fs-7 fs-lg-5 lh-sm-down-1-2 up-to-3-lines up-to-2-lines-lg mb-2 mb-lg-4">
+                        <h5 className="title mb-2 mb-lg-4">
+                          戰勝癌症,守護健康!
+                        </h5>
+                        <p className="fs-7 fs-lg-5 lh-sm-down-1-2 up-to-3-lines up-to-2-lines-lg mb-2 mb-lg-4">
                           癌症是一種細胞不正常增生的疾病,可能發生在人體的各個部位。隨著年齡增長,患癌風險也會增加。預防癌症,首先
                         </p>
                       </div>
 
                       {/* 電腦版 */}
-                      <div class="d-none d-lg-block">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="d-flex">
+                      <div className="d-none d-lg-block">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div className="d-flex">
                             <img
-                              src="/assets/images/people.png"
+                              src="./images/people.png"
                               alt=""
-                              class="photo me-2"
+                              className="photo me-2"
                             />
-                            <p class="fs-7 fs-lg-6 fs-xl-5">陳佳欣 2024/8/2</p>
+                            <p className="fs-7 fs-lg-6 fs-xl-5">
+                              陳佳欣 2024/8/2
+                            </p>
                           </div>
-                          <a href="#" class="learn-more-H">
+                          <a className="learn-more-H">
                             了解更多
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                               chevron_right
                             </span>
                           </a>
@@ -371,25 +369,27 @@ export default function KnowledgeSharing() {
                     </div>
                   </div>
                   <img
-                    src="/assets/images/senior-people-sitting-couch-side-view.png"
+                    src="./images/senior-people-sitting-couch-side-view.png"
                     alt=""
-                    class="img mb-2 mb-lg-0"
+                    className="img mb-2 mb-lg-0"
                   />
                 </div>
 
                 {/* 手機版 */}
-                <div class="d-flex justify-content-between align-items-center d-lg-none">
-                  <div class="d-flex">
+                <div className="d-flex justify-content-between align-items-center d-lg-none">
+                  <div className="d-flex">
                     <img
-                      src="/assets/images/people.png"
+                      src="./images/people.png"
                       alt=""
-                      class="photo me-2"
+                      className="photo me-2"
                     />
-                    <p class="fs-7 fs-lg-6 fs-xl-5">陳佳欣 2024/8/2</p>
+                    <p className="fs-7 fs-lg-6 fs-xl-5">陳佳欣 2024/8/2</p>
                   </div>
-                  <a href="#" class="learn-more-H">
+                  <a className="learn-more-H">
                     了解更多
-                    <span class="material-symbols-outlined">chevron_right</span>
+                    <span className="material-symbols-outlined">
+                      chevron_right
+                    </span>
                   </a>
                 </div>
               </article>
@@ -399,112 +399,124 @@ export default function KnowledgeSharing() {
       </div>
 
       {/* section4 */}
-      <div class="container">
+      <div className="container">
         {/* 分隔線 */}
         <picture>
           <source
-            srcset="/assets/images/dividers/divider-sm.png"
+            srcSet="./images/dividers/divider-sm.png"
             media="(max-width: 576px)"
-            class="mt-6 mb-2"
+            className="mt-6 mb-2"
           />
           <img
-            src="/assets/images/dividers/divider-lg.png"
+            src="./images/dividers/divider-lg.png"
             alt=""
-            class="mt-lg-10 mb-lg-4"
+            className="mt-lg-10 mb-lg-4"
           />
         </picture>
 
         {/* 最新文章 */}
-        <h3 class="fs-3 fs-lg-1 mb-6 mb-lg-10">最新文章</h3>
-        <div class="new-articles">
-          <article class="d-flex mb-6 mb-xl-22">
-            <div class="me-4">
-              <h5 class="title mb-1 mb-lg-4">銀髮族必備三大營養素!</h5>
-              <p class="fs-7 fs-lg-5 fs-xl-4 text-secondary-2 mb-1 mb-lg-4">
+        <h3 className="fs-3 fs-lg-1 mb-6 mb-lg-10">最新文章</h3>
+        <div className="new-articles">
+          <article className="d-flex mb-6 mb-xl-22">
+            <div className="me-4">
+              <h5 className="title mb-1 mb-lg-4">銀髮族必備三大營養素!</h5>
+              <p className="fs-7 fs-lg-5 fs-xl-4 text-secondary-2 mb-1 mb-lg-4">
                 2024/8/14 #飲食
               </p>
-              <p class="fs-7 fs-lg-4 fs-xl-3 lh-sm-down-1-2 up-to-5-lines up-to-3-lines-lg up-to-4-lines-xl mb-lg-4">
+              <p className="fs-7 fs-lg-4 fs-xl-3 lh-sm-down-1-2 up-to-5-lines up-to-3-lines-lg up-to-4-lines-xl mb-lg-4">
                 為了不讓自己被老所困,無論是50歲以上的熟齡族,或逾65歲的銀髮族,每日三餐應正確攝取營養,為自己打造出黃金營養力。營養師建議,熟齡族應特別注意三大必需營養素的攝取,包括蛋白質、鈣質與維生素D,這些...
               </p>
-              <div class="d-none d-lg-block">
-                <a href="#" class="learn-more-H-lg">
+              <div className="d-none d-lg-block">
+                <a className="learn-more-H-lg">
                   了解更多
-                  <span class="material-symbols-outlined">chevron_right</span>
+                  <span className="material-symbols-outlined">
+                    chevron_right
+                  </span>
                 </a>
               </div>
             </div>
             <div>
               <img
-                src="/assets/images/omega-3-food-sources-omega-6-yellow-top-view.png"
+                src="./images/omega-3-food-sources-omega-6-yellow-top-view.png"
                 alt=""
-                class="img mb-1 mb-md-2 mb-lg-0"
+                className="img mb-1 mb-md-2 mb-lg-0"
               />
-              <div class="d-flex justify-content-end d-lg-none">
-                <a href="#" class="learn-more-H">
+              <div className="d-flex justify-content-end d-lg-none">
+                <a className="learn-more-H">
                   了解更多
-                  <span class="material-symbols-outlined">chevron_right</span>
+                  <span className="material-symbols-outlined">
+                    chevron_right
+                  </span>
                 </a>
               </div>
             </div>
           </article>
-          <article class="d-flex flex-lg-row-reverse mb-6 mb-xl-22">
-            <div class="me-4 me-lg-0 ms-lg-4">
-              <h5 class="title mb-1 mb-lg-4">銀髮族在家運動簡單4招</h5>
-              <p class="fs-7 fs-lg-5 fs-xl-4 text-secondary-2 mb-1 mb-lg-4">
+          <article className="d-flex flex-lg-row-reverse mb-6 mb-xl-22">
+            <div className="me-4 me-lg-0 ms-lg-4">
+              <h5 className="title mb-1 mb-lg-4">銀髮族在家運動簡單4招</h5>
+              <p className="fs-7 fs-lg-5 fs-xl-4 text-secondary-2 mb-1 mb-lg-4">
                 2024/8/12 #醫療
               </p>
-              <p class="fs-7 fs-lg-4 fs-xl-3 lh-sm-down-1-2 up-to-5-lines up-to-3-lines-lg up-to-4-lines-xl mb-lg-4">
+              <p className="fs-7 fs-lg-4 fs-xl-3 lh-sm-down-1-2 up-to-5-lines up-to-3-lines-lg up-to-4-lines-xl mb-lg-4">
                 隨著年齡增長,老年人可能面臨健康問題、孤獨感和家庭關係變化。心理諮詢能有效支持他們應對這些挑戰,改善情緒、增進人際關係、適應生活變化,並增強自我認識。尋找專業的心理諮詢師,選擇合適的溝通風格...
               </p>
-              <div class="d-none d-lg-block">
-                <div class="d-flex justify-content-lg-end">
-                  <a href="#" class="learn-more-H-lg">
+              <div className="d-none d-lg-block">
+                <div className="d-flex justify-content-lg-end">
+                  <a className="learn-more-H-lg">
                     了解更多
-                    <span class="material-symbols-outlined">chevron_right</span>
+                    <span className="material-symbols-outlined">
+                      chevron_right
+                    </span>
                   </a>
                 </div>
               </div>
             </div>
             <div>
               <img
-                src="/assets/images/senior-woman-training-home.png"
+                src="./images/senior-woman-training-home.png"
                 alt=""
-                class="img mb-1 mb-md-2 mb-lg-0"
+                className="img mb-1 mb-md-2 mb-lg-0"
               />
-              <div class="d-flex justify-content-end d-lg-none">
-                <a href="#" class="learn-more-H">
+              <div className="d-flex justify-content-end d-lg-none">
+                <a className="learn-more-H">
                   了解更多
-                  <span class="material-symbols-outlined">chevron_right</span>
+                  <span className="material-symbols-outlined">
+                    chevron_right
+                  </span>
                 </a>
               </div>
             </div>
           </article>
-          <article class="d-flex">
-            <div class="me-4">
-              <h5 class="title mb-1 mb-lg-4">打造理想的生活空間</h5>
-              <p class="fs-7 fs-lg-5 fs-xl-4 text-secondary-2 mb-1 mb-lg-4">
+          <article className="d-flex">
+            <div className="me-4">
+              <h5 className="title mb-1 mb-lg-4">打造理想的生活空間</h5>
+              <p className="fs-7 fs-lg-5 fs-xl-4 text-secondary-2 mb-1 mb-lg-4">
                 2024/8/9 #居家
               </p>
-              <p class="fs-7 fs-lg-4 fs-xl-3 lh-sm-down-1-2 up-to-5-lines up-to-3-lines-lg up-to-4-lines-xl mb-lg-4">
+              <p className="fs-7 fs-lg-4 fs-xl-3 lh-sm-down-1-2 up-to-5-lines up-to-3-lines-lg up-to-4-lines-xl mb-lg-4">
                 打造舒適的居家環境需要考慮多方面因素。首先,根據需求進行空間規劃,合理布局以最大化空間功能。選擇統一的風格和合適的色彩,創造和諧的氛圍。注重舒適性和實用性,選擇舒適的家具並設置足夠的儲物空間...
               </p>
-              <div class="d-none d-lg-block">
-                <a href="#" class="learn-more-H-lg">
+              <div className="d-none d-lg-block">
+                <a className="learn-more-H-lg">
                   了解更多
-                  <span class="material-symbols-outlined">chevron_right</span>
+                  <span className="material-symbols-outlined">
+                    chevron_right
+                  </span>
                 </a>
               </div>
             </div>
             <div>
               <img
-                src="/assets/images/smiling-woman-holding-book-sitting-with-her-granny-window-sill.png"
+                src="./images/smiling-woman-holding-book-sitting-with-her-granny-window-sill.png"
                 alt=""
-                class="img mb-1 mb-md-2 mb-lg-0"
+                className="img mb-1 mb-md-2 mb-lg-0"
               />
-              <div class="d-flex justify-content-end d-lg-none">
-                <a href="#" class="learn-more-H">
+              <div className="d-flex justify-content-end d-lg-none">
+                <a className="learn-more-H">
                   了解更多
-                  <span class="material-symbols-outlined">chevron_right</span>
+                  <span className="material-symbols-outlined">
+                    chevron_right
+                  </span>
                 </a>
               </div>
             </div>
@@ -514,128 +526,128 @@ export default function KnowledgeSharing() {
         {/* 分隔線 */}
         <picture>
           <source
-            srcset="/assets/images/dividers/divider-sm.png"
+            srcSet="./images/dividers/divider-sm.png"
             media="(max-width: 576px)"
-            class="mt-6 mb-2"
+            className="mt-6 mb-2"
           />
           <img
-            src="/assets/images/dividers/divider-lg.png"
+            src="./images/dividers/divider-lg.png"
             alt=""
-            class="mt-lg-10 mb-lg-1"
+            className="mt-lg-10 mb-lg-1"
           />
         </picture>
       </div>
 
       {/* section5 */}
       {/* 手機版  */}
-      <div class="d-lg-none">
-        {/* <div class="container">
-          <h3 class="fs-3 mb-6">好書推薦</h3>
+      <div className="d-lg-none">
+        {/* <div className="container">
+          <h3 className="fs-3 mb-6">好書推薦</h3>
         </div> */}
         {/* 手機版 Swiper */}
-        {/* <div class="container container-swiper">
-          <div class="swiper swiper-good-books">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide book-card">
+        {/* <div className="container container-swiper">
+          <div className="swiper swiper-good-books">
+            <div className="swiper-wrapper">
+              <div className="swiper-slide book-card">
                 <a
                   href="#"
-                  class="bg-primary-1 rounded d-flex flex-column align-items-center"
+                  className="bg-primary-1 rounded d-flex flex-column align-items-center"
                 >
-                  <p class="book-title fs-7">飲食健康</p>
+                  <p className="book-title fs-7">飲食健康</p>
 
-                  <div class="bg-white rounded p-1 m-1">
+                  <div className="bg-white rounded p-1 m-1">
                     <img
-                      src="/assets/images/books/getImage (2).png"
+                      src="./images/books/getImage (2).png"
                       alt=""
-                      class="book"
+                      className="book"
                     />
                   </div>
-                  <p class="book-title fs-7">做自己的營養師</p>
+                  <p className="book-title fs-7">做自己的營養師</p>
                 </a>
               </div>
-              <div class="swiper-slide book-card">
+              <div className="swiper-slide book-card">
                 <a
                   href="#"
-                  class="bg-primary-1 rounded d-flex flex-column align-items-center"
+                  className="bg-primary-1 rounded d-flex flex-column align-items-center"
                 >
-                  <p class="book-title fs-7">運動保健</p>
+                  <p className="book-title fs-7">運動保健</p>
 
-                  <div class="bg-white rounded p-1 m-1">
+                  <div className="bg-white rounded p-1 m-1">
                     <img
-                      src="/assets/images/books/getImage.png"
+                      src="./images/books/getImage.png"
                       alt=""
-                      class="book"
+                      className="book"
                     />
                   </div>
-                  <p class="book-title fs-7">運動比你想的還輕鬆</p>
+                  <p className="book-title fs-7">運動比你想的還輕鬆</p>
                 </a>
               </div>
-              <div class="swiper-slide book-card">
+              <div className="swiper-slide book-card">
                 <a
                   href="#"
-                  class="bg-primary-1 rounded d-flex flex-column align-items-center"
+                  className="bg-primary-1 rounded d-flex flex-column align-items-center"
                 >
-                  <p class="book-title fs-7">心靈成長</p>
+                  <p className="book-title fs-7">心靈成長</p>
 
-                  <div class="bg-white rounded p-1 m-1">
+                  <div className="bg-white rounded p-1 m-1">
                     <img
-                      src="/assets/images/books/getImage (1).png"
+                      src="./images/books/getImage (1).png"
                       alt=""
-                      class="book"
+                      className="book"
                     />
                   </div>
-                  <p class="book-title fs-7">慢老2.0</p>
+                  <p className="book-title fs-7">慢老2.0</p>
                 </a>
               </div>
-              <div class="swiper-slide book-card">
+              <div className="swiper-slide book-card">
                 <a
                   href="#"
-                  class="bg-primary-1 rounded d-flex flex-column align-items-center"
+                  className="bg-primary-1 rounded d-flex flex-column align-items-center"
                 >
-                  <p class="book-title fs-7">飲食健康</p>
+                  <p className="book-title fs-7">飲食健康</p>
 
-                  <div class="bg-white rounded p-1 m-1">
+                  <div className="bg-white rounded p-1 m-1">
                     <img
-                      src="/assets/images/books/getImage (2).png"
+                      src="./images/books/getImage (2).png"
                       alt=""
-                      class="book"
+                      className="book"
                     />
                   </div>
-                  <p class="book-title fs-7">做自己的營養師</p>
+                  <p className="book-title fs-7">做自己的營養師</p>
                 </a>
               </div>
-              <div class="swiper-slide book-card">
+              <div className="swiper-slide book-card">
                 <a
                   href="#"
-                  class="bg-primary-1 rounded d-flex flex-column align-items-center"
+                  className="bg-primary-1 rounded d-flex flex-column align-items-center"
                 >
-                  <p class="book-title fs-7">運動保健</p>
+                  <p className="book-title fs-7">運動保健</p>
 
-                  <div class="bg-white rounded p-1 m-1">
+                  <div className="bg-white rounded p-1 m-1">
                     <img
-                      src="/assets/images/books/getImage.png"
+                      src="./images/books/getImage.png"
                       alt=""
-                      class="book"
+                      className="book"
                     />
                   </div>
-                  <p class="book-title fs-7">運動比你想的還輕鬆</p>
+                  <p className="book-title fs-7">運動比你想的還輕鬆</p>
                 </a>
               </div>
-              <div class="swiper-slide book-card">
+              <div className="swiper-slide book-card">
                 <a
                   href="#"
-                  class="bg-primary-1 rounded d-flex flex-column align-items-center"
+                  className="bg-primary-1 rounded d-flex flex-column align-items-center"
                 >
-                  <p class="book-title fs-7">心靈成長</p>
+                  <p className="book-title fs-7">心靈成長</p>
 
-                  <div class="bg-white rounded p-1 m-1">
+                  <div className="bg-white rounded p-1 m-1">
                     <img
-                      src="/assets/images/books/getImage (1).png"
+                      src="./images/books/getImage (1).png"
                       alt=""
-                      class="book"
+                      className="book"
                     />
                   </div>
-                  <p class="book-title fs-7">慢老2.0</p>
+                  <p className="book-title fs-7">慢老2.0</p>
                 </a>
               </div>
             </div>
@@ -643,27 +655,27 @@ export default function KnowledgeSharing() {
         </div> */}
       </div>
       {/* 電腦版 Swiper */}
-      <div class="bg-primary-2 d-none d-lg-block">
-        <div class="container position-relative">
-          {/* <h3 class="fs-1 pt-3 mb-10">好書推薦</h3>
-          <div class="px-13">
-            <div class="swiper swiper-good-books-lg pt-9 pb-35">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide book-card slide-padding">
-                  <a href="#" class="good-book position-relative">
-                    <h5 class="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
+      <div className="bg-primary-2 d-none d-lg-block">
+        <div className="container position-relative">
+          {/* <h3 className="fs-1 pt-3 mb-10">好書推薦</h3>
+          <div className="px-13">
+            <div className="swiper swiper-good-books-lg pt-9 pb-35">
+              <div className="swiper-wrapper">
+                <div className="swiper-slide book-card slide-padding">
+                  <a className="good-book position-relative">
+                    <h5 className="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
                       飲食健康
                     </h5>
-                    <div class="bg-white rounded p-1 m-1">
+                    <div className="bg-white rounded p-1 m-1">
                       <img
-                        src="/assets/images/books/getImage (2).png"
+                        src="./images/books/getImage (2).png"
                         alt=""
-                        class="book"
+                        className="book"
                       />
                     </div>
-                    <div class="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
-                      <h6 class="fs-4 fw-bold m-0 ms-5">做自己的營養師</h6>
-                      <p class="book-intro-text fs-7 lh-1-8 m-0">
+                    <div className="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
+                      <h6 className="fs-4 fw-bold m-0 ms-5">做自己的營養師</h6>
+                      <p className="book-intro-text fs-7 lh-1-8 m-0">
                         健康與日常飲食密切相關依每個人的 <br />
                         身高體重與身體狀況，一日需要的熱 <br />
                         量與六大類營養素皆不同，該怎麼計 <br />
@@ -673,28 +685,28 @@ export default function KnowledgeSharing() {
                     </div>
                   </a>
                 </div>
-                <div class="swiper-slide book-card slide-padding">
-                  <a href="#" class="good-book position-relative">
-                    <h5 class="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
+                <div className="swiper-slide book-card slide-padding">
+                  <a className="good-book position-relative">
+                    <h5 className="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
                       運動保健
                     </h5>
 
-                    <div class="bg-white rounded p-1 m-1">
+                    <div className="bg-white rounded p-1 m-1">
                       <img
-                        src="/assets/images/books/getImage.png"
+                        src="./images/books/getImage.png"
                         alt=""
-                        class="book"
+                        className="book"
                       />
                     </div>
-                    <div class="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
-                      <h6 class="fs-4 fw-bold m-0 ms-5">運動比你想的還輕鬆</h6>
-                      <p class="book-intro-text fs-7 lh-1-8 m-0">
+                    <div className="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
+                      <h6 className="fs-4 fw-bold m-0 ms-5">運動比你想的還輕鬆</h6>
+                      <p className="book-intro-text fs-7 lh-1-8 m-0">
                         融入居家空間，兼顧方便性與安全性 <br />
                         的律動運動，突破年齡、體能狀態、 <br />
                         時空環境的「無差別待遇」、無壓、
                         <br />
                         無痛、
-                        <span class="horizontal-tb letter-spacing-0 lh-1-2">
+                        <span className="horizontal-tb letter-spacing-0 lh-1-2">
                           0
                         </span>
                         運動傷害，讓負擔變享受，
@@ -704,40 +716,40 @@ export default function KnowledgeSharing() {
                     </div>
                   </a>
                 </div>
-                <div class="swiper-slide book-card slide-padding">
-                  <a href="#" class="good-book position-relative">
-                    <h5 class="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
+                <div className="swiper-slide book-card slide-padding">
+                  <a className="good-book position-relative">
+                    <h5 className="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
                       心靈成長
                     </h5>
 
-                    <div class="bg-white rounded p-1 m-1">
+                    <div className="bg-white rounded p-1 m-1">
                       <img
-                        src="/assets/images/books/getImage (1).png"
+                        src="./images/books/getImage (1).png"
                         alt=""
-                        class="book"
+                        className="book"
                       />
                     </div>
-                    <div class="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
-                      <h6 class="fs-4 fw-bold m-0 ms-5">
+                    <div className="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
+                      <h6 className="fs-4 fw-bold m-0 ms-5">
                         慢老{" "}
-                        <span class="horizontal-tb">
+                        <span className="horizontal-tb">
                           2<br />.<br />0
                         </span>
                       </h6>
-                      <p class="book-intro-text fs-7 lh-1-8 m-0">
-                        <span class="horizontal-tb letter-spacing-0 lh-1-2">
+                      <p className="book-intro-text fs-7 lh-1-8 m-0">
+                        <span className="horizontal-tb letter-spacing-0 lh-1-2">
                           30
                         </span>
                         多歲就渾身疼痛？
-                        <span class="horizontal-tb letter-spacing-0 lh-1-2">
+                        <span className="horizontal-tb letter-spacing-0 lh-1-2">
                           40
                         </span>
                         多歲就忘東忘 <br />西 ？
-                        <span class="horizontal-tb letter-spacing-0 lh-1-2">
+                        <span className="horizontal-tb letter-spacing-0 lh-1-2">
                           50
                         </span>
                         多歲就全身衰弱 ？慢老
-                        <span class="horizontal-tb letter-spacing-0 lh-1-2">
+                        <span className="horizontal-tb letter-spacing-0 lh-1-2">
                           2.0
                         </span>
                         ， <br />
@@ -748,21 +760,21 @@ export default function KnowledgeSharing() {
                     </div>
                   </a>
                 </div>
-                <div class="swiper-slide book-card slide-padding">
-                  <a href="#" class="good-book position-relative">
-                    <h5 class="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
+                <div className="swiper-slide book-card slide-padding">
+                  <a className="good-book position-relative">
+                    <h5 className="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
                       飲食健康
                     </h5>
-                    <div class="bg-white rounded p-1 m-1">
+                    <div className="bg-white rounded p-1 m-1">
                       <img
-                        src="/assets/images/books/getImage (2).png"
+                        src="./images/books/getImage (2).png"
                         alt=""
-                        class="book"
+                        className="book"
                       />
                     </div>
-                    <div class="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
-                      <h6 class="fs-4 fw-bold m-0 ms-5">做自己的營養師</h6>
-                      <p class="book-intro-text fs-7 lh-1-8 m-0">
+                    <div className="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
+                      <h6 className="fs-4 fw-bold m-0 ms-5">做自己的營養師</h6>
+                      <p className="book-intro-text fs-7 lh-1-8 m-0">
                         健康與日常飲食密切相關依每個人的 <br />
                         身高體重與身體狀況，一日需要的熱 <br />
                         量與六大類營養素皆不同，該怎麼計 <br />
@@ -772,28 +784,28 @@ export default function KnowledgeSharing() {
                     </div>
                   </a>
                 </div>
-                <div class="swiper-slide book-card slide-padding">
-                  <a href="#" class="good-book position-relative">
-                    <h5 class="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
+                <div className="swiper-slide book-card slide-padding">
+                  <a className="good-book position-relative">
+                    <h5 className="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
                       運動保健
                     </h5>
 
-                    <div class="bg-white rounded p-1 m-1">
+                    <div className="bg-white rounded p-1 m-1">
                       <img
-                        src="/assets/images/books/getImage.png"
+                        src="./images/books/getImage.png"
                         alt=""
-                        class="book"
+                        className="book"
                       />
                     </div>
-                    <div class="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
-                      <h6 class="fs-4 fw-bold m-0 ms-5">運動比你想的還輕鬆</h6>
-                      <p class="book-intro-text fs-7 lh-1-8 m-0">
+                    <div className="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
+                      <h6 className="fs-4 fw-bold m-0 ms-5">運動比你想的還輕鬆</h6>
+                      <p className="book-intro-text fs-7 lh-1-8 m-0">
                         融入居家空間，兼顧方便性與安全性 <br />
                         的律動運動，突破年齡、體能狀態、 <br />
                         時空環境的「無差別待遇」、無壓、
                         <br />
                         無痛、
-                        <span class="horizontal-tb letter-spacing-0 lh-1-2">
+                        <span className="horizontal-tb letter-spacing-0 lh-1-2">
                           0
                         </span>
                         運動傷害，讓負擔變享受，
@@ -803,40 +815,40 @@ export default function KnowledgeSharing() {
                     </div>
                   </a>
                 </div>
-                <div class="swiper-slide book-card slide-padding">
-                  <a href="#" class="good-book position-relative">
-                    <h5 class="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
+                <div className="swiper-slide book-card slide-padding">
+                  <a className="good-book position-relative">
+                    <h5 className="book-category fs-2 fw-bold lh-1-2 vertical-rl bg-white m-0 px-3 pt-2 pb-1 rounded letter-spacing">
                       心靈成長
                     </h5>
 
-                    <div class="bg-white rounded p-1 m-1">
+                    <div className="bg-white rounded p-1 m-1">
                       <img
-                        src="/assets/images/books/getImage (1).png"
+                        src="./images/books/getImage (1).png"
                         alt=""
-                        class="book"
+                        className="book"
                       />
                     </div>
-                    <div class="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
-                      <h6 class="fs-4 fw-bold m-0 ms-5">
+                    <div className="book-intro vertical-rl letter-spacing-1 bg-white rounded px-4 py-5">
+                      <h6 className="fs-4 fw-bold m-0 ms-5">
                         慢老{" "}
-                        <span class="horizontal-tb">
+                        <span className="horizontal-tb">
                           2<br />.<br />0
                         </span>
                       </h6>
-                      <p class="book-intro-text fs-7 lh-1-8 m-0">
-                        <span class="horizontal-tb letter-spacing-0 lh-1-2">
+                      <p className="book-intro-text fs-7 lh-1-8 m-0">
+                        <span className="horizontal-tb letter-spacing-0 lh-1-2">
                           30
                         </span>
                         多歲就渾身疼痛？
-                        <span class="horizontal-tb letter-spacing-0 lh-1-2">
+                        <span className="horizontal-tb letter-spacing-0 lh-1-2">
                           40
                         </span>
                         多歲就忘東忘 <br />西 ？
-                        <span class="horizontal-tb letter-spacing-0 lh-1-2">
+                        <span className="horizontal-tb letter-spacing-0 lh-1-2">
                           50
                         </span>
                         多歲就全身衰弱 ？慢老
-                        <span class="horizontal-tb letter-spacing-0 lh-1-2">
+                        <span className="horizontal-tb letter-spacing-0 lh-1-2">
                           2.0
                         </span>
                         ， <br />
@@ -851,15 +863,15 @@ export default function KnowledgeSharing() {
             </div>
           </div> */}
           {/* Swiper navigation */}
-          {/* <div class="swiper-book-next">
-            <span class="material-symbols-outlined"> arrow_forward_ios </span>
+          {/* <div className="swiper-book-next">
+            <span className="material-symbols-outlined"> arrow_forward_ios </span>
           </div>
-          <div class="swiper-book-prev">
-            <span class="material-symbols-outlined ps-3"> arrow_back_ios</span>
+          <div className="swiper-book-prev">
+            <span className="material-symbols-outlined ps-3"> arrow_back_ios</span>
           </div> */}
         </div>
       </div>
-      <div class="mb-20 mb-lg-36"></div>
+      <div className="mb-20 mb-lg-36"></div>
     </>
   );
 }
