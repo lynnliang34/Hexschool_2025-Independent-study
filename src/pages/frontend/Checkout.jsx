@@ -276,6 +276,8 @@ export default function Checkout() {
       user: {
         name: data.name,
         email: data.email,
+        tel: data.tel,
+        address: data.address,
       },
       payment: {
         paymentMethod: paymentMethod, // 使用傳入的 paymentMethod
@@ -781,6 +783,62 @@ export default function Checkout() {
 
             {/*第二行輸入欄 */}
             <div className="d-md-flex justify-content-between mb-3 mb-md-6">
+              {/* 電話 */}
+              <div className="w-100 me-2 me-lg-6 mb-3 mb-md-0">
+                <label
+                  htmlFor="checkoutPhoneInput"
+                  className="form-label checkout-label mb-1 mb-lg-2"
+                >
+                  電話<span className="text-primary ms-1">*</span>
+                </label>
+                <input
+                  {...register("tel", {
+                    required: "電話必填",
+                    pattern: {
+                      value: /^(?:02\d{8}|04\d{8}|0[3-8]\d{7}|09\d{8})$/,
+                      message: "格式錯誤",
+                    },
+                  })}
+                  className={`form-control checkout-input ${
+                    errors.tel && "is-invalid"
+                  }`}
+                  id="checkoutPhoneInput"
+                  type="tel"
+                  placeholder="請輸入電話"
+                />
+
+                {errors.tel && (
+                  <p className="text-danger">{errors.tel.message}</p>
+                )}
+              </div>
+
+              {/* 地址 */}
+              <div className="w-100">
+                <label
+                  htmlFor="checkoutAddressInput"
+                  className="form-label checkout-label mb-1 mb-lg-2"
+                >
+                  地址<span className="text-primary ms-1">*</span>
+                </label>
+                <input
+                  {...register("address", {
+                    required: "地址必填",
+                  })}
+                  className={`form-control checkout-input ${
+                    errors.address && "is-invalid"
+                  }`}
+                  id="checkoutAddressInput"
+                  type="text"
+                  placeholder="請輸入地址"
+                />
+                {errors.address && (
+                  <p className="text-danger">{errors.address.message}</p>
+                )}
+              </div>
+            </div>
+
+            {/*第三行輸入欄 */}
+            <div className="d-md-flex justify-content-between mb-3 mb-md-6">
               {/*發票類型 */}
               <div className="w-100 me-2 me-lg-6 mb-3 mb-md-0">
                 <label
@@ -966,7 +1024,7 @@ export default function Checkout() {
               )}
             </div>
 
-            {/*第三行輸入欄 */}
+            {/*第四行輸入欄 */}
             <div className="d-md-flex justify-content-between">
               {/*載具類別 */}
               {(invoiceType === "" || invoiceType === "electronic") &&
