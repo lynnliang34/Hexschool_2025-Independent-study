@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     // 存訂單資料
-    cartDatails:[],
+    cartDetails:[],
 };
 
 export const cartSlice = createSlice({
@@ -14,7 +14,7 @@ export const cartSlice = createSlice({
         addCartDetail:(state, action)=>{
             
             // 確認購物車有沒有重複的課(有重複為true)
-            const isDuplicate = state.cartDatails.some(
+            const isDuplicate = state.cartDetails.some(
                 (detail)=>{
                     return detail.course_id === action.payload.course_id;
                 }
@@ -23,10 +23,10 @@ export const cartSlice = createSlice({
             // array.some((element, index, array) => {}
 
             if(isDuplicate === false){
-                state.cartDatails.push({
+                state.cartDetails.push({
                     ...action.payload
                 })
-                console.log('課程已添加到購物車', state.cartDatails);
+                console.log('課程已添加到購物車', state.cartDetails);
             } else {
                 console.log('購物車已有此課程', action.payload.course_id);
             }
@@ -36,12 +36,12 @@ export const cartSlice = createSlice({
             //.filter保留回傳為true的資料
             // （傳入要刪的id為false）
         removeCartDetail:(state,action)=>{
-            state.cartDatails = state.cartDatails.filter(detail=>detail.course_id !== action.payload)
+            state.cartDetails = state.cartDetails.filter(detail=>detail.course_id !== action.payload)
         },
 
         // 清空購物車資料
         clearCartDetail:(state)=>{
-            state.cartDatails = [];
+            state.cartDetails = [];
         }
     }
 })

@@ -150,6 +150,7 @@ export default function ScheduleCourses() {
 
     // 使用 useEffect 監視購物車資料變化
     useEffect(() => {
+        console.log(allCourses);
         console.log('購物車資料已更新:', cartDetails);
         console.log(selectedCourse);
         console.log(selectedTeacher);

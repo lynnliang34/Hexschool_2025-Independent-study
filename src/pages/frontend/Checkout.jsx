@@ -22,7 +22,7 @@ export default function Checkout() {
   const dispatch = useDispatch();
 
   // 從 Redux store 取得使用者的購物車清單
-  const frontendCartList = useSelector((state) => state.cart.cartDatails);
+  const frontendCartList = useSelector((state) => state.cart.cartDetails);
 
   // 取得購物車列表
   const getCart = async () => {
