@@ -611,7 +611,7 @@ export default function Checkout() {
                 />
 
                 {errors.name && (
-                  <p className="text-danger my-2">{errors.name.message}</p>
+                  <p className="text-danger">{errors.name.message}</p>
                 )}
               </div>
 
@@ -639,7 +639,7 @@ export default function Checkout() {
                   placeholder="請輸入電子信箱"
                 />
                 {errors.email && (
-                  <p className="text-danger my-2">{errors.email.message}</p>
+                  <p className="text-danger">{errors.email.message}</p>
                 )}
               </div>
             </div>
@@ -670,9 +670,15 @@ export default function Checkout() {
                   <option value="donation">捐贈發票</option>
                 </select>
                 {errors.invoiceType && (
-                  <p className="text-danger">{errors.invoiceType.message}</p>
+                  <p className="text-danger mb-1">
+                    {errors.invoiceType.message}
+                  </p>
                 )}
-                <p className="invoice-note fs-7 fs-md-6 text-neutral-1 mt-1 mt-lg-2">
+                <p
+                  className={`invoice-note fs-7 fs-md-6 text-neutral-1 mt-1 mt-lg-2 ${
+                    errors.invoiceType && "d-none"
+                  }`}
+                >
                   如需開立統編，請選擇統編發票
                 </p>
               </div>
@@ -680,7 +686,11 @@ export default function Checkout() {
               {/*電子發票 */}
               {invoiceType === "" && (
                 <div className="electronic-invoice invoice-section w-100 d-flex align-items-end mb-md-7 mb-lg-8">
-                  <select className="form-select checkout-input" disabled>
+                  <select
+                    className="form-select checkout-input"
+                    defaultValue=""
+                    disabled
+                  >
                     <option disabled value="">
                       請選擇
                     </option>
