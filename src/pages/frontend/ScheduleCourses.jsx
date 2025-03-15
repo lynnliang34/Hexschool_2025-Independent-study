@@ -157,6 +157,15 @@ export default function ScheduleCourses() {
         e.preventDefault();
 
         try{
+            // 判斷全部選項都有選
+            if(!selectedCourse || !selectedTeacher || !selectedTimeSlot){
+                dispatch(pushMessage({
+                    text:`請選擇完整資料`,
+                    status: "failed"
+                }));
+                return;
+            }
+
             //判斷現在選的跟redux清單內的course_id有沒有重複(重複為true)
             const isDupicate = cartDetails.some(
                 (item) => item.course_id === selectedTimeSlot.course_id
