@@ -1,0 +1,32 @@
+.cart-offcanvas{
+    .link-btn{
+        &:hover{
+            background-color: $secondary-2 !important;
+        }
+    }
+
+    .cart-list{
+        overflow-y: auto;
+    }
+
+
+    .btn-remove{
+        background-color: transparent;
+        border: none;
+        
+        .cart-trash {
+            width: 50px;
+            height: 50px;
+            fill: $primary;
+            transition: 0.15s;
+            
+                &:hover {
+                fill: $secondary-2;
+                }
+            }
+    }
+
+    @include md{
+        width: 300px !important;
+    }
+}

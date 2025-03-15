@@ -20,7 +20,7 @@ export default function ScheduleCourses() {
     // 老師課表
     const [ teacherSchedules, setTeacherSchedules] = useState({});
     // 選定的時段
-    const [ selectedTimeSlot, setSelectedTimeSlot ] = useState({});
+    const [ selectedTimeSlot, setSelectedTimeSlot ] = useState();
     // btn active
     const [ btnActive, setBtnActive ] = useState(id);
 
@@ -86,6 +86,9 @@ export default function ScheduleCourses() {
         
         // 設置狀態
         setSelectedTeacher(teacherName);
+
+        // 重設前面已選時段
+        setSelectedTimeSlot();
         
         // 在下一個事件循環中恢復捲動位置
         setTimeout(() => {
@@ -143,20 +146,32 @@ export default function ScheduleCourses() {
     }, [selectedCourse]);
 
     // 從 Redux 獲取購物車資料
-    const cartDetails = useSelector(state => state.cart.cartDatails);
+    const cartDetails = useSelector(state => state.cart.cartDetails);
 
     // 使用 useEffect 監視購物車資料變化
     useEffect(() => {
+        console.log(allCourses);
         console.log('購物車資料已更新:', cartDetails);
         console.log(selectedCourse);
+        console.log(selectedTeacher);
+        console.log(selectedTimeSlot);
         
-    }, [cartDetails]);
+    }, [cartDetails,selectedTimeSlot]);
 
     // 操作表單提交
     const handleSubmit = async(e)=>{
         e.preventDefault();
 
         try{
+            // 判斷全部選項都有選
+            if(!selectedCourse || !selectedTeacher || !selectedTimeSlot){
+                dispatch(pushMessage({
+                    text:`請選擇完整資料`,
+                    status: "failed"
+                }));
+                return;
+            }
+
             //判斷現在選的跟redux清單內的course_id有沒有重複(重複為true)
             const isDupicate = cartDetails.some(
                 (item) => item.course_id === selectedTimeSlot.course_id
@@ -206,7 +221,7 @@ export default function ScheduleCourses() {
                 // 成功後重置所有選擇狀態
                 setBtnActive(null);          // 重置課程選擇的 active 狀態
                 setSelectedTeacher(null);    // 重置教練選擇
-                setSelectedTimeSlot({});     // 重置時段選擇
+                setSelectedTimeSlot();     // 重置時段選擇
             }else{
                 dispatch(pushMessage({
                     text: `添加失敗: ${res.data.message || '未知錯誤'}`,
@@ -240,7 +255,7 @@ export default function ScheduleCourses() {
                     {/* <!-- 課程選項 --> */}
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 g-lg-3 btnStyle">
                         {allCourses.map((item)=>{
-                            const isSlotInCourse = !item.timeSlots;
+                            const isSlotInCourse = !item.timeSlots || !item.timeSlots.some(slot => slot.course_id.trim() !== "" && slot.date.trim() !== "" && slot.teacher.trim() !== "" && slot.time.trim() !== "");
                             return(
                             <div className="col" key={item.id}>
                             <button 
