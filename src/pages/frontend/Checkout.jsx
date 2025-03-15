@@ -256,6 +256,7 @@ export default function Checkout() {
     formState: { errors },
     watch,
     setValue,
+    reset,
   } = useForm({
     defaultValues: {
       invoiceType: "", // 預設值為空
@@ -351,20 +352,40 @@ export default function Checkout() {
       }
     }
 
-    console.log(data);
-    console.log(postData);
+    checkout(postData);
   };
 
   // 提交表單
   const handleAllSubmit = () => {
-    const payment = {
-      paymentMethod,
-      mobilePayment,
-      creditCardInfo,
-    };
-
     handleSubmit(onSubmit)();
-    console.log(payment);
+  };
+
+  // 結帳
+  const checkout = async (data) => {
+    try {
+      setIsScreenLoading(true);
+      const res = await axios.post(`${BASE_URL}/api/${API_PATH}/order`, {
+        data: data,
+      });
+      console.log(res);
+      dispatch(
+        pushMessage({
+          text: `成功送出訂單`,
+          status: "success",
+        })
+      );
+
+      reset();
+    } catch (error) {
+      dispatch(
+        pushMessage({
+          text: `結帳失敗：${error.response.data.message}`,
+          status: "failed",
+        })
+      );
+    } finally {
+      setIsScreenLoading(false);
+    }
   };
 
   // 5 訂單明細
@@ -1197,7 +1218,9 @@ export default function Checkout() {
         {/*確認付款 */}
         <div className="text-center">
           <button
-            className="btn btn-primary text-white confirm-payment-btn"
+            className={`btn btn-primary text-white confirm-payment-btn ${
+              cart.carts?.length > 0 || "disabled"
+            }`}
             type="button"
             onClick={handleAllSubmit}
           >
