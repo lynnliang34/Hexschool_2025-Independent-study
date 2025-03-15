@@ -45,6 +45,34 @@ export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
         console.log("前台購物車資料", cartDetails);
     }, []);
 
+    // 當前台購物車數據變化時也刷新後台數據
+    useEffect(() => {
+        getBackCart();
+    }, [cartDetails]);
+
+    // 每次側邊欄打開時也刷新後台數據
+    useEffect(() => {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.target.classList.contains('show')) {
+                    // 側邊欄被打開時刷新數據
+                    getBackCart();
+                }
+            });
+        });
+        
+        if (cartOffcanvasRef && cartOffcanvasRef.current) {
+            observer.observe(cartOffcanvasRef.current, { 
+                attributes: true, 
+                attributeFilter: ['class'] 
+            });
+        }
+        
+        return () => {
+            observer.disconnect();
+        };
+    }, [cartOffcanvasRef]);
+
      // 更改後台購物車商品數量
     const putCartQty = async (cart_id, product_id, qty) => {
         try {
@@ -131,7 +159,10 @@ const handleRemoveCartItem = async (course_id, product_id) => {
 }
 
 // 處理結帳按鈕點擊
-const handleCheckout = (e) => {
+const handleCheckout = async(e) => {
+    // 在進行判斷前先刷新購物車數據，確保數據是最新的
+    await getBackCart();
+    closeCartOffcanvas();
     if (isCartEmpty) {
         e.preventDefault(); // 阻止預設行為
         
@@ -141,9 +172,7 @@ const handleCheckout = (e) => {
                 status: "failed",
             })
         );
-    } else {
-        closeCartOffcanvas();
-    }
+    } 
 }
 
     return (<>
@@ -181,7 +210,7 @@ const handleCheckout = (e) => {
             </ol>
             <Link type="button" 
                     className="btn btn-primary fs-5 fs-md-4 text-white link-btn" 
-                    to="/checkout"
+                    to={isCartEmpty ? '#' : '/checkout'}
                     onClick={handleCheckout}>
                 前往結帳
             </Link>
