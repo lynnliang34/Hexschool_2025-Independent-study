@@ -20,7 +20,7 @@ export default function Index(){
 <main className="index">
     {/* <!-- banner --> */}
     <section className="indexBanner"
-        style={{backgroundImage: 'url(../images/happy-elderly-couple-sitting-tropical-beach-back-view.png)'}}>
+        style={{backgroundImage: 'url(./images/happy-elderly-couple-sitting-tropical-beach-back-view.png)'}}>
         <div className="container">
             <h3 className="fs-lg-0 text-white">
             {/* <!-- logo svg --> */}
@@ -97,7 +97,7 @@ export default function Index(){
                     <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">樂齡晨間操</p>
                 </div>
                 <div className="overflow-hidden mt-14 rounded">
-                    <img className="img-fluid rounded" src="../images/athletic-senior-woman-stretching-arms-park.png"
+                    <img className="img-fluid rounded" src="./images/athletic-senior-woman-stretching-arms-park.png"
                     alt="athletic-senior-woman" />
                 </div>
                 </a>
@@ -110,7 +110,7 @@ export default function Index(){
                     <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">有氧肌力見習班</p>
                 </div>
                 <div className="overflow-hidden mt-14 rounded">
-                    <img className="img-fluid rounded" src="../images/grandparents-working-out-gym.png"
+                    <img className="img-fluid rounded" src="./images/grandparents-working-out-gym.png"
                     alt="grandparents-working-out-gym" />
                 </div>
                 </a>
@@ -123,7 +123,7 @@ export default function Index(){
                     <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">樂活健康促進團</p>
                 </div>
                 <div className="overflow-hidden mt-14 rounded">
-                    <img className="img-fluid rounded" src="../images/14811.png" alt="older-person-clapping" />
+                    <img className="img-fluid rounded" src="./images/14811.png" alt="older-person-clapping" />
                 </div>
                 </a>
             </div>
@@ -157,7 +157,7 @@ export default function Index(){
                     </div>
                     <div
                         className="ms-0 my-9 ms-lg-10 mt-lg-13 mb-lg-24 ps-2 ps-lg-3 pt-2 pt-lg-3 border border-primary rounded-20 border-end-0 border-bottom-0">
-                        <img className="rounded-20 img-fluid" src="../images/senior-people-doing-cardio.png"
+                        <img className="rounded-20 img-fluid" src="./images/senior-people-doing-cardio.png"
                         alt="senior-people-doing-cardio" />
                     </div>
                     </div>
@@ -175,7 +175,7 @@ export default function Index(){
                     <div
                         className="ms-0 my-9 ms-lg-10 mt-lg-13 mb-lg-24 ps-2 ps-lg-3 pt-2 pt-lg-3 border border-primary rounded-20 border-end-0 border-bottom-0">
                         <img className="rounded-20 img-fluid"
-                        src="../images/man-using-mobile-phone-while-sitting-table (1).png"
+                        src="./images/man-using-mobile-phone-while-sitting-table (1).png"
                         alt="man-using-mobile-phone-while-sitting-table" />
                     </div>
                     </div>
@@ -198,7 +198,7 @@ export default function Index(){
                     <div
                     className="ms-0 my-9 ms-lg-10 mt-lg-13 mb-lg-24 ps-2 ps-lg-3 pt-2 pt-lg-3 border border-primary rounded-20 border-end-0 border-bottom-0">
                     <img className="rounded-20 img-fluid"
-                        src="../images/senior-elderly-man-reading-book-drinking-mug-coffee-garden.png"
+                        src="./images/senior-elderly-man-reading-book-drinking-mug-coffee-garden.png"
                         alt="senior-elderly-man-reading-book-drinking-mug-coffee-garden"/>
                     </div>
                 </div>
@@ -215,7 +215,7 @@ export default function Index(){
                     </div>
                     <div
                     className="ms-0 my-9 ms-lg-10 mt-lg-13 mb-lg-24 ps-2 ps-lg-3 pt-2 pt-lg-3 border border-primary rounded-20 border-end-0 border-bottom-0">
-                    <img className="rounded-20 img-fluid" src="../images/17925.png" alt="athletic-senior-people"/>
+                    <img className="rounded-20 img-fluid" src="./images/17925.png" alt="athletic-senior-people"/>
                     </div>
                 </div>
                 </div>
@@ -240,7 +240,7 @@ export default function Index(){
                 </div>
                 <div className="pt-lg-6 pe-lg-8 pb-2 pb-md-24">
                 <img className="cardImg rounded img-fluid d-block mx-auto"
-                    src="../images/salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept.png"
+                    src="./images/salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept.png"
                     alt="salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept"/>
                 </div>
               {/* <!-- 手機版卡片文字 --> */}
@@ -277,7 +277,7 @@ export default function Index(){
                 <h3 className="lh-1 me-0 ms-0 fs-lg-2 text-primary">運動保健</h3>
                 </div>
                 <div className="pt-lg-6 pe-lg-8 pb-2 pb-md-24">
-                <img className="cardImg rounded img-fluid d-block mx-auto" src="../images/2148247158.png"
+                <img className="cardImg rounded img-fluid d-block mx-auto" src="./images/2148247158.png"
                     style={{objectPosition: 'right'}} alt="older-running"/>
                 </div>
               {/* <!-- 手機版卡片文字 --> */}
@@ -314,7 +314,7 @@ export default function Index(){
                 <h3 className="lh-1 me-0 ms-0 fs-lg-2 text-primary">心靈成長</h3>
             </div>
                 <div className="pt-lg-6 pe-lg-8 pb-2 pb-md-24">
-                <img className="cardImg cardImgPosition rounded img-fluid d-block mx-auto" src="../images/13878.png"
+                <img className="cardImg cardImgPosition rounded img-fluid d-block mx-auto" src="./images/13878.png"
                     alt="salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept"/>
             </div>
               {/* <!-- 手機版卡片文字 --> */}
