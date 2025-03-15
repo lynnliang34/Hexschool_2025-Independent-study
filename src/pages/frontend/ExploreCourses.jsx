@@ -79,7 +79,7 @@ export default function ExploreCourses() {
                     })
                 ):
                 (<div className="col">
-                    <h1 className="text-secondary my-10">目前無此分類課程</h1>
+                    <h1 className="text-secondary text-nowrap my-10">目前無此分類課程</h1>
                 </div>)
                 }
             </div>
