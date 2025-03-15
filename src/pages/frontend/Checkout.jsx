@@ -271,7 +271,7 @@ export default function Checkout() {
   // 送出表單
   const onSubmit = (data) => {
     // 初始資料
-    const result = {
+    const postData = {
       user: {
         name: data.name,
         email: data.email,
@@ -306,7 +306,53 @@ export default function Checkout() {
       },
     };
 
+    // 根據 invoiceType 清理欄位
+    const clearFields = {
+      electronic: [
+        "tax_ID_number",
+        "receipt_title",
+        "company_address",
+        "company_postal_code",
+        "donationInvoice",
+        "mobile_barcode",
+        "citizen_digital_Certificate",
+      ],
+      GUI_number: [
+        "electronicInvoice",
+        "mobile_barcode",
+        "citizen_digital_Certificate",
+        "donationInvoice",
+      ],
+      donation: [
+        "electronicInvoice",
+        "mobile_barcode",
+        "citizen_digital_Certificate",
+        "tax_ID_number",
+        "receipt_title",
+        "company_address",
+        "company_postal_code",
+      ],
+    };
+
+    // 清除不需要的欄位
+    clearFields[data.invoiceType]?.forEach((field) => {
+      postData.invoice[field] = "";
+    });
+
+    // 根據電子發票的選項進行更細部的處理
+    if (data.invoiceType === "electronic") {
+      if (data.electronicInvoice === "citizen-digital-certificate") {
+        postData.invoice.citizen_digital_Certificate =
+          data.citizen_digital_Certificate;
+        postData.invoice.mobile_barcode = "";
+      } else if (data.electronicInvoice === "mobile_barcode") {
+        postData.invoice.mobile_barcode = data.mobile_barcode;
+        postData.invoice.citizen_digital_Certificate = "";
+      }
+    }
+
     console.log(data);
+    console.log(postData);
   };
 
   // 提交表單
@@ -734,7 +780,7 @@ export default function Checkout() {
                     請選擇
                   </option>
                   <option value="electronic">電子發票</option>
-                  <option value="GUI-number">統編發票</option>
+                  <option value="GUI_number">統編發票</option>
                   <option value="donation">捐贈發票</option>
                 </select>
                 {errors.invoiceType && (
@@ -803,7 +849,7 @@ export default function Checkout() {
               )}
 
               {/*統編條碼 */}
-              {invoiceType === "GUI-number" && (
+              {invoiceType === "GUI_number" && (
                 <>
                   <div className="government-uniform-invoice invoice-section w-100 me-2 me-lg-6 mb-3 mb-md-0">
                     <label
@@ -987,7 +1033,7 @@ export default function Checkout() {
                 )}
 
               {/*公司地址 */}
-              {invoiceType === "GUI-number" && (
+              {invoiceType === "GUI_number" && (
                 <div className="government-uniform-invoice invoice-section w-100">
                   <div className="d-md-flex justify-content-between mb-3 mb-md-6">
                     {/*地址  */}
