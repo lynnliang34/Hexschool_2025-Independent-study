@@ -925,11 +925,11 @@ export default function Checkout() {
           {/*選購清單 */}
           <div className="cart-order">
             {frontendCartList.map((item) => (
-              <div className="cart-order-item f-order-item">
-                <div
-                  className="d-flex flex-column flex-md-row"
-                  key={item.course_id}
-                >
+              <div
+                className="cart-order-item f-order-item"
+                key={item.course_id}
+              >
+                <div className="d-flex flex-column flex-md-row">
                   <p className="order-class-name text-truncate me-md-10">
                     {item.title}
                   </p>
