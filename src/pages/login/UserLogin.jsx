@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/userSlice";
 import { Logo, Toast } from "../../components";
 import { pushMessage } from "../../redux/toastSlice";
+import { clearCartDetail } from "../../redux/cartSlice";
 
 // 環境變數
 const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function UserLogin() {
   // 從 Redux store 取得使用者是否已登入的狀態
@@ -44,6 +46,9 @@ export default function UserLogin() {
       document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
       axios.defaults.headers.common["Authorization"] = token;
 
+      resetCart(); // 重置後台購物車
+      dispatch(clearCartDetail()); //重置前台購物車
+
       dispatch(loginUser({ name: account.username }));
       navigate(previousPage, { replace: true }); // 返回點擊登入的頁面
     } catch (error) {
@@ -53,6 +58,32 @@ export default function UserLogin() {
           status: "failed",
         })
       );
+    }
+  };
+
+  // 清空購物車
+  const deleteCartAll = async () => {
+    try {
+      const res = await axios.delete(`${BASE_URL}/api/${API_PATH}/carts`);
+      console.log("清空後台購物車");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // 重置後台購物車
+  const resetCart = async () => {
+    try {
+      // 取得購物車
+      const res = await axios.get(`${BASE_URL}/api/${API_PATH}/cart`);
+      const cartLength = res.data.data.carts.length;
+
+      // 如果購物車有商品才清空
+      if (cartLength) {
+        deleteCartAll();
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
