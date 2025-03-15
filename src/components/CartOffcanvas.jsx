@@ -40,8 +40,8 @@ export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
                     return (
                     <li  className="py-2 text-secondary-2 d-flex justify-content-between"
                         key={detail.course_id}>
-                        <div>
-                        <h5 className="text-secondary-2"><span>{index+1}. </span>{detail.title}</h5>
+                        <div className="">
+                        <h6 className="cart-item-title text-secondary-2 fs-md-5"><span>{index+1}. </span>{detail.title}</h6>
                         <p className="ms-5 fw-bold">{detail.date}</p>
                         <p className="ms-5 fw-bold">{detail.time}</p>
                         <p className="ms-5 fw-bold">NT$ {detail.price}</p>
@@ -56,7 +56,7 @@ export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
                 }
             </ol>
             <Link type="button" 
-                    className="btn btn-primary fs-4 text-white link-btn" 
+                    className="btn btn-primary fs-5 fs-md-4 text-white link-btn" 
                     to="/checkout"
                     onClick={closeCartOffcanvas}>
                 前往結帳

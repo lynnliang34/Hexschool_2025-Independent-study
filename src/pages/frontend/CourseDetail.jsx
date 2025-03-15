@@ -40,7 +40,7 @@ export default function CourseDetail() {
         console.log("變更的 ID:", id); // 檢查 ID 是否存在
         // 判斷是否已登入
         if(isAuthenticated){
-            // 如果已登入，導向預約課程頁面(並將id傳到下一頁)
+            // 如果已登入，導向預約課程頁面
             navigate("/schedule-courses")
         }
         else{
