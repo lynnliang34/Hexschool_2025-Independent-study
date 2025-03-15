@@ -247,9 +247,24 @@ export default function Checkout() {
   const [invoiceType, setInvoiceType] = useState("");
   const [electronicInvoice, setElectronicInvoice] = useState("");
   const [donationInvoice, setDonationInvoice] = useState("");
-  const [customerInfo, setCustomerInfo] = useState({});
-  const [barcode, setBarcode] = useState({});
-  const [GUI_Number, setGUI_Number] = useState({});
+
+  const [customerInfo, setCustomerInfo] = useState({
+    customer_name: "",
+    customer_email: "",
+  });
+
+  const [barcode, setBarcode] = useState({
+    citizen_digital_certificate: "",
+    mobile_barcode: "",
+  });
+
+  const [GUI_Number, setGUI_Number] = useState({
+    tax_ID_number: "",
+    receipt_title: "",
+    company_address: "",
+    company_postal_code: "",
+  });
+
   const [donationCode, setDonationCode] = useState("");
 
   // 處理顧客姓名、電子郵件輸入
@@ -870,7 +885,6 @@ export default function Checkout() {
                         placeholder="請輸入郵遞區號"
                       />
                     </div>
-                    {console.log(GUI_Number)}
                   </div>
                 </div>
               )}
@@ -890,7 +904,6 @@ export default function Checkout() {
                     />
                   </div>
                 )}
-              {console.log(donationInvoice)}
             </div>
           </form>
         </div>
