@@ -392,6 +392,8 @@ export default function Checkout() {
       );
 
       reset();
+      setInputCoupon("");
+      setSelectedCoupon("");
       setPaymentMethod(null);
       setMobilePayment(null);
       setCreditCardInfo({
