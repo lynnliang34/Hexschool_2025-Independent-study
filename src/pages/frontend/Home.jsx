@@ -3,8 +3,6 @@ import { getImageURL } from "../../utils/image-util.js";
 import HomeModal from "../../components/homeModal.jsx";
 import PhotoSwiper from "../../components/IndexSwiper.jsx";
 
-import bannerImg from '../../assets/images/happy-elderly-couple-sitting-tropical-beach-back-view.png';
-
 export default function Index(){
     const openCommentModal = (modalId) => {
         const modal = new bootstrap.Modal(document.getElementById(modalId));
@@ -23,7 +21,7 @@ export default function Index(){
 <main className="index">
     {/* <!-- banner --> */}
     <section className="indexBanner"
-        style={{backgroundImage: `url(${bannerImg})`}}>
+        style={{backgroundImage: `url(${getImageURL('happy-elderly-couple-sitting-tropical-beach-back-view.png')})`}}>
         <div className="container">
             <h3 className="fs-lg-0 text-white">
             {/* <!-- logo svg --> */}
