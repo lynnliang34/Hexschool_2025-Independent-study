@@ -8,6 +8,7 @@ import { Toast } from "../../components";
 import { IconTrash } from "../../assets/Icons";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { getImageURL } from "../../util/image-util";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -703,7 +704,7 @@ export default function Checkout() {
                 >
                   <img
                     className="mobile-payment-img"
-                    src="./images/payment/Line Pay.png"
+                    src={getImageURL('payment/Line Pay.png')}
                     alt="Line Pay"
                   />
                 </button>
@@ -716,7 +717,7 @@ export default function Checkout() {
                 >
                   <img
                     className="mobile-payment-img"
-                    src="./images/payment/JKO Pay.png"
+                    src={getImageURL('payment/JKO Pay.png')}
                     alt="JKO Pay"
                   />
                 </button>
