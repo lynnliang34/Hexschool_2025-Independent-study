@@ -4,7 +4,7 @@
     &::before{
         content: "";
         position: absolute;
-        background-image: url(./images/line/標題裝飾.png);
+        background-image: url(../images/line/標題裝飾.png);
         width: 100%;
         height: 8px;
     }
@@ -210,7 +210,7 @@
 .index{
     .studentComment{
         .commentBackground{
-            background-image: url(./images/Footer/group-408.png); 
+            background-image: url(../images/Footer/group-408.png); 
             background-position: 70% 50%; 
             background-size: 150% 100%;  
             background-repeat: no-repeat; 

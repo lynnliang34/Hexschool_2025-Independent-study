@@ -1,12 +1,12 @@
 .footer {
   height: 343px;
-  background-image: url(./images/Footer/mob-Footer.png);
+  background-image: url(../images/Footer/mob-Footer.png);
   background-size: 100% 343px;
   background-position: center;
 
   @include lg {
     height: 400px;
-    background-image: url(./images/Footer/web-Footer.png);
+    background-image: url(../images/Footer/web-Footer.png);
     background-size: 100% 400px;
   }
 
