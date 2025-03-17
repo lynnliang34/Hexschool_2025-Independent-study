@@ -5,7 +5,7 @@ import { Autoplay, FreeMode } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import "swiper/css/bundle";
-import { getImageURL } from '../util/image-util';
+import { getImageURL } from '../utils/image-util';
 
 
 const PhotoSwiper=()=>{

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { getImageURL } from "../../util/image-util.js";
+import { getImageURL } from "../../utils/image-util.js";
 import HomeModal from "../../components/homeModal.jsx";
 import PhotoSwiper from "../../components/IndexSwiper.jsx";
 
@@ -202,7 +202,7 @@ export default function Index(){
                     className="ms-0 my-9 ms-lg-10 mt-lg-13 mb-lg-24 ps-2 ps-lg-3 pt-2 pt-lg-3 border border-primary rounded-20 border-end-0 border-bottom-0">
                     <img className="rounded-20 img-fluid"
                         src={getImageURL('senior-elderly-man-reading-book-drinking-mug-coffee-garden.png')}
-                        alt="senior-elderly-man-reading-book-drinking-mug-coffee-garden"/>
+                        alt="senior-elderly-man-reading-book-drinking-mug-coffee-garden.png"/>
                     </div>
                 </div>
                 <div className="col-12 position-relative">
@@ -317,7 +317,7 @@ export default function Index(){
                 <h3 className="lh-1 me-0 ms-0 fs-lg-2 text-primary">心靈成長</h3>
             </div>
                 <div className="pt-lg-6 pe-lg-8 pb-2 pb-md-24">
-                <img className="cardImg cardImgPosition rounded img-fluid d-block mx-auto" src="./images/13878.png"
+                <img className="cardImg cardImgPosition rounded img-fluid d-block mx-auto" src={getImageURL('13878.png')}
                     alt="salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept"/>
             </div>
               {/* <!-- 手機版卡片文字 --> */}

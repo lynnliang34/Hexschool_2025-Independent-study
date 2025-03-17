@@ -1,3 +1,5 @@
+import { getImageURL } from "../../utils/image-util";
+
 export default function KnowledgeSharing() {
   return (
     <>
@@ -192,7 +194,7 @@ export default function KnowledgeSharing() {
                 適合的運動讓晚年更輕鬆
               </h4>
               <img
-                src="./images/athletic-senior-woman-stretching-arm-park.png"
+                src={getImageURL('athletic-senior-woman-stretching-arm-park.png')}
                 alt=""
                 className="rounded mb-2 mb-lg-5"
               />
@@ -230,7 +232,7 @@ export default function KnowledgeSharing() {
                         <div className="d-flex justify-content-between align-items-center">
                           <div className="d-flex">
                             <img
-                              src="./images/people.png"
+                              src={getImageURL('people.png')}
                               alt=""
                               className="photo me-2"
                             />
@@ -249,7 +251,7 @@ export default function KnowledgeSharing() {
                     </div>
                   </div>
                   <img
-                    src="./images/high-angle-plate-with-keto-diet-food-nuts.png"
+                    src={getImageURL('high-angle-plate-with-keto-diet-food-nuts.png')}
                     alt=""
                     className="img mb-2 mb-lg-0"
                   />
@@ -259,7 +261,7 @@ export default function KnowledgeSharing() {
                 <div className="d-flex justify-content-between align-items-center d-lg-none">
                   <div className="d-flex">
                     <img
-                      src="./images/people.png"
+                      src={getImageURL('high-angle-plate-with-keto-diet-food-nuts.png')}
                       alt=""
                       className="photo me-2"
                     />
@@ -289,7 +291,7 @@ export default function KnowledgeSharing() {
                         <div className="d-flex justify-content-between align-items-center">
                           <div className="d-flex">
                             <img
-                              src="./images/people.png"
+                              src={getImageURL('people.png')}
                               alt=""
                               className="photo me-2"
                             />
@@ -308,7 +310,7 @@ export default function KnowledgeSharing() {
                     </div>
                   </div>
                   <img
-                    src="./images/close-up-woman-using-mobile.png"
+                    src={getImageURL('close-up-woman-using-mobile.png')}
                     alt=""
                     className="img mb-2 mb-lg-0"
                   />
@@ -318,7 +320,7 @@ export default function KnowledgeSharing() {
                 <div className="d-flex justify-content-between align-items-center d-lg-none">
                   <div className="d-flex">
                     <img
-                      src="./images/people.png"
+                      src={getImageURL('people.png')}
                       alt=""
                       className="photo me-2"
                     />
@@ -350,7 +352,7 @@ export default function KnowledgeSharing() {
                         <div className="d-flex justify-content-between align-items-center">
                           <div className="d-flex">
                             <img
-                              src="./images/people.png"
+                              src={getImageURL('people.png')}
                               alt=""
                               className="photo me-2"
                             />
@@ -369,7 +371,7 @@ export default function KnowledgeSharing() {
                     </div>
                   </div>
                   <img
-                    src="./images/senior-people-sitting-couch-side-view.png"
+                    src={getImageURL('senior-people-sitting-couch-side-view.png')}
                     alt=""
                     className="img mb-2 mb-lg-0"
                   />
@@ -379,7 +381,7 @@ export default function KnowledgeSharing() {
                 <div className="d-flex justify-content-between align-items-center d-lg-none">
                   <div className="d-flex">
                     <img
-                      src="./images/people.png"
+                      src={getImageURL('people.png')}
                       alt=""
                       className="photo me-2"
                     />
@@ -437,7 +439,7 @@ export default function KnowledgeSharing() {
             </div>
             <div>
               <img
-                src="./images/omega-3-food-sources-omega-6-yellow-top-view.png"
+                src={getImageURL('omega-3-food-sources-omega-6-yellow-top-view.png')}
                 alt=""
                 className="img mb-1 mb-md-2 mb-lg-0"
               />
@@ -473,7 +475,7 @@ export default function KnowledgeSharing() {
             </div>
             <div>
               <img
-                src="./images/senior-woman-training-home.png"
+                src={getImageURL('senior-woman-training-home.png')}
                 alt=""
                 className="img mb-1 mb-md-2 mb-lg-0"
               />
@@ -507,7 +509,7 @@ export default function KnowledgeSharing() {
             </div>
             <div>
               <img
-                src="./images/smiling-woman-holding-book-sitting-with-her-granny-window-sill.png"
+                src={getImageURL('smiling-woman-holding-book-sitting-with-her-granny-window-sill.png')}
                 alt=""
                 className="img mb-1 mb-md-2 mb-lg-0"
               />

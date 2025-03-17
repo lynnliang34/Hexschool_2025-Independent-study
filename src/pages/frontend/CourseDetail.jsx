@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios"; 
 import { useSelector, useDispatch } from "react-redux";
 import { setPreviousPage, setselectedProductId } from "../../redux/userSlice";
+import { getDividerImgURL, getImageURL, getTeacherImgURL } from "../../utils/image-util";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -57,12 +58,12 @@ export default function CourseDetail() {
             {/* <!-- 分隔線 --> */}
             <picture>
                 <source
-                srcSet="./images/dividers/divider-sm.png"
+                srcSet={getDividerImgURL('divider-sm.png')}
                 media="(max-width: 576px)"
                 className="mt-4 mb-2"
                 />
                 <img
-                src="./images/dividers/divider-lg.png"
+                src={getDividerImgURL('divider-lg.png')}
                 alt=""
                 className="d-lg-none"
                 />
@@ -158,11 +159,11 @@ export default function CourseDetail() {
             {/* <!-- 分隔線 --> */}
             <picture>
                 <source
-                srcSet="./images/dividers/divider-sm.png"
+                srcSet={getDividerImgURL('divider-sm.png')}
                 media="(max-width: 576px)"
                 />
                 <img
-                src="./images/dividers/divider-lg.png"
+                src={getDividerImgURL('divider-lg.png')}
                 alt=""
                 className="mt-6 mt-lg-10 mb-2 mb-lg-4"
                 />
@@ -192,8 +193,8 @@ export default function CourseDetail() {
                         低衝擊性設計
                         </h3>
                         <img
-                            src="./images/workout-home-old-woman-with-hands-waist.png"
-                            alt=""
+                            src={getImageURL('workout-home-old-woman-with-hands-waist.png')}
+                            alt="workout-home-old-woman-with-hands-waist.png"
                             className="object-fit-cover features-img"
                         />
                         <p className="d-lg-none fs-5 features-text">
@@ -210,7 +211,7 @@ export default function CourseDetail() {
                             靈活的強度調整
                         </h3>
                         <img
-                            src="./images/side-view-man-running-gym.png"
+                            src={getImageURL('side-view-man-running-gym.png')}
                             alt=""
                             className="object-fit-cover features-img"
                         />
@@ -232,11 +233,11 @@ export default function CourseDetail() {
             {/* <!-- 分隔線 --> */}
             <picture>
                 <source
-                    srcSet="./images/dividers/divider-sm.png"
+                    srcSet={getDividerImgURL('divider-sm.png')}
                     media="(max-width: 576px)"
                 />
                 <img
-                    src="./images/dividers/divider-lg.png"
+                    src={getDividerImgURL('divider-lg.png')}
                     alt=""
                     className="mt-6 mt-lg-10 mb-2 mb-lg-4"
                 />
@@ -252,8 +253,8 @@ export default function CourseDetail() {
                         <div className="top-left-decoration"></div>
                         <div className="service-img-overlay">
                             <img
-                                src="./images/Exclude.png"
-                                alt=""
+                                src={getImageURL('Exclude.png')}
+                                alt="Exclude.png"
                                 className="object-fit-cover service-img"
                             />
                         </div>
@@ -271,8 +272,8 @@ export default function CourseDetail() {
                         <div className="top-left-decoration"></div>
                         <div className="service-img-overlay">
                             <img
-                                src="./images/Exclude-1-1.png"
-                                alt=""
+                                src={getImageURL('Exclude-1-1.png')}
+                                alt="Exclude-1-1.png"
                                 className="object-fit-cover service-img"
                             />
                         </div>
@@ -290,8 +291,8 @@ export default function CourseDetail() {
                         <div className="top-left-decoration"></div>
                         <div className="service-img-overlay">
                             <img
-                                src="./images/Exclude-2.png"
-                                alt=""
+                                src={getImageURL('Exclude-2.png')}
+                                alt="Exclude-2.png"
                                 className="object-fit-cover service-img"
                             />
                         </div>
@@ -309,11 +310,11 @@ export default function CourseDetail() {
         {/* <!-- 分隔線 --> */}
         <picture>
             <source
-            srcSet="./images/dividers/divider-sm.png"
+            srcSet={getDividerImgURL('divider-sm.png')}
             media="(max-width: 576px)"
             />
             <img
-            src="./images/dividers/divider-lg.png"
+            src={getDividerImgURL('divider-lg.png')}
             alt=""
             className="mt-6 mt-lg-10 mb-2 mb-lg-4"
             />
@@ -322,7 +323,7 @@ export default function CourseDetail() {
         <h1 className="fs-3 fs-lg-1 mb-6 mb-lg-10">師資陣容</h1>
         <div className="row row-cols-1 row-cols-lg-4 mb-20 mb-lg-36">
             <div className="col mb-6 mb-lg-0">
-                <div className="card teacher-card p-2 px-lg-7 py-lg-3">
+                <div className="card teacher-card p-2 px-lg-7 py-lg-3 h-100">
                     <div
                     className="d-flex flex-lg-column align-items-center align-items-lg-start"
                     >
@@ -330,7 +331,7 @@ export default function CourseDetail() {
                         className="d-flex flex-column justify-content-center align-items-center"
                     >
                         <img
-                        src="./images/Teachers/Hui-Zhen Lin.png"
+                        src={getTeacherImgURL('Hui-Zhen Lin.png')}
                         className="teacher-img mb-1 mb-lg-2"
                         alt="..."
                         />
@@ -351,7 +352,7 @@ export default function CourseDetail() {
                 </div>
             </div>
             <div className="col mb-6 mb-lg-0">
-                <div className="card teacher-card p-2 px-lg-7 py-lg-3">
+                <div className="card teacher-card p-2 px-lg-7 py-lg-3 h-100">
                     <div
                     className="d-flex flex-lg-column align-items-center align-items-lg-start"
                     >
@@ -359,7 +360,7 @@ export default function CourseDetail() {
                         className="d-flex flex-column justify-content-center align-items-center"
                     >
                         <img
-                        src="./images/Teachers/Wei-Ming Zhang.png"
+                        src={getTeacherImgURL('Wei-Ming Zhang.png')}
                         className="teacher-img mb-1 mb-lg-2"
                         alt="..."
                         />
@@ -380,7 +381,7 @@ export default function CourseDetail() {
                 </div>
             </div>
             <div className="col mb-6 mb-lg-0">
-                <div className="card teacher-card p-2 px-lg-7 py-lg-3">
+                <div className="card teacher-card p-2 px-lg-7 py-lg-3 h-100">
                     <div
                     className="d-flex flex-lg-column align-items-center align-items-lg-start"
                     >
@@ -388,7 +389,7 @@ export default function CourseDetail() {
                         className="d-flex flex-column justify-content-center align-items-center"
                     >
                         <img
-                        src="./images/Teachers/Mei-Lan Li.png"
+                        src={getTeacherImgURL('Mei-Lan Li.png')}
                         className="teacher-img mb-1 mb-lg-2"
                         alt="..."
                         />
@@ -409,7 +410,7 @@ export default function CourseDetail() {
                 </div>
             </div>
             <div className="col">
-                <div className="card teacher-card p-2 px-lg-7 py-lg-3">
+                <div className="card teacher-card p-2 px-lg-7 py-lg-3 h-100">
                     <div
                     className="d-flex flex-lg-column align-items-center align-items-lg-start"
                     >
@@ -417,7 +418,7 @@ export default function CourseDetail() {
                         className="d-flex flex-column justify-content-center align-items-center"
                     >
                         <img
-                        src="./images/Teachers/Zhi-Qiang Wang.png"
+                        src={getTeacherImgURL('Zhi-Qiang Wang.png')}
                         className="teacher-img mb-1 mb-lg-2"
                         alt="..."
                         />

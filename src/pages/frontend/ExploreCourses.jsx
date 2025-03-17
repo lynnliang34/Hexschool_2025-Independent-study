@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import ReactLoading from 'react-loading';
+import { getAreasImgURL, getImageURL} from "../../utils/image-util";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -126,7 +127,9 @@ export default function ExploreCourses() {
                 </div>
             )
         }
-
+        const imageUrl = getImageURL('explore_other_areas', 'music.png');
+        console.log("生成的圖片 URL:", imageUrl);
+        console.log("import.meta.url:", import.meta.url);
 
     return (<>
     <div className="container py-3 pt-lg-0 pb-lg-8 px-lg-15 mt-4 mb-6 my-lg-20">
@@ -206,62 +209,62 @@ export default function ExploreCourses() {
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/music.png)'}}>音樂</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('music.png')})`}}>音樂</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/language.png)'}}>語言</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('language.png')})`}}>語言</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/photography.png)'}}>攝影</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('photography.png')})`}}>攝影</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/art.png)'}}>藝術</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('art.png')})`}}>藝術</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/design.png)'}}>設計</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('design.png')})`}}>設計</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/humanities.png)'}}>人文</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('humanities.png')})`}}>人文</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/marketing.png)'}}>行銷</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('marketing.png')})`}}>行銷</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/program.png)'}}>程式</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('program.png')})`}}>程式</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/investment.png)'}}>投資理財</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('investment.png')})`}}>投資理財</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/job-skills.png)'}}>職場技能</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('job-skills.png')})`}}>職場技能</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/handmade.png)'}}>手做</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('handmade.png')})`}}>手做</button>
                     </li>
                     <li className="col-4 col-md-3 col-lg-2">
                         <button
                             className="btn btn-custom fs-6 fs-lg-2 fw-bold text-neutral-1 text-align border-0 rounded"
-                            style={{backgroundImage: 'url(./images/explore-other-areas/life-style.png)'}}>生活品味</button>
+                            style={{backgroundImage: `url(${getAreasImgURL('life-style.png')})`}}>生活品味</button>
                     </li>
                 </ul>
             </div>

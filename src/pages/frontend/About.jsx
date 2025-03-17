@@ -1,46 +1,48 @@
 import AOS from "aos";
 import { useEffect } from "react";
+import { getAboutImgURL } from "../../utils/image-util";
+
 
 const aboutItems = [
   {
     title: "Everyone Different",
     subtitle: "根據個人狀態量身打造",
-    img: "./images/about/about-1.png",
+    img: `${getAboutImgURL('about-1.png')}`,
     colorClass: "secondary-2",
     bgColorClass: "secondary-1",
   },
   {
     title: "Anything Possible",
     subtitle: "教練專業橫跨各領域",
-    img: "./images/about/about-2.png",
+    img: `${getAboutImgURL('about-2.png')}`,
     colorClass: "primary",
     bgColorClass: "primary-2",
   },
   {
     title: "Train Harder",
     subtitle: "有要求的訓練過程",
-    img: "./images/about/about-3.png",
+    img: `${getAboutImgURL('about-3.png')}`,
     colorClass: "secondary-2",
     bgColorClass: "secondary-1",
   },
   {
     title: "Seek Truth",
     subtitle: "持續不斷地追求創新",
-    img: "./images/about/about-4.png",
+    img: `${getAboutImgURL('about-4.png')}`,
     colorClass: "primary",
     bgColorClass: "primary-2",
   },
   {
     title: "Make Believe",
     subtitle: "社區支持與學員見證",
-    img: "./images/about/about-5.png",
+    img: `${getAboutImgURL('about-5.png')}`,
     colorClass: "secondary-2",
     bgColorClass: "secondary-1",
   },
   {
     title: "Be Flexible",
     subtitle: "舒適的學習環境與氛圍",
-    img: "./images/about/about-6.png",
+    img: `${getAboutImgURL('about-6.png')}`,
     colorClass: "primary",
     bgColorClass: "primary-2",
   },
