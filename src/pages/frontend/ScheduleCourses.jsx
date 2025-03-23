@@ -92,7 +92,10 @@ export default function ScheduleCourses() {
         
         // 在下一個事件循環中恢復捲動位置
         setTimeout(() => {
-            window.scrollTo(0, scrollPosition);
+            window.scrollTo({
+                top: scrollPosition,
+                left: 0,
+                behavior: instant});
         }, 0);
     }
 
@@ -107,7 +110,10 @@ export default function ScheduleCourses() {
         // console.log(selectedTimeSlot);
         // 在下一個事件循環中恢復捲動位置
         setTimeout(() => {
-            window.scrollTo(0, scrollPosition);
+            window.scrollTo({
+                top: scrollPosition,
+                left: 0,
+                behavior:instant});
         }, 0);
     }
 
