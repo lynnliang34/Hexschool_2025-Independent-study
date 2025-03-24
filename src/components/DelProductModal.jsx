@@ -53,6 +53,7 @@ function DelProductModal({
         }
       );
     } catch (error) {
+      console.error("刪除產品失敗:", error);
       alert("刪除產品失敗");
     }
   };
@@ -64,6 +65,7 @@ function DelProductModal({
       getProducts(page);
       handleCloseDelProductModal();
     } catch (error) {
+      console.error("刪除產品失敗:", error);
       alert("刪除產品失敗");
     }
   };

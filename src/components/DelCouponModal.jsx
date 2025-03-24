@@ -50,6 +50,7 @@ function DelCouponModal({ tempCoupon, isOpen, setIsOpen, getCoupons, page }) {
         }
       );
     } catch (error) {
+      console.error("刪除優惠券失敗:", error);
       alert("刪除優惠券失敗");
     }
   };
@@ -61,6 +62,7 @@ function DelCouponModal({ tempCoupon, isOpen, setIsOpen, getCoupons, page }) {
       getCoupons(page);
       handleCloseDelCouponModal();
     } catch (error) {
+      console.error("刪除優惠券失敗:", error);
       alert("刪除優惠券失敗");
     }
   };
