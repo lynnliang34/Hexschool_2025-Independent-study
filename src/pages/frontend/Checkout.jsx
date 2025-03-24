@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pushMessage } from "../../redux/toastSlice";
 import { removeCartDetail, clearCartDetail } from "../../redux/cartSlice";
@@ -27,7 +27,7 @@ export default function Checkout() {
   const frontendCartList = useSelector((state) => state.cart.cartDetails);
 
   // 取得購物車列表
-  const getCart = async () => {
+  const getCart = useCallback(async () => {
     try {
       setIsScreenLoading(true);
       const res = await axios.get(`${BASE_URL}/api/${API_PATH}/cart`);
@@ -43,13 +43,13 @@ export default function Checkout() {
     } finally {
       setIsScreenLoading(false);
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     getCart();
 
     console.log("前台資料", frontendCartList);
-  }, []);
+  }, [getCart, frontendCartList]);
 
   // 更改後台購物車商品數量
   const putCart = async (cart_id, product_id, qty) => {
