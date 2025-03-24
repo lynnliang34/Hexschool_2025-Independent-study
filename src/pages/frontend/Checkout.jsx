@@ -427,7 +427,7 @@ export default function Checkout() {
 
           {/*手機版購物清單 */}
           <ul className="list-unstyled mb-32 d-md-none">
-            {frontendCartList.map((item, index) => (
+            {frontendCartList.map((item) => (
               <li
                 className={`cart-list-item p-2 ${
                   frontendCartList.length - 1 === 1 ? "mb-3" : ""
