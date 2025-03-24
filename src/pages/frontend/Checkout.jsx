@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pushMessage } from "../../redux/toastSlice";
 import { removeCartDetail, clearCartDetail } from "../../redux/cartSlice";
@@ -27,7 +27,7 @@ export default function Checkout() {
   const frontendCartList = useSelector((state) => state.cart.cartDetails);
 
   // 取得購物車列表
-  const getCart = async () => {
+  const getCart = useCallback(async () => {
     try {
       setIsScreenLoading(true);
       const res = await axios.get(`${BASE_URL}/api/${API_PATH}/cart`);
@@ -43,26 +43,23 @@ export default function Checkout() {
     } finally {
       setIsScreenLoading(false);
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     getCart();
 
     console.log("前台資料", frontendCartList);
-  }, []);
+  }, [getCart, frontendCartList]);
 
   // 更改後台購物車商品數量
   const putCart = async (cart_id, product_id, qty) => {
     try {
-      const res = await axios.put(
-        `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`,
-        {
-          data: {
-            product_id: product_id,
-            qty: qty,
-          },
-        }
-      );
+      await axios.put(`${BASE_URL}/api/${API_PATH}/cart/${cart_id}`, {
+        data: {
+          product_id: product_id,
+          qty: qty,
+        },
+      });
 
       getCart();
     } catch (error) {
@@ -78,9 +75,7 @@ export default function Checkout() {
   // 刪除後台購物車商品數量
   const deleteCartItem = async (cart_id) => {
     try {
-      const res = await axios.delete(
-        `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`
-      );
+      await axios.delete(`${BASE_URL}/api/${API_PATH}/cart/${cart_id}`);
 
       getCart();
     } catch (error) {
@@ -215,39 +210,6 @@ export default function Checkout() {
     setMobilePayment(mobilePayment === method ? null : method);
   };
 
-  // 處理信用卡輸入
-  const handleCreditCardInfoChange = (e) => {
-    const { name } = e.target;
-    let value = e.target.value; // 這裡使用 let，而不是直接解構賦值
-
-    // 格式化信用卡號（自動加空格，每 4 位數）
-    if (name === "card_number") {
-      value = value.replace(/\D/g, ""); // 只允許數字
-      value = value.replace(/(\d{4})/g, "$1 ").trim(); // 每 4 位數添加空格
-      value = value.substring(0, 19); // 最長 19 字元（16 位數 + 3 個空格）
-    }
-
-    // 格式化有效期限 MM/YY
-    if (name === "expiry_date") {
-      value = value.replace(/\D/g, ""); // 只允許數字
-      if (value.length >= 2) {
-        value = value.slice(0, 2) + "/" + value.slice(2); // 插入 /
-      }
-      value = value.substring(0, 5); // 最長 5 字元
-    }
-
-    // 限制 CVC 長度（3~4 位數）
-    if (name === "CVC") {
-      value = value.replace(/\D/g, "").substring(0, 4); // 只允許數字，最多 4 位
-    }
-
-    // 更新狀態
-    setCreditCardInfo((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   // 4 發票選項
 
   // 驗證表單
@@ -378,7 +340,7 @@ export default function Checkout() {
   const checkout = async (data) => {
     try {
       setIsScreenLoading(true);
-      const res = await axios.post(`${BASE_URL}/api/${API_PATH}/order`, {
+      await axios.post(`${BASE_URL}/api/${API_PATH}/order`, {
         data: data,
       });
 
@@ -432,7 +394,7 @@ export default function Checkout() {
 
           {/*手機版購物清單 */}
           <ul className="list-unstyled mb-32 d-md-none">
-            {frontendCartList.map((item, index) => (
+            {frontendCartList.map((item) => (
               <li
                 className={`cart-list-item p-2 ${
                   frontendCartList.length - 1 === 1 ? "mb-3" : ""
@@ -704,7 +666,7 @@ export default function Checkout() {
                 >
                   <img
                     className="mobile-payment-img"
-                    src={getPaymentImgURL('Line Pay.png')}
+                    src={getPaymentImgURL("Line Pay.png")}
                     alt="Line Pay"
                   />
                 </button>
@@ -717,7 +679,7 @@ export default function Checkout() {
                 >
                   <img
                     className="mobile-payment-img"
-                    src={getPaymentImgURL('JKO Pay.png')}
+                    src={getPaymentImgURL("JKO Pay.png")}
                     alt="JKO Pay"
                   />
                 </button>

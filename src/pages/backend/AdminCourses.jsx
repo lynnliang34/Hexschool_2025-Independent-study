@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Pagination, ProductModal, DelProductModal } from "../../components";
 import ReactLoading from "react-loading";
 
@@ -45,7 +45,7 @@ export default function AdminCourses() {
 
   // 獲取產品列表
   // 向後端 API 取得產品列表，並更新 productList
-  const getProducts = async (page = 1) => {
+  const getProducts = useCallback(async (page = 1) => {
     try {
       const res = await axios.get(
         `${BASE_URL}/api/${API_PATH}/admin/products?page=${page}`
@@ -69,11 +69,11 @@ export default function AdminCourses() {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, []);
 
   // 檢查登入狀態
   // 驗證使用者是否已登入，如果登入成功，則載入產品列表。
-  const checkIsLogin = async () => {
+  const checkIsLogin = useCallback(async () => {
     try {
       setIsScreenLoading(true);
       await axios.post(`${BASE_URL}/api/user/check`);
@@ -83,20 +83,20 @@ export default function AdminCourses() {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [getProducts]);
 
   // 初始掛載時檢查登入
   // 當元件掛載時，從 cookie 取得 token，設置 Authorization，並檢查是否已登入。
   useEffect(() => {
     const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
+      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
       "$1"
     );
 
     axios.defaults.headers.common["Authorization"] = token;
 
     checkIsLogin();
-  }, []);
+  }, [checkIsLogin]);
 
   //  ——————— 加入產品 Modal ———————
 

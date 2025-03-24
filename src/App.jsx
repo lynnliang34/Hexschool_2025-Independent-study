@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 import { Header, Footer } from "./pages";
 import ScrollToTop from "./helpers/ScrollToTop";
 
-function App({}) {
+function App() {
   return (
     <>
       <Header />

@@ -21,6 +21,7 @@ export default function CourseDetail() {
                 setCourse(response.data.product);
             }
             catch(err){
+                console.dir(err);
                 alert('資料取得失敗');
             }
         };

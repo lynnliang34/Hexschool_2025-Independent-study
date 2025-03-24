@@ -105,6 +105,7 @@ function CouponModal({
         }
       );
     } catch (error) {
+      console.error("更新優惠券失敗:", error);
       alert("更新優惠券失敗");
     }
   };
@@ -118,6 +119,7 @@ function CouponModal({
       getCoupons(page);
       handleCloseCouponModal();
     } catch (error) {
+      console.error("更新優惠券失敗:", error);
       alert("更新優惠券失敗");
     }
   };

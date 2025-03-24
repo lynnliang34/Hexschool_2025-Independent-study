@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router";
 import ReactLoading from 'react-loading';
 import { getAreasImgURL, getImageURL} from "../../utils/image-util";
@@ -13,13 +13,14 @@ export default function ExploreCourses() {
 
     // 點選導覽列的課程分類對應探索頁課程分類標籤：
         const location = useLocation();
-
-        const CATEGORY_MAP = {
+        // 使用 useMemo 來確保 CATEGORY_MAP 只被創建一次
+        const CATEGORY_MAP =useMemo(()=>({
             'sport' : '運動保健',
             'mind' : '心理成長',
             'skills' : '生活技能',
             'community' : '社區活動'
-        }
+        }),[]);// 空依賴陣列表示這個物件只會被創建一次
+        
         // 對應分類標籤的id
         const [activeTab, setActiveTab] = useState('pills-home-tab');
         // 根據hash設置category和activeTab:
@@ -50,7 +51,7 @@ export default function ExploreCourses() {
                 // 每個 case 對應一個分類的 hash 值，並設置相應的標籤 ID
                 // 如果 hash 是 mind，則設置活動標籤為 pills-psycho-tab
             }
-        }, [location]); //監聽URL變化
+        }, [location,CATEGORY_MAP]); //監聽URL變化
     
     // 依照課程分類取得課程：
         function CategoryCourse({category}) {
@@ -72,6 +73,7 @@ export default function ExploreCourses() {
                         setCourse(response.data.products);
                     }
                     catch(err){
+                        console.dir(err);
                         alert('取得課程失敗');
                     }
                     finally{

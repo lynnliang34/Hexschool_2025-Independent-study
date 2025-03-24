@@ -99,6 +99,7 @@ function ProductModal({
         }
       );
     } catch (error) {
+      console.error("更新產品失敗:", error);
       alert("更新產品失敗");
     }
   };
@@ -112,6 +113,7 @@ function ProductModal({
       getProducts(page);
       handleCloseProductModal();
     } catch (error) {
+      console.error("更新產品失敗:", error);
       alert("更新產品失敗");
     }
   };
@@ -168,6 +170,7 @@ function ProductModal({
       const uploadedImageUrl = res.data.imageUrl;
       setModalData({ ...modalData, imageUrl: uploadedImageUrl });
     } catch (error) {
+      console.error("上傳圖片失敗:", error);
       alert("上傳圖片失敗");
     }
   };

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Pagination, CouponModal, DelCouponModal } from "../../components";
 import ReactLoading from "react-loading";
 
@@ -26,7 +26,7 @@ export default function AdminCoupons() {
 
   // 獲取產品列表
   // 向後端 API 取得產品列表，並更新 couponList
-  const getCoupons = async (page = 1) => {
+  const getCoupons = useCallback(async (page = 1) => {
     try {
       const res = await axios.get(
         `${BASE_URL}/api/${API_PATH}/admin/coupons?page=${page}`
@@ -43,7 +43,7 @@ export default function AdminCoupons() {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, []);
 
   // 轉換折扣顯示
   const discountMap = {
@@ -57,7 +57,7 @@ export default function AdminCoupons() {
 
   // 檢查登入狀態
   // 驗證使用者是否已登入，如果登入成功，則載入產品列表。
-  const checkIsLogin = async () => {
+  const checkIsLogin = useCallback(async () => {
     try {
       setIsScreenLoading(true);
       await axios.post(`${BASE_URL}/api/user/check`);
@@ -67,20 +67,20 @@ export default function AdminCoupons() {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [getCoupons]);
 
   // 初始掛載時檢查登入
   // 當元件掛載時，從 cookie 取得 token，設置 Authorization，並檢查是否已登入。
   useEffect(() => {
     const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
+      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
       "$1"
     );
 
     axios.defaults.headers.common["Authorization"] = token;
 
     checkIsLogin();
-  }, []);
+  }, [checkIsLogin]);
 
   //  ——————— 加入產品 Modal ———————
 

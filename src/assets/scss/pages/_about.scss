@@ -34,12 +34,28 @@
 
 .about-slogan-left {
   top: 40px;
-  left: -116px;
+  left: -84px;
+
+  @include xl {
+    left: -100px;
+  }
+
+  @include xxl {
+    left: -116px;
+  }
 }
 
 .about-slogan-right {
   top: 40px;
-  right: -116px;
+  right: -84px;
+
+  @include xl {
+    right: -100px;
+  }
+
+  @include xxl {
+    right: -116px;
+  }
 }
 
 .about-lg-bg {

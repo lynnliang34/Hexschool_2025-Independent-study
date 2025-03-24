@@ -48,11 +48,11 @@ export default function ScheduleCourses() {
                 }
             }
             catch(err){
-                alert('資料取得失敗');
+                alert(`資料取得失敗：${err.message}`);
             }
         }
         getAllCourse();
-    },[]);
+    },[dispatch]);
 
 // 抓詳細選取的課程的資料
     useEffect(()=>{
@@ -64,7 +64,7 @@ export default function ScheduleCourses() {
                 setSelectedCourse(response.data.product);
             }
             catch(err){
-                alert('資料取得失敗');
+                alert(`資料取得失敗：${err.message}`);
             }
         };
         getIdCourse();
@@ -95,7 +95,7 @@ export default function ScheduleCourses() {
             window.scrollTo({
                 top: scrollPosition,
                 left: 0,
-                behavior: instant});
+                behavior: 'instant'});
         }, 0);
     }
 
@@ -113,7 +113,7 @@ export default function ScheduleCourses() {
             window.scrollTo({
                 top: scrollPosition,
                 left: 0,
-                behavior:instant});
+                behavior:'instant'});
         }, 0);
     }
 
@@ -162,7 +162,7 @@ export default function ScheduleCourses() {
         console.log(selectedTeacher);
         console.log(selectedTimeSlot);
         
-    }, [cartDetails,selectedTimeSlot]);
+    }, [allCourses,cartDetails,selectedCourse,selectedTeacher,selectedTimeSlot]);
 
     // 操作表單提交
     const handleSubmit = async(e)=>{
@@ -238,7 +238,7 @@ export default function ScheduleCourses() {
         }
         catch(err){
             dispatch(pushMessage({
-                text: `添加失敗: ${res.data.message || '未知錯誤'}`,
+                text: `添加失敗: ${err.res.data.message || '未知錯誤'}`,
                 status: "failed"
             }))
         }
