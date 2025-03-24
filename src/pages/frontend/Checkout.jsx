@@ -210,39 +210,6 @@ export default function Checkout() {
     setMobilePayment(mobilePayment === method ? null : method);
   };
 
-  // 處理信用卡輸入
-  const handleCreditCardInfoChange = (e) => {
-    const { name } = e.target;
-    let value = e.target.value; // 這裡使用 let，而不是直接解構賦值
-
-    // 格式化信用卡號（自動加空格，每 4 位數）
-    if (name === "card_number") {
-      value = value.replace(/\D/g, ""); // 只允許數字
-      value = value.replace(/(\d{4})/g, "$1 ").trim(); // 每 4 位數添加空格
-      value = value.substring(0, 19); // 最長 19 字元（16 位數 + 3 個空格）
-    }
-
-    // 格式化有效期限 MM/YY
-    if (name === "expiry_date") {
-      value = value.replace(/\D/g, ""); // 只允許數字
-      if (value.length >= 2) {
-        value = value.slice(0, 2) + "/" + value.slice(2); // 插入 /
-      }
-      value = value.substring(0, 5); // 最長 5 字元
-    }
-
-    // 限制 CVC 長度（3~4 位數）
-    if (name === "CVC") {
-      value = value.replace(/\D/g, "").substring(0, 4); // 只允許數字，最多 4 位
-    }
-
-    // 更新狀態
-    setCreditCardInfo((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   // 4 發票選項
 
   // 驗證表單
