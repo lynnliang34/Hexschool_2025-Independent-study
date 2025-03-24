@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Toast as BsToast } from "bootstrap";
 import { removeMessage } from "../redux/toastSlice";
@@ -11,6 +11,13 @@ export default function Toast() {
   const toastRefs = useRef({});
 
   const dispatch = useDispatch();
+
+  const removeMessageCallback = useCallback(
+    (id) => {
+      dispatch(removeMessage(id));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     messages.forEach((message) => {
@@ -25,11 +32,11 @@ export default function Toast() {
         }, TOAST_DURATION);
 
         setTimeout(() => {
-          dispatch(removeMessage(message.id));
+          removeMessageCallback(message.id);
         }, TOAST_DURATION + 500);
       }
     });
-  }, [messages]);
+  }, [messages, removeMessageCallback]);
 
   const handleDismiss = (message_id) => {
     dispatch(removeMessage(message_id));
