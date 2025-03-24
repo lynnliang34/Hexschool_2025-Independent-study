@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router"
 import { removeCartDetail } from "../redux/cartSlice";
 import { pushMessage } from "../redux/toastSlice";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { IconTrash } from "../../src/assets/Icons";
 import axios from "axios";
 
@@ -10,18 +10,18 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
-    const [ backCartCourse, setBackCartCourse ] = useState([]);
+    // const [ backCartCourse, setBackCartCourse ] = useState([]);
     const [ isCartEmpty, setIsCartEmpty ] = useState(true); // 新增購物車是否為空的狀態
     const dispatch = useDispatch();
     const cartDetails = useSelector((state) => state.cart.cartDetails);
 
     // 取得後台購物車清單
-    const getBackCart = async () => {
+    const getBackCart = useCallback(async () => {
         try {
             console.log("正在獲取後台購物車列表...");
             const res = await axios.get(`${BASE_URL}/api/${API_PATH}/cart`);
             const cartsData = res.data.data.carts;
-            setBackCartCourse(cartsData);
+            // setBackCartCourse(cartsData);
             
             // 檢查購物車是否為空
             setIsCartEmpty(cartsData.length === 0);
@@ -39,16 +39,17 @@ export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
             );
             return []; // 失敗時返回空數組
         }
-    }
+    },[dispatch]);
+    
     useEffect(() => {
         getBackCart();
         console.log("前台購物車資料", cartDetails);
-    }, []);
+    }, [getBackCart,cartDetails]);
 
     // 當前台購物車數據變化時也刷新後台數據
     useEffect(() => {
         getBackCart();
-    }, [cartDetails]);
+    }, [getBackCart,cartDetails]);
 
     // 每次側邊欄打開時也刷新後台數據
     useEffect(() => {
@@ -71,7 +72,7 @@ export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
         return () => {
             observer.disconnect();
         };
-    }, [cartOffcanvasRef]);
+    }, [getBackCart,cartOffcanvasRef]);
 
      // 更改後台購物車商品數量
     const putCartQty = async (cart_id, product_id, qty) => {
