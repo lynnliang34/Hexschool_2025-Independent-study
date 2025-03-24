@@ -15,6 +15,8 @@ const adminrMenuItems = [
   { title: "會員資料", link: "/admin/members" },
 ];
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 function AdminLayout() {
   const dispatch = useDispatch();
 
