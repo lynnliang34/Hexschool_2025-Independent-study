@@ -89,7 +89,7 @@ export default function AdminCourses() {
   // 當元件掛載時，從 cookie 取得 token，設置 Authorization，並檢查是否已登入。
   useEffect(() => {
     const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
+      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
       "$1"
     );
 
