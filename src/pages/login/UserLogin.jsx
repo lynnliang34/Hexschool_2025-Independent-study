@@ -64,7 +64,7 @@ export default function UserLogin() {
   // 清空購物車
   const deleteCartAll = async () => {
     try {
-      const res = await axios.delete(`${BASE_URL}/api/${API_PATH}/carts`);
+      await axios.delete(`${BASE_URL}/api/${API_PATH}/carts`);
       console.log("清空後台購物車");
     } catch (error) {
       console.error(error);

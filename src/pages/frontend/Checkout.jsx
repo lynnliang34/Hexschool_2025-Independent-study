@@ -54,15 +54,12 @@ export default function Checkout() {
   // 更改後台購物車商品數量
   const putCart = async (cart_id, product_id, qty) => {
     try {
-      const res = await axios.put(
-        `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`,
-        {
-          data: {
-            product_id: product_id,
-            qty: qty,
-          },
-        }
-      );
+      await axios.put(`${BASE_URL}/api/${API_PATH}/cart/${cart_id}`, {
+        data: {
+          product_id: product_id,
+          qty: qty,
+        },
+      });
 
       getCart();
     } catch (error) {
@@ -78,9 +75,7 @@ export default function Checkout() {
   // 刪除後台購物車商品數量
   const deleteCartItem = async (cart_id) => {
     try {
-      const res = await axios.delete(
-        `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`
-      );
+      await axios.delete(`${BASE_URL}/api/${API_PATH}/cart/${cart_id}`);
 
       getCart();
     } catch (error) {
@@ -378,7 +373,7 @@ export default function Checkout() {
   const checkout = async (data) => {
     try {
       setIsScreenLoading(true);
-      const res = await axios.post(`${BASE_URL}/api/${API_PATH}/order`, {
+      await axios.post(`${BASE_URL}/api/${API_PATH}/order`, {
         data: data,
       });
 
@@ -704,7 +699,7 @@ export default function Checkout() {
                 >
                   <img
                     className="mobile-payment-img"
-                    src={getPaymentImgURL('Line Pay.png')}
+                    src={getPaymentImgURL("Line Pay.png")}
                     alt="Line Pay"
                   />
                 </button>
@@ -717,7 +712,7 @@ export default function Checkout() {
                 >
                   <img
                     className="mobile-payment-img"
-                    src={getPaymentImgURL('JKO Pay.png')}
+                    src={getPaymentImgURL("JKO Pay.png")}
                     alt="JKO Pay"
                   />
                 </button>
