@@ -1,13 +1,13 @@
-export default function HomeModal() {
+export default function HomeModal({closeCommentModal}) {
     return(<>
     <div className="modal fade" id="commentModal1" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">林芳華</p>
                 <button
-                type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                type="button" className="btn-close rounded-pill" data-bs-dismiss="modal" aria-label="Close"
+                onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
@@ -45,7 +45,7 @@ export default function HomeModal() {
     </div>
 </div>
 <div className="modal fade" id="commentModal2" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">張德雄</p>
@@ -88,7 +88,7 @@ export default function HomeModal() {
     </div>
 </div>
 <div className="modal fade" id="commentModal3" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">李惠珍</p>
@@ -131,7 +131,7 @@ export default function HomeModal() {
     </div>
 </div>
 <div className="modal fade" id="commentModal4" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">陳志強</p>
@@ -174,7 +174,7 @@ export default function HomeModal() {
     </div>
 </div>
 <div className="modal fade" id="commentModal5" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">許麗珠</p>
@@ -219,7 +219,7 @@ export default function HomeModal() {
     </div>
 </div>
 <div className="modal fade" id="commentModal6" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">楊和順</p>
@@ -264,7 +264,7 @@ export default function HomeModal() {
     </div>
 </div>
 <div className="modal fade" id="commentModal7" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-primary py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">李淑娟</p>
@@ -309,7 +309,7 @@ export default function HomeModal() {
     </div>
 </div>
 <div className="modal fade" id="commentModal8" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-primary py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">鄭蘭英</p>
@@ -354,7 +354,7 @@ export default function HomeModal() {
     </div>
 </div>
 <div className="modal fade" id="commentModal9" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-primary py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">趙文忠</p>
@@ -399,7 +399,7 @@ export default function HomeModal() {
     </div>
 </div>
 <div className="modal fade" id="commentModal10" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-primary py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">吳康泰</p>
@@ -444,7 +444,7 @@ export default function HomeModal() {
     </div>
 </div>
 <div className="modal fade" id="commentModal11" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
             <div className="modal-header bg-primary py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">高梅玉</p>
