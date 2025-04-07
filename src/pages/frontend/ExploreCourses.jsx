@@ -110,7 +110,7 @@ export default function ExploreCourses() {
                                 <div className="card-footer bg-primary-2 border-0 d-flex px-0">
                                     {/* 注意：連結開頭無前置/表示相對於當前路徑的相對路徑，網址會變成explore-courses/course-detail/id */}
                                     <Link to={`/course-detail/${courseData.id}`}
-                                        className="btn btn-outline-dark bg-white fs-7 d-flex ms-auto align-items-center py-lg-2">
+                                        className="learn-more-H-lg d-flex ms-auto align-items-center">
                                         了解更多
                                         <span className="material-symbols-outlined ms-2">
                                             chevron_right
