@@ -212,8 +212,8 @@ export default function ExploreCourses() {
       ]
 
   const imageUrl = getImageURL('explore_other_areas', 'music.png');
-  console.log("生成的圖片 URL:", imageUrl);
-  console.log("import.meta.url:", import.meta.url);
+  // console.log("生成的圖片 URL:", imageUrl);
+  // console.log("import.meta.url:", import.meta.url);
 
   return (<>
   <div className="container py-3 pt-lg-0 pb-lg-8 px-lg-15 mt-4 mb-6 my-lg-20">
