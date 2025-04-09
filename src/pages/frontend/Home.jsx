@@ -1,8 +1,9 @@
 import { getImageURL } from "../../utils/image-util.js";
 import HomeModal from "../../components/homeModal.jsx";
 import PhotoSwiper from "../../components/IndexSwiper.jsx";
+import ExploreNav from "../../components/ExploreNav.jsx";
 import { Modal } from 'bootstrap';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Index(){
   const [ closeModalId, setCloseModalId ] = useState(null);
@@ -90,53 +91,53 @@ export default function Index(){
         </div>
         </section>
       {/* <!-- 推薦課程 --> */}
-        <section className="news">
-        <div className="container pt-7 pb-6 pb-lg-10">
-          {/* <!-- 課程卡片 --> */}
-            <div className="row gy-2 gy-lg-0">
-            <div className="col-lg-4 position-relative">
-                <a href="#" className="courseLink stretched-link">
-                <div
-                    className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
-                    <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">主打課程</h3>
-                    <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">樂齡晨間操</p>
-                </div>
-                <div className="overflow-hidden mt-14 rounded">
-                    <img className="img-fluid rounded" src={getImageURL('athletic-senior-woman-stretching-arms-park.png')}
-                    alt="athletic-senior-woman" />
-                </div>
-                </a>
-            </div>
-            <div className="col-lg-4 position-relative">
-                <a href="#" className="courseLink stretched-link">
-                <div
-                    className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
-                    <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">熱門課程</h3>
-                    <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">有氧肌力見習班</p>
-                </div>
-                <div className="overflow-hidden mt-14 rounded">
-                    <img className="img-fluid rounded" src={getImageURL('grandparents-working-out-gym.png')}
-                    alt="grandparents-working-out-gym" />
-                </div>
-                </a>
-            </div>
-            <div className="col-lg-4 position-relative">
-                <a href="#" className="courseLink stretched-link">
-                <div
-                    className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
-                    <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">最新活動</h3>
-                    <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">樂活健康促進團</p>
-                </div>
-                <div className="overflow-hidden mt-14 rounded">
-                    <img className="img-fluid rounded" src={getImageURL('14811.png')} />
-                </div>
-                </a>
-            </div>
-            </div>
-        </div>
-        </section>
+      <section className="news">
+      <div className="container pt-7 pb-6 pb-lg-10">
+        {/* <!-- 課程卡片 --> */}
+          <div className="row gy-2 gy-lg-0">
+          <div className="col-lg-4 position-relative">
+              <a href="#" className="courseLink stretched-link">
+              <div
+                  className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
+                  <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">主打課程</h3>
+                  <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">樂齡晨間操</p>
+              </div>
+              <div className="overflow-hidden mt-14 rounded">
+                  <img className="img-fluid rounded" src={getImageURL('athletic-senior-woman-stretching-arms-park.png')}
+                  alt="athletic-senior-woman" />
+              </div>
+              </a>
+          </div>
+          <div className="col-lg-4 position-relative">
+              <a href="#" className="courseLink stretched-link">
+              <div
+                  className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
+                  <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">熱門課程</h3>
+                  <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">有氧肌力見習班</p>
+              </div>
+              <div className="overflow-hidden mt-14 rounded">
+                  <img className="img-fluid rounded" src={getImageURL('grandparents-working-out-gym.png')}
+                  alt="grandparents-working-out-gym" />
+              </div>
+              </a>
+          </div>
+          <div className="col-lg-4 position-relative">
+              <a href="#" className="courseLink stretched-link">
+              <div
+                  className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
+                  <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">最新活動</h3>
+                  <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">樂活健康促進團</p>
+              </div>
+              <div className="overflow-hidden mt-14 rounded">
+                  <img className="img-fluid rounded" src={getImageURL('14811.png')} />
+              </div>
+              </a>
+          </div>
+          </div>
+      </div>
+      </section>
       {/* <!-- 精選課程 --> */}
-        <section className="featureCourses mb-6 mb-lg-10">
+      <section className="featureCourses mb-6 mb-lg-10">
         {/* <!-- 裝飾線及精選課程標題 --> */}
         <div className="container pb-6 pb-lg-10 ">
             <div className="position-relative decoLine"></div>
@@ -144,13 +145,16 @@ export default function Index(){
         </div>
         {/* <!-- 課程卡片 --> */}
         <div className="bg-primary-1">
-            <div className="container py-2 py-lg-5">
+          <div className="container py-2 py-lg-5">
             <div className="row g-2 g-lg-6">
               {/* <!-- 左側 --> */}
-                <div className="col-lg-6">
+              <div className="col-lg-6">
                 <div className="row">
-                    <div className="col-12 position-relative">
-                    <a href="#" className="stretched-link"></a>
+                  <div className="col-12 position-relative">
+                    <ExploreNav 
+                      categoryKey="sport"
+                      className="stretched-link"
+                    >
                     <div
                         className="cardTitle position-absolute vertical-rl bg-primary-1 py-2 ps-4 py-lg-5 ps-lg-5 rounded rounded-bottom-right-0">
                         <h3 className="lh-1 me-0 ms-0 fs-lg-1 text-primary">運動保健</h3>
@@ -165,9 +169,13 @@ export default function Index(){
                         <img className="rounded-20 img-fluid" src={getImageURL('senior-people-doing-cardio.png')}
                         alt="senior-people-doing-cardio" />
                     </div>
-                    </div>
-                    <div className="col-12 position-relative">
-                    <a href="#" className="stretched-link"></a>
+                    </ExploreNav>
+                  </div>
+                  <div className="col-12 position-relative">
+                  <ExploreNav 
+                      categoryKey="skills"
+                      className="stretched-link"
+                    >
                     <div
                         className="cardTitle position-absolute  vertical-rl bg-primary-1 py-2 ps-4 py-lg-5 ps-lg-5 rounded rounded-bottom-right-0">
                         <h3 className="lh-1 me-0 ms-0 fs-lg-1 text-primary">生活技能</h3>
@@ -183,484 +191,493 @@ export default function Index(){
                         src={getImageURL('man-using-mobile-phone-while-sitting-table (1).png')}
                         alt="man-using-mobile-phone-while-sitting-table" />
                     </div>
-                    </div>
+                    </ExploreNav>
+                  </div>
                 </div>
-                </div>
+              </div>
               {/* <!-- 右側 --> */}
-            <div className="col-lg-6">
+              <div className="col-lg-6">
                 <div className="row">
-                <div className="col-12 position-relative mt-0 mt-lg-30">
-                    <a href="#" className="stretched-link"></a>
-                    <div
-                    className="cardTitle position-absolute vertical-rl bg-primary-1 py-2 ps-4 py-lg-5 ps-lg-5 rounded rounded-bottom-right-0">
-                    <h3 className="lh-1 me-0 ms-0 fs-lg-1 text-primary">心靈成長</h3>
-                    </div>
-                    <div className="cardText position-absolute bottom-0 bg-primary-1 rounded rounded-bottom-right-0">
-                    <p className="me-0 ms-0 fs-5 text-neutral-1">
-                        引導學生去探索自我、增強心理韌性及提升情感智慧。
-                    </p>
-                    </div>
-                    <div
-                    className="ms-0 my-9 ms-lg-10 mt-lg-13 mb-lg-24 ps-2 ps-lg-3 pt-2 pt-lg-3 border border-primary rounded-20 border-end-0 border-bottom-0">
-                    <img className="rounded-20 img-fluid"
-                        src={getImageURL('senior-elderly-man-reading-book-drinking-mug-coffee-garden.png')}
-                        alt="senior-elderly-man-reading-book-drinking-mug-coffee-garden.png"/>
-                    </div>
+                  <div className="col-12 position-relative mt-0 mt-lg-30">
+                    <ExploreNav 
+                      categoryKey="mind"
+                      className="stretched-link"
+                    >
+                      <div
+                      className="cardTitle position-absolute vertical-rl bg-primary-1 py-2 ps-4 py-lg-5 ps-lg-5 rounded rounded-bottom-right-0">
+                        <h3 className="lh-1 me-0 ms-0 fs-lg-1 text-primary">心靈成長</h3>
+                      </div>
+                      <div className="cardText position-absolute bottom-0 bg-primary-1 rounded rounded-bottom-right-0">
+                        <p className="me-0 ms-0 fs-5 text-neutral-1">
+                          引導學生去探索自我、增強心理韌性及提升情感智慧。
+                      </p>
+                      </div>
+                      <div
+                      className="ms-0 my-9 ms-lg-10 mt-lg-13 mb-lg-24 ps-2 ps-lg-3 pt-2 pt-lg-3 border border-primary rounded-20 border-end-0 border-bottom-0">
+                        <img className="rounded-20 img-fluid"
+                          src={getImageURL('senior-elderly-man-reading-book-drinking-mug-coffee-garden.png')}
+                          alt="senior-elderly-man-reading-book-drinking-mug-coffee-garden.png"/>
+                      </div>
+                    </ExploreNav>
+                  </div>
+                  <div className="col-12 position-relative">
+                    <ExploreNav 
+                        categoryKey="community"
+                        className="stretched-link"
+                      >
+                      <div
+                      className="cardTitle position-absolute vertical-rl bg-primary-1 py-2 ps-4 py-lg-5 ps-lg-5 rounded rounded-bottom-right-0">
+                        <h3 className="lh-1 me-0 ms-0 fs-lg-1 text-primary">社區活動</h3>
+                      </div>
+                      <div className="cardText position-absolute bottom-0 bg-primary-1 rounded rounded-bottom-right-0">
+                        <p className="me-0 ms-0 fs-5 text-neutral-1">
+                          鼓勵多社交互動，增強社區參與感，豐富晚年生活。
+                        </p>
+                      </div>
+                      <div
+                      className="ms-0 my-9 ms-lg-10 mt-lg-13 mb-lg-24 ps-2 ps-lg-3 pt-2 pt-lg-3 border border-primary rounded-20 border-end-0 border-bottom-0">
+                        <img className="rounded-20 img-fluid" src={getImageURL('17925.png')}alt="athletic-senior-people"/>
+                      </div>
+                    </ExploreNav>
+                  </div>
                 </div>
-                <div className="col-12 position-relative">
-                    <a href="#" className="stretched-link"></a>
-                    <div
-                    className="cardTitle position-absolute vertical-rl bg-primary-1 py-2 ps-4 py-lg-5 ps-lg-5 rounded rounded-bottom-right-0">
-                    <h3 className="lh-1 me-0 ms-0 fs-lg-1 text-primary">社區活動</h3>
-                    </div>
-                    <div className="cardText position-absolute bottom-0 bg-primary-1 rounded rounded-bottom-right-0">
-                    <p className="me-0 ms-0 fs-5 text-neutral-1">
-                        鼓勵多社交互動，增強社區參與感，豐富晚年生活。
-                    </p>
-                    </div>
-                    <div
-                    className="ms-0 my-9 ms-lg-10 mt-lg-13 mb-lg-24 ps-2 ps-lg-3 pt-2 pt-lg-3 border border-primary rounded-20 border-end-0 border-bottom-0">
-                    <img className="rounded-20 img-fluid" src={getImageURL('17925.png')}alt="athletic-senior-people"/>
-                    </div>
-                </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-        </div>
-        </div>
-    </section>
+      </section>
       {/* <!-- 知識分享 --> */}
-    <section className="knowledgeSharing">
-        {/* <!-- 裝飾線及精選課程標題 --> */}
-        <div className="container pb-6 pb-lg-10 ">
-            <div className="position-relative decoLine"></div>
-            <h3 className="fs-lg-1 mt-2 mt-lg-4">知識分享</h3>
-        </div>
-        <div className="container">
-          {/* <!-- 課程卡片 --> */}
-            <div className="row gy-3 gx-lg-12 mb-6">
-            <div className="col-lg-4 position-relative">
-                <div className="cardTitle position-absolute top-0 end-0 vertical-rl bg-white p-4 rounded">
-                <h3 className="lh-1 me-0 ms-0 fs-lg-2 text-primary">飲食健康</h3>
-                </div>
-                <div className="pt-lg-6 pe-lg-8 pb-2 pb-md-24">
-                <img className="cardImg rounded img-fluid d-block mx-auto"
-                    src={getImageURL('salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept.png')}
-                    alt="salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept"/>
-                </div>
-              {/* <!-- 手機版卡片文字 --> */}
-                <div className="bg-white mb-2 d-blcok d-md-none">
-                <h5 className="text-primary mb-2">銀髮族必備三大營養素!</h5>
-                <p className="fs-6 text-neutral-1 up-to-2-lines px-1">
-                    為了不讓自己被年齡束縛，無論是50歲以上的熟齡族，還是超過65歲的銀髮族，每日三餐應正確攝取營養，為自己打造黃金營養力。營養師建議，熟齡族應注重均衡飲食，攝取足夠的蛋白質、纖維、維生素和礦物質，特別是鈣質與維生素D，以維護骨骼健康。避免高糖、高鹽、高脂食物，多選擇新鮮蔬果、全穀類和優質蛋白。這樣才能維持活力，延緩衰老，讓身體更健康、更有活力。
-                </p>
-                </div>
-                <div className="d-flex flex-row-reverse border-bottom border-primary d-block d-md-none">
-                <a href="#" className="learn-more-mobile text-primary fs-7 d-flex align-items-center mb-2">閱讀更多<svg
-                    className="moreIcon" width="19" height="10" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#E79776" />
-                    </svg>
-                </a>
-                </div>
-              {/* <!-- 電腦版卡片文字 --> */}
-                <div
-                className="cardText position-absolute bottom-0 bg-white rounded-20 rounded-top-left-0 d-none d-md-block vertical-rl p-5">
-                <h6 className="text-primary ms-2 me-0">銀髮族必備三大營養素!</h6>
-                <p className="fs-7 text-neutral-1 up-to-6-lines pt-7 ms-2 me-0">
-                    為了不讓自己被年齡束縛，無論是50歲以上的熟齡族，還是超過65歲的銀髮族，每日三餐應正確攝取營養，為自己打造黃金營養力。營養師建議，熟齡族應注重均衡飲食，攝取足夠的蛋白質、纖維、維生素和礦物質，特別是鈣質與維生素D，以維護骨骼健康。避免高糖、高鹽、高脂食物，多選擇新鮮蔬果、全穀類和優質蛋白。這樣才能維持活力，延緩衰老，讓身體更健康、更有活力。
-                </p>
-                <a href="#" className="learn-more-H mt-auto">閱讀更多<svg className="moreIcon mt-2" width="19" height="10"
-                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#484848" />
-                    </svg>
-                </a>
-                </div>
-            </div>
-            <div className="col-lg-4 position-relative">
-                <div className="cardTitle position-absolute top-0 end-0 vertical-rl bg-white p-4 rounded">
-                <h3 className="lh-1 me-0 ms-0 fs-lg-2 text-primary">運動保健</h3>
-                </div>
-                <div className="pt-lg-6 pe-lg-8 pb-2 pb-md-24">
-                <img className="cardImg rounded img-fluid d-block mx-auto" src={getImageURL('2148247158.png')}
-                    style={{objectPosition: 'right'}} alt="older-running"/>
-                </div>
-              {/* <!-- 手機版卡片文字 --> */}
-            <div className="bg-white mb-2 d-blcok d-md-none">
-                <h5 className="text-primary mb-2">銀髮族在家運動簡單4招</h5>
-                <p className="fs-6 text-neutral-1 up-to-2-lines px-1">
-                    老化是持續且不可逆的過程，但透過運動可以提高長輩的肌耐力及平衡協調，預防身體功能衰退，減少生理上的病痛，並提升心理健康與生活品質，進而促進長壽與自主生活能力。規律的運動不僅有助於改善心血管健康，還能增強免疫力，降低罹患慢性疾病的風險。長輩可以選擇適合自己的運動，如散步、太極、游泳或瑜伽，這不僅有助於身體機能的維持，還能增加社交機會，帶來身心愉悅的生活體驗。
-                </p>
-            </div>
-            <div className="d-flex flex-row-reverse border-bottom border-primary d-block d-md-none">
-                <a href="#" className="learn-more-mobile text-primary fs-7 d-flex align-items-center mb-2">閱讀更多<svg
-                    className="moreIcon" width="19" height="10" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#E79776" />
-                    </svg>
-                </a>
-            </div>
-              {/* <!-- 電腦版卡片文字 --> */}
-            <div
-                className="cardText position-absolute bottom-0 bg-white rounded-20 rounded-top-left-0 d-none d-md-block vertical-rl p-5">
-                <h6 className="text-primary ms-2 me-0">銀髮族在家運動簡單4招</h6>
-                <p className="fs-7 text-neutral-1 up-to-6-lines pt-7 ms-2 me-0">
-                    老化是持續且不可逆的過程，但透過運動可以提高長輩的肌耐力及平衡協調，預防身體功能衰退，減少生理上的病痛，並提升心理健康與生活品質，進而促進長壽與自主生活能力。規律的運動不僅有助於改善心血管健康，還能增強免疫力，降低罹患慢性疾病的風險。長輩可以選擇適合自己的運動，如散步、太極、游泳或瑜伽，這不僅有助於身體機能的維持，還能增加社交機會，帶來身心愉悅的生活體驗。
-                </p>
-                <a href="#" className="learn-more-H mt-auto">閱讀更多<svg className="moreIcon mt-2" width="19" height="10"
-                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#484848" />
-                    </svg>
-                </a>
-            </div>
-            </div>
-            <div className="col-lg-4 position-relative">
-            <div className="cardTitle position-absolute top-0 end-0 vertical-rl bg-white p-4 rounded">
-                <h3 className="lh-1 me-0 ms-0 fs-lg-2 text-primary">心靈成長</h3>
-            </div>
-                <div className="pt-lg-6 pe-lg-8 pb-2 pb-md-24">
-                <img className="cardImg cardImgPosition rounded img-fluid d-block mx-auto" src={getImageURL('13878.png')}
-                    alt="salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept"/>
-            </div>
-              {/* <!-- 手機版卡片文字 --> */}
-            <div className="bg-white mb-2 d-blcok d-md-none">
-                <h5 className="text-primary mb-2">做六件事銀髮生活更快樂</h5>
-                <p className="fs-6 text-neutral-1 up-to-2-lines px-1">
-                    老年人是憂鬱情緒甚至憂鬱症的好發族群，這與多種因素息息相關。除了體質上的改變，身體病痛、慢性疾病的纏身讓老年人感到無力與疲憊，加上孤獨感的增加，特別是在喪偶或子女不常探訪的情況下，情緒更容易低落。此外，退休後失去工作帶來的成就感，家庭及社會支持的減少，也會加劇這種情緒波動。缺乏有效的情感交流與心理支持，讓許多長輩陷入憂鬱的惡性循環，影響身心健康。
-                </p>
-            </div>
-            <div className="d-flex flex-row-reverse border-bottom border-primary d-block d-md-none">
-                <a href="#" className="learn-more-mobile text-primary fs-7 d-flex align-items-center mb-2">閱讀更多<svg
-                    className="moreIcon" width="19" height="10" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#E79776" />
-                    </svg>
-                </a>
-            </div>
-              {/* <!-- 電腦版卡片文字 --> */}
-            <div
-                className="cardText position-absolute bottom-0 bg-white rounded-20 rounded-top-left-0 d-none d-md-block vertical-rl p-5">
-                <h6 className="text-primary ms-2 me-0">做六件事銀髮生活更快樂</h6>
-                <p className="fs-7 text-neutral-1 up-to-6-lines pt-7 ms-2 me-0">
-                    老年人是憂鬱情緒甚至憂鬱症的好發族群，這與多種因素息息相關。除了體質上的改變，身體病痛、慢性疾病的纏身讓老年人感到無力與疲憊，加上孤獨感的增加，特別是在喪偶或子女不常探訪的情況下，情緒更容易低落。此外，退休後失去工作帶來的成就感，家庭及社會支持的減少，也會加劇這種情緒波動。缺乏有效的情感交流與心理支持，讓許多長輩陷入憂鬱的惡性循環，影響身心健康。
-                </p>
-                <a href="#" className="learn-more-H mt-auto">閱讀更多<svg className="moreIcon mt-2" width="19" height="10"
-                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#484848" />
-                    </svg>
-                </a>
-            </div>
-            </div>
-        </div>
-        </div>
-    </section>
+      <section className="knowledgeSharing">
+          {/* <!-- 裝飾線及精選課程標題 --> */}
+          <div className="container pb-6 pb-lg-10 ">
+              <div className="position-relative decoLine"></div>
+              <h3 className="fs-lg-1 mt-2 mt-lg-4">知識分享</h3>
+          </div>
+          <div className="container">
+            {/* <!-- 課程卡片 --> */}
+              <div className="row gy-3 gx-lg-12 mb-6">
+              <div className="col-lg-4 position-relative">
+                  <div className="cardTitle position-absolute top-0 end-0 vertical-rl bg-white p-4 rounded">
+                  <h3 className="lh-1 me-0 ms-0 fs-lg-2 text-primary">飲食健康</h3>
+                  </div>
+                  <div className="pt-lg-6 pe-lg-8 pb-2 pb-md-24">
+                  <img className="cardImg rounded img-fluid d-block mx-auto"
+                      src={getImageURL('salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept.png')}
+                      alt="salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept"/>
+                  </div>
+                {/* <!-- 手機版卡片文字 --> */}
+                  <div className="bg-white mb-2 d-blcok d-md-none">
+                  <h5 className="text-primary mb-2">銀髮族必備三大營養素!</h5>
+                  <p className="fs-6 text-neutral-1 up-to-2-lines px-1">
+                      為了不讓自己被年齡束縛，無論是50歲以上的熟齡族，還是超過65歲的銀髮族，每日三餐應正確攝取營養，為自己打造黃金營養力。營養師建議，熟齡族應注重均衡飲食，攝取足夠的蛋白質、纖維、維生素和礦物質，特別是鈣質與維生素D，以維護骨骼健康。避免高糖、高鹽、高脂食物，多選擇新鮮蔬果、全穀類和優質蛋白。這樣才能維持活力，延緩衰老，讓身體更健康、更有活力。
+                  </p>
+                  </div>
+                  <div className="d-flex flex-row-reverse border-bottom border-primary d-block d-md-none">
+                  <a href="#" className="learn-more-mobile text-primary fs-7 d-flex align-items-center mb-2">閱讀更多<svg
+                      className="moreIcon" width="19" height="10" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#E79776" />
+                      </svg>
+                  </a>
+                  </div>
+                {/* <!-- 電腦版卡片文字 --> */}
+                  <div
+                  className="cardText position-absolute bottom-0 bg-white rounded-20 rounded-top-left-0 d-none d-md-block vertical-rl p-5">
+                  <h6 className="text-primary ms-2 me-0">銀髮族必備三大營養素!</h6>
+                  <p className="fs-7 text-neutral-1 up-to-6-lines pt-7 ms-2 me-0">
+                      為了不讓自己被年齡束縛，無論是50歲以上的熟齡族，還是超過65歲的銀髮族，每日三餐應正確攝取營養，為自己打造黃金營養力。營養師建議，熟齡族應注重均衡飲食，攝取足夠的蛋白質、纖維、維生素和礦物質，特別是鈣質與維生素D，以維護骨骼健康。避免高糖、高鹽、高脂食物，多選擇新鮮蔬果、全穀類和優質蛋白。這樣才能維持活力，延緩衰老，讓身體更健康、更有活力。
+                  </p>
+                  <a href="#" className="learn-more-H mt-auto">閱讀更多<svg className="moreIcon mt-2" width="19" height="10"
+                      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#484848" />
+                      </svg>
+                  </a>
+                  </div>
+              </div>
+              <div className="col-lg-4 position-relative">
+                  <div className="cardTitle position-absolute top-0 end-0 vertical-rl bg-white p-4 rounded">
+                  <h3 className="lh-1 me-0 ms-0 fs-lg-2 text-primary">運動保健</h3>
+                  </div>
+                  <div className="pt-lg-6 pe-lg-8 pb-2 pb-md-24">
+                  <img className="cardImg rounded img-fluid d-block mx-auto" src={getImageURL('2148247158.png')}
+                      style={{objectPosition: 'right'}} alt="older-running"/>
+                  </div>
+                {/* <!-- 手機版卡片文字 --> */}
+              <div className="bg-white mb-2 d-blcok d-md-none">
+                  <h5 className="text-primary mb-2">銀髮族在家運動簡單4招</h5>
+                  <p className="fs-6 text-neutral-1 up-to-2-lines px-1">
+                      老化是持續且不可逆的過程，但透過運動可以提高長輩的肌耐力及平衡協調，預防身體功能衰退，減少生理上的病痛，並提升心理健康與生活品質，進而促進長壽與自主生活能力。規律的運動不僅有助於改善心血管健康，還能增強免疫力，降低罹患慢性疾病的風險。長輩可以選擇適合自己的運動，如散步、太極、游泳或瑜伽，這不僅有助於身體機能的維持，還能增加社交機會，帶來身心愉悅的生活體驗。
+                  </p>
+              </div>
+              <div className="d-flex flex-row-reverse border-bottom border-primary d-block d-md-none">
+                  <a href="#" className="learn-more-mobile text-primary fs-7 d-flex align-items-center mb-2">閱讀更多<svg
+                      className="moreIcon" width="19" height="10" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#E79776" />
+                      </svg>
+                  </a>
+              </div>
+                {/* <!-- 電腦版卡片文字 --> */}
+              <div
+                  className="cardText position-absolute bottom-0 bg-white rounded-20 rounded-top-left-0 d-none d-md-block vertical-rl p-5">
+                  <h6 className="text-primary ms-2 me-0">銀髮族在家運動簡單4招</h6>
+                  <p className="fs-7 text-neutral-1 up-to-6-lines pt-7 ms-2 me-0">
+                      老化是持續且不可逆的過程，但透過運動可以提高長輩的肌耐力及平衡協調，預防身體功能衰退，減少生理上的病痛，並提升心理健康與生活品質，進而促進長壽與自主生活能力。規律的運動不僅有助於改善心血管健康，還能增強免疫力，降低罹患慢性疾病的風險。長輩可以選擇適合自己的運動，如散步、太極、游泳或瑜伽，這不僅有助於身體機能的維持，還能增加社交機會，帶來身心愉悅的生活體驗。
+                  </p>
+                  <a href="#" className="learn-more-H mt-auto">閱讀更多<svg className="moreIcon mt-2" width="19" height="10"
+                      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#484848" />
+                      </svg>
+                  </a>
+              </div>
+              </div>
+              <div className="col-lg-4 position-relative">
+              <div className="cardTitle position-absolute top-0 end-0 vertical-rl bg-white p-4 rounded">
+                  <h3 className="lh-1 me-0 ms-0 fs-lg-2 text-primary">心靈成長</h3>
+              </div>
+                  <div className="pt-lg-6 pe-lg-8 pb-2 pb-md-24">
+                  <img className="cardImg cardImgPosition rounded img-fluid d-block mx-auto" src={getImageURL('13878.png')}
+                      alt="salad-with-tomatoes-cheese-bowl-wooden-table-with-green-healthy-ingredients-healthy-food-concept"/>
+              </div>
+                {/* <!-- 手機版卡片文字 --> */}
+              <div className="bg-white mb-2 d-blcok d-md-none">
+                  <h5 className="text-primary mb-2">做六件事銀髮生活更快樂</h5>
+                  <p className="fs-6 text-neutral-1 up-to-2-lines px-1">
+                      老年人是憂鬱情緒甚至憂鬱症的好發族群，這與多種因素息息相關。除了體質上的改變，身體病痛、慢性疾病的纏身讓老年人感到無力與疲憊，加上孤獨感的增加，特別是在喪偶或子女不常探訪的情況下，情緒更容易低落。此外，退休後失去工作帶來的成就感，家庭及社會支持的減少，也會加劇這種情緒波動。缺乏有效的情感交流與心理支持，讓許多長輩陷入憂鬱的惡性循環，影響身心健康。
+                  </p>
+              </div>
+              <div className="d-flex flex-row-reverse border-bottom border-primary d-block d-md-none">
+                  <a href="#" className="learn-more-mobile text-primary fs-7 d-flex align-items-center mb-2">閱讀更多<svg
+                      className="moreIcon" width="19" height="10" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#E79776" />
+                      </svg>
+                  </a>
+              </div>
+                {/* <!-- 電腦版卡片文字 --> */}
+              <div
+                  className="cardText position-absolute bottom-0 bg-white rounded-20 rounded-top-left-0 d-none d-md-block vertical-rl p-5">
+                  <h6 className="text-primary ms-2 me-0">做六件事銀髮生活更快樂</h6>
+                  <p className="fs-7 text-neutral-1 up-to-6-lines pt-7 ms-2 me-0">
+                      老年人是憂鬱情緒甚至憂鬱症的好發族群，這與多種因素息息相關。除了體質上的改變，身體病痛、慢性疾病的纏身讓老年人感到無力與疲憊，加上孤獨感的增加，特別是在喪偶或子女不常探訪的情況下，情緒更容易低落。此外，退休後失去工作帶來的成就感，家庭及社會支持的減少，也會加劇這種情緒波動。缺乏有效的情感交流與心理支持，讓許多長輩陷入憂鬱的惡性循環，影響身心健康。
+                  </p>
+                  <a href="#" className="learn-more-H mt-auto">閱讀更多<svg className="moreIcon mt-2" width="19" height="10"
+                      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22 7.45946L12 18L2 7.45946L4.33333 5L12 13.0811L19.6667 5L22 7.45946Z" fill="#484848" />
+                      </svg>
+                  </a>
+              </div>
+              </div>
+          </div>
+          </div>
+      </section>
       {/* <!-- 學員分享 --> */}
-    <section className="studentComment">
-        {/* <!-- 裝飾線及精選課程標題 --> */}
-        <div className="container mb-lg-10">
-            <div className="position-relative decoLine"></div>
-            <h3 className="fs-lg-1 mt-2 mt-lg-4">學員分享</h3>
-        </div>
-        {/* <!-- 學員分享對話框 --> */}
-        <div className="commentBackground mx-auto pt-6">
-            <div className="container position-relative d-none d-lg-block">
-                <div type="button"
-                onClick={()=>{
-                    openCommentModal('commentModal1');
-                    setCloseModalId('commentModal1');
-                    
-                }}
-                className="speechBubble1 blueBox position-absolute ms-46 ms-xl-0 "data-bs-target="#commentModal1">
-                    <p className="dialogText position-absolute fs-0 text-secondary-2">
-                    社群氛圍非常好
-                    </p>
-                    <svg className="dialogBox" width="452" height="168" viewBox="0 0 452 168" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                    d="M403.874 4.92747C404.659 4.18993 405.478 3.50119 406.59 2.56748L405.827 6.86628C403.892 17.7579 402.072 28.0074 400.185 38.6728L399.978 39.847H401.17C403.501 39.847 405.817 39.8826 408.119 39.918C413.12 39.9949 418.055 40.0708 422.935 39.7781C433.703 39.1392 440.71 40.4998 444.98 44.3616C449.228 48.2035 451.046 54.7825 450.716 65.3652C450.11 84.726 450.247 104.117 450.383 123.486C450.443 131.973 450.503 140.455 450.5 148.929C450.5 154.784 448.775 159.25 445.627 162.259C442.472 165.274 437.75 166.958 431.498 166.962C369.621 167.014 82.5107 167.014 20.6332 166.954C14.3253 166.947 9.58065 165.29 6.41534 162.304C3.25884 159.326 1.53234 154.894 1.52366 149.04C1.4788 118.793 1.48777 88.553 1.52366 58.3053C1.53237 52.1342 3.27633 47.5713 6.50961 44.5396C9.75363 41.4978 14.6527 39.8507 21.2699 39.847C31.0216 39.8413 55.4558 39.8429 87.075 39.8449C179.296 39.8509 332.636 39.8608 361.084 39.7053C364.202 39.6891 367.972 38.2099 370.234 36.1838L370.235 36.1835C378.469 28.8014 386.515 21.233 394.552 13.6738C397.657 10.7539 400.76 7.83542 403.872 4.92954L403.874 4.92747Z"
-                    fill="white" stroke="#487181" strokeWidth="2" />
-                    </svg>
-                </div>
-                <div
-                onClick={()=>openCommentModal('commentModal2')} 
-                type="button" className="speechBubble2 blueBox position-absolute ms-46 ms-xl-0"
-                    data-bs-target="#commentModal2">
-                    <p className="dialogText position-absolute fs-3 text-secondary-2">
-                    以往在外面很難做到<br/>對長輩來說安全的肌力訓練，<br/>來到Move with Joy，<br/>跟一群同輩的人互動，才知道高齡樂活的樣貌
-                    </p>
-                    <svg className="dialogBox" width="638" height="270" viewBox="0 0 638 270" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path">
-                        <path
-                        d="M49.1879 -9.15527e-05C51.8815 13.493 54.3249 25.7204 56.8784 38.5548C48.5469 38.5548 40.5659 38.9101 32.655 38.4882C8.53174 37.2151 -0.270447 43.7655 0.470581 64.9045C1.44196 92.5198 -0.0100098 223.436 0 251.073C0 263.086 7.98096 269.955 22.3207 269.962C91.376 270.014 545.153 270.014 614.208 269.955C628.658 269.94 636.629 263.197 636.649 251.184C636.699 221.163 637.4 87.8864 637.36 57.8656C637.34 45.2459 629.319 38.5622 614.208 38.5548C571.579 38.5326 144.249 38.6214 101.62 38.4142C98.4158 38.3994 94.4703 37.0227 92.1471 35.1723C79.4196 25.0247 67.1025 14.5292 54.6253 4.16701C53.2434 3.01236 51.7413 1.95393 49.1678 -9.15527e-05L49.1879 -9.15527e-05Z" />
-                    </clipPath>
+      <section className="studentComment">
+          {/* <!-- 裝飾線及精選課程標題 --> */}
+          <div className="container mb-lg-10">
+              <div className="position-relative decoLine"></div>
+              <h3 className="fs-lg-1 mt-2 mt-lg-4">學員分享</h3>
+          </div>
+          {/* <!-- 學員分享對話框 --> */}
+          <div className="commentBackground mx-auto pt-6">
+              <div className="container position-relative d-none d-lg-block">
+                  <div type="button"
+                  onClick={()=>{
+                      openCommentModal('commentModal1');
+                      setCloseModalId('commentModal1');
+                      
+                  }}
+                  className="speechBubble1 blueBox position-absolute ms-46 ms-xl-0 "data-bs-target="#commentModal1">
+                      <p className="dialogText position-absolute fs-0 text-secondary-2">
+                      社群氛圍非常好
+                      </p>
+                      <svg className="dialogBox" width="452" height="168" viewBox="0 0 452 168" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                      d="M403.874 4.92747C404.659 4.18993 405.478 3.50119 406.59 2.56748L405.827 6.86628C403.892 17.7579 402.072 28.0074 400.185 38.6728L399.978 39.847H401.17C403.501 39.847 405.817 39.8826 408.119 39.918C413.12 39.9949 418.055 40.0708 422.935 39.7781C433.703 39.1392 440.71 40.4998 444.98 44.3616C449.228 48.2035 451.046 54.7825 450.716 65.3652C450.11 84.726 450.247 104.117 450.383 123.486C450.443 131.973 450.503 140.455 450.5 148.929C450.5 154.784 448.775 159.25 445.627 162.259C442.472 165.274 437.75 166.958 431.498 166.962C369.621 167.014 82.5107 167.014 20.6332 166.954C14.3253 166.947 9.58065 165.29 6.41534 162.304C3.25884 159.326 1.53234 154.894 1.52366 149.04C1.4788 118.793 1.48777 88.553 1.52366 58.3053C1.53237 52.1342 3.27633 47.5713 6.50961 44.5396C9.75363 41.4978 14.6527 39.8507 21.2699 39.847C31.0216 39.8413 55.4558 39.8429 87.075 39.8449C179.296 39.8509 332.636 39.8608 361.084 39.7053C364.202 39.6891 367.972 38.2099 370.234 36.1838L370.235 36.1835C378.469 28.8014 386.515 21.233 394.552 13.6738C397.657 10.7539 400.76 7.83542 403.872 4.92954L403.874 4.92747Z"
+                      fill="white" stroke="#487181" strokeWidth="2" />
+                      </svg>
+                  </div>
+                  <div
+                  onClick={()=>openCommentModal('commentModal2')} 
+                  type="button" className="speechBubble2 blueBox position-absolute ms-46 ms-xl-0" data-bs-toggle="modal"
+                      data-bs-target="#commentModal2">
+                      <p className="dialogText position-absolute fs-3 text-secondary-2">
+                      以往在外面很難做到<br/>對長輩來說安全的肌力訓練，<br/>來到Move with Joy，<br/>跟一群同輩的人互動，才知道高齡樂活的樣貌
+                      </p>
+                      <svg className="dialogBox" width="638" height="270" viewBox="0 0 638 270" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path">
+                          <path
+                          d="M49.1879 -9.15527e-05C51.8815 13.493 54.3249 25.7204 56.8784 38.5548C48.5469 38.5548 40.5659 38.9101 32.655 38.4882C8.53174 37.2151 -0.270447 43.7655 0.470581 64.9045C1.44196 92.5198 -0.0100098 223.436 0 251.073C0 263.086 7.98096 269.955 22.3207 269.962C91.376 270.014 545.153 270.014 614.208 269.955C628.658 269.94 636.629 263.197 636.649 251.184C636.699 221.163 637.4 87.8864 637.36 57.8656C637.34 45.2459 629.319 38.5622 614.208 38.5548C571.579 38.5326 144.249 38.6214 101.62 38.4142C98.4158 38.3994 94.4703 37.0227 92.1471 35.1723C79.4196 25.0247 67.1025 14.5292 54.6253 4.16701C53.2434 3.01236 51.7413 1.95393 49.1678 -9.15527e-05L49.1879 -9.15527e-05Z" />
+                      </clipPath>
 
-                    <path
-                        d="M49.1879 -9.15527e-05C51.8815 13.493 54.3249 25.7204 56.8784 38.5548C48.5469 38.5548 40.5659 38.9101 32.655 38.4882C8.53174 37.2151 -0.270447 43.7655 0.470581 64.9045C1.44196 92.5198 -0.0100098 223.436 0 251.073C0 263.086 7.98096 269.955 22.3207 269.962C91.376 270.014 545.153 270.014 614.208 269.955C628.658 269.94 636.629 263.197 636.649 251.184C636.699 221.163 637.4 87.8864 637.36 57.8656C637.34 45.2459 629.319 38.5622 614.208 38.5548C571.579 38.5326 144.249 38.6214 101.62 38.4142C98.4158 38.3994 94.4703 37.0227 92.1471 35.1723C79.4196 25.0247 67.1025 14.5292 54.6253 4.16701C53.2434 3.01236 51.7413 1.95393 49.1678 -9.15527e-05L49.1879 -9.15527e-05Z"
-                        fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path)" />
-                    </svg>
-                </div>
-                <div
-                    onClick={()=>openCommentModal('commentModal3')}
-                    type="button" className="speechBubble3 blueBox position-absolute d-none d-xxl-block"
-                    data-bs-target="#commentModal3">
-                    <p className="dialogText vertical-rl mx-0 position-absolute fs-2  text-secondary-2 fw-bold">心情變得開朗了很多
-                    </p>
-                    <svg className="dialogBox" width="61" height="382" viewBox="0 0 61 382" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-2">
-                        <path
-                        d="M7.89438 0.574128C8.83403 5.62405 9.78026 10.6666 10.7199 15.7092C1.96527 17.2183 0.873463 18.4255 0.873463 26.3832C0.873463 56.8962 0.886696 87.4018 0.886696 117.915C0.886696 140.109 1.1777 351.303 1.1777 373.49C1.1777 379.379 4.11576 381.993 10.7198 382C24.0602 382 37.394 382 50.7344 382C57.0341 382 60.0317 379.342 60.0383 373.718C60.0515 354.409 59.734 146.102 59.734 126.793C59.734 98.2673 59.734 69.7492 59.7274 41.2238C59.7274 35.5334 59.7539 29.8431 59.7274 24.1527C59.7009 18.6243 56.7232 15.9963 50.5559 15.9963C43.0585 15.9963 35.5545 16.0551 28.0638 15.9374C26.8197 15.9153 25.3044 15.3632 24.411 14.5976C19.4547 10.3574 14.6373 5.98476 9.80673 1.63417C9.32367 1.19985 9.07226 0.552044 8.71493 -6.10352e-05C8.437 0.191335 8.16569 0.382732 7.88776 0.574128H7.89438Z" />
-                    </clipPath>
-                    <path
-                        d="M7.89438 0.574128C8.83403 5.62405 9.78026 10.6666 10.7199 15.7092C1.96527 17.2183 0.873463 18.4255 0.873463 26.3832C0.873463 56.8962 0.886696 87.4018 0.886696 117.915C0.886696 140.109 1.1777 351.303 1.1777 373.49C1.1777 379.379 4.11576 381.993 10.7198 382C24.0602 382 37.394 382 50.7344 382C57.0341 382 60.0317 379.342 60.0383 373.718C60.0515 354.409 59.734 146.102 59.734 126.793C59.734 98.2673 59.734 69.7492 59.7274 41.2238C59.7274 35.5334 59.7539 29.8431 59.7274 24.1527C59.7009 18.6243 56.7232 15.9963 50.5559 15.9963C43.0585 15.9963 35.5545 16.0551 28.0638 15.9374C26.8197 15.9153 25.3044 15.3632 24.411 14.5976C19.4547 10.3574 14.6373 5.98476 9.80673 1.63417C9.32367 1.19985 9.07226 0.552044 8.71493 -6.10352e-05C8.437 0.191335 8.16569 0.382732 7.88776 0.574128H7.89438Z"
-                        fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-2)" />
-                    </svg>
-                </div>
-                <div 
-                    onClick={()=>openCommentModal('commentModal4')}
-                    type="button" className="speechBubble4 blueBox position-absolute d-none d-xl-block"
-                    data-bs-target="#commentModal4">
-                    <p className="dialogText position-absolute fs-0  text-secondary-2 fw-bold">教練非常專業
-                    </p>
-                    <svg className="dialogBox" width="399" height="168" viewBox="0 0 399 168" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M350.43 4.92747C351.216 4.18992 352.034 3.50117 353.147 2.56744C352.89 4.0127 352.636 5.44468 352.383 6.86573C350.449 17.7575 348.629 28.0072 346.742 38.6728L346.534 39.847H347.727C350.058 39.847 352.374 39.8826 354.676 39.918C359.677 39.9949 364.612 40.0708 369.492 39.7781C380.26 39.1392 387.267 40.4998 391.537 44.3616C395.784 48.2035 397.602 54.7825 397.272 65.3652C396.667 84.7261 396.803 104.117 396.94 123.486C397 131.973 397.059 140.455 397.057 148.929C397.057 154.784 395.332 159.25 392.184 162.259C389.029 165.274 384.307 166.958 378.055 166.962C316.177 167.014 82.2159 167.014 20.3384 166.954C14.0305 166.947 9.28585 165.29 6.12054 162.304C2.96404 159.326 1.23754 154.894 1.22886 149.04C1.184 118.793 1.19297 88.553 1.22886 58.3053C1.23757 52.1342 2.98153 47.5713 6.21481 44.5396C9.45883 41.4978 14.3579 39.8507 20.9751 39.847C30.7885 39.8413 51.962 39.8429 78.6579 39.845C155.862 39.8509 279.255 39.8605 307.641 39.7053C310.758 39.6891 314.529 38.2099 316.791 36.1838L316.791 36.1835C325.025 28.8014 333.072 21.233 341.109 13.6738C344.214 10.7539 347.317 7.83542 350.428 4.92954L350.43 4.92747Z"
-                        fill="white" stroke="#487181" strokeWidth="2" />
-                    </svg>
-                </div>
-                <div
-                    onClick={()=>openCommentModal('commentModal5')} 
-                    type="button" className="speechBubble5 blueBox position-absolute"
-                    data-bs-target="#commentModal5">
-                    <p className="dialogText position-absolute fs-1  text-secondary-2 fw-bold">認識了很多新朋友，<br/>生活變得更加充實有趣。
-                    </p>
-                    <svg className="dialogBox" width="482" height="201" viewBox="0 0 482 201" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-3">
-                        <path
-                        d="M83.9718 165.898C86.5599 177.588 89.0817 189 91.6034 200.395L89.5573 201C89.4467 200.874 89.3139 200.756 89.1812 200.647C74.5594 189.479 59.9155 178.327 45.172 167.251C44.0217 166.386 41.7543 165.621 40.1395 165.57C34.3107 165.411 28.4708 165.528 22.6309 165.503C10.5972 165.47 0.908342 158.041 0.974704 148.906C1.06319 137.158 1.10743 125.401 1.12955 113.653C1.15167 96.039 1.12955 45.6511 1.12955 28.0371C1.12955 24.0202 1.10743 20.0117 1.12955 15.9948C1.17379 6.60797 9.75664 0.027951 22.0779 0.0111438C42.617 -0.014067 63.1561 0.0111438 83.6953 0.0111438C160.443 0.0111438 383.188 0.0111438 459.925 0.0111438C470.477 0.0111438 478.418 4.5827 480.719 11.8014C481.15 13.1544 481.294 14.5494 481.294 15.936C481.305 49.4747 481.305 115.779 481.316 149.318C481.316 158.881 472.589 165.503 459.903 165.512C384.847 165.512 163.795 165.512 88.7388 165.512H84.381C84.1156 165.512 83.9165 165.688 83.9607 165.89L83.9718 165.898Z" />
-                    </clipPath>
-                    <path
-                        d="M83.9718 165.898C86.5599 177.588 89.0817 189 91.6034 200.395L89.5573 201C89.4467 200.874 89.3139 200.756 89.1812 200.647C74.5594 189.479 59.9155 178.327 45.172 167.251C44.0217 166.386 41.7543 165.621 40.1395 165.57C34.3107 165.411 28.4708 165.528 22.6309 165.503C10.5972 165.47 0.908342 158.041 0.974704 148.906C1.06319 137.158 1.10743 125.401 1.12955 113.653C1.15167 96.039 1.12955 45.6511 1.12955 28.0371C1.12955 24.0202 1.10743 20.0117 1.12955 15.9948C1.17379 6.60797 9.75664 0.027951 22.0779 0.0111438C42.617 -0.014067 63.1561 0.0111438 83.6953 0.0111438C160.443 0.0111438 383.188 0.0111438 459.925 0.0111438C470.477 0.0111438 478.418 4.5827 480.719 11.8014C481.15 13.1544 481.294 14.5494 481.294 15.936C481.305 49.4747 481.305 115.779 481.316 149.318C481.316 158.881 472.589 165.503 459.903 165.512C384.847 165.512 163.795 165.512 88.7388 165.512H84.381C84.1156 165.512 83.9165 165.688 83.9607 165.89L83.9718 165.898Z"
-                        fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-3)" />
-                    </svg>
-                </div>
-                <div 
-                    onClick={()=>openCommentModal('commentModal6')}
-                    type="button" className="speechBubble6 blueBox position-absolute"
-                    data-bs-target="#commentModal6">
-                    <p className="dialogText vertical-rl mx-0 position-absolute fs-1  text-secondary-2 fw-bold">網站的課程安排非常靈活
-                    </p>
-                    <svg className="dialogBox" width="76" height="570" viewBox="0 0 76 570" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-4">
-                        <path
-                        d="M67.0297 0.724057C65.8292 7.09232 64.6203 13.4513 63.4197 19.8103C74.605 21.7133 75.9999 23.2358 75.9999 33.2709C75.9999 71.7497 75.983 110.219 75.983 148.698C75.983 176.687 75.6112 531.289 75.6112 559.269C75.6112 566.695 71.8575 569.991 63.4199 570C46.3757 570 29.3399 570 12.2957 570C4.24704 570 0.417169 566.649 0.408714 559.556C0.391805 535.207 0.797465 184.243 0.797465 159.893C0.797465 123.921 0.797466 87.9581 0.805921 51.9858C0.805921 44.8099 0.772103 37.634 0.805921 30.4581C0.839739 23.4864 4.64425 20.1723 12.5238 20.1723C22.1027 20.1723 31.6901 20.2466 41.2606 20.0981C42.85 20.0702 44.7861 19.374 45.9274 18.4085C52.2598 13.0614 58.4147 7.54719 64.5865 2.06084C65.2036 1.51313 65.5248 0.696208 65.9814 -3.05176e-05C66.3365 0.241332 66.6831 0.482695 67.0382 0.724057H67.0297Z" />
-                    </clipPath>
-                    <path
-                        d="M67.0297 0.724057C65.8292 7.09232 64.6203 13.4513 63.4197 19.8103C74.605 21.7133 75.9999 23.2358 75.9999 33.2709C75.9999 71.7497 75.983 110.219 75.983 148.698C75.983 176.687 75.6112 531.289 75.6112 559.269C75.6112 566.695 71.8575 569.991 63.4199 570C46.3757 570 29.3399 570 12.2957 570C4.24704 570 0.417169 566.649 0.408714 559.556C0.391805 535.207 0.797465 184.243 0.797465 159.893C0.797465 123.921 0.797466 87.9581 0.805921 51.9858C0.805921 44.8099 0.772103 37.634 0.805921 30.4581C0.839739 23.4864 4.64425 20.1723 12.5238 20.1723C22.1027 20.1723 31.6901 20.2466 41.2606 20.0981C42.85 20.0702 44.7861 19.374 45.9274 18.4085C52.2598 13.0614 58.4147 7.54719 64.5865 2.06084C65.2036 1.51313 65.5248 0.696208 65.9814 -3.05176e-05C66.3365 0.241332 66.6831 0.482695 67.0382 0.724057H67.0297Z"
-                        fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-4)" />
-                    </svg>
-                </div>
-                <div 
-                    onClick={()=>openCommentModal('commentModal7')}
-                    type="button" className="speechBubble7 orangeBox position-absolute"
-                    data-bs-target="#commentModal7">
-                    <p className="dialogText vertical-rl mx-0 position-absolute fs-1  text-primary fw-bold">感謝這個平台
-                    </p>
-                    <svg className="dialogBox" width="76" height="327" viewBox="0 0 76 327" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-5">
-                        <path
-                        d="M66.4306 0.724134C65.2301 7.09239 64.0211 13.4514 62.8206 19.8103C74.0058 21.7134 75.4008 23.2358 75.4008 33.271C75.4008 71.7497 75.3839 110.219 75.3839 148.698C75.3839 176.687 75.4008 288.289 75.4008 316.269C75.4008 323.695 71.6471 326.991 63.2095 327C46.1653 327 29.1295 327 12.0853 327C4.03664 327 0.206766 323.649 0.198311 316.556C0.181403 292.207 0.19831 184.243 0.19831 159.894C0.19831 123.921 0.19831 87.9582 0.206764 51.9858C0.206764 44.8099 0.172946 37.6341 0.206764 30.4582C0.240582 23.4865 4.04509 20.1724 11.9247 20.1724C21.5036 20.1724 31.0909 20.2467 40.6614 20.0981C42.2508 20.0703 44.1869 19.374 45.3283 18.4086C51.6607 13.0615 57.8155 7.54727 63.9873 2.06091C64.6045 1.5132 64.9257 0.696284 65.3823 4.57764e-05C65.7374 0.241408 66.084 0.482771 66.4391 0.724134H66.4306Z" />
-                    </clipPath>
-                    <path
-                        d="M66.4306 0.724134C65.2301 7.09239 64.0211 13.4514 62.8206 19.8103C74.0058 21.7134 75.4008 23.2358 75.4008 33.271C75.4008 71.7497 75.3839 110.219 75.3839 148.698C75.3839 176.687 75.4008 288.289 75.4008 316.269C75.4008 323.695 71.6471 326.991 63.2095 327C46.1653 327 29.1295 327 12.0853 327C4.03664 327 0.206766 323.649 0.198311 316.556C0.181403 292.207 0.19831 184.243 0.19831 159.894C0.19831 123.921 0.19831 87.9582 0.206764 51.9858C0.206764 44.8099 0.172946 37.6341 0.206764 30.4582C0.240582 23.4865 4.04509 20.1724 11.9247 20.1724C21.5036 20.1724 31.0909 20.2467 40.6614 20.0981C42.2508 20.0703 44.1869 19.374 45.3283 18.4086C51.6607 13.0615 57.8155 7.54727 63.9873 2.06091C64.6045 1.5132 64.9257 0.696284 65.3823 4.57764e-05C65.7374 0.241408 66.084 0.482771 66.4391 0.724134H66.4306Z"
-                        fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-5)" />
-                    </svg>
-                </div>
-                <div 
-                    onClick={()=>openCommentModal('commentModal8')}
-                    type="button" className="speechBubble8 orangeBox position-absolute"
-                    data-bs-target="#commentModal8">
-                    <p className="dialogText position-absolute fs-1  text-primary fw-bold">教練們都非常專業和熱情，<br/>讓我在這裡感覺很受歡迎。
-                    </p>
-                    <svg className="dialogBox" width="521" height="218" viewBox="0 0 521 218" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-6">
-                        <path
-                        d="M90.4469 179.929C93.2511 192.607 95.9835 204.985 98.7158 217.344L96.4988 218C96.3789 217.863 96.2351 217.736 96.0913 217.617C80.2485 205.504 64.3817 193.41 48.407 181.397C47.1606 180.458 44.7039 179.629 42.9543 179.574C36.6387 179.401 30.3111 179.528 23.9836 179.501C10.945 179.465 0.447018 171.407 0.518922 161.5C0.614794 148.758 0.66273 136.007 0.686698 123.265C0.710666 104.162 0.686698 49.5122 0.686698 30.4085C0.686698 26.0518 0.66273 21.7043 0.686698 17.3476C0.734634 7.16692 10.0342 0.0303812 23.3844 0.0121525C45.6387 -0.0151906 67.893 0.0121525 90.1473 0.0121525C173.304 0.0121525 414.65 0.0121525 497.795 0.0121525C509.228 0.0121525 517.832 4.97036 520.325 12.7996C520.792 14.267 520.948 15.78 520.948 17.2838C520.96 53.6592 520.96 125.571 520.972 161.947C520.972 172.319 511.517 179.501 497.771 179.51C416.448 179.51 176.935 179.51 95.612 179.51H90.8903C90.6027 179.51 90.3869 179.702 90.4349 179.92L90.4469 179.929Z" />
-                    </clipPath>
-                    <path
-                        d="M90.4469 179.929C93.2511 192.607 95.9835 204.985 98.7158 217.344L96.4988 218C96.3789 217.863 96.2351 217.736 96.0913 217.617C80.2485 205.504 64.3817 193.41 48.407 181.397C47.1606 180.458 44.7039 179.629 42.9543 179.574C36.6387 179.401 30.3111 179.528 23.9836 179.501C10.945 179.465 0.447018 171.407 0.518922 161.5C0.614794 148.758 0.66273 136.007 0.686698 123.265C0.710666 104.162 0.686698 49.5122 0.686698 30.4085C0.686698 26.0518 0.66273 21.7043 0.686698 17.3476C0.734634 7.16692 10.0342 0.0303812 23.3844 0.0121525C45.6387 -0.0151906 67.893 0.0121525 90.1473 0.0121525C173.304 0.0121525 414.65 0.0121525 497.795 0.0121525C509.228 0.0121525 517.832 4.97036 520.325 12.7996C520.792 14.267 520.948 15.78 520.948 17.2838C520.96 53.6592 520.96 125.571 520.972 161.947C520.972 172.319 511.517 179.501 497.771 179.51C416.448 179.51 176.935 179.51 95.612 179.51H90.8903C90.6027 179.51 90.3869 179.702 90.4349 179.92L90.4469 179.929Z"
-                        fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-6)" />
-                    </svg>
-                </div>
-                <div 
-                    onClick={()=>openCommentModal('commentModal9')}
-                    type="button" className="speechBubble9 orangeBox position-absolute d-none d-xxl-block"
-                   data-bs-target="#commentModal9">
-                    <p className="dialogText position-absolute fs-0 text-primary fw-bold">重新找回了年輕時的活力
-                    </p>
-                    <svg className="dialogBox" width="661" height="168" viewBox="0 0 661 168" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-7">
-                        <path
-                        d="M616.399 0C613.986 13.5953 611.796 25.9154 609.508 38.847C616.974 38.847 624.125 39.205 631.214 38.7799C652.83 37.4972 660.717 44.0972 660.053 65.3963C659.183 93.2209 659.847 121.083 659.838 148.93C659.838 161.034 652.686 167.954 639.837 167.962C577.959 168.014 82.0171 167.902 20.139 167.842C7.19087 167.827 0.048323 161.034 0.0303769 148.93C-0.0144883 118.681 -0.00551525 88.4405 0.0303769 58.1922C0.048323 45.4769 7.23573 38.7426 20.7761 38.7351C58.9743 38.7128 531.218 38.9141 569.417 38.7053C572.288 38.6904 575.823 37.3033 577.905 35.4389C589.31 25.2144 600.347 14.6394 611.527 4.19867C612.765 3.03527 614.111 1.96883 616.417 0L616.399 0Z" />
-                    </clipPath>
-                    <path
-                        d="M616.399 0C613.986 13.5953 611.796 25.9154 609.508 38.847C616.974 38.847 624.125 39.205 631.214 38.7799C652.83 37.4972 660.717 44.0972 660.053 65.3963C659.183 93.2209 659.847 121.083 659.838 148.93C659.838 161.034 652.686 167.954 639.837 167.962C577.959 168.014 82.0171 167.902 20.139 167.842C7.19087 167.827 0.048323 161.034 0.0303769 148.93C-0.0144883 118.681 -0.00551525 88.4405 0.0303769 58.1922C0.048323 45.4769 7.23573 38.7426 20.7761 38.7351C58.9743 38.7128 531.218 38.9141 569.417 38.7053C572.288 38.6904 575.823 37.3033 577.905 35.4389C589.31 25.2144 600.347 14.6394 611.527 4.19867C612.765 3.03527 614.111 1.96883 616.417 0L616.399 0Z"
-                        fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-7)" />
-                    </svg>
-                </div>
-                <div 
-                onClick={()=>openCommentModal('commentModal10')}
-                type="button" className="speechBubble10 orangeBox position-absolute d-none d-xl-block"
-                   data-bs-target="#commentModal10">
-                    <p className="dialogText position-absolute fs-2 text-primary">教練們非常有耐心，<br/>給了我很多有用的建議，<br/>讓我的運動效果顯著提升。
-                    </p>
-                    <svg className="dialogBox" width="481" height="264" viewBox="0 0 481 264" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-8">
-                        <path
-                        d="M384.049 263.616C386.844 246.557 389.665 229.472 392.615 211.465C374.713 211.465 44.6927 211.901 27.5865 211.209C21.7903 210.978 15.5325 208.878 10.5571 205.856C3.65816 201.68 0.990915 194.329 0.990915 186.209C0.990915 132.522 0.913975 78.8344 1.06785 25.1468C1.11915 10.7516 11.0957 0.377811 25.586 0.249739C64.6202 -0.0832464 416.517 -0.0832464 455.552 0.249739C470.35 0.377811 480.198 10.9565 480.224 25.8384C480.326 79.2698 480.352 132.701 480.224 186.158C480.198 200.938 469.914 212.182 455.244 211.106C442.01 210.133 433.316 215.102 424.853 224.323C412.311 238.053 398.693 250.834 385.536 264C385.023 263.872 384.536 263.744 384.023 263.616H384.049Z" />
-                    </clipPath>
-                    <path
-                        d="M384.049 263.616C386.844 246.557 389.665 229.472 392.615 211.465C374.713 211.465 44.6927 211.901 27.5865 211.209C21.7903 210.978 15.5325 208.878 10.5571 205.856C3.65816 201.68 0.990915 194.329 0.990915 186.209C0.990915 132.522 0.913975 78.8344 1.06785 25.1468C1.11915 10.7516 11.0957 0.377811 25.586 0.249739C64.6202 -0.0832464 416.517 -0.0832464 455.552 0.249739C470.35 0.377811 480.198 10.9565 480.224 25.8384C480.326 79.2698 480.352 132.701 480.224 186.158C480.198 200.938 469.914 212.182 455.244 211.106C442.01 210.133 433.316 215.102 424.853 224.323C412.311 238.053 398.693 250.834 385.536 264C385.023 263.872 384.536 263.744 384.023 263.616H384.049Z"
-                        fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-8)" />
-                    </svg>
-                </div>
-                <div 
-                    onClick={()=>openCommentModal('commentModal11')}
-                    type="button" className="speechBubble11 orangeBox position-absolute d-none d-xl-block"
-                   data-bs-target="#commentModal11">
-                    <p className="dialogText position-absolute fs-2 text-primary">每次參加完活動，<br/>我都覺得自己充滿了<br/>活力和正能量！很開心！
-                    </p>
-                    <svg className="dialogBox" width="432" height="220" viewBox="0 0 432 220" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-9">
-                        <path
-                        d="M32.582 58.3423C21.7736 60.1634 11.2139 61.9392 0.676865 63.7151L0.111572 62.2785C0.224631 62.1994 0.337689 62.1089 0.439442 62.0071C10.773 51.7253 21.0839 41.4323 31.3157 31.0714C32.1185 30.257 32.8307 28.6734 32.8646 27.531C33.0116 23.4364 32.9099 19.3305 32.9212 15.2246C32.9664 6.76395 39.8404 -0.0452947 48.2858 -5.04898e-05C59.1508 0.0678158 70.0157 0.0904379 80.8806 0.101749C97.1724 0.124371 389.101 0.101749 405.393 0.101749C409.101 0.101749 412.809 0.0904379 416.529 0.101749C425.212 0.124371 431.294 6.16447 431.306 14.8287C431.328 29.2616 431.306 43.7058 431.306 58.1387C431.306 112.081 431.306 151.025 431.306 204.967C431.306 212.387 427.077 217.964 420.396 219.581C419.141 219.887 417.852 219.988 416.574 219.988C385.562 219.988 78.9021 219.988 47.8901 220C39.049 220 32.9212 213.869 32.9212 204.945C32.9212 152.19 32.9212 114.434 32.9212 61.6791V58.6138C32.9212 58.4328 32.7516 58.2858 32.5707 58.3197L32.582 58.3423Z" />
-                    </clipPath>
-                    <path
-                        d="M32.582 58.3423C21.7736 60.1634 11.2139 61.9392 0.676865 63.7151L0.111572 62.2785C0.224631 62.1994 0.337689 62.1089 0.439442 62.0071C10.773 51.7253 21.0839 41.4323 31.3157 31.0714C32.1185 30.257 32.8307 28.6734 32.8646 27.531C33.0116 23.4364 32.9099 19.3305 32.9212 15.2246C32.9664 6.76395 39.8404 -0.0452947 48.2858 -5.04898e-05C59.1508 0.0678158 70.0157 0.0904379 80.8806 0.101749C97.1724 0.124371 389.101 0.101749 405.393 0.101749C409.101 0.101749 412.809 0.0904379 416.529 0.101749C425.212 0.124371 431.294 6.16447 431.306 14.8287C431.328 29.2616 431.306 43.7058 431.306 58.1387C431.306 112.081 431.306 151.025 431.306 204.967C431.306 212.387 427.077 217.964 420.396 219.581C419.141 219.887 417.852 219.988 416.574 219.988C385.562 219.988 78.9021 219.988 47.8901 220C39.049 220 32.9212 213.869 32.9212 204.945C32.9212 152.19 32.9212 114.434 32.9212 61.6791V58.6138C32.9212 58.4328 32.7516 58.2858 32.5707 58.3197L32.582 58.3423Z"
-                        fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-9)" />
-                    </svg>
-                </div>
-            </div>
+                      <path
+                          d="M49.1879 -9.15527e-05C51.8815 13.493 54.3249 25.7204 56.8784 38.5548C48.5469 38.5548 40.5659 38.9101 32.655 38.4882C8.53174 37.2151 -0.270447 43.7655 0.470581 64.9045C1.44196 92.5198 -0.0100098 223.436 0 251.073C0 263.086 7.98096 269.955 22.3207 269.962C91.376 270.014 545.153 270.014 614.208 269.955C628.658 269.94 636.629 263.197 636.649 251.184C636.699 221.163 637.4 87.8864 637.36 57.8656C637.34 45.2459 629.319 38.5622 614.208 38.5548C571.579 38.5326 144.249 38.6214 101.62 38.4142C98.4158 38.3994 94.4703 37.0227 92.1471 35.1723C79.4196 25.0247 67.1025 14.5292 54.6253 4.16701C53.2434 3.01236 51.7413 1.95393 49.1678 -9.15527e-05L49.1879 -9.15527e-05Z"
+                          fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path)" />
+                      </svg>
+                  </div>
+                  <div
+                      onClick={()=>openCommentModal('commentModal3')}
+                      type="button" className="speechBubble3 blueBox position-absolute d-none d-xxl-block" data-bs-toggle="modal"
+                      data-bs-target="#commentModal3">
+                      <p className="dialogText vertical-rl mx-0 position-absolute fs-2  text-secondary-2 fw-bold">心情變得開朗了很多
+                      </p>
+                      <svg className="dialogBox" width="61" height="382" viewBox="0 0 61 382" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-2">
+                          <path
+                          d="M7.89438 0.574128C8.83403 5.62405 9.78026 10.6666 10.7199 15.7092C1.96527 17.2183 0.873463 18.4255 0.873463 26.3832C0.873463 56.8962 0.886696 87.4018 0.886696 117.915C0.886696 140.109 1.1777 351.303 1.1777 373.49C1.1777 379.379 4.11576 381.993 10.7198 382C24.0602 382 37.394 382 50.7344 382C57.0341 382 60.0317 379.342 60.0383 373.718C60.0515 354.409 59.734 146.102 59.734 126.793C59.734 98.2673 59.734 69.7492 59.7274 41.2238C59.7274 35.5334 59.7539 29.8431 59.7274 24.1527C59.7009 18.6243 56.7232 15.9963 50.5559 15.9963C43.0585 15.9963 35.5545 16.0551 28.0638 15.9374C26.8197 15.9153 25.3044 15.3632 24.411 14.5976C19.4547 10.3574 14.6373 5.98476 9.80673 1.63417C9.32367 1.19985 9.07226 0.552044 8.71493 -6.10352e-05C8.437 0.191335 8.16569 0.382732 7.88776 0.574128H7.89438Z" />
+                      </clipPath>
+                      <path
+                          d="M7.89438 0.574128C8.83403 5.62405 9.78026 10.6666 10.7199 15.7092C1.96527 17.2183 0.873463 18.4255 0.873463 26.3832C0.873463 56.8962 0.886696 87.4018 0.886696 117.915C0.886696 140.109 1.1777 351.303 1.1777 373.49C1.1777 379.379 4.11576 381.993 10.7198 382C24.0602 382 37.394 382 50.7344 382C57.0341 382 60.0317 379.342 60.0383 373.718C60.0515 354.409 59.734 146.102 59.734 126.793C59.734 98.2673 59.734 69.7492 59.7274 41.2238C59.7274 35.5334 59.7539 29.8431 59.7274 24.1527C59.7009 18.6243 56.7232 15.9963 50.5559 15.9963C43.0585 15.9963 35.5545 16.0551 28.0638 15.9374C26.8197 15.9153 25.3044 15.3632 24.411 14.5976C19.4547 10.3574 14.6373 5.98476 9.80673 1.63417C9.32367 1.19985 9.07226 0.552044 8.71493 -6.10352e-05C8.437 0.191335 8.16569 0.382732 7.88776 0.574128H7.89438Z"
+                          fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-2)" />
+                      </svg>
+                  </div>
+                  <div 
+                      onClick={()=>openCommentModal('commentModal4')}
+                      type="button" className="speechBubble4 blueBox position-absolute d-none d-xl-block" data-bs-toggle="modal"
+                      data-bs-target="#commentModal4">
+                      <p className="dialogText position-absolute fs-0  text-secondary-2 fw-bold">教練非常專業
+                      </p>
+                      <svg className="dialogBox" width="399" height="168" viewBox="0 0 399 168" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                          d="M350.43 4.92747C351.216 4.18992 352.034 3.50117 353.147 2.56744C352.89 4.0127 352.636 5.44468 352.383 6.86573C350.449 17.7575 348.629 28.0072 346.742 38.6728L346.534 39.847H347.727C350.058 39.847 352.374 39.8826 354.676 39.918C359.677 39.9949 364.612 40.0708 369.492 39.7781C380.26 39.1392 387.267 40.4998 391.537 44.3616C395.784 48.2035 397.602 54.7825 397.272 65.3652C396.667 84.7261 396.803 104.117 396.94 123.486C397 131.973 397.059 140.455 397.057 148.929C397.057 154.784 395.332 159.25 392.184 162.259C389.029 165.274 384.307 166.958 378.055 166.962C316.177 167.014 82.2159 167.014 20.3384 166.954C14.0305 166.947 9.28585 165.29 6.12054 162.304C2.96404 159.326 1.23754 154.894 1.22886 149.04C1.184 118.793 1.19297 88.553 1.22886 58.3053C1.23757 52.1342 2.98153 47.5713 6.21481 44.5396C9.45883 41.4978 14.3579 39.8507 20.9751 39.847C30.7885 39.8413 51.962 39.8429 78.6579 39.845C155.862 39.8509 279.255 39.8605 307.641 39.7053C310.758 39.6891 314.529 38.2099 316.791 36.1838L316.791 36.1835C325.025 28.8014 333.072 21.233 341.109 13.6738C344.214 10.7539 347.317 7.83542 350.428 4.92954L350.43 4.92747Z"
+                          fill="white" stroke="#487181" strokeWidth="2" />
+                      </svg>
+                  </div>
+                  <div
+                      onClick={()=>openCommentModal('commentModal5')} 
+                      type="button" className="speechBubble5 blueBox position-absolute" data-bs-toggle="modal"
+                      data-bs-target="#commentModal5">
+                      <p className="dialogText position-absolute fs-1  text-secondary-2 fw-bold">認識了很多新朋友，<br/>生活變得更加充實有趣。
+                      </p>
+                      <svg className="dialogBox" width="482" height="201" viewBox="0 0 482 201" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-3">
+                          <path
+                          d="M83.9718 165.898C86.5599 177.588 89.0817 189 91.6034 200.395L89.5573 201C89.4467 200.874 89.3139 200.756 89.1812 200.647C74.5594 189.479 59.9155 178.327 45.172 167.251C44.0217 166.386 41.7543 165.621 40.1395 165.57C34.3107 165.411 28.4708 165.528 22.6309 165.503C10.5972 165.47 0.908342 158.041 0.974704 148.906C1.06319 137.158 1.10743 125.401 1.12955 113.653C1.15167 96.039 1.12955 45.6511 1.12955 28.0371C1.12955 24.0202 1.10743 20.0117 1.12955 15.9948C1.17379 6.60797 9.75664 0.027951 22.0779 0.0111438C42.617 -0.014067 63.1561 0.0111438 83.6953 0.0111438C160.443 0.0111438 383.188 0.0111438 459.925 0.0111438C470.477 0.0111438 478.418 4.5827 480.719 11.8014C481.15 13.1544 481.294 14.5494 481.294 15.936C481.305 49.4747 481.305 115.779 481.316 149.318C481.316 158.881 472.589 165.503 459.903 165.512C384.847 165.512 163.795 165.512 88.7388 165.512H84.381C84.1156 165.512 83.9165 165.688 83.9607 165.89L83.9718 165.898Z" />
+                      </clipPath>
+                      <path
+                          d="M83.9718 165.898C86.5599 177.588 89.0817 189 91.6034 200.395L89.5573 201C89.4467 200.874 89.3139 200.756 89.1812 200.647C74.5594 189.479 59.9155 178.327 45.172 167.251C44.0217 166.386 41.7543 165.621 40.1395 165.57C34.3107 165.411 28.4708 165.528 22.6309 165.503C10.5972 165.47 0.908342 158.041 0.974704 148.906C1.06319 137.158 1.10743 125.401 1.12955 113.653C1.15167 96.039 1.12955 45.6511 1.12955 28.0371C1.12955 24.0202 1.10743 20.0117 1.12955 15.9948C1.17379 6.60797 9.75664 0.027951 22.0779 0.0111438C42.617 -0.014067 63.1561 0.0111438 83.6953 0.0111438C160.443 0.0111438 383.188 0.0111438 459.925 0.0111438C470.477 0.0111438 478.418 4.5827 480.719 11.8014C481.15 13.1544 481.294 14.5494 481.294 15.936C481.305 49.4747 481.305 115.779 481.316 149.318C481.316 158.881 472.589 165.503 459.903 165.512C384.847 165.512 163.795 165.512 88.7388 165.512H84.381C84.1156 165.512 83.9165 165.688 83.9607 165.89L83.9718 165.898Z"
+                          fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-3)" />
+                      </svg>
+                  </div>
+                  <div 
+                      onClick={()=>openCommentModal('commentModal6')}
+                      type="button" className="speechBubble6 blueBox position-absolute" data-bs-toggle="modal"
+                      data-bs-target="#commentModal6">
+                      <p className="dialogText vertical-rl mx-0 position-absolute fs-1  text-secondary-2 fw-bold">網站的課程安排非常靈活
+                      </p>
+                      <svg className="dialogBox" width="76" height="570" viewBox="0 0 76 570" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-4">
+                          <path
+                          d="M67.0297 0.724057C65.8292 7.09232 64.6203 13.4513 63.4197 19.8103C74.605 21.7133 75.9999 23.2358 75.9999 33.2709C75.9999 71.7497 75.983 110.219 75.983 148.698C75.983 176.687 75.6112 531.289 75.6112 559.269C75.6112 566.695 71.8575 569.991 63.4199 570C46.3757 570 29.3399 570 12.2957 570C4.24704 570 0.417169 566.649 0.408714 559.556C0.391805 535.207 0.797465 184.243 0.797465 159.893C0.797465 123.921 0.797466 87.9581 0.805921 51.9858C0.805921 44.8099 0.772103 37.634 0.805921 30.4581C0.839739 23.4864 4.64425 20.1723 12.5238 20.1723C22.1027 20.1723 31.6901 20.2466 41.2606 20.0981C42.85 20.0702 44.7861 19.374 45.9274 18.4085C52.2598 13.0614 58.4147 7.54719 64.5865 2.06084C65.2036 1.51313 65.5248 0.696208 65.9814 -3.05176e-05C66.3365 0.241332 66.6831 0.482695 67.0382 0.724057H67.0297Z" />
+                      </clipPath>
+                      <path
+                          d="M67.0297 0.724057C65.8292 7.09232 64.6203 13.4513 63.4197 19.8103C74.605 21.7133 75.9999 23.2358 75.9999 33.2709C75.9999 71.7497 75.983 110.219 75.983 148.698C75.983 176.687 75.6112 531.289 75.6112 559.269C75.6112 566.695 71.8575 569.991 63.4199 570C46.3757 570 29.3399 570 12.2957 570C4.24704 570 0.417169 566.649 0.408714 559.556C0.391805 535.207 0.797465 184.243 0.797465 159.893C0.797465 123.921 0.797466 87.9581 0.805921 51.9858C0.805921 44.8099 0.772103 37.634 0.805921 30.4581C0.839739 23.4864 4.64425 20.1723 12.5238 20.1723C22.1027 20.1723 31.6901 20.2466 41.2606 20.0981C42.85 20.0702 44.7861 19.374 45.9274 18.4085C52.2598 13.0614 58.4147 7.54719 64.5865 2.06084C65.2036 1.51313 65.5248 0.696208 65.9814 -3.05176e-05C66.3365 0.241332 66.6831 0.482695 67.0382 0.724057H67.0297Z"
+                          fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-4)" />
+                      </svg>
+                  </div>
+                  <div 
+                      onClick={()=>openCommentModal('commentModal7')}
+                      type="button" className="speechBubble7 orangeBox position-absolute" data-bs-toggle="modal"
+                      data-bs-target="#commentModal7">
+                      <p className="dialogText vertical-rl mx-0 position-absolute fs-1  text-primary fw-bold">感謝這個平台
+                      </p>
+                      <svg className="dialogBox" width="76" height="327" viewBox="0 0 76 327" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-5">
+                          <path
+                          d="M66.4306 0.724134C65.2301 7.09239 64.0211 13.4514 62.8206 19.8103C74.0058 21.7134 75.4008 23.2358 75.4008 33.271C75.4008 71.7497 75.3839 110.219 75.3839 148.698C75.3839 176.687 75.4008 288.289 75.4008 316.269C75.4008 323.695 71.6471 326.991 63.2095 327C46.1653 327 29.1295 327 12.0853 327C4.03664 327 0.206766 323.649 0.198311 316.556C0.181403 292.207 0.19831 184.243 0.19831 159.894C0.19831 123.921 0.19831 87.9582 0.206764 51.9858C0.206764 44.8099 0.172946 37.6341 0.206764 30.4582C0.240582 23.4865 4.04509 20.1724 11.9247 20.1724C21.5036 20.1724 31.0909 20.2467 40.6614 20.0981C42.2508 20.0703 44.1869 19.374 45.3283 18.4086C51.6607 13.0615 57.8155 7.54727 63.9873 2.06091C64.6045 1.5132 64.9257 0.696284 65.3823 4.57764e-05C65.7374 0.241408 66.084 0.482771 66.4391 0.724134H66.4306Z" />
+                      </clipPath>
+                      <path
+                          d="M66.4306 0.724134C65.2301 7.09239 64.0211 13.4514 62.8206 19.8103C74.0058 21.7134 75.4008 23.2358 75.4008 33.271C75.4008 71.7497 75.3839 110.219 75.3839 148.698C75.3839 176.687 75.4008 288.289 75.4008 316.269C75.4008 323.695 71.6471 326.991 63.2095 327C46.1653 327 29.1295 327 12.0853 327C4.03664 327 0.206766 323.649 0.198311 316.556C0.181403 292.207 0.19831 184.243 0.19831 159.894C0.19831 123.921 0.19831 87.9582 0.206764 51.9858C0.206764 44.8099 0.172946 37.6341 0.206764 30.4582C0.240582 23.4865 4.04509 20.1724 11.9247 20.1724C21.5036 20.1724 31.0909 20.2467 40.6614 20.0981C42.2508 20.0703 44.1869 19.374 45.3283 18.4086C51.6607 13.0615 57.8155 7.54727 63.9873 2.06091C64.6045 1.5132 64.9257 0.696284 65.3823 4.57764e-05C65.7374 0.241408 66.084 0.482771 66.4391 0.724134H66.4306Z"
+                          fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-5)" />
+                      </svg>
+                  </div>
+                  <div 
+                      onClick={()=>openCommentModal('commentModal8')}
+                      type="button" className="speechBubble8 orangeBox position-absolute" data-bs-toggle="modal"
+                      data-bs-target="#commentModal8">
+                      <p className="dialogText position-absolute fs-1  text-primary fw-bold">教練們都非常專業和熱情，<br/>讓我在這裡感覺很受歡迎。
+                      </p>
+                      <svg className="dialogBox" width="521" height="218" viewBox="0 0 521 218" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-6">
+                          <path
+                          d="M90.4469 179.929C93.2511 192.607 95.9835 204.985 98.7158 217.344L96.4988 218C96.3789 217.863 96.2351 217.736 96.0913 217.617C80.2485 205.504 64.3817 193.41 48.407 181.397C47.1606 180.458 44.7039 179.629 42.9543 179.574C36.6387 179.401 30.3111 179.528 23.9836 179.501C10.945 179.465 0.447018 171.407 0.518922 161.5C0.614794 148.758 0.66273 136.007 0.686698 123.265C0.710666 104.162 0.686698 49.5122 0.686698 30.4085C0.686698 26.0518 0.66273 21.7043 0.686698 17.3476C0.734634 7.16692 10.0342 0.0303812 23.3844 0.0121525C45.6387 -0.0151906 67.893 0.0121525 90.1473 0.0121525C173.304 0.0121525 414.65 0.0121525 497.795 0.0121525C509.228 0.0121525 517.832 4.97036 520.325 12.7996C520.792 14.267 520.948 15.78 520.948 17.2838C520.96 53.6592 520.96 125.571 520.972 161.947C520.972 172.319 511.517 179.501 497.771 179.51C416.448 179.51 176.935 179.51 95.612 179.51H90.8903C90.6027 179.51 90.3869 179.702 90.4349 179.92L90.4469 179.929Z" />
+                      </clipPath>
+                      <path
+                          d="M90.4469 179.929C93.2511 192.607 95.9835 204.985 98.7158 217.344L96.4988 218C96.3789 217.863 96.2351 217.736 96.0913 217.617C80.2485 205.504 64.3817 193.41 48.407 181.397C47.1606 180.458 44.7039 179.629 42.9543 179.574C36.6387 179.401 30.3111 179.528 23.9836 179.501C10.945 179.465 0.447018 171.407 0.518922 161.5C0.614794 148.758 0.66273 136.007 0.686698 123.265C0.710666 104.162 0.686698 49.5122 0.686698 30.4085C0.686698 26.0518 0.66273 21.7043 0.686698 17.3476C0.734634 7.16692 10.0342 0.0303812 23.3844 0.0121525C45.6387 -0.0151906 67.893 0.0121525 90.1473 0.0121525C173.304 0.0121525 414.65 0.0121525 497.795 0.0121525C509.228 0.0121525 517.832 4.97036 520.325 12.7996C520.792 14.267 520.948 15.78 520.948 17.2838C520.96 53.6592 520.96 125.571 520.972 161.947C520.972 172.319 511.517 179.501 497.771 179.51C416.448 179.51 176.935 179.51 95.612 179.51H90.8903C90.6027 179.51 90.3869 179.702 90.4349 179.92L90.4469 179.929Z"
+                          fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-6)" />
+                      </svg>
+                  </div>
+                  <div 
+                      onClick={()=>openCommentModal('commentModal9')}
+                      type="button" className="speechBubble9 orangeBox position-absolute d-none d-xxl-block"
+                      data-bs-toggle="modal" data-bs-target="#commentModal9">
+                      <p className="dialogText position-absolute fs-0 text-primary fw-bold">重新找回了年輕時的活力
+                      </p>
+                      <svg className="dialogBox" width="661" height="168" viewBox="0 0 661 168" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-7">
+                          <path
+                          d="M616.399 0C613.986 13.5953 611.796 25.9154 609.508 38.847C616.974 38.847 624.125 39.205 631.214 38.7799C652.83 37.4972 660.717 44.0972 660.053 65.3963C659.183 93.2209 659.847 121.083 659.838 148.93C659.838 161.034 652.686 167.954 639.837 167.962C577.959 168.014 82.0171 167.902 20.139 167.842C7.19087 167.827 0.048323 161.034 0.0303769 148.93C-0.0144883 118.681 -0.00551525 88.4405 0.0303769 58.1922C0.048323 45.4769 7.23573 38.7426 20.7761 38.7351C58.9743 38.7128 531.218 38.9141 569.417 38.7053C572.288 38.6904 575.823 37.3033 577.905 35.4389C589.31 25.2144 600.347 14.6394 611.527 4.19867C612.765 3.03527 614.111 1.96883 616.417 0L616.399 0Z" />
+                      </clipPath>
+                      <path
+                          d="M616.399 0C613.986 13.5953 611.796 25.9154 609.508 38.847C616.974 38.847 624.125 39.205 631.214 38.7799C652.83 37.4972 660.717 44.0972 660.053 65.3963C659.183 93.2209 659.847 121.083 659.838 148.93C659.838 161.034 652.686 167.954 639.837 167.962C577.959 168.014 82.0171 167.902 20.139 167.842C7.19087 167.827 0.048323 161.034 0.0303769 148.93C-0.0144883 118.681 -0.00551525 88.4405 0.0303769 58.1922C0.048323 45.4769 7.23573 38.7426 20.7761 38.7351C58.9743 38.7128 531.218 38.9141 569.417 38.7053C572.288 38.6904 575.823 37.3033 577.905 35.4389C589.31 25.2144 600.347 14.6394 611.527 4.19867C612.765 3.03527 614.111 1.96883 616.417 0L616.399 0Z"
+                          fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-7)" />
+                      </svg>
+                  </div>
+                  <div 
+                  onClick={()=>openCommentModal('commentModal10')}
+                  type="button" className="speechBubble10 orangeBox position-absolute d-none d-xl-block"
+                      data-bs-toggle="modal" data-bs-target="#commentModal10">
+                      <p className="dialogText position-absolute fs-2 text-primary">教練們非常有耐心，<br/>給了我很多有用的建議，<br/>讓我的運動效果顯著提升。
+                      </p>
+                      <svg className="dialogBox" width="481" height="264" viewBox="0 0 481 264" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-8">
+                          <path
+                          d="M384.049 263.616C386.844 246.557 389.665 229.472 392.615 211.465C374.713 211.465 44.6927 211.901 27.5865 211.209C21.7903 210.978 15.5325 208.878 10.5571 205.856C3.65816 201.68 0.990915 194.329 0.990915 186.209C0.990915 132.522 0.913975 78.8344 1.06785 25.1468C1.11915 10.7516 11.0957 0.377811 25.586 0.249739C64.6202 -0.0832464 416.517 -0.0832464 455.552 0.249739C470.35 0.377811 480.198 10.9565 480.224 25.8384C480.326 79.2698 480.352 132.701 480.224 186.158C480.198 200.938 469.914 212.182 455.244 211.106C442.01 210.133 433.316 215.102 424.853 224.323C412.311 238.053 398.693 250.834 385.536 264C385.023 263.872 384.536 263.744 384.023 263.616H384.049Z" />
+                      </clipPath>
+                      <path
+                          d="M384.049 263.616C386.844 246.557 389.665 229.472 392.615 211.465C374.713 211.465 44.6927 211.901 27.5865 211.209C21.7903 210.978 15.5325 208.878 10.5571 205.856C3.65816 201.68 0.990915 194.329 0.990915 186.209C0.990915 132.522 0.913975 78.8344 1.06785 25.1468C1.11915 10.7516 11.0957 0.377811 25.586 0.249739C64.6202 -0.0832464 416.517 -0.0832464 455.552 0.249739C470.35 0.377811 480.198 10.9565 480.224 25.8384C480.326 79.2698 480.352 132.701 480.224 186.158C480.198 200.938 469.914 212.182 455.244 211.106C442.01 210.133 433.316 215.102 424.853 224.323C412.311 238.053 398.693 250.834 385.536 264C385.023 263.872 384.536 263.744 384.023 263.616H384.049Z"
+                          fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-8)" />
+                      </svg>
+                  </div>
+                  <div 
+                      onClick={()=>openCommentModal('commentModal11')}
+                      type="button" className="speechBubble11 orangeBox position-absolute d-none d-xl-block"
+                      data-bs-toggle="modal" data-bs-target="#commentModal11">
+                      <p className="dialogText position-absolute fs-2 text-primary">每次參加完活動，<br/>我都覺得自己充滿了<br/>活力和正能量！很開心！
+                      </p>
+                      <svg className="dialogBox" width="432" height="220" viewBox="0 0 432 220" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-9">
+                          <path
+                          d="M32.582 58.3423C21.7736 60.1634 11.2139 61.9392 0.676865 63.7151L0.111572 62.2785C0.224631 62.1994 0.337689 62.1089 0.439442 62.0071C10.773 51.7253 21.0839 41.4323 31.3157 31.0714C32.1185 30.257 32.8307 28.6734 32.8646 27.531C33.0116 23.4364 32.9099 19.3305 32.9212 15.2246C32.9664 6.76395 39.8404 -0.0452947 48.2858 -5.04898e-05C59.1508 0.0678158 70.0157 0.0904379 80.8806 0.101749C97.1724 0.124371 389.101 0.101749 405.393 0.101749C409.101 0.101749 412.809 0.0904379 416.529 0.101749C425.212 0.124371 431.294 6.16447 431.306 14.8287C431.328 29.2616 431.306 43.7058 431.306 58.1387C431.306 112.081 431.306 151.025 431.306 204.967C431.306 212.387 427.077 217.964 420.396 219.581C419.141 219.887 417.852 219.988 416.574 219.988C385.562 219.988 78.9021 219.988 47.8901 220C39.049 220 32.9212 213.869 32.9212 204.945C32.9212 152.19 32.9212 114.434 32.9212 61.6791V58.6138C32.9212 58.4328 32.7516 58.2858 32.5707 58.3197L32.582 58.3423Z" />
+                      </clipPath>
+                      <path
+                          d="M32.582 58.3423C21.7736 60.1634 11.2139 61.9392 0.676865 63.7151L0.111572 62.2785C0.224631 62.1994 0.337689 62.1089 0.439442 62.0071C10.773 51.7253 21.0839 41.4323 31.3157 31.0714C32.1185 30.257 32.8307 28.6734 32.8646 27.531C33.0116 23.4364 32.9099 19.3305 32.9212 15.2246C32.9664 6.76395 39.8404 -0.0452947 48.2858 -5.04898e-05C59.1508 0.0678158 70.0157 0.0904379 80.8806 0.101749C97.1724 0.124371 389.101 0.101749 405.393 0.101749C409.101 0.101749 412.809 0.0904379 416.529 0.101749C425.212 0.124371 431.294 6.16447 431.306 14.8287C431.328 29.2616 431.306 43.7058 431.306 58.1387C431.306 112.081 431.306 151.025 431.306 204.967C431.306 212.387 427.077 217.964 420.396 219.581C419.141 219.887 417.852 219.988 416.574 219.988C385.562 219.988 78.9021 219.988 47.8901 220C39.049 220 32.9212 213.869 32.9212 204.945C32.9212 152.19 32.9212 114.434 32.9212 61.6791V58.6138C32.9212 58.4328 32.7516 58.2858 32.5707 58.3197L32.582 58.3423Z"
+                          fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-9)" />
+                      </svg>
+                  </div>
+              </div>
 
-            <div className="container d-block d-lg-none mt-6">
-                <div 
-                    onClick={()=>openCommentModal('commentModal7')}
-                    type="button" className="speechBubbleSm orangeBox position-relative mb-2"
-                    data-bs-target="#commentModal7">
-                    <p className="dialogText position-absolute fs-5  text-primary">感謝這個平台，…
-                    </p>
-                    <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-10">
-                        <path
-                        d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z" />
-                    </clipPath>
-                    <path
-                        d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z"
-                        fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-10)" />
-                    </svg>
-                </div>
-                <div 
-                onClick={()=>openCommentModal('commentModal5')}
-                type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto"
-                    data-bs-target="#commentModal5">
-                    <p className="dialogText position-absolute fs-5  text-secondary-2">認識了很多新朋友…
-                    </p>
-                    <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-11">
-                        <path
-                        d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z" />
-                    </clipPath>
-                    <path
-                        d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z"
-                        fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-11)" />
-                    </svg>
+              <div className="container d-block d-lg-none mt-6">
+                  <div 
+                      onClick={()=>openCommentModal('commentModal7')}
+                      type="button" className="speechBubbleSm orangeBox position-relative mb-2" data-bs-toggle="modal"
+                      data-bs-target="#commentModal7">
+                      <p className="dialogText position-absolute fs-5  text-primary">感謝這個平台，…
+                      </p>
+                      <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-10">
+                          <path
+                          d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z" />
+                      </clipPath>
+                      <path
+                          d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z"
+                          fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-10)" />
+                      </svg>
+                  </div>
+                  <div 
+                  onClick={()=>openCommentModal('commentModal5')}
+                  type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto" data-bs-toggle="modal"
+                      data-bs-target="#commentModal5">
+                      <p className="dialogText position-absolute fs-5  text-secondary-2">認識了很多新朋友…
+                      </p>
+                      <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-11">
+                          <path
+                          d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z" />
+                      </clipPath>
+                      <path
+                          d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z"
+                          fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-11)" />
+                      </svg>
 
-                </div>
-                <div 
-                onClick={()=>openCommentModal('commentModal8')}
-                type="button" className="speechBubbleSm orangeBox position-relative mb-2"
-                    data-bs-target="#commentModal8">
-                    <p className="dialogText position-absolute fs-5  text-primary">教練們都非常專業…
-                    </p>
-                    <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-10">
-                        <path
-                        d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z" />
-                    </clipPath>
-                    <path
-                        d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z"
-                        fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-10)" />
-                    </svg>
-                </div>
-                <div 
-                    onClick={()=>openCommentModal('commentModal13')}
-                    type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto"
-                    data-bs-target="#commentModal3">
-                    <p className="dialogText position-absolute fs-5  text-secondary-2">心情變得開朗了…
-                    </p>
-                    <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-11">
-                        <path
-                        d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z" />
-                    </clipPath>
-                    <path
-                        d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z"
-                        fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-11)" />
-                    </svg>
+                  </div>
+                  <div 
+                  onClick={()=>openCommentModal('commentModal8')}
+                  type="button" className="speechBubbleSm orangeBox position-relative mb-2" data-bs-toggle="modal"
+                      data-bs-target="#commentModal8">
+                      <p className="dialogText position-absolute fs-5  text-primary">教練們都非常專業…
+                      </p>
+                      <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-10">
+                          <path
+                          d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z" />
+                      </clipPath>
+                      <path
+                          d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z"
+                          fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-10)" />
+                      </svg>
+                  </div>
+                  <div 
+                      onClick={()=>openCommentModal('commentModal13')}
+                      type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto" data-bs-toggle="modal"
+                      data-bs-target="#commentModal3">
+                      <p className="dialogText position-absolute fs-5  text-secondary-2">心情變得開朗了…
+                      </p>
+                      <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-11">
+                          <path
+                          d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z" />
+                      </clipPath>
+                      <path
+                          d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z"
+                          fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-11)" />
+                      </svg>
 
-                </div>
-                <div 
-                    onClick={()=>openCommentModal('commentModal9')}
-                    type="button" className="speechBubbleSm orangeBox position-relative mb-2"
-                    data-bs-target="#commentModal9">
-                    <p className="dialogText position-absolute fs-5  text-primary">重新找回了年輕時…
-                    </p>
-                    <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-10">
-                        <path
-                        d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z" />
-                    </clipPath>
-                    <path
-                        d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z"
-                        fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-10)" />
-                    </svg>
-                </div>
-                <div 
-                    onClick={()=>openCommentModal('commentModal1')}
-                    type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto"
-                    data-bs-target="#commentModal1">
-                    <p className="dialogText position-absolute fs-5  text-secondary-2">社群氛圍非常好…
-                    </p>
-                    <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="clip-path-11">
-                        <path
-                        d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z" />
-                    </clipPath>
-                    <path
-                        d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z"
-                        fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-11)" />
-                    </svg>
+                  </div>
+                  <div 
+                      onClick={()=>openCommentModal('commentModal9')}
+                      type="button" className="speechBubbleSm orangeBox position-relative mb-2" data-bs-toggle="modal"
+                      data-bs-target="#commentModal9">
+                      <p className="dialogText position-absolute fs-5  text-primary">重新找回了年輕時…
+                      </p>
+                      <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-10">
+                          <path
+                          d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z" />
+                      </clipPath>
+                      <path
+                          d="M38.0134 54.1371C39.1988 59.4196 40.3538 64.5769 41.5088 69.7266L40.5716 70C40.521 69.943 40.4602 69.8899 40.3994 69.8405C33.7025 64.7934 26.9955 59.7538 20.2428 54.7485C19.716 54.3573 18.6775 54.0117 17.9379 53.9889C15.2683 53.9168 12.5936 53.9699 9.91887 53.9586C4.40735 53.9434 -0.0302392 50.5862 0.000155207 46.4581C0.0406811 41.149 0.060944 35.836 0.0710755 30.5268C0.081207 22.5669 0.0710755 20.6303 0.0710755 12.6704C0.0710755 10.8551 0.060944 9.04357 0.0710755 7.22827C0.0913385 2.98625 4.02235 0.012659 9.66558 0.00506359C19.0727 -0.00632948 28.4797 0.00506359 37.8868 0.00506359C73.0379 0.00506359 175.057 0.00506359 210.203 0.00506359C215.036 0.00506359 218.673 2.07101 219.726 5.33322C219.924 5.94465 219.99 6.57507 219.99 7.20169C219.995 22.3583 219.995 31.4876 220 46.6442C220 50.966 216.003 53.9586 210.193 53.9624C175.817 53.9624 74.5729 53.9624 40.1968 53.9624H38.2009C38.0793 53.9624 37.9881 54.0421 38.0084 54.1333L38.0134 54.1371Z"
+                          fill="white" stroke="#E79776" strokeWidth="4" clipPath="url(#clip-path-10)" />
+                      </svg>
+                  </div>
+                  <div 
+                      onClick={()=>openCommentModal('commentModal1')}
+                      type="button" className="speechBubbleSm blueBox position-relative mb-2 ms-auto" data-bs-toggle="modal"
+                      data-bs-target="#commentModal1">
+                      <p className="dialogText position-absolute fs-5  text-secondary-2">社群氛圍非常好…
+                      </p>
+                      <svg className="dialogBox" width="220" height="70" viewBox="0 0 220 70" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <clipPath id="clip-path-11">
+                          <path
+                          d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z" />
+                      </clipPath>
+                      <path
+                          d="M181.987 54.1342C180.801 59.4166 179.646 64.5736 178.491 69.723L179.428 69.9964C179.479 69.9394 179.54 69.8862 179.601 69.8369C186.298 64.79 193.005 59.7507 199.757 54.7456C200.284 54.3545 201.322 54.0089 202.062 53.9861C204.732 53.914 207.406 53.9671 210.081 53.9557C215.593 53.9406 220.03 50.5836 220 46.4557C219.959 41.1468 219.939 35.8341 219.929 30.5252C219.919 22.5657 219.929 20.6292 219.929 12.6697C219.929 10.8545 219.939 9.0431 219.929 7.2279C219.909 2.9861 215.978 0.0126583 210.334 0.00506332C200.927 -0.00632916 191.52 0.00506332 182.113 0.00506332C146.962 0.00506332 44.9432 0.00506332 9.79712 0.00506332C4.9644 0.00506332 1.32721 2.0709 0.273529 5.33295C0.0759735 5.94434 0.0101166 6.57473 0.0101166 7.20131C0.00505066 22.3571 0.00506592 31.486 0 46.6418C0 50.9633 3.99687 53.9558 9.80727 53.9596C44.1833 53.9596 145.427 53.9596 179.803 53.9596H181.799C181.921 53.9596 182.012 54.0393 181.992 54.1304L181.987 54.1342Z"
+                          fill="white" stroke="#487181" strokeWidth="4" clipPath="url(#clip-path-11)" />
+                      </svg>
 
-                </div>
-            </div>
-        </div>
-          {/* <%- include('./layout/indexModal.ejs'); -%> */}
-    </section>
+                  </div>
+              </div>
+          </div>
+            {/* <%- include('./layout/indexModal.ejs'); -%> */}
+      </section>
       {/* <!-- 課程照片Swiper --> */}
     <PhotoSwiper />
 </main>
