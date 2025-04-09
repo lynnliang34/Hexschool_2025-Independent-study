@@ -10,6 +10,11 @@ export { default as LogoSlogan } from "./LogoSlogan";
 // 提示訊息
 export { default as Toast } from "./Toast";
 
+// 首頁
+export { default as IndexSwiper } from "./IndexSwiper";
+export { default as HomeSpeechBubble } from "./HomeSpeechBubble";
+export { default as ExploreNav } from "./ExploreNav";
+
 // 後台課程
 export { default as Pagination } from "./Pagination";
 export { default as ProductModal } from "./ProductModal";
