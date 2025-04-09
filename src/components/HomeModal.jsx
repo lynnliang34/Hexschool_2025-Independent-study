@@ -49,8 +49,8 @@ export default function HomeModal({closeCommentModal}) {
         <div className="modal-content">
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">張德雄</p>
-                <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal" aria-label="Close"
+                    onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
@@ -93,7 +93,7 @@ export default function HomeModal({closeCommentModal}) {
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">李惠珍</p>
                 <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                    aria-label="Close" onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
@@ -136,7 +136,7 @@ export default function HomeModal({closeCommentModal}) {
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">陳志強</p>
                 <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                    aria-label="Close" onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
@@ -179,7 +179,7 @@ export default function HomeModal({closeCommentModal}) {
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">許麗珠</p>
                 <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                    aria-label="Close" onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
@@ -224,7 +224,7 @@ export default function HomeModal({closeCommentModal}) {
             <div className="modal-header bg-secondary-2 py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">楊和順</p>
                 <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                    aria-label="Close" onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
@@ -269,7 +269,7 @@ export default function HomeModal({closeCommentModal}) {
             <div className="modal-header bg-primary py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">李淑娟</p>
                 <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                    aria-label="Close" onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
@@ -314,7 +314,7 @@ export default function HomeModal({closeCommentModal}) {
             <div className="modal-header bg-primary py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">鄭蘭英</p>
                 <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                    aria-label="Close" onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
@@ -359,7 +359,7 @@ export default function HomeModal({closeCommentModal}) {
             <div className="modal-header bg-primary py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">趙文忠</p>
                 <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                    aria-label="Close" onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
@@ -404,7 +404,7 @@ export default function HomeModal({closeCommentModal}) {
             <div className="modal-header bg-primary py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">吳康泰</p>
                 <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                    aria-label="Close" onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
@@ -449,7 +449,7 @@ export default function HomeModal({closeCommentModal}) {
             <div className="modal-header bg-primary py-0">
                 <p className="modal-title fs-3 text-white " id="commetModalLabel">高梅玉</p>
                 <button type="button" className="btn-close rounded-pill" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                    aria-label="Close" onClick={closeCommentModal}></button>
             </div>
             <div className="modal-body p-2">
                 <div className="d-flex mb-3">
