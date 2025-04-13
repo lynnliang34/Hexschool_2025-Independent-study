@@ -10,7 +10,7 @@ export default function HomeSpeechBubble() {
   }
   const closeCommentModal = (closeModalId) => {
     const modalElement = document.getElementById(closeModalId);
-    const modal = bootstrap.Modal.getInstance(modalElement); // 獲取已存在的實例
+    const modal = Modal.getInstance(modalElement); // 獲取已存在的實例
     if (modal) modal.hide();
   }
   return(
