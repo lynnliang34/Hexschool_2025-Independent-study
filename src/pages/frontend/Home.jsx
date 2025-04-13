@@ -1,5 +1,5 @@
 import { getImageURL } from "../../utils/image-util.js";
-import { PhotoSwiper, ExploreNav, HomeSpeechBubble } from "../../components";
+import { IndexSwiper, ExploreNav, HomeSpeechBubble } from "../../components";
 
 export default function Index(){
   return(
@@ -362,7 +362,7 @@ export default function Index(){
         <HomeSpeechBubble />
       </section>
       {/* <!-- 課程照片Swiper --> */}
-      <PhotoSwiper />
+      <IndexSwiper />
     </main>
   )
 }

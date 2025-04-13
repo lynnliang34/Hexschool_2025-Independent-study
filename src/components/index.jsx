@@ -14,6 +14,7 @@ export { default as Toast } from "./Toast";
 export { default as IndexSwiper } from "./IndexSwiper";
 export { default as HomeSpeechBubble } from "./HomeSpeechBubble";
 export { default as ExploreNav } from "./ExploreNav";
+export { default as HomeModal } from "./HomeModal";
 
 // 後台課程
 export { default as Pagination } from "./Pagination";
