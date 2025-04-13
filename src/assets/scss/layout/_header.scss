@@ -203,8 +203,8 @@
 
   input[type="search"]:focus {
     outline-offset: 0; /* 讓 outline 和邊框重合 */
-    outline: 2px solid $secondary; /* 自定義顏色和寬度 */
-    box-shadow: 0px 0px 5px 3px $secondary;
+    outline: 2px solid rgba(132, 204, 201, 0.4); /* 自定義顏色和寬度 */
+    box-shadow: 0px 0px 5px 3px rgba(132, 204, 201, 0.4);
   }
 
   .navbar {
