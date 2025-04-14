@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import ReactLoading from 'react-loading';
-import { getAreasImgURL, getImageURL} from "../../utils/image-util";
+import { getAreasImgURL} from "../../utils/image-util";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -210,10 +210,6 @@ export default function ExploreCourses() {
       img: 'life-style.png',
     }
       ]
-
-  const imageUrl = getImageURL('explore_other_areas', 'music.png');
-  // console.log("生成的圖片 URL:", imageUrl);
-  // console.log("import.meta.url:", import.meta.url);
 
   return (<>
   <div className="container py-3 pt-lg-0 pb-lg-8 px-lg-15 mt-4 mb-6 my-lg-20">
