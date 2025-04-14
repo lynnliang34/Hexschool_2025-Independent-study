@@ -8,3 +8,19 @@
     fill: $primary;
   }
 }
+
+.login-input-w {
+  @include sm {
+    width: 360px;
+  }
+}
+
+.login-links {
+  color: $neutral-1;
+  transition: 0.15s;
+  text-decoration: underline;
+
+  &:hover {
+    color: $primary;
+  }
+}
