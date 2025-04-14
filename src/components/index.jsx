@@ -15,6 +15,8 @@ export { default as IndexSwiper } from "./IndexSwiper";
 export { default as HomeSpeechBubble } from "./HomeSpeechBubble";
 export { default as ExploreNav } from "./ExploreNav";
 export { default as HomeModal } from "./HomeModal";
+export { default as HomeBannerLogo } from "./HomeBannerLogo";
+export { default as HomeNews } from "./HomeNews";
 
 // 後台課程
 export { default as Pagination } from "./Pagination";
