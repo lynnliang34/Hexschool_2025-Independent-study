@@ -93,7 +93,7 @@ export default function UserLogin() {
         <Link to="/">
           <Logo className={"login-logo"} />
         </Link>
-        <h1 className="mt-5 mb-7 me-1">會員登入</h1>
+        <h1 className="mt-5 mb-7">會員登入</h1>
 
         <form
           onSubmit={handleLogin}
@@ -124,7 +124,7 @@ export default function UserLogin() {
             <label htmlFor="password">密碼</label>
           </div>
           {isAuthenticated ? (
-            <button className="btn btn-outline-primary disabled mx-8">
+            <button className="btn btn-outline-primary disabled  mx-10">
               已登入
             </button>
           ) : (
