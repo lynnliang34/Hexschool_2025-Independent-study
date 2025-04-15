@@ -618,7 +618,7 @@ function ProductModal({
                 className="form-check-input"
                 id="isFeatured"
               />
-              <label className="form-check-label" htmlFor="isEnabled">
+              <label className="form-check-label" htmlFor="isFeatured">
                 主打課程
               </label>
             </div>
@@ -631,7 +631,7 @@ function ProductModal({
                 className="form-check-input"
                 id="isPopular"
               />
-              <label className="form-check-label" htmlFor="isEnabled">
+              <label className="form-check-label" htmlFor="isPopular">
                 熱門課程
               </label>
             </div>
@@ -644,7 +644,7 @@ function ProductModal({
                 className="form-check-input"
                 id="isLastest"
               />
-              <label className="form-check-label" htmlFor="isEnabled">
+              <label className="form-check-label" htmlFor="isLastest">
                 最新活動
               </label>
             </div>
