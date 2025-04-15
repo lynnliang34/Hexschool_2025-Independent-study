@@ -43,40 +43,40 @@ export default function HomeNews() {
       <div className="row gy-2 gy-lg-0">
         {featured || popular || lastest ? (<>
           <div className="col-lg-4 position-relative">
-            <Link to={`/course-detail/${featured.id}`} className="courseLink stretched-link">
+            <Link to={`/course-detail/${featured.id}`} className="courseLink stretched-link w-100">
               <div
                   className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
                   <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">主打課程</h3>
                   <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">{featured.title}</p>
               </div>
               <div className="overflow-hidden mt-14 rounded">
-                  <img className="img-fluid rounded" src={featured.imageUrl}
+                  <img className="img-fluid rounded w-100" src={featured.imageUrl}
                   alt="athletic-senior-woman" />
               </div>
             </Link>
           </div>
           <div className="col-lg-4 position-relative">
-            <Link to={`/course-detail/${popular.id}`} className="courseLink stretched-link">
+            <Link to={`/course-detail/${popular.id}`} className="courseLink stretched-link w-100">
               <div
                   className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
                   <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">熱門課程</h3>
                   <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">{popular.title}</p>
               </div>
               <div className="overflow-hidden mt-14 rounded">
-                  <img className="img-fluid rounded" src={popular.imageUrl}
+                  <img className="img-fluid rounded w-100" src={popular.imageUrl}
                   alt="grandparents-working-out-gym" />
               </div>
             </Link>
           </div>
           <div className="col-lg-4 position-relative">
-            <Link to={`/course-detail/${lastest.id}`} className="courseLink stretched-link">
+            <Link to={`/course-detail/${lastest.id}`} className="courseLink stretched-link w-100">
               <div
                   className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
                   <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">最新活動</h3>
                   <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">{lastest.title}</p>
               </div>
               <div className="overflow-hidden mt-14 rounded">
-                  <img className="img-fluid rounded" src={lastest.imageUrl} />
+                  <img className="img-fluid rounded w-100" src={lastest.imageUrl} />
               </div>
             </Link>
           </div></>):(

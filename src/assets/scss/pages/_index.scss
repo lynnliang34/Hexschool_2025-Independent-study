@@ -80,6 +80,13 @@
                 letter-spacing: 10px;
             }
         }
+        .courseLink{
+            img{
+                @include lg{
+                    height: 300px;
+                }
+            }
+        }
     }
 }
 // 首頁推薦課程結束
