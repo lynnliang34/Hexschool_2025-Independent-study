@@ -141,7 +141,7 @@ export default function UserLogin() {
             <span className="login-links">回首頁</span>
           </Link>
           <span className="mx-1"> | </span>
-          <Link to="/">
+          <Link to="/forgot">
             <span className="login-links">忘記密碼</span>
           </Link>
         </p>

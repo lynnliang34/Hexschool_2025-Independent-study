@@ -17,6 +17,7 @@ import {
   Checkout,
   UserRegister,
   UserLogin,
+  UserForgotPassword,
   UserProfile,
   AdminLogin,
   AdminLayout,
@@ -97,6 +98,11 @@ const routes = [
     // 前台使用者登入頁
     path: "/login",
     element: <UserLogin />,
+  },
+  {
+    // 前台使用者忘記密碼頁
+    path: "/forgot",
+    element: <UserForgotPassword />,
   },
   {
     // 後台管理員登入頁

@@ -14,6 +14,7 @@ export { default as KnowledgeSharing } from "./frontend/KnowledgeSharing";
 // 登入頁面
 export { default as UserRegister } from "./login/UserRegister";
 export { default as UserLogin } from "./login/UserLogin";
+export { default as UserForgotPassword } from "./login/UserForgotPassword";
 export { default as AdminLogin } from "./login/AdminLogin";
 
 // 後台頁面
