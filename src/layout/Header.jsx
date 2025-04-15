@@ -3,14 +3,15 @@ import { Link, useNavigate, useLocation } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { setPreviousPage, logoutUser } from "../redux/userSlice";
 import { useEffect, useRef } from "react";
-import { Modal,Offcanvas } from "bootstrap";
+import { Modal, Offcanvas } from "bootstrap";
 import {
   HeaderSearchBar,
   HeaderSidebarMenu,
   HeaderNavbar,
   LogoSlogan,
-  CartOffcanvas
+  CartOffcanvas,
 } from "../components";
+import { IconSearch } from "../assets/Icons";
 
 // 環境變數
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -26,7 +27,7 @@ export default function Header() {
   const location = useLocation();
 
   // 取得cartSlice購物車清單
-  const cartDetails = useSelector((state)=> state.cart.cartDetails);
+  const cartDetails = useSelector((state) => state.cart.cartDetails);
 
   const cartOffcanvasRef = useRef(null); // Offcanvas 要引用的參考 DOM 元素
   const cartOffcanvas = useRef(null); // 儲存 Offcanvas 物件的引用
@@ -78,12 +79,12 @@ export default function Header() {
   // 打開購物車 Offcanvas
   const openCartOffcanvas = () => {
     cartOffcanvas.current.show();
-  }
+  };
 
   // 關閉購物車 Offcanvas
   const closeCartOffcanvas = () => {
     cartOffcanvas.current.hide();
-  }
+  };
 
   return (
     <>
@@ -194,33 +195,7 @@ export default function Header() {
                       />
                     </form>
                     <div className="search-icon-lg position-absolute">
-                      <svg
-                        width="30"
-                        height="30"
-                        viewBox="0 0 30 30"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g clipPath="url(#clip0_94_4564)">
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M14.0833 7.75C10.5855 7.75 7.75 10.5855 7.75 14.0833C7.75 17.5811 10.5855 20.4167 14.0833 20.4167C17.5811 20.4167 20.4167 17.5811 20.4167 14.0833C20.4167 10.5855 17.5811 7.75 14.0833 7.75ZM5.75 14.0833C5.75 9.48096 9.48096 5.75 14.0833 5.75C18.6857 5.75 22.4167 9.48096 22.4167 14.0833C22.4167 18.6857 18.6857 22.4167 14.0833 22.4167C9.48096 22.4167 5.75 18.6857 5.75 14.0833Z"
-                            fill="#484848"
-                          />
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M18.5553 18.5553C18.9459 18.1648 19.579 18.1648 19.9696 18.5553L23.9571 22.5428C24.3476 22.9334 24.3476 23.5665 23.9571 23.9571C23.5665 24.3476 22.9334 24.3476 22.5428 23.9571L18.5553 19.9696C18.1648 19.579 18.1648 18.9459 18.5553 18.5553Z"
-                            fill="#484848"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_94_4564">
-                            <rect width="30" height="30" fill="white" />
-                          </clipPath>
-                        </defs>
-                      </svg>
+                      <IconSearch className={"search-color"} />
                     </div>
                   </div>
 
@@ -292,13 +267,18 @@ export default function Header() {
         {isAuthenticated ? (
           <div className="position-fixed cart-link-circle">
             {/* <Link className="nav-link-3 cart-link" to="/checkout"> */}
-            <button onClick={openCartOffcanvas} type="button" className="nav-link-3 cart-link">
+            <button
+              onClick={openCartOffcanvas}
+              type="button"
+              className="nav-link-3 cart-link"
+            >
               <i className="bi bi-cart-fill mt-3 me-1 position-relative">
                 <span
                   className="position-absolute cart-number translate-middle badge rounded-pill"
                   style={{ fontSize: "10px" }}
                 >
-                  {cartDetails.length}<span className="visually-hidden">purchase quantity</span>
+                  {cartDetails.length}
+                  <span className="visually-hidden">purchase quantity</span>
                 </span>
               </i>
             </button>
@@ -308,8 +288,10 @@ export default function Header() {
           <></>
         )}
 
-        <CartOffcanvas 
-          cartOffcanvasRef={cartOffcanvasRef} closeCartOffcanvas={closeCartOffcanvas}/>
+        <CartOffcanvas
+          cartOffcanvasRef={cartOffcanvasRef}
+          closeCartOffcanvas={closeCartOffcanvas}
+        />
       </div>
     </>
   );
