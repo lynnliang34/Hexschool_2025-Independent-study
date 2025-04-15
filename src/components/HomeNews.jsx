@@ -27,9 +27,9 @@ export default function HomeNews() {
   },[]);
 
   useEffect(()=>{
-    const isEnable = products.filter((item)=> item.is_enabled === 1);
+    const isFeatured = products.filter((item)=> item.is_featured === 1);
     // console.log(isEnable);
-    setfeatured(isEnable[0]); //只取第一筆資料
+    setfeatured(isFeatured[0]); //只取第一筆資料
     // console.log(featured);
     const isPopular = products.filter((item)=> item.is_popular === 1);
     setPopular(isPopular[0]);
@@ -56,27 +56,27 @@ export default function HomeNews() {
             </Link>
           </div>
           <div className="col-lg-4 position-relative">
-            <Link to={`/course-detail/${featured.id}`} className="courseLink stretched-link">
+            <Link to={`/course-detail/${popular.id}`} className="courseLink stretched-link">
               <div
                   className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
                   <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">熱門課程</h3>
-                  <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">{featured.title}</p>
+                  <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">{popular.title}</p>
               </div>
               <div className="overflow-hidden mt-14 rounded">
-                  <img className="img-fluid rounded" src={featured.imageUrl}
+                  <img className="img-fluid rounded" src={popular.imageUrl}
                   alt="grandparents-working-out-gym" />
               </div>
             </Link>
           </div>
           <div className="col-lg-4 position-relative">
-            <Link to={`/course-detail/${featured.id}`} className="courseLink stretched-link">
+            <Link to={`/course-detail/${lastest.id}`} className="courseLink stretched-link">
               <div
                   className="cardText position-absolute top-0 vertical-rl bg-white pt-5 pb-3 ps-4 rounded rounded-bottom-right-0">
                   <h3 className="cardTitle lh-1 me-0 ms-3 fs-lg-2 text-primary">最新活動</h3>
-                  <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">{featured.title}</p>
+                  <p className="cardContent mt-9 lh-1 mx-0 fs-5 fs-lg-4 text-nowrap">{lastest.title}</p>
               </div>
               <div className="overflow-hidden mt-14 rounded">
-                  <img className="img-fluid rounded" src={featured.imageUrl} />
+                  <img className="img-fluid rounded" src={lastest.imageUrl} />
               </div>
             </Link>
           </div></>):(
