@@ -41,7 +41,7 @@ export default function HomeNews() {
     <div className="container pt-7 pb-6 pb-lg-10">
       {/* <!-- 課程卡片 --> */}
       <div className="row gy-2 gy-lg-0">
-        {featured || popular || lastest ? (<>
+        {featured && popular && lastest ? (<>
           <div className="col-lg-4 position-relative">
             <Link to={`/course-detail/${featured.id}`} className="courseLink stretched-link w-100">
               <div
