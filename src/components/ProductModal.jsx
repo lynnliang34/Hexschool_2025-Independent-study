@@ -77,6 +77,9 @@ function ProductModal({
           origin_price: Number(modalData.origin_price),
           price: Number(modalData.price),
           is_enabled: modalData.is_enabled ? 1 : 0,
+          is_featured: modalData.is_featured ? 1 : 0,
+          is_lastest: modalData.is_lastest ? 1 : 0,
+          is_popular: modalData.is_popular ? 1 : 0,
         },
       });
     } catch (error) {
@@ -95,6 +98,9 @@ function ProductModal({
             origin_price: Number(modalData.origin_price),
             price: Number(modalData.price),
             is_enabled: modalData.is_enabled ? 1 : 0,
+            is_featured: modalData.is_featured ? 1 : 0,
+            is_lastest: modalData.is_lastest ? 1 : 0,
+            is_popular: modalData.is_popular ? 1 : 0,
           },
         }
       );
@@ -603,6 +609,46 @@ function ProductModal({
           </div>
 
           <div className="modal-footer border-top bg-light">
+            <div className="form-check me-5">
+              <input
+                checked={modalData.is_featured}
+                onChange={handleModalInputChange}
+                name="is_featured"
+                type="checkbox"
+                className="form-check-input"
+                id="isFeatured"
+              />
+              <label className="form-check-label" htmlFor="isEnabled">
+                主打課程
+              </label>
+            </div>
+            <div className="form-check me-5">
+              <input
+                checked={modalData.is_popular}
+                onChange={handleModalInputChange}
+                name="is_popular"
+                type="checkbox"
+                className="form-check-input"
+                id="isPopular"
+              />
+              <label className="form-check-label" htmlFor="isEnabled">
+                熱門課程
+              </label>
+            </div>
+            <div className="form-check me-10">
+              <input
+                checked={modalData.is_lastest}
+                onChange={handleModalInputChange}
+                name="is_lastest"
+                type="checkbox"
+                className="form-check-input"
+                id="isLastest"
+              />
+              <label className="form-check-label" htmlFor="isEnabled">
+                最新活動
+              </label>
+            </div>
+
             <div className="form-check me-5">
               <input
                 checked={modalData.is_enabled}
