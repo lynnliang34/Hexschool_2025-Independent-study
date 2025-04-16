@@ -2,6 +2,7 @@ import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { setPreviousPage, logoutUser } from "../redux/userSlice";
+import { updateFilteredCourses } from "../redux/filteredCoursesSlice";
 import { useEffect, useRef, useState } from "react";
 import { Modal, Offcanvas } from "bootstrap";
 import {
@@ -90,7 +91,6 @@ export default function Header() {
   // 搜尋
   const [searchTerm, setSearchTerm] = useState(""); // 關鍵字
   const [allCourses, setAllCourses] = useState([]); // 全部課程
-  const [filteredCourses, setFilteredCourses] = useState([]); // 篩選課程
 
   useEffect(() => {
     const getAllCourses = async () => {
@@ -112,7 +112,6 @@ export default function Header() {
         }
 
         setAllCourses(all);
-        setFilteredCourses(all); // 預設顯示全部
       } catch (err) {
         console.error("載入全部產品失敗", err);
       }
@@ -132,7 +131,8 @@ export default function Header() {
       return item.title.toLowerCase().includes(lowerSearch);
     });
 
-    setFilteredCourses(filtered);
+    dispatch(updateFilteredCourses(filtered));
+    setSearchTerm("");
   };
 
   return (
