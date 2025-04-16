@@ -120,7 +120,7 @@ export default function Header() {
     getAllCourses();
   }, []);
 
-  // 輸入關鍵字後按 Enter
+  // 執行搜尋
   const handleSearch = (e) => {
     e.preventDefault();
     navigate("/search-courses");
@@ -245,8 +245,8 @@ export default function Header() {
                         onChange={(e) => setSearchTerm(e.target.value)}
                       />
                     </form>
-                    <div className="search-icon-lg position-absolute">
-                      <IconSearch className={"search-color"} />
+                    <div className="search-icon-lg position-absolute" onClick={handleSearch}>
+                      <IconSearch className="search-color" />
                     </div>
                   </div>
 
