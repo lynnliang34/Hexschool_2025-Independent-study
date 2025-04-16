@@ -2,7 +2,7 @@ import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { setPreviousPage, logoutUser } from "../redux/userSlice";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Modal, Offcanvas } from "bootstrap";
 import {
   HeaderSearchBar,
@@ -15,6 +15,7 @@ import { IconSearch } from "../assets/Icons";
 
 // 環境變數
 const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function Header() {
   const dispatch = useDispatch(); // 取得 Redux 的 dispatch 函式
@@ -84,6 +85,54 @@ export default function Header() {
   // 關閉購物車 Offcanvas
   const closeCartOffcanvas = () => {
     cartOffcanvas.current.hide();
+  };
+
+  // 搜尋
+  const [searchTerm, setSearchTerm] = useState(""); // 關鍵字
+  const [allCourses, setAllCourses] = useState([]); // 全部課程
+  const [filteredCourses, setFilteredCourses] = useState([]); // 篩選課程
+
+  useEffect(() => {
+    const getAllCourses = async () => {
+      let page = 1;
+      let all = [];
+      let hasNext = true;
+
+      try {
+        while (hasNext) {
+          const res = await axios.get(`${BASE_URL}/api/${API_PATH}/products`, {
+            params: { page },
+          });
+
+          const { products, pagination } = res.data;
+          all = [...all, ...products];
+
+          hasNext = pagination.has_next;
+          page++;
+        }
+
+        setAllCourses(all);
+        setFilteredCourses(all); // 預設顯示全部
+      } catch (err) {
+        console.error("載入全部產品失敗", err);
+      }
+    };
+
+    getAllCourses();
+  }, []);
+
+  // 輸入關鍵字後按 Enter
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate("/search-courses");
+
+    const lowerSearch = searchTerm.toLowerCase();
+
+    const filtered = allCourses.filter((item) => {
+      return item.title.toLowerCase().includes(lowerSearch);
+    });
+
+    setFilteredCourses(filtered);
   };
 
   return (
@@ -186,12 +235,14 @@ export default function Header() {
                 <div className="d-flex justify-content-between align-items-center">
                   {/* 搜尋框 */}
                   <div className="position-relative">
-                    <form>
+                    <form onSubmit={handleSearch}>
                       <input
                         className="search"
                         type="search"
                         placeholder="搜尋有氧課程"
                         aria-label="Search"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                       />
                     </form>
                     <div className="search-icon-lg position-absolute">
