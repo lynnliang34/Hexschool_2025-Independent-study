@@ -7,7 +7,7 @@ const CourseCard = ({ course }) => {
         <img
           src={course.imageUrl}
           className="rounded course-card-img"
-          alt="straighten"
+          alt={`${course.title}的課程圖片`}
         />
         <div className="card-body px-0 pb-2">
           <h2 className="card-title text-primary border border-primary rounded-5px d-inline-block p-2 mb-3">

@@ -406,7 +406,7 @@ export default function Checkout() {
                     <img
                       className="cart-list-img rounded me-4"
                       src={item.img}
-                      alt=""
+                      alt={`${item.title}的課程圖片`}
                     />
 
                     <div className="me-4">
@@ -453,7 +453,7 @@ export default function Checkout() {
                           <img
                             className="cart-list-img rounded"
                             src={item.img}
-                            alt=""
+                            alt={`${item.title}的課程圖片`}
                           />
                           <p className="text-start text-truncate">
                             {item.title}
