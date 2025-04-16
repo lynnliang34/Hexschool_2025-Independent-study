@@ -241,10 +241,12 @@
       font-size: 24px;
     }
 
-    &:hover {
+    &:hover, &.active {
       color: $secondary;
       border-bottom: 2px solid $secondary;
     }
+
+    
   }
 
   .nav-link-3 {
