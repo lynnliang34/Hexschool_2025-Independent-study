@@ -21,7 +21,7 @@ export default function SearchCourses() {
                   <div className="card px-2 pt-2 bg-primary-2 border-0 h-100">
                     <img
                       src={courseData.imageUrl}
-                      className="rounded card-img"
+                      className="rounded course-card-img"
                       alt="straighten"
                     />
                     <div className="card-body px-0 pb-2">
