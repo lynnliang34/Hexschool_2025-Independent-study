@@ -46,8 +46,8 @@ export default function HeaderSearchBar({handleSearch,searchTerm,setSearchTerm})
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </form>
-          <div className="search-icon-lg position-absolute">
-            <IconSearch className={"search-color"} />
+          <div className="search-icon-lg position-absolute" onClick={handleSearch}>
+            <IconSearch className="search-color" />
           </div>
         </div>
       </div>

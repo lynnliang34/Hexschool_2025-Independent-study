@@ -190,6 +190,13 @@
   .search-icon-lg {
     top: 4px;
     left: 8px;
+    transition: 0.15s;
+
+    &:hover {
+      .search-color {
+        fill: $primary;
+      }
+    }
 
     @include xl {
       left: 16px;
