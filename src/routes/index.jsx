@@ -12,6 +12,7 @@ import {
   ExploreCourses,
   CourseDetail,
   ScheduleCourses,
+  SearchCourses,
   KnowledgeSharing,
   Photos,
   Checkout,
@@ -52,6 +53,10 @@ const routes = [
       {
         path: "course-detail/:id",
         element: <CourseDetail />,
+      },
+      {
+        path: "search-courses",
+        element: <SearchCourses />,
       },
       {
         path: "knowledge-sharing",
