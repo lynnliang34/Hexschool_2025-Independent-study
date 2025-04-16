@@ -18,6 +18,9 @@ export { default as HomeModal } from "./HomeModal";
 export { default as HomeBannerLogo } from "./HomeBannerLogo";
 export { default as HomeNews } from "./HomeNews";
 
+// 前台課程
+export { default as CourseCard } from "./CourseCard";
+
 // 後台課程
 export { default as Pagination } from "./Pagination";
 export { default as ProductModal } from "./ProductModal";
