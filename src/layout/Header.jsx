@@ -148,7 +148,7 @@ export default function Header() {
               {/* 手機版*/}
               <div className="d-flex">
                 {/* search*/}
-                <HeaderSearchBar />
+                <HeaderSearchBar handleSearch={handleSearch} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
 
                 {/* list*/}
                 <button className="list d-lg-none" onClick={openMenuModal}>

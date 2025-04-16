@@ -12,7 +12,7 @@ export default function SearchCourses() {
           <hr className="my-3 my-lg-8" />
         </div>
       </div>
-      <div className="container mb-lg-35">
+      <div className="container mb-20 mb-lg-35">
         {courses.length > 0 ? (
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-lg-6 gy-3 gy-lg-10">
             {courses.map((course) => {
@@ -20,7 +20,7 @@ export default function SearchCourses() {
             })}
           </div>
         ) : (
-          <h1 className="text-secondary text-center">查無相符的課程</h1>
+          <h1 className="text-secondary text-center fs-3 fs-lg-0">查無相符的課程</h1>
         )}
       </div>
     </>

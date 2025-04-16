@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { IconSearch } from "../assets/Icons";
 
-export default function HeaderSearchBar() {
+export default function HeaderSearchBar({handleSearch,searchTerm,setSearchTerm}) {
   const [isVisible, setIsVisible] = useState(false);
 
   // 點擊放大鏡，顯示或隱藏搜尋框
@@ -36,12 +36,14 @@ export default function HeaderSearchBar() {
       {/* <!-- 搜尋框 --> */}
       <div className={`search-form d-lg-none ${isVisible ? "" : "d-none"}`}>
         <div className="position-relative">
-          <form>
+          <form onSubmit={handleSearch}>
             <input
               className="search"
               type="search"
               placeholder="搜尋有氧課程"
               aria-label="Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </form>
           <div className="search-icon-lg position-absolute">
