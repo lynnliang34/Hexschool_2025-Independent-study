@@ -21,11 +21,6 @@
     }
 
     .tab-content{
-        .card-img{
-            height: 265px !important;
-            object-fit: cover;
-        }
-
         .btn{
             padding: 0px 8px;
             line-height: 16px;
@@ -67,4 +62,9 @@
             }
         }
     }
+}
+
+.course-card-img{
+    height: 265px !important;
+    object-fit: cover;
 }

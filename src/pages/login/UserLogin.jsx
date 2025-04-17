@@ -90,25 +90,26 @@ export default function UserLogin() {
   return (
     <>
       <div className="d-flex flex-column justify-content-center align-items-center vh-100 bg-primary-2">
-        <div className="d-flex align-items-center">
-          <Link to="/">
-            <Logo className={"login-logo me-1"} />
-          </Link>
-          <h1 className="mt-5 mb-7 me-1">會員登入</h1>
-        </div>
+        <Link to="/">
+          <Logo className={"login-logo"} />
+        </Link>
+        <h1 className="mt-5 mb-7">會員登入</h1>
 
-        <form onSubmit={handleLogin} className="d-flex flex-column gap-3 ">
+        <form
+          onSubmit={handleLogin}
+          className="d-flex flex-column gap-3 login-input-w"
+        >
           <div className="form-floating mb-1">
             <input
               name="username"
               value={account.username}
               onChange={handleInputChange}
               type="email"
-              className="form-control"
+              className="form-control "
               id="username"
               placeholder="name@example.com"
             />
-            <label htmlFor="username">Email address</label>
+            <label htmlFor="username">電子信箱</label>
           </div>
           <div className="form-floating mb-4">
             <input
@@ -120,15 +121,30 @@ export default function UserLogin() {
               id="password"
               placeholder="Password"
             />
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">密碼</label>
           </div>
           {isAuthenticated ? (
-            <button className="btn btn-outline-primary disabled">已登入</button>
+            <button className="btn btn-outline-primary disabled  mx-10">
+              已登入
+            </button>
           ) : (
-            <button className="btn btn-primary text-white ">登入</button>
+            <button className="btn btn-primary text-white mx-10">登入</button>
           )}
         </form>
-        <p className="mt-5 mb-3 text-muted">&copy; 2024~∞ - 六角學院</p>
+        <p className="mt-5 mb-3 fs-7">
+          沒有帳號？
+          <Link to="/register">
+            <span className="login-links">註冊去</span>
+          </Link>
+          <span className="mx-1"> | </span>
+          <Link to="/">
+            <span className="login-links">回首頁</span>
+          </Link>
+          <span className="mx-1"> | </span>
+          <Link to="/forgot">
+            <span className="login-links">忘記密碼</span>
+          </Link>
+        </p>
       </div>
 
       <Toast />

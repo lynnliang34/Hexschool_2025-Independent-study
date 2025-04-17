@@ -6,3 +6,4 @@ export { default as IconPhone } from "./IconPhone";
 export { default as IconMail } from "./IconMail";
 export { default as IconTopArrow } from "./IconTopArrow";
 export { default as IconTrash } from "./IconTrash";
+export { default as IconSearch } from "./IconSearch";

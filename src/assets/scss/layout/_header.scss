@@ -47,6 +47,10 @@
     fill: $secondary-2;
   }
 
+  .search-color {
+    fill: $neutral-1;
+  }
+
   .search-form {
     position: absolute;
     top: 9px;
@@ -186,6 +190,13 @@
   .search-icon-lg {
     top: 4px;
     left: 8px;
+    transition: 0.15s;
+
+    &:hover {
+      .search-color {
+        fill: $primary;
+      }
+    }
 
     @include xl {
       left: 16px;
@@ -203,8 +214,8 @@
 
   input[type="search"]:focus {
     outline-offset: 0; /* 讓 outline 和邊框重合 */
-    outline: 2px solid $secondary; /* 自定義顏色和寬度 */
-    box-shadow: 0px 0px 5px 3px $secondary;
+    outline: 2px solid rgba(132, 204, 201, 0.4); /* 自定義顏色和寬度 */
+    box-shadow: 0px 0px 5px 3px rgba(132, 204, 201, 0.4);
   }
 
   .navbar {
@@ -230,10 +241,12 @@
       font-size: 24px;
     }
 
-    &:hover {
+    &:hover, &.active {
       color: $secondary;
       border-bottom: 2px solid $secondary;
     }
+
+    
   }
 
   .nav-link-3 {

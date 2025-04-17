@@ -65,7 +65,7 @@ export default function CourseDetail() {
                 />
                 <img
                 src={getDividerImgURL('divider-lg.png')}
-                alt=""
+                alt="lg-divider"
                 className="d-lg-none"
                 />
             </picture>
@@ -80,7 +80,7 @@ export default function CourseDetail() {
                 <h2 className="fs-4 text-secondary mb-2">{course.category}</h2>
                 <img
                 src={course.imageUrl}
-                alt=""
+                alt={course.title}
                 className="object-fit-cover rounded-20 course-img mb-2"
                 />
                 {/* 判斷課程內容是否存在，存在才渲染畫面 */}
@@ -118,7 +118,7 @@ export default function CourseDetail() {
                         </h2>
                         <img
                         src={course.imageUrl}
-                        alt=""
+                        alt={course.title}
                         className="object-fit-cover rounded-20 course-lg-img"
                         />
                     </div>
@@ -165,7 +165,7 @@ export default function CourseDetail() {
                 />
                 <img
                 src={getDividerImgURL('divider-lg.png')}
-                alt=""
+                alt="lg-divider"
                 className="mt-6 mt-lg-10 mb-2 mb-lg-4"
                 />
             </picture>
@@ -213,7 +213,7 @@ export default function CourseDetail() {
                         </h3>
                         <img
                             src={getImageURL('side-view-man-running-gym.png')}
-                            alt=""
+                            alt="side-view-man-running-gym.png"
                             className="object-fit-cover features-img"
                         />
                         <p className="d-lg-none fs-5 features-text">
@@ -239,7 +239,7 @@ export default function CourseDetail() {
                 />
                 <img
                     src={getDividerImgURL('divider-lg.png')}
-                    alt=""
+                    alt="lg-divider"
                     className="mt-6 mt-lg-10 mb-2 mb-lg-4"
                 />
             </picture>
@@ -316,7 +316,7 @@ export default function CourseDetail() {
             />
             <img
             src={getDividerImgURL('divider-lg.png')}
-            alt=""
+            alt="lg-divider"
             className="mt-6 mt-lg-10 mb-2 mb-lg-4"
             />
         </picture>
@@ -334,7 +334,7 @@ export default function CourseDetail() {
                         <img
                         src={getTeacherImgURL('Hui-Zhen Lin.png')}
                         className="teacher-img mb-1 mb-lg-2"
-                        alt="..."
+                        alt="Hui-Zhen Lin.png"
                         />
                         <h5
                         className="align-self-lg-start fs-6 fs-lg-3 text-primary mb-1 mb-lg-2"
@@ -363,7 +363,7 @@ export default function CourseDetail() {
                         <img
                         src={getTeacherImgURL('Wei-Ming Zhang.png')}
                         className="teacher-img mb-1 mb-lg-2"
-                        alt="..."
+                        alt="Wei-Ming Zhang.png"
                         />
                         <h5
                         className="align-self-lg-start fs-6 fs-lg-3 text-primary mb-1 mb-lg-2"
@@ -392,7 +392,7 @@ export default function CourseDetail() {
                         <img
                         src={getTeacherImgURL('Mei-Lan Li.png')}
                         className="teacher-img mb-1 mb-lg-2"
-                        alt="..."
+                        alt="Mei-Lan Li.png"
                         />
                         <h5
                         className="align-self-lg-start fs-6 fs-lg-3 text-primary mb-1 mb-lg-2"
@@ -421,7 +421,7 @@ export default function CourseDetail() {
                         <img
                         src={getTeacherImgURL('Zhi-Qiang Wang.png')}
                         className="teacher-img mb-1 mb-lg-2"
-                        alt="..."
+                        alt="Zhi-Qiang Wang.png"
                         />
                         <h5
                         className="align-self-lg-start fs-6 fs-lg-3 text-primary mb-1 mb-lg-2"

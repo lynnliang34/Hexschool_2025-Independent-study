@@ -12,20 +12,22 @@ export default function HeaderNavbar() {
           </NavLink>
 
           {/* 子選單 */}
-          <div className="hover-section">
-            <div className="d-flex flex-column px-2">
-              {item.subItems &&
-                item.subItems.map((subItem, subIndex) => (
-                  <NavLink
-                    key={subIndex}
-                    className="nav-link-2"
-                    to={subItem.link}
-                  >
-                    {subItem.title}
-                  </NavLink>
-                ))}
+          {item.subItems && (
+            <div className="hover-section">
+              <div className="d-flex flex-column px-2">
+                {item.subItems &&
+                  item.subItems.map((subItem, subIndex) => (
+                    <NavLink
+                      key={subIndex}
+                      className="nav-link-2"
+                      to={subItem.link}
+                    >
+                      {subItem.title}
+                    </NavLink>
+                  ))}
+              </div>
             </div>
-          </div>
+          )}
         </li>
       ))}
     </ul>

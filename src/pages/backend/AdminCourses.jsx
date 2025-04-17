@@ -33,6 +33,9 @@ const defaultModalState = {
     },
   ],
   is_enabled: 0,
+  is_featured: 0,
+  is_lastest: 0,
+  is_popular: 0,
   imagesUrl: [""],
 };
 
@@ -63,6 +66,9 @@ export default function AdminCourses() {
               signed_up_users: [],
             },
           ], // 如果沒有 timeSlots，設為陣列物件資料
+          is_featured: product.is_featured || 0,
+          is_lastest: product.is_lastest || 0,
+          is_popular: product.is_popular || 0,
         }))
       );
       setPageInfo(res.data.pagination);
@@ -170,6 +176,9 @@ export default function AdminCourses() {
                   <th scope="col">原價</th>
                   <th scope="col">售價</th>
                   <th scope="col">是否啟用</th>
+                  <th scope="col">主打</th>
+                  <th scope="col">熱門</th>
+                  <th scope="col">最新</th>
                   <th scope="col">編輯 / 刪除</th>
                 </tr>
               </thead>
@@ -181,9 +190,36 @@ export default function AdminCourses() {
                     <td>{product.price}</td>
                     <td>
                       {product.is_enabled ? (
-                        <span className="text-success">啟用</span>
+                        <span className="text-secondary">啟用</span>
                       ) : (
                         <span>未啟用</span>
+                      )}
+                    </td>
+                    <td>
+                      {product.is_featured ? (
+                        <span className="text-primary">
+                          <i class="bi bi-star-fill"></i>
+                        </span>
+                      ) : (
+                        <span>-</span>
+                      )}
+                    </td>
+                    <td>
+                      {product.is_popular ? (
+                        <span className="text-primary">
+                          <i class="bi bi-star-fill"></i>
+                        </span>
+                      ) : (
+                        <span>-</span>
+                      )}
+                    </td>
+                    <td>
+                      {product.is_lastest ? (
+                        <span className="text-primary">
+                          <i class="bi bi-star-fill"></i>
+                        </span>
+                      ) : (
+                        <span>-</span>
                       )}
                     </td>
                     <td>

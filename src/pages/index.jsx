@@ -5,6 +5,7 @@ export { default as About } from "./frontend/About";
 export { default as ExploreCourses } from "./frontend/ExploreCourses";
 export { default as CourseDetail } from "./frontend/CourseDetail";
 export { default as ScheduleCourses } from "./frontend/ScheduleCourses";
+export { default as SearchCourses } from "./frontend/SearchCourses";
 export { default as Footer } from "../layout/Footer";
 export { default as UserProfile } from "./frontend/UserProfile";
 export { default as Checkout } from "./frontend/Checkout";
@@ -14,6 +15,7 @@ export { default as KnowledgeSharing } from "./frontend/KnowledgeSharing";
 // 登入頁面
 export { default as UserRegister } from "./login/UserRegister";
 export { default as UserLogin } from "./login/UserLogin";
+export { default as UserForgotPassword } from "./login/UserForgotPassword";
 export { default as AdminLogin } from "./login/AdminLogin";
 
 // 後台頁面
