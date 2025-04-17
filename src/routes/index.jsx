@@ -14,6 +14,7 @@ import {
   ScheduleCourses,
   SearchCourses,
   KnowledgeSharing,
+  KnowledgeDetail,
   Photos,
   Checkout,
   UserRegister,
@@ -61,6 +62,10 @@ const routes = [
       {
         path: "knowledge-sharing",
         element: <KnowledgeSharing />,
+      },
+      {
+        path: "knowledge-detail/:id",
+        element: <KnowledgeDetail />,
       },
       {
         path: "photos",
