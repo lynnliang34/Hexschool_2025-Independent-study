@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { getImageURL } from "../../utils/image-util";
 
 export default function KnowledgeSharing() {
@@ -194,7 +195,9 @@ export default function KnowledgeSharing() {
                 適合的運動讓晚年更輕鬆
               </h4>
               <img
-                src={getImageURL('athletic-senior-woman-stretching-arm-park.png')}
+                src={getImageURL(
+                  "athletic-senior-woman-stretching-arm-park.png"
+                )}
                 alt=""
                 className="rounded mb-2 mb-lg-5"
               />
@@ -203,14 +206,17 @@ export default function KnowledgeSharing() {
                 <br className="d-none d-xxl-block" />
                 運動不僅能增強肌肉力量,還能提升心肺功能,改善生活品質。隨著身體機能的逐漸減弱,適當的運動能幫助維持身體靈活性和生活的獨立...
               </p>
-              <div className="d-flex justify-content-end">
+              <Link
+                to={`/knowledge-detail/id`}
+                className="d-flex justify-content-end"
+              >
                 <a className="learn-more-H">
                   了解更多
                   <span className="material-symbols-outlined">
                     chevron_right
                   </span>
                 </a>
-              </div>
+              </Link>
             </article>
             {/* 文章列表 */}
             <div className="ms-lg-10 ms-xl-15 ms-xxl-17">
@@ -232,7 +238,7 @@ export default function KnowledgeSharing() {
                         <div className="d-flex justify-content-between align-items-center">
                           <div className="d-flex">
                             <img
-                              src={getImageURL('people.png')}
+                              src={getImageURL("people.png")}
                               alt=""
                               className="photo me-2"
                             />
@@ -240,18 +246,23 @@ export default function KnowledgeSharing() {
                               李美蘭 2024/7/29
                             </p>
                           </div>
-                          <a className="learn-more-H">
+                          <Link
+                            to={`/knowledge-detail/id`}
+                            className="learn-more-H"
+                          >
                             了解更多
                             <span className="material-symbols-outlined">
                               chevron_right
                             </span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
                   </div>
                   <img
-                    src={getImageURL('high-angle-plate-with-keto-diet-food-nuts.png')}
+                    src={getImageURL(
+                      "high-angle-plate-with-keto-diet-food-nuts.png"
+                    )}
                     alt=""
                     className="img mb-2 mb-lg-0"
                   />
@@ -261,18 +272,20 @@ export default function KnowledgeSharing() {
                 <div className="d-flex justify-content-between align-items-center d-lg-none">
                   <div className="d-flex">
                     <img
-                      src={getImageURL('high-angle-plate-with-keto-diet-food-nuts.png')}
+                      src={getImageURL(
+                        "high-angle-plate-with-keto-diet-food-nuts.png"
+                      )}
                       alt=""
                       className="photo me-2"
                     />
                     <p className="fs-7 fs-lg-6 fs-xl-5">李美蘭 2024/7/29</p>
                   </div>
-                  <a className="learn-more-H">
+                  <Link to={`/knowledge-detail/id`} className="learn-more-H">
                     了解更多
                     <span className="material-symbols-outlined">
                       chevron_right
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </article>
               <article className="article d-flex flex-column mb-article">
@@ -291,7 +304,7 @@ export default function KnowledgeSharing() {
                         <div className="d-flex justify-content-between align-items-center">
                           <div className="d-flex">
                             <img
-                              src={getImageURL('people.png')}
+                              src={getImageURL("people.png")}
                               alt=""
                               className="photo me-2"
                             />
@@ -299,18 +312,21 @@ export default function KnowledgeSharing() {
                               王志強 2024/7/23
                             </p>
                           </div>
-                          <a className="learn-more-H">
+                          <Link
+                            to={`/knowledge-detail/id`}
+                            className="learn-more-H"
+                          >
                             了解更多
                             <span className="material-symbols-outlined">
                               chevron_right
                             </span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
                   </div>
                   <img
-                    src={getImageURL('close-up-woman-using-mobile.png')}
+                    src={getImageURL("close-up-woman-using-mobile.png")}
                     alt=""
                     className="img mb-2 mb-lg-0"
                   />
@@ -320,18 +336,18 @@ export default function KnowledgeSharing() {
                 <div className="d-flex justify-content-between align-items-center d-lg-none">
                   <div className="d-flex">
                     <img
-                      src={getImageURL('people.png')}
+                      src={getImageURL("people.png")}
                       alt=""
                       className="photo me-2"
                     />
                     <p className="fs-7 fs-lg-6 fs-xl-5">王志強 2024/7/23</p>
                   </div>
-                  <a className="learn-more-H">
+                  <Link to={`/knowledge-detail/id`} className="learn-more-H">
                     了解更多
                     <span className="material-symbols-outlined">
                       chevron_right
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </article>
               <article className="article d-flex flex-column">
@@ -352,7 +368,7 @@ export default function KnowledgeSharing() {
                         <div className="d-flex justify-content-between align-items-center">
                           <div className="d-flex">
                             <img
-                              src={getImageURL('people.png')}
+                              src={getImageURL("people.png")}
                               alt=""
                               className="photo me-2"
                             />
@@ -360,18 +376,23 @@ export default function KnowledgeSharing() {
                               陳佳欣 2024/8/2
                             </p>
                           </div>
-                          <a className="learn-more-H">
+                          <Link
+                            to={`/knowledge-detail/id`}
+                            className="learn-more-H"
+                          >
                             了解更多
                             <span className="material-symbols-outlined">
                               chevron_right
                             </span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
                   </div>
                   <img
-                    src={getImageURL('senior-people-sitting-couch-side-view.png')}
+                    src={getImageURL(
+                      "senior-people-sitting-couch-side-view.png"
+                    )}
                     alt=""
                     className="img mb-2 mb-lg-0"
                   />
@@ -381,18 +402,18 @@ export default function KnowledgeSharing() {
                 <div className="d-flex justify-content-between align-items-center d-lg-none">
                   <div className="d-flex">
                     <img
-                      src={getImageURL('people.png')}
+                      src={getImageURL("people.png")}
                       alt=""
                       className="photo me-2"
                     />
                     <p className="fs-7 fs-lg-6 fs-xl-5">陳佳欣 2024/8/2</p>
                   </div>
-                  <a className="learn-more-H">
+                  <Link to={`/knowledge-detail/id`} className="learn-more-H">
                     了解更多
                     <span className="material-symbols-outlined">
                       chevron_right
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </article>
             </div>
@@ -429,27 +450,29 @@ export default function KnowledgeSharing() {
                 為了不讓自己被老所困,無論是50歲以上的熟齡族,或逾65歲的銀髮族,每日三餐應正確攝取營養,為自己打造出黃金營養力。營養師建議,熟齡族應特別注意三大必需營養素的攝取,包括蛋白質、鈣質與維生素D,這些...
               </p>
               <div className="d-none d-lg-block">
-                <a className="learn-more-H-lg">
+                <Link to={`/knowledge-detail/id`} className="learn-more-H-lg">
                   了解更多
                   <span className="material-symbols-outlined">
                     chevron_right
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
             <div>
               <img
-                src={getImageURL('omega-3-food-sources-omega-6-yellow-top-view.png')}
+                src={getImageURL(
+                  "omega-3-food-sources-omega-6-yellow-top-view.png"
+                )}
                 alt=""
                 className="img mb-1 mb-md-2 mb-lg-0"
               />
               <div className="d-flex justify-content-end d-lg-none">
-                <a className="learn-more-H">
+                <Link to={`/knowledge-detail/id`} className="learn-more-H">
                   了解更多
                   <span className="material-symbols-outlined">
                     chevron_right
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </article>
@@ -464,28 +487,28 @@ export default function KnowledgeSharing() {
               </p>
               <div className="d-none d-lg-block">
                 <div className="d-flex justify-content-lg-end">
-                  <a className="learn-more-H-lg">
+                  <Link to={`/knowledge-detail/id`} className="learn-more-H-lg">
                     了解更多
                     <span className="material-symbols-outlined">
                       chevron_right
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             <div>
               <img
-                src={getImageURL('senior-woman-training-home.png')}
+                src={getImageURL("senior-woman-training-home.png")}
                 alt=""
                 className="img mb-1 mb-md-2 mb-lg-0"
               />
               <div className="d-flex justify-content-end d-lg-none">
-                <a className="learn-more-H">
+                <Link to={`/knowledge-detail/id`} className="learn-more-H">
                   了解更多
                   <span className="material-symbols-outlined">
                     chevron_right
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </article>
@@ -499,27 +522,29 @@ export default function KnowledgeSharing() {
                 打造舒適的居家環境需要考慮多方面因素。首先,根據需求進行空間規劃,合理布局以最大化空間功能。選擇統一的風格和合適的色彩,創造和諧的氛圍。注重舒適性和實用性,選擇舒適的家具並設置足夠的儲物空間...
               </p>
               <div className="d-none d-lg-block">
-                <a className="learn-more-H-lg">
+                <Link to={`/knowledge-detail/id`} className="learn-more-H-lg">
                   了解更多
                   <span className="material-symbols-outlined">
                     chevron_right
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
             <div>
               <img
-                src={getImageURL('smiling-woman-holding-book-sitting-with-her-granny-window-sill.png')}
+                src={getImageURL(
+                  "smiling-woman-holding-book-sitting-with-her-granny-window-sill.png"
+                )}
                 alt=""
                 className="img mb-1 mb-md-2 mb-lg-0"
               />
               <div className="d-flex justify-content-end d-lg-none">
-                <a className="learn-more-H">
+                <Link to={`/knowledge-detail/id`} className="learn-more-H">
                   了解更多
                   <span className="material-symbols-outlined">
                     chevron_right
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </article>
