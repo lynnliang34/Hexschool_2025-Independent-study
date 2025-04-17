@@ -38,7 +38,6 @@ export default function AdminCoupons() {
           discount: coupon.discount || 0, // 如果沒有 discount，設為 0
         }))
       );
-      console.log(res.data.coupons);
       setPageInfo(res.data.pagination);
     } catch (error) {
       console.error(error);

@@ -23,14 +23,11 @@ export default function HomeNews() {
       }
     }
     getProduct();
-    // console.log(products);
   },[]);
 
   useEffect(()=>{
     const isFeatured = products.filter((item)=> item.is_featured === 1);
-    // console.log(isEnable);
     setfeatured(isFeatured[0]); //只取第一筆資料
-    // console.log(featured);
     const isPopular = products.filter((item)=> item.is_popular === 1);
     setPopular(isPopular[0]);
     const isLastest = products.filter((item)=> item.is_lastest === 1);

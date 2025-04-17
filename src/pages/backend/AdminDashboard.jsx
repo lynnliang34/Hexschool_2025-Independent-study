@@ -25,7 +25,6 @@ export default function AdminDashboard() {
     }
   };
   getOrders();
-  console.log(orders);
   },[]);
 
   const categoryNum= [ 0,0,0,0 ];

@@ -69,7 +69,6 @@ function ProductModal({
 
   // 新增產品
   const createProduct = async () => {
-    console.log(modalData);
     try {
       await axios.post(`${BASE_URL}/api/${API_PATH}/admin/product`, {
         data: {

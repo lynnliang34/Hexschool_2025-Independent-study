@@ -32,7 +32,6 @@ export default function Checkout() {
       setIsScreenLoading(true);
       const res = await axios.get(`${BASE_URL}/api/${API_PATH}/cart`);
       setCart(res.data.data);
-      console.log("後台資料", res.data.data);
     } catch (error) {
       dispatch(
         pushMessage({
@@ -47,8 +46,6 @@ export default function Checkout() {
 
   useEffect(() => {
     getCart();
-
-    console.log("前台資料", frontendCartList);
   }, [getCart, frontendCartList]);
 
   // 更改後台購物車商品數量

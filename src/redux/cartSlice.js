@@ -26,9 +26,9 @@ export const cartSlice = createSlice({
                 state.cartDetails.push({
                     ...action.payload
                 })
-                console.log('課程已添加到購物車', state.cartDetails);
+                console.log('課程已添加到購物車');
             } else {
-                console.log('購物車已有此課程', action.payload.course_id);
+                console.log('購物車已有此課程');
             }
         },
 

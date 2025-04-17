@@ -39,7 +39,6 @@ export default function CourseDetail() {
     const handleBookCourse = () =>{
         // 點擊預約時重新取得該頁課程ID
         dispatch(setselectedProductId(id));
-        console.log("變更的 ID:", id); // 檢查 ID 是否存在
         // 判斷是否已登入
         if(isAuthenticated){
             // 如果已登入，導向預約課程頁面

@@ -107,7 +107,6 @@ export default function ScheduleCourses() {
         const scrollPosition = window.scrollY;
 
         setSelectedTimeSlot(slot);
-        // console.log(selectedTimeSlot);
         // 在下一個事件循環中恢復捲動位置
         setTimeout(() => {
             window.scrollTo({
@@ -124,7 +123,6 @@ export default function ScheduleCourses() {
             // new Set(...) 創建一個 Set 物件，自動去除重複值
             // [...new Set(...)] 將 Set 轉換回陣列
         const uniqueTeachers = [...new Set(selectedCourse.timeSlots.map(slot => slot.teacher))];
-        // console.log(uniqueTeachers);
         
         // 建立每位教練的課程時間表
         const schedules = {}; //存每位教練的時間表
@@ -153,16 +151,6 @@ export default function ScheduleCourses() {
 
     // 從 Redux 獲取購物車資料
     const cartDetails = useSelector(state => state.cart.cartDetails);
-
-    // 使用 useEffect 監視購物車資料變化
-    useEffect(() => {
-        console.log(allCourses);
-        console.log('購物車資料已更新:', cartDetails);
-        console.log(selectedCourse);
-        console.log(selectedTeacher);
-        console.log(selectedTimeSlot);
-        
-    }, [allCourses,cartDetails,selectedCourse,selectedTeacher,selectedTimeSlot]);
 
     // 操作表單提交
     const handleSubmit = async(e)=>{
@@ -203,8 +191,7 @@ export default function ScheduleCourses() {
                 date: selectedTimeSlot.date,
                 time: selectedTimeSlot.time,
                 img: selectedCourse.imageUrl
-            }))
-            console.log(reduxCourseDetail);
+            }));
             
 
             // 打包購物車POST API參數

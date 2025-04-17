@@ -69,7 +69,6 @@ function CouponModal({
 
   // 新增優惠券
   const createCoupon = async () => {
-    console.log(modalData);
     try {
       await axios.post(`${BASE_URL}/api/${API_PATH}/admin/coupon`, {
         data: {
