@@ -11,6 +11,7 @@ export { default as UserProfile } from "./frontend/UserProfile";
 export { default as Checkout } from "./frontend/Checkout";
 export { default as Photos } from "./frontend/Photos";
 export { default as KnowledgeSharing } from "./frontend/KnowledgeSharing";
+export { default as KnowledgeDetail } from "./frontend/KnowledgeDetail";
 
 // 登入頁面
 export { default as UserRegister } from "./login/UserRegister";
