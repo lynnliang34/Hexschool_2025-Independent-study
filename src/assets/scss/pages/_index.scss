@@ -46,14 +46,15 @@
         padding-bottom: 398px;
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: center;
+        background-position: right 35% bottom 28%;
     }
 }
 
 @include lg{
     .index{
         .indexBanner{
-            height: 87vh;
+            background-position: right 50% bottom 28%;
+            max-height: calc(100vh - 105px);
             padding-top: 300px;
             padding-bottom: 229.75px;
             .logoIcon{
