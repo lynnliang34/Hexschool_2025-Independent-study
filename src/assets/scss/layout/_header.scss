@@ -47,6 +47,10 @@
     fill: $secondary-2;
   }
 
+  .search-color {
+    fill: $neutral-1;
+  }
+
   .search-form {
     position: absolute;
     top: 9px;
@@ -186,6 +190,13 @@
   .search-icon-lg {
     top: 4px;
     left: 8px;
+    transition: 0.15s;
+
+    &:hover {
+      .search-color {
+        fill: $primary;
+      }
+    }
 
     @include xl {
       left: 16px;
@@ -230,10 +241,12 @@
       font-size: 24px;
     }
 
-    &:hover {
+    &:hover, &.active {
       color: $secondary;
       border-bottom: 2px solid $secondary;
     }
+
+    
   }
 
   .nav-link-3 {
