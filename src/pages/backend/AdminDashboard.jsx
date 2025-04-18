@@ -1,6 +1,6 @@
 import axios from "axios";
 import 'chart.js/auto';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
 // Pie props doc:https://react-chartjs-2.js.org/components/pie
 
