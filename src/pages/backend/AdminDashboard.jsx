@@ -8,10 +8,6 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function AdminDashboard() {
-  // 學員人數: 
-  // 課程訂單數：顯示訂單資料總長
-  // 營業額：加總所有資料total
-  // 訂單課程比例
   const [ orders, setOrders ] = useState([]);
 
   useEffect(()=>{
@@ -25,8 +21,11 @@ export default function AdminDashboard() {
     }
   };
   getOrders();
-  console.log(orders);
   },[]);
+
+  useEffect(()=>{
+    console.log(orders);
+  },[orders]);
 
   const categoryNum= [ 0,0,0,0 ];
 
