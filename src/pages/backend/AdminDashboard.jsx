@@ -23,10 +23,6 @@ export default function AdminDashboard() {
   getOrders();
   },[]);
 
-  useEffect(()=>{
-    console.log(orders);
-  },[orders]);
-
   const categoryNum= [ 0,0,0,0 ];
 
     orders.forEach((order) => {
