@@ -57,15 +57,7 @@ export default function AdminCourses() {
         res.data.products.map((product) => ({
           ...product,
           imagesUrl: product.imagesUrl || [], // 如果沒有 imagesUrl，設為空陣列
-          timeSlots: product.timeSlots || [
-            {
-              course_id: "",
-              teacher: "",
-              date: "",
-              time: "",
-              signed_up_users: [],
-            },
-          ], // 如果沒有 timeSlots，設為陣列物件資料
+          timeSlots: product.timeSlots || [], // 如果沒有 timeSlots，設為空陣列
           is_featured: product.is_featured || 0,
           is_lastest: product.is_lastest || 0,
           is_popular: product.is_popular || 0,
