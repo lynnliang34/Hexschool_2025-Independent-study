@@ -198,7 +198,7 @@ export default function AdminCourses() {
                     <td>
                       {product.is_featured ? (
                         <span className="text-primary">
-                          <i class="bi bi-star-fill"></i>
+                          <i className="bi bi-star-fill"></i>
                         </span>
                       ) : (
                         <span>-</span>
@@ -207,7 +207,7 @@ export default function AdminCourses() {
                     <td>
                       {product.is_popular ? (
                         <span className="text-primary">
-                          <i class="bi bi-star-fill"></i>
+                          <i className="bi bi-star-fill"></i>
                         </span>
                       ) : (
                         <span>-</span>
@@ -216,7 +216,7 @@ export default function AdminCourses() {
                     <td>
                       {product.is_lastest ? (
                         <span className="text-primary">
-                          <i class="bi bi-star-fill"></i>
+                          <i className="bi bi-star-fill"></i>
                         </span>
                       ) : (
                         <span>-</span>
