@@ -94,24 +94,12 @@ export default function Header() {
 
   useEffect(() => {
     const getAllCourses = async () => {
-      let page = 1;
-      let all = [];
-      let hasNext = true;
-
       try {
-        while (hasNext) {
-          const res = await axios.get(`${BASE_URL}/api/${API_PATH}/products`, {
-            params: { page },
-          });
+        const res = await axios.get(`${BASE_URL}/api/${API_PATH}/products/all`);
 
-          const { products, pagination } = res.data;
-          all = [...all, ...products];
+        const { products } = res.data;
 
-          hasNext = pagination.has_next;
-          page++;
-        }
-
-        setAllCourses(all);
+        setAllCourses(products);
       } catch (err) {
         console.error("載入全部產品失敗", err);
       }
@@ -148,7 +136,11 @@ export default function Header() {
               {/* 手機版*/}
               <div className="d-flex">
                 {/* search*/}
-                <HeaderSearchBar handleSearch={handleSearch} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+                <HeaderSearchBar
+                  handleSearch={handleSearch}
+                  searchTerm={searchTerm}
+                  setSearchTerm={setSearchTerm}
+                />
 
                 {/* list*/}
                 <button className="list d-lg-none" onClick={openMenuModal}>
@@ -245,7 +237,10 @@ export default function Header() {
                         onChange={(e) => setSearchTerm(e.target.value)}
                       />
                     </form>
-                    <div className="search-icon-lg position-absolute" onClick={handleSearch}>
+                    <div
+                      className="search-icon-lg position-absolute"
+                      onClick={handleSearch}
+                    >
                       <IconSearch className="search-color" />
                     </div>
                   </div>
