@@ -1,6 +1,6 @@
 import axios from "axios";
 import 'chart.js/auto';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
 // Pie props doc:https://react-chartjs-2.js.org/components/pie
 
@@ -8,10 +8,6 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function AdminDashboard() {
-  // 學員人數: 
-  // 課程訂單數：顯示訂單資料總長
-  // 營業額：加總所有資料total
-  // 訂單課程比例
   const [ orders, setOrders ] = useState([]);
 
   useEffect(()=>{
