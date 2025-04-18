@@ -72,7 +72,7 @@ export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
      // 更改後台購物車商品數量
     const putCartQty = async (cart_id, product_id, qty) => {
         try {
-            const res = await axios.put(
+            await axios.put(
                 `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`,
                 {
                     data: {
@@ -95,7 +95,7 @@ export default function CartOffcanvas({cartOffcanvasRef,closeCartOffcanvas}) {
    // 刪除後台購物車商品
     const deleteCartItem = async (cart_id) => {
     try {
-        const res = await axios.delete(
+        await axios.delete(
             `${BASE_URL}/api/${API_PATH}/cart/${cart_id}`
         );
 

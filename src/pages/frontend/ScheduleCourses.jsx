@@ -182,7 +182,7 @@ export default function ScheduleCourses() {
             }
 
             // 將資料存到redux
-            const reduxCourseDetail= dispatch(addCartDetail({
+            dispatch(addCartDetail({
                 product_id: id,
                 course_id: selectedTimeSlot.course_id,
                 title: selectedCourse.title,
