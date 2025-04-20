@@ -24,12 +24,26 @@ function ArticleModal({
     return date.toISOString().split("T")[0]; // 轉 YYYY-MM-DD
   };
 
+  // 取得 article 對應的 content
+  const getArticleContect = async () => {
+    try {
+      const res = await axios.get(
+        `${BASE_URL}/api/${API_PATH}/admin/article/${tempArticle.id}`
+      );
+
+      setModalData({
+        ...tempArticle,
+        create_at: formatTimestampToDate(tempArticle.create_at),
+        content: res.data.article.content,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   // tempArticle 更新時，也更新 modalData (編輯文章時帶資料)
   useEffect(() => {
-    setModalData({
-      ...tempArticle,
-      create_at: formatTimestampToDate(tempArticle.create_at),
-    });
+    getArticleContect();
   }, [tempArticle]);
 
   // 控制文章新增/編輯的 Modal
