@@ -1,24 +1,49 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Modal } from "bootstrap";
+import { useEffect, useState, useRef, use } from "react";
+Modal
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function AdminKnowledgeNew(){
   const [ articleList, setArticleList ] = useState([]);
+  const [ isLoading, setIsLoading ] = useState(true);
+  // modal用
+  const formModalRef = useRef(null);
+  const formModalInstance = useRef(null);
+  
 
-  useEffect(()=>{
-    const getAllArticle = async()=>{
+  const getAllArticle = async()=>{
+    setIsLoading(true);
+    try{
       const res = await axios.get(`${BASE_URL}/api/${API_PATH}/admin/articles`,{
         page:1
       });
       setArticleList(res.data.articles)
     }
+    catch(err){
+      console.error('獲取文章列表失敗', err);
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(()=>{
     getAllArticle();
-    
     console.log(articleList);
   },[])
 
+
+  useEffect(()=>{
+    formModalInstance.current = new Modal(formModalRef.current);
+
+    // 清理函數：組件卸載時銷毀 modal 實例
+    return () => {
+      if (formModalInstance.current) {
+        formModalInstance.current.dispose();
+      }
+    };
+  },[])
 
   
 
@@ -28,7 +53,10 @@ export default function AdminKnowledgeNew(){
         <div className="col">
           <div className="mb-5 d-flex justify-content-between">
             <h1 className="text-secondary">後台知識分享-練習</h1>
-            <button type="button" className="btn btn-secondary-2 text-white">建立新的文章</button>
+            <button type="button" 
+            className="btn btn-secondary-2 text-white"
+            onClick={()=>{console.log(inputModalRef)
+            }}>建立新的文章</button>
           </div>
 
           <table className="table">
@@ -58,6 +86,24 @@ export default function AdminKnowledgeNew(){
               ))}
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+
+    <div ref={formModalRef} className="modal" tabIndex="-1" >
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title">Modal title</h5>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div className="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" className="btn btn-primary">Save changes</button>
+          </div>
         </div>
       </div>
     </div>
