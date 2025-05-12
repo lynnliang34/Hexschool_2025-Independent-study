@@ -26,6 +26,7 @@ export { default as AdminCourses } from "./backend/AdminCourses";
 export { default as AdminCoupons } from "./backend/AdminCoupons";
 export { default as AdminOrders } from "./backend/AdminOrders";
 export { default as AdminKnowledge } from "./backend/AdminKnowledge";
+export { default as AdminKnowledgeNew } from "./backend/AdminKnowledgeNew";
 export { default as AdminPhotos } from "./backend/AdminPhotos";
 export { default as AdminMembers } from "./backend/AdminMembers";
 

@@ -31,6 +31,7 @@ import {
   AdminPhotos,
   AdminMembers,
   NotFound,
+  AdminKnowledgeNew,
 } from "../pages";
 
 const routes = [
@@ -147,6 +148,10 @@ const routes = [
       {
         path: "/admin/knowledge",
         element: <AdminKnowledge />,
+      },
+      {
+        path:"/admin/knowledge/new",
+        element : <AdminKnowledgeNew />
       },
       {
         path: "/admin/photos",
