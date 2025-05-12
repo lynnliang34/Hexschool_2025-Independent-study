@@ -45,7 +45,17 @@ export default function AdminKnowledgeNew(){
     };
   },[])
 
-  
+  const showModal= () => {
+    if (formModalInstance.current){
+      formModalInstance.current.show();
+    }
+  }
+
+  const hideModal= () => {
+    if (formModalInstance.current){
+      formModalInstance.current.hide();
+    }
+  }
 
   return (<>
     <div className="container">
@@ -55,8 +65,7 @@ export default function AdminKnowledgeNew(){
             <h1 className="text-secondary">後台知識分享-練習</h1>
             <button type="button" 
             className="btn btn-secondary-2 text-white"
-            onClick={()=>{console.log(inputModalRef)
-            }}>建立新的文章</button>
+            onClick={showModal}>建立新的文章</button>
           </div>
 
           <table className="table">
@@ -95,13 +104,15 @@ export default function AdminKnowledgeNew(){
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">Modal title</h5>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" className="btn-close" aria-label="Close"
+            onClick={hideModal}></button>
           </div>
           <div className="modal-body">
             <p>Modal body text goes here.</p>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" className="btn btn-secondary"
+            onClick={hideModal}>Close</button>
             <button type="button" className="btn btn-primary">Save changes</button>
           </div>
         </div>
