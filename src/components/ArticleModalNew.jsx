@@ -20,11 +20,13 @@ export default function ArticleModalNew({
       description: "",
       image: "",
       isPublic: false,
-      tag: ["運動","飲食","養身","醫療","癌症","居家"],
+      tag: [],
       title: "",
       content:"",
     }
   });
+
+  const tagList = ["運動","飲食","養身","醫療","癌症","居家"];
 
   const handleFormSubmit = (formData) =>{
     // 處理表單（轉整API需要的格式）
@@ -33,7 +35,7 @@ export default function ArticleModalNew({
         title: formData.title,
         description: formData.description,
         image: formData.image,
-        tag: formData.tag,
+        tag: formData.tag
       },
       create_at: Date.parse(formData.create_at) /1000,
       // 處理日期（DOM取得的是日期字串，轉回時間戳）
@@ -130,20 +132,22 @@ export default function ArticleModalNew({
                   </div>
 
                   <div className="col-12">
-                    <div className="mb-2">
-                      <label htmlFor="tag" className="form-label">
-                        標籤（以逗號分隔）
-                        <span className="text-primary ms-1">*</span>
-                      </label>
-                      <input
-                        id="tag"
-                        type="text"
-                        className="form-control"
-                        placeholder="請輸入標籤，例如：運動, 飲食, 養身"
-                        {...register("tag")}
-                      />
-                    </div>
+                    <h6 className="mb-2">標籤</h6>
+                    {tagList.map((tag) => (
+                      <div className="form-check form-check-inline" key={tag}>
+                        <label htmlFor="tag" className="form-label">
+                          {tag}
+                        </label>
+                        <input
+                          id="tag"
+                          type="checkbox"
+                          value={tag}
+                          {...register("tag")}
+                        />
+                      </div>
+                    ))}
                   </div>
+
                   <div className="col-12">
                     <div className="mb-2">
                       <label htmlFor="description" className="form-label">
