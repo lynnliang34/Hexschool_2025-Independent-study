@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Modal } from "bootstrap";
-import { useEffect, useState, useRef, use } from "react";
-Modal
+import { useEffect, useState, useRef,  } from "react";
+import { ArticleModalNew } from "../../components";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -33,7 +33,7 @@ export default function AdminKnowledgeNew(){
     console.log(articleList);
   },[])
 
-
+  // 文章Modal
   useEffect(()=>{
     formModalInstance.current = new Modal(formModalRef.current);
 
@@ -79,7 +79,7 @@ export default function AdminKnowledgeNew(){
             </thead>
             <tbody>
               {articleList.map((article)=>(
-              <tr>
+              <tr key={article.id}>
                 <td>{article.title}</td>
                 <td>{new Date(article.create_at* 1000).toLocaleDateString()}</td>
                 <td>{article.isPublic ? <span className="text-secondary">已發布</span>: '未發布'}</td>
@@ -99,24 +99,9 @@ export default function AdminKnowledgeNew(){
       </div>
     </div>
 
-    <div ref={formModalRef} className="modal" tabIndex="-1" >
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">Modal title</h5>
-            <button type="button" className="btn-close" aria-label="Close"
-            onClick={hideModal}></button>
-          </div>
-          <div className="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <div className="modal-footer">
-            <button type="button" className="btn btn-secondary"
-            onClick={hideModal}>Close</button>
-            <button type="button" className="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ArticleModalNew 
+      formModalRef={formModalRef}
+      hideModal={hideModal}
+    />
     </>);
 }
