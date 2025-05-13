@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useForm } from "react-hook-form"
+import { useEffect, useState } from "react";
+import { useForm, useWatch } from "react-hook-form"
 
 
 export default function ArticleModalNew({
@@ -11,7 +11,7 @@ export default function ArticleModalNew({
     register,
     handleSubmit,
     formState: {errors},
-    watch,
+    control,
     getValues
   } = useForm({
     defaultValues:{
@@ -27,6 +27,23 @@ export default function ArticleModalNew({
   });
 
   const tagList = ["運動","飲食","養身","醫療","癌症","居家"];
+
+  // 存取預覽圖片
+  const [previewImg, setPreviewImg] = useState("");
+
+  // 監聽上傳圖片
+  const watchImage = useWatch({
+    control,
+    name: "image"
+  })
+
+  useEffect(()=>{
+    if(watchImage){
+      setPreviewImg(watchImage)
+    }
+  },[watchImage])
+
+
 
   const handleFormSubmit = (formData) =>{
     // 處理表單（轉整API需要的格式）
