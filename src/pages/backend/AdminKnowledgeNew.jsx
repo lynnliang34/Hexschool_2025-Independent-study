@@ -26,12 +26,16 @@ export default function AdminKnowledgeNew(){
       console.error('獲取文章列表失敗', err);
     }
     setIsLoading(false);
+    
   };
 
   useEffect(()=>{
     getAllArticle();
-    console.log(articleList);
   },[])
+
+  useEffect(()=>{
+    console.log(articleList);
+  },[articleList])
 
   // 文章Modal
   useEffect(()=>{
@@ -102,6 +106,7 @@ export default function AdminKnowledgeNew(){
     <ArticleModalNew 
       formModalRef={formModalRef}
       hideModal={hideModal}
+      getAllArticle={getAllArticle}
     />
     </>);
 }
