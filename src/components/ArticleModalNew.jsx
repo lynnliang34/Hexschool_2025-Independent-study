@@ -12,13 +12,15 @@ export default function ArticleModalNew({
     handleSubmit,
     formState: {errors},
     control,
-    getValues
+    getValues,
+    setValue
   } = useForm({
     defaultValues:{
       author: "",
       create_at: 0,
       description: "",
-      image: "",
+      image: null,
+      imageURL: "",
       isPublic: false,
       tag: [],
       title: "",
@@ -28,22 +30,26 @@ export default function ArticleModalNew({
 
   const tagList = ["運動","飲食","養身","醫療","癌症","居家"];
 
-  // 存取預覽圖片
-  const [previewImg, setPreviewImg] = useState("");
-
   // 監聽上傳圖片
   const watchImage = useWatch({
     control,
-    name: "image"
+    name: "image",
+  })
+  // 監聽預覽圖片網址
+  const watchImageURL = useWatch({
+    control,
+    name: "imageURL",
   })
 
   useEffect(()=>{
-    if(watchImage){
-      setPreviewImg(watchImage)
+    if(watchImage instanceof File){
+      const url = URL.createObjectURL(watchImage);
+      setValue("imageURL",url);
     }
+    console.log('watchImage',watchImage);
+    console.log('imageURL',getValues("imageURL"));
   },[watchImage])
-
-
+  
 
   const handleFormSubmit = (formData) =>{
     // 處理表單（轉整API需要的格式）
@@ -63,6 +69,12 @@ export default function ArticleModalNew({
     console.log(processedData);
   }
 
+  const handleImageUpload = (e) => {
+    setValue("image", e.target.files[0]);
+    console.log(getValues("image"));
+    return e.target.files[0];
+  };
+
   return(
   <div ref={formModalRef} className="modal" tabIndex="-1">
     <div className="modal-dialog modal-dialog-centered modal-xl">
@@ -79,31 +91,30 @@ export default function ArticleModalNew({
                 <div className="mb-5">
                   <label className="form-label"
                   htmlFor="fileInput">
-                    圖片上傳
+                    圖片上傳 (限JPG、JPEG、PNG格式)
                   </label>
                   <input type="file"
                   accept=".jpg,.jpeg,.png"
                   className="form-control"
                   id="fileInput"
-                  {...register("image")}/>
+                  onChange={(e)=>handleImageUpload(e)}
+                  />
                 </div>
                 <div className="mb-4">
                   <label htmlFor="primary-image" className="form-label">
-                    主圖
+                    主圖預覽
                   </label>
-                  <div className="input-group">
                     <input
-                      name="image"
                       type="text"
                       id="primary-image"
                       className="form-control"
                       placeholder="請輸入圖片連結"
+                      {...register("imageURL")}
                     />
-                  </div>
                   <img
-                    src=""
-                    alt=""
-                    className="img-fluid"
+                    src={watchImageURL || "https://fakeimg.pl/600x300/?text=No Image"}
+                    alt="image preview"
+                    className="img-fluid mt-2 rounded"
                   />
                 </div>
               </div>
@@ -212,6 +223,7 @@ export default function ArticleModalNew({
             <button
               type="button"
               className="btn btn-outline-secondary-2"
+              onClick={hideModal}
             >
               取消
             </button>
