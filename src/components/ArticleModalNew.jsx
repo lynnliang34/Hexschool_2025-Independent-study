@@ -45,12 +45,23 @@ export default function ArticleModalNew({
     if(watchImage instanceof File){
       const url = URL.createObjectURL(watchImage);
       setValue("imageURL",url);
+
+      console.log('watchImage',watchImage);
+      console.log('imageURL',getValues("imageURL"));
+
+      // URL.createObjectURL() 會在內存中創建一個指向文件的引用，如果不釋放會造成內存洩漏
+      return () =>{
+        URL.revokeObjectURL(url);
+      }
     }
-    console.log('watchImage',watchImage);
-    console.log('imageURL',getValues("imageURL"));
   },[watchImage])
   
-
+  const handleImageUpload = (e) => {
+    setValue("image", e.target.files[0]);
+    console.log(getValues("image"));
+    return e.target.files[0];
+  };
+  
   const handleFormSubmit = (formData) =>{
     // 處理表單（轉整API需要的格式）
     const processedData ={
@@ -69,11 +80,6 @@ export default function ArticleModalNew({
     console.log(processedData);
   }
 
-  const handleImageUpload = (e) => {
-    setValue("image", e.target.files[0]);
-    console.log(getValues("image"));
-    return e.target.files[0];
-  };
 
   return(
   <div ref={formModalRef} className="modal" tabIndex="-1">
