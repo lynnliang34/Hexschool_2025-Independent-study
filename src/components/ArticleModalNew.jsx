@@ -1,10 +1,14 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form"
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function ArticleModalNew({
   formModalRef,
   hideModal,
+  getAllArticle
 }){
 
   const {
@@ -42,11 +46,10 @@ export default function ArticleModalNew({
   })
 
   useEffect(()=>{
-    if(watchImage instanceof File){
-      const url = URL.createObjectURL(watchImage);
+    if(watchImageURL instanceof File){
+      const url = URL.createObjectURL(watchImageURL);
       setValue("imageURL",url);
 
-      console.log('watchImage',watchImage);
       console.log('imageURL',getValues("imageURL"));
 
       // URL.createObjectURL() 會在內存中創建一個指向文件的引用，如果不釋放會造成內存洩漏
@@ -56,28 +59,55 @@ export default function ArticleModalNew({
     }
   },[watchImage])
   
-  const handleImageUpload = (e) => {
-    setValue("image", e.target.files[0]);
+  const handleImageUpload = async(e) => {
+    try{
+      setValue("imageURL",e.target.files[0]);
+      // 圖片File轉FormData才能傳API
+      const formData = new FormData();
+      formData.append("file-to-upload", e.target.files[0]);
+
+      const res = await axios.post(`${BASE_URL}/api/${API_PATH}/admin/upload`,formData);
+      setValue("image",res.data.imageUrl);
+      console.log('上傳圖片成功',res);
+    }
+    catch(err){
+      console.log('上傳圖片失敗',err);
+    }
     console.log(getValues("image"));
     return e.target.files[0];
   };
+
+  // 表單PUT API
+  const handleDataPost = async (processedData) =>{
+    try{
+      const res = await axios.post(`${BASE_URL}/api/${API_PATH}/admin/article`, processedData)
+      console.log('上傳文章成功',res);
+    }
+    catch(err){
+      console.log('上傳文章失敗：',err.response.data.message);
+    }
+  }
   
   const handleFormSubmit = (formData) =>{
     // 處理表單（轉整API需要的格式）
-    const processedData ={
+    const processedData = {
       data:{
         title: formData.title,
         description: formData.description,
         image: formData.image,
-        tag: formData.tag
-      },
-      create_at: Date.parse(formData.create_at) /1000,
-      // 處理日期（DOM取得的是日期字串，轉回時間戳）
-      author: formData.author,
-      isPublic: formData.isPublic,
-      content: formData.content
+        tag: formData.tag,
+        create_at: Date.parse(formData.create_at) /1000,
+        // 處理日期（DOM取得的是日期字串，轉回時間戳）
+        author: formData.author,
+        isPublic: formData.isPublic,
+        content: formData.content
+      }
     }
     console.log(processedData);
+
+    handleDataPost(processedData);
+    hideModal();
+    getAllArticle();
   }
 
 
@@ -97,7 +127,8 @@ export default function ArticleModalNew({
                 <div className="mb-5">
                   <label className="form-label"
                   htmlFor="fileInput">
-                    圖片上傳 (限JPG、JPEG、PNG格式)
+                    圖片上傳 
+                    <small className="text-muted ms-2">(限JPG、JPEG、PNG格式且最大3MB)</small>
                   </label>
                   <input type="file"
                   accept=".jpg,.jpeg,.png"
