@@ -88,6 +88,17 @@ export default function AdminKnowledgeNew(){
     showModal();
   }
 
+  // 刪除文章
+  const handleDeleteArticle = async(id) => {
+    try{
+      await axios.delete(`${BASE_URL}/api/${API_PATH}/admin/article/${id}`);
+      getAllArticle();
+    }
+    catch(err){
+      console.error('刪除文章失敗', err);
+    }
+  }
+
   return (<>
     <div className="container">
       <div className="row">
@@ -119,7 +130,8 @@ export default function AdminKnowledgeNew(){
                   onClick={()=>handleEditArticle(article.id)}>
                   <i className="bi bi-pencil-square fs-4"></i>
                   </button>
-                  <button type="button" className="edit-product-btn">
+                  <button type="button" className="edit-product-btn"
+                  onClick={()=>handleDeleteArticle(article.id)}>
                   <i className="bi bi-trash3-fill fs-4"></i>
                   </button>
                 </td>
