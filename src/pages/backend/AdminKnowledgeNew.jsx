@@ -12,6 +12,9 @@ export default function AdminKnowledgeNew(){
   // modal用
   const formModalRef = useRef(null);
   const formModalInstance = useRef(null);
+  // 編輯文章modal用
+  const [modalMode, setModalMode] = useState('create');
+  const [editArticle, setEditArticle] = useState(null);
   
 
   const getAllArticle = async()=>{
@@ -35,7 +38,9 @@ export default function AdminKnowledgeNew(){
 
   useEffect(()=>{
     console.log(articleList);
-  },[articleList])
+    console.log(editArticle);
+    console.log(modalMode);
+  },[articleList,editArticle,modalMode])
 
   // 文章Modal
   useEffect(()=>{
@@ -59,6 +64,28 @@ export default function AdminKnowledgeNew(){
     if (formModalInstance.current){
       formModalInstance.current.hide();
     }
+
+    setTimeout(()=>{
+      setEditArticle(null);
+      setModalMode('create');
+    },300);
+  }
+
+  const handleCreateArticle = () => {
+    setModalMode('create');
+    showModal();
+  }
+  // 取得指定文章資料並開啟編輯modal
+  const handleEditArticle = async(id) => {
+    try{
+      const article = await axios.get(`${BASE_URL}/api/${API_PATH}/admin/article/${id}`);
+      setEditArticle(article.data.article);
+    }
+    catch(err){
+      console.error('獲取文章失敗', err);
+    }
+    setModalMode('edit');
+    showModal();
   }
 
   return (<>
@@ -69,7 +96,7 @@ export default function AdminKnowledgeNew(){
             <h1 className="text-secondary">後台知識分享-練習</h1>
             <button type="button" 
             className="btn btn-secondary-2 text-white"
-            onClick={showModal}>建立新的文章</button>
+            onClick={handleCreateArticle}>建立新的文章</button>
           </div>
 
           <table className="table">
@@ -88,7 +115,8 @@ export default function AdminKnowledgeNew(){
                 <td>{new Date(article.create_at* 1000).toLocaleDateString()}</td>
                 <td>{article.isPublic ? <span className="text-secondary">已發布</span>: '未發布'}</td>
                 <td>
-                  <button type="button" className="edit-product-btn">
+                  <button type="button" className="edit-product-btn"
+                  onClick={()=>handleEditArticle(article.id)}>
                   <i className="bi bi-pencil-square fs-4"></i>
                   </button>
                   <button type="button" className="edit-product-btn">
@@ -107,6 +135,8 @@ export default function AdminKnowledgeNew(){
       formModalRef={formModalRef}
       hideModal={hideModal}
       getAllArticle={getAllArticle}
+      modalMode={modalMode}
+      editArticle={editArticle}
     />
     </>);
 }

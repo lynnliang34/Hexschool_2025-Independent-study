@@ -9,9 +9,10 @@ const API_PATH = import.meta.env.VITE_API_PATH;
 export default function ArticleModalNew({
   formModalRef,
   hideModal,
-  getAllArticle
+  getAllArticle,
+  modalMode,
+  editArticle
 }){
-
   const {
     register,
     handleSubmit,
@@ -33,6 +34,25 @@ export default function ArticleModalNew({
       content:"",
     }
   });
+
+  // 編輯模式
+  useEffect(()=>{
+    if(modalMode === 'edit' && editArticle){
+      setValue("author",editArticle.author);
+      // 時間戳轉回日期字串
+      const date = new Date(editArticle.create_at*1000).toISOString().split('T')[0];
+      setValue("create_at",date)
+      setValue("description",editArticle.description)
+      setValue("image",editArticle.image)
+      setValue("imageURL",editArticle.image)
+      setValue("isPublic",editArticle.isPublic)
+      setValue("tag",editArticle.tag)
+      setValue("title",editArticle.title)
+      setValue("content",editArticle.content)
+    }else if(modalMode === 'create'){
+      reset();
+    }
+  },[modalMode,editArticle])
 
   const tagList = ["運動","飲食","養身","醫療","癌症","居家","其他"];
 
@@ -82,17 +102,29 @@ export default function ArticleModalNew({
     return e.target.files[0];
   };
 
-  // 表單PUT API
+  // 表單POST API
   const handleDataPost = async (processedData) =>{
     try{
       const res = await axios.post(`${BASE_URL}/api/${API_PATH}/admin/article`, processedData)
       console.log('上傳文章成功',res);
       hideModal();
-      reset();
       getAllArticle();
     }
     catch(err){
       console.log('上傳文章失敗：',err.response.data.message);
+    }
+  }
+
+  // 表單PUT API
+  const handleDataPut = async (processedData) => {
+    try{
+      const res = await axios.put(`${BASE_URL}/api/${API_PATH}/admin/article/${editArticle.id}`, processedData)
+      console.log('更新文章成功',res);
+      hideModal();
+      getAllArticle();
+    }
+    catch(err){
+      console.log('更新文章失敗：',err.response.data.message);
     }
   }
   
@@ -113,7 +145,11 @@ export default function ArticleModalNew({
     }
     console.log(processedData);
 
-    handleDataPost(processedData);
+    if(modalMode === 'create'){
+      handleDataPost(processedData);}
+    else if(modalMode === 'edit'){
+      handleDataPut(processedData);
+    }
   }
 
 
