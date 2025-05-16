@@ -1,4 +1,5 @@
 import axios from "axios";
+import ReactLoading from "react-loading";
 import { Modal } from "bootstrap";
 import { useEffect, useState, useRef,  } from "react";
 import { ArticleModalNew } from "../../components";
@@ -114,7 +115,7 @@ export default function AdminKnowledgeNew(){
       <div className="row">
         <div className="col">
           <div className="mb-5 d-flex justify-content-between">
-            <h1 className="text-secondary">後台知識分享-練習</h1>
+            <h1 className="text-secondary">後台知識分享</h1>
             <button type="button" 
             className="btn btn-secondary-2 text-white"
             onClick={handleCreateArticle}>建立新的文章</button>
@@ -130,7 +131,14 @@ export default function AdminKnowledgeNew(){
               </tr>
             </thead>
             <tbody>
-              {articleList.map((article)=>(
+              {isLoading?
+              (<tr>
+                <td colSpan="4" className="text-center">
+                  <ReactLoading className="mx-auto my-30" type={'spokes'} color={'#84CCC9'} height={'80px'} width={'80px'} />
+                </td>
+              </tr>)
+              :
+              (articleList.map((article)=>(
               <tr key={article.id}>
                 <td>{article.title}</td>
                 <td>{new Date(article.create_at* 1000).toLocaleDateString()}</td>
@@ -146,7 +154,8 @@ export default function AdminKnowledgeNew(){
                   </button>
                 </td>
               </tr>
-              ))}
+              )))
+              }
             </tbody>
           </table>
         </div>

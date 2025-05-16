@@ -11,7 +11,7 @@ const adminrMenuItems = [
   { title: "優惠券", link: "/admin/coupons" },
   { title: "訂單", link: "/admin/orders" },
   { title: "知識分享", link: "/admin/knowledge" },
-  { title: "知識分享-練習", link: "/admin/knowledge/new" },
+  { title: "知識分享(Anna)", link: "/admin/knowledge/new" },
   { title: "活動照片", link: "/admin/photos" },
   { title: "會員資料", link: "/admin/members" },
 ];
