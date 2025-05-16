@@ -12,6 +12,9 @@ const API_PATH = import.meta.env.VITE_API_PATH;
 
 export default function AdminKnowledgeNew(){
   const [ articleList, setArticleList ] = useState([]);
+  const [ currentPage, setCurrentPage ] = useState(1);
+  const [ pageData, setPageData ] = useState({});
+  const [ pageNumbers, setPageNumbers] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true);
   // modal用
   const formModalRef = useRef(null);
@@ -30,12 +33,15 @@ export default function AdminKnowledgeNew(){
     setIsLoading(true);
     try{
       const res = await axios.get(`${BASE_URL}/api/${API_PATH}/admin/articles`,{
-        page:1
+        params:{
+          page:currentPage
+        }
       });
+      console.log(res.data);
       setArticleList(res.data.articles)
+      setPageData(res.data.pagination);
     }
     catch(err){
-      console.error('獲取文章列表失敗', err);
       dispatch(
         pushMessage({
           text:'獲取文章列表失敗',
@@ -49,12 +55,13 @@ export default function AdminKnowledgeNew(){
 
   useEffect(()=>{
     getAllArticle();
-  },[])
+  },[currentPage])
 
   useEffect(()=>{
     console.log(articleList);
     console.log(editArticle);
     console.log(modalMode);
+    console.log(pageData);
   },[articleList,editArticle,modalMode])
 
   // 文章Modal
@@ -97,7 +104,12 @@ export default function AdminKnowledgeNew(){
       setEditArticle(article.data.article);
     }
     catch(err){
-      console.error('獲取文章失敗', err);
+      dispatch(
+        pushMessage({
+          text:'獲取文章資料失敗',
+          status:'failed'
+        })
+      )
     }
     setModalMode('edit');
     showModal();
@@ -111,6 +123,28 @@ export default function AdminKnowledgeNew(){
   const hideDeleteModal = () => {
     deleteModalInstance.current.hide();
   }
+
+  // 切分頁
+  const handlePageChange = (e) =>{
+    e.preventDefault();
+    if(pageData.has_pre){
+      setCurrentPage(currentPage-1);
+    }else if(pageData.has_next){
+      setCurrentPage(currentPage+1);
+    }
+  }
+
+  // 顯示分頁數字
+  useEffect(()=>{
+    if(pageData.total_pages){
+      const newNumbers = [];
+      for ( let i = 1; i <= pageData.total_pages; i++){
+        newNumbers.push(i);
+      }
+      setPageNumbers(newNumbers);
+    }
+  },[pageData])
+
 
   return (<>
     <div className="container">
@@ -160,6 +194,34 @@ export default function AdminKnowledgeNew(){
               }
             </tbody>
           </table>
+
+          <div className="d-flex justify-content-center mt-5">
+            <nav aria-label="Page navigation">
+              <ul className="pagination">
+                <li className="page-item">
+                  <a className={`page-link text-secondary ${pageData.has_pre ? '' : 'disabled'}`} href="#" aria-label="Previous"
+                  onClick={(e)=>handlePageChange(e)}>
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                {pageNumbers.map((num)=>(
+                  <li className={`page-item ${num === currentPage ? 'active':''}`} key={num}>
+                    <a className="page-link text-secondary" href="#"
+                    onClick={(e)=>{
+                      e.preventDefault();
+                      setCurrentPage(num);
+                    }}>{num}</a>
+                    </li>
+                ))}
+                <li className="page-item">
+                  <a className={`page-link text-secondary ${pageData.has_next ? '' : 'disabled'}`} href="#" aria-label="Next"
+                  onClick={(e)=>handlePageChange(e)}>
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
