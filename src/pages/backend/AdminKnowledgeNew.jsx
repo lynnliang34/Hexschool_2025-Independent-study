@@ -2,7 +2,7 @@ import axios from "axios";
 import ReactLoading from "react-loading";
 import { Modal } from "bootstrap";
 import { useEffect, useState, useRef,  } from "react";
-import { ArticleModalNew } from "../../components";
+import { ArticleModalNew, DelArticleModalNew } from "../../components";
 import { pushMessage } from "../../redux/toastSlice";
 import { useDispatch } from "react-redux";
 import Toast from "../../components/Toast";
@@ -19,6 +19,10 @@ export default function AdminKnowledgeNew(){
   // 編輯文章modal用
   const [modalMode, setModalMode] = useState('create');
   const [editArticle, setEditArticle] = useState(null);
+  // 刪除確認modal用
+  const deleteModalRef = useRef(null);
+  const deleteModalInstance = useRef(null);
+  const [articleId, setArticleId] = useState(null);
   // toast
   const dispatch = useDispatch();
 
@@ -99,15 +103,13 @@ export default function AdminKnowledgeNew(){
     showModal();
   }
 
-  // 刪除文章
-  const handleDeleteArticle = async(id) => {
-    try{
-      await axios.delete(`${BASE_URL}/api/${API_PATH}/admin/article/${id}`);
-      getAllArticle();
-    }
-    catch(err){
-      console.error('刪除文章失敗', err);
-    }
+  // 刪除文章Modal
+  const showDeleteModal = (id) => {
+    setArticleId(id);
+    deleteModalInstance.current.show();
+  }
+  const hideDeleteModal = () => {
+    deleteModalInstance.current.hide();
   }
 
   return (<>
@@ -149,7 +151,7 @@ export default function AdminKnowledgeNew(){
                   <i className="bi bi-pencil-square fs-4"></i>
                   </button>
                   <button type="button" className="edit-product-btn"
-                  onClick={()=>handleDeleteArticle(article.id)}>
+                  onClick={()=>showDeleteModal(article.id)}>
                   <i className="bi bi-trash3-fill fs-4"></i>
                   </button>
                 </td>
@@ -169,6 +171,14 @@ export default function AdminKnowledgeNew(){
       modalMode={modalMode}
       editArticle={editArticle}
     />
+
+    <DelArticleModalNew
+      deleteModalRef={deleteModalRef}
+      deleteModalInstance={deleteModalInstance}
+      hideDeleteModal={hideDeleteModal}
+      articleId={articleId}
+      getAllArticle={getAllArticle}
+      />
 
     <Toast/>
     </>);

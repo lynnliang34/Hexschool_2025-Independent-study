@@ -30,6 +30,7 @@ export { default as DelCouponModal } from "./DelCouponModal";
 export { default as ArticleModal } from "./ArticleModal";
 export { default as DelArticleModal } from "./DelArticleModal";
 export { default as ArticleModalNew } from "./ArticleModalNew";
+export { default as DelArticleModalNew } from "./DelArticleModalNew";
 
 // 購物車側欄
 export { default as CartOffcanvas } from "./CartOffcanvas";

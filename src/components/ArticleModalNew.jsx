@@ -4,7 +4,6 @@ import { useForm, useWatch } from "react-hook-form"
 import ReactLoading from "react-loading";
 import { pushMessage } from "../redux/toastSlice";
 import { useDispatch } from "react-redux";
-import Toast from "../components/Toast";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -128,6 +127,7 @@ export default function ArticleModalNew({
         })
       )
       hideModal();
+      reset();
       getAllArticle();
     }
     catch(err){
@@ -151,6 +151,7 @@ export default function ArticleModalNew({
         })
       )
       hideModal();
+      reset();
       getAllArticle();
     }
     catch(err){
@@ -417,7 +418,6 @@ export default function ArticleModalNew({
         </form>
       </div>
     </div>
-    <Toast />
   </div>
   )
 }
