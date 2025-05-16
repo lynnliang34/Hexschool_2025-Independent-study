@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form"
+import ReactLoading from "react-loading";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -35,6 +36,8 @@ export default function ArticleModalNew({
 
   const tagList = ["運動","飲食","養身","醫療","癌症","居家","其他"];
 
+  const [isImgLoading, setIsImgLoading] = useState(false);
+
   // 監聽上傳圖片
   const watchImage = useWatch({
     control,
@@ -52,7 +55,6 @@ export default function ArticleModalNew({
       setValue("imageURL",url);
 
       console.log('imageURL',getValues("imageURL"));
-
       // URL.createObjectURL() 會在內存中創建一個指向文件的引用，如果不釋放會造成內存洩漏
       return () =>{
         URL.revokeObjectURL(url);
@@ -61,6 +63,7 @@ export default function ArticleModalNew({
   },[watchImage])
   
   const handleImageUpload = async(e) => {
+    setIsImgLoading(true);
     try{
       setValue("imageURL",e.target.files[0]);
       // 圖片File轉FormData才能傳API
@@ -75,6 +78,7 @@ export default function ArticleModalNew({
       console.log('上傳圖片失敗',err);
     }
     console.log(getValues("image"));
+    setIsImgLoading(false);
     return e.target.files[0];
   };
 
@@ -150,11 +154,17 @@ export default function ArticleModalNew({
                       placeholder="請輸入圖片連結"
                       {...register("imageURL")}
                     />
-                  <img
-                    src={watchImageURL || "https://fakeimg.pl/600x300/?text=No Image"}
-                    alt="image preview"
-                    className="img-fluid mt-2 rounded"
-                  />
+                    {isImgLoading ? 
+                    <div className="text-center mt-2">
+                      <ReactLoading className="mx-auto my-30" type={'spokes'} color={'#84CCC9'} height={'50px'} width={'50px'} />
+                    </div>
+                    :
+                      <img
+                        src={watchImageURL || "https://fakeimg.pl/600x300/?text=No Image"}
+                        alt="image preview"
+                        className="img-fluid mt-2 rounded"
+                      />
+                    }
                 </div>
               </div>
               
