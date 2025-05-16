@@ -32,7 +32,7 @@ export default function ArticleModalNew({
     }
   });
 
-  const tagList = ["運動","飲食","養身","醫療","癌症","居家"];
+  const tagList = ["運動","飲食","養身","醫療","癌症","居家","其他"];
 
   // 監聽上傳圖片
   const watchImage = useWatch({
@@ -160,54 +160,88 @@ export default function ArticleModalNew({
               <div className="row g-3 mb-5">
                   <div className="col-12 mb-2">
                     <label htmlFor="title" className="form-label">
-                      文章名稱<span className="text-primary ms-1">*</span>
+                      文章名稱<span className="text-primary ms-1">*{errors?.title && errors?.title?.message}</span>
                     </label>
                     <input
                       id="title"
                       type="text"
                       className="form-control"
                       placeholder="請輸入文章名稱"
-                      {...register("title")}
+                      {...register("title",{
+                        required:{
+                          value:true,
+                          message:"必填"
+                        },
+                        minLength:{
+                          value:2,
+                          message:"至少二字"
+                        },
+                        maxLength:{
+                          value:20,
+                          message:"最多二十字"
+                        }
+                      })}
                     />
                   </div>
 
                   <div className="col-6 mb-2">
                     <label htmlFor="author" className="form-label">
-                      作者<span className="text-primary ms-1">*</span>
+                      作者<span className="text-primary ms-1">*{errors?.author && errors?.author?.message}</span>
                     </label>
                     <input
                       id="author"
                       type="text"
                       className="form-control"
                       placeholder="請輸入作者名字"
-                      {...register("author")}
+                      {...register("author",{
+                        required:{
+                          value:true,
+                          message:"必填"
+                        },
+                        maxLength:{
+                          value:20,
+                          message:"最多二十字"
+                        }
+                      })}
                     />
                   </div>
                   <div className="col-6 mb-2">
                     <label htmlFor="create_at" className="form-label">
-                      發布日
+                      發布日<span className="text-primary ms-1">*{errors?.create_at && errors?.create_at?.message}</span>
                     </label>
                     <input
                       type="date"
                       id="create_at"
                       className="form-control"
                       placeholder="請輸入發布日"
-                      {...register("create_at")}
+                      {...register("create_at",{
+                        required:{
+                          value:true,
+                          message:"必填"
+                        }
+                      })}
                     />
                   </div>
 
                   <div className="col-12">
-                    <h6 className="mb-2">標籤</h6>
-                    {tagList.map((tag) => (
+                    <h6 className="mb-2">標籤
+                      <span className="text-primary fw-normal">*{errors?.tag && errors?.tag?.message}</span>
+                      </h6>
+                    {tagList.map((tag,index) => (
                       <div className="form-check form-check-inline" key={tag}>
-                        <label htmlFor="tag" className="form-label">
+                        <label htmlFor={index} className="form-label">
                           {tag}
                         </label>
                         <input
-                          id="tag"
+                          id={index}
                           type="checkbox"
                           value={tag}
-                          {...register("tag")}
+                          {...register("tag",{
+                            required:{
+                              value:true,
+                              message:"至少選擇一項"
+                            }
+                          })}
                         />
                       </div>
                     ))}
@@ -216,28 +250,54 @@ export default function ArticleModalNew({
                   <div className="col-12">
                     <div className="mb-2">
                       <label htmlFor="description" className="form-label">
-                        文章描述
+                        文章描述<span className="text-primary ms-1">*{errors?.description && errors?.description?.message}</span>
                       </label>
                       <textarea
                         id="description"
                         className="form-control"
                         rows={4}
                         placeholder="請輸入文章描述"
-                        {...register("description")}
+                        {...register("description",{
+                          required:{
+                            value:true,
+                            message:"必填"
+                          },
+                          minLength:{
+                            value:10,
+                            message:"至少十字"
+                          },
+                          maxLength:{
+                            value:100,
+                            message:"最多一百字"
+                          }
+                        })}
                       ></textarea>
                     </div>
                   </div>
                   <div className="col-12">
                     <div className="mb-2">
                       <label htmlFor="content" className="form-label">
-                        文章內容
+                        文章內容<span className="text-primary ms-1">*{errors?.content && errors?.content?.message}</span>
                       </label>
                       <textarea
                         id="content"
                         className="form-control"
                         rows={20}
                         placeholder="請輸入文章內容"
-                        {...register("content")}
+                        {...register("content",{
+                          required:{
+                            value:true,
+                            message:"必填"
+                          },
+                          minLength:{
+                            value:300,
+                            message:"至少三百字"
+                          },
+                          maxLength:{
+                            value:1500,
+                            message:"最多一千五百字"
+                          }
+                        })}
                       ></textarea>
                     </div>
                   </div>
