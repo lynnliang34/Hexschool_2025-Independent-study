@@ -2,6 +2,9 @@ import axios from "axios";
 import { Modal } from "bootstrap";
 import { useEffect, useState, useRef,  } from "react";
 import { ArticleModalNew } from "../../components";
+import { pushMessage } from "../../redux/toastSlice";
+import { useDispatch } from "react-redux";
+import Toast from "../../components/Toast";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -15,7 +18,8 @@ export default function AdminKnowledgeNew(){
   // 編輯文章modal用
   const [modalMode, setModalMode] = useState('create');
   const [editArticle, setEditArticle] = useState(null);
-  
+  // toast
+  const dispatch = useDispatch();
 
   const getAllArticle = async()=>{
     setIsLoading(true);
@@ -27,6 +31,12 @@ export default function AdminKnowledgeNew(){
     }
     catch(err){
       console.error('獲取文章列表失敗', err);
+      dispatch(
+        pushMessage({
+          text:'獲取文章列表失敗',
+          status:'failed'
+        })
+      )
     }
     setIsLoading(false);
     
@@ -150,5 +160,7 @@ export default function AdminKnowledgeNew(){
       modalMode={modalMode}
       editArticle={editArticle}
     />
+
+    <Toast/>
     </>);
 }

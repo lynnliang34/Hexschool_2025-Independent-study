@@ -2,6 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form"
 import ReactLoading from "react-loading";
+import { pushMessage } from "../redux/toastSlice";
+import { useDispatch } from "react-redux";
+import Toast from "../components/Toast";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_PATH = import.meta.env.VITE_API_PATH;
@@ -13,6 +16,8 @@ export default function ArticleModalNew({
   modalMode,
   editArticle
 }){
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -92,10 +97,20 @@ export default function ArticleModalNew({
 
       const res = await axios.post(`${BASE_URL}/api/${API_PATH}/admin/upload`,formData);
       setValue("image",res.data.imageUrl);
-      console.log('上傳圖片成功',res);
+      dispatch(
+        pushMessage({
+          text:'上傳圖片成功',
+          status:'success'
+        })
+      )
     }
     catch(err){
-      console.log('上傳圖片失敗',err);
+      dispatch(
+        pushMessage({
+          text:'上傳圖片失敗',
+          status:'failed'
+        })
+      )
     }
     console.log(getValues("image"));
     setIsImgLoading(false);
@@ -106,12 +121,22 @@ export default function ArticleModalNew({
   const handleDataPost = async (processedData) =>{
     try{
       const res = await axios.post(`${BASE_URL}/api/${API_PATH}/admin/article`, processedData)
-      console.log('上傳文章成功',res);
+      dispatch(
+        pushMessage({
+          text:'上傳文章成功',
+          status:'success'
+        })
+      )
       hideModal();
       getAllArticle();
     }
     catch(err){
-      console.log('上傳文章失敗：',err.response.data.message);
+      dispatch(
+        pushMessage({
+          text:'上傳文章失敗',
+          status:'failed'
+        })
+      )
     }
   }
 
@@ -119,12 +144,22 @@ export default function ArticleModalNew({
   const handleDataPut = async (processedData) => {
     try{
       const res = await axios.put(`${BASE_URL}/api/${API_PATH}/admin/article/${editArticle.id}`, processedData)
-      console.log('更新文章成功',res);
+      dispatch(
+        pushMessage({
+          text:'更新文章成功',
+          status:'success'
+        })
+      )
       hideModal();
       getAllArticle();
     }
     catch(err){
-      console.log('更新文章失敗：',err.response.data.message);
+      dispatch(
+        pushMessage({
+          text:'更新文章失敗',
+          status:'falied'
+        })
+      )
     }
   }
   
@@ -382,6 +417,7 @@ export default function ArticleModalNew({
         </form>
       </div>
     </div>
+    <Toast />
   </div>
   )
 }
