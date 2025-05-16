@@ -17,7 +17,8 @@ export default function ArticleModalNew({
     formState: {errors},
     control,
     getValues,
-    setValue
+    setValue,
+    reset
   } = useForm({
     defaultValues:{
       author: "",
@@ -82,6 +83,9 @@ export default function ArticleModalNew({
     try{
       const res = await axios.post(`${BASE_URL}/api/${API_PATH}/admin/article`, processedData)
       console.log('上傳文章成功',res);
+      hideModal();
+      reset();
+      getAllArticle();
     }
     catch(err){
       console.log('上傳文章失敗：',err.response.data.message);
@@ -106,8 +110,6 @@ export default function ArticleModalNew({
     console.log(processedData);
 
     handleDataPost(processedData);
-    hideModal();
-    getAllArticle();
   }
 
 
